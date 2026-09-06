@@ -110,14 +110,7 @@
     return article;
   };
 
-  const editorialRank = (story) => (
-    Number.isSafeInteger(story.featuredRank) && story.featuredRank > 0
-      ? story.featuredRank
-      : Number.MAX_SAFE_INTEGER
-  );
-
   const orderedStories = [...stories].sort((left, right) => (
-    editorialRank(left) - editorialRank(right) ||
     right.date.localeCompare(left.date) ||
     left.url.localeCompare(right.url)
   ));

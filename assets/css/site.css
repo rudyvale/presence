@@ -2923,7 +2923,7 @@ textarea:focus-visible {
     -webkit-line-clamp: 3;
   }
 
-  .latest-row:nth-child(n + 4) {
+  .latest-row:nth-of-type(n + 4) {
     display: none;
   }
 

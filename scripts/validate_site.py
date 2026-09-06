@@ -29,8 +29,42 @@ class ReferenceParser(HTMLParser):
                 self.references.append(value)
 
 
+def validate_catalog() -> list[str]:
+    source = (ROOT / "assets/js/news-data.js").read_text(encoding="utf-8")
+    match = re.fullmatch(r"\s*window\.PRESENCE_NEWS\s*=\s*(\[.*\]);?\s*", source, re.DOTALL)
+    if not match:
+        return ["news-data.js does not contain a JSON article array"]
+    stories = sorted(
+        json.loads(match[1]),
+        key=lambda story: story["url"],
+    )
+    stories.sort(key=lambda story: story["date"], reverse=True)
+    latest = [story for story in stories if story.get("promotable") is not False][:4]
+    errors = []
+    for filename, slot, expected in (
+        ("index.html", "LATEST-CARDS", latest),
+        ("news.html", "NEWS-CARDS", stories),
+    ):
+        document = (ROOT / filename).read_text(encoding="utf-8")
+        fragments = re.findall(
+            rf'<template data-presence-slot="{slot}:START"></template>(.*?)<template data-presence-slot="{slot}:END"></template>',
+            document,
+            re.DOTALL,
+        )
+        if len(fragments) != 1:
+            errors.append(f"{filename}: expected one {slot} slot")
+            continue
+        urls = re.findall(r'<h2><a href="([^"]+)">', fragments[0])
+        dates = re.findall(r'<time\b[^>]*\bdatetime="([^"]+)"', fragments[0])
+        if urls != [story["url"] for story in expected]:
+            errors.append(f"{filename}: {slot} stories are missing, stale, or out of publication order")
+        if dates != [story["date"] for story in expected]:
+            errors.append(f"{filename}: {slot} publication dates do not match the catalog")
+    return errors
+
+
 def main() -> int:
-    errors: list[str] = []
+    errors = validate_catalog()
     pages = sorted(ROOT.rglob("*.html"))
     article_pages = sorted((ROOT / "articles").glob("*.html"))
     expected_sitemap = {

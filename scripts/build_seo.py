@@ -11,6 +11,8 @@ from pathlib import Path
 import re
 from urllib.parse import quote, urljoin
 
+from build_catalog import build_catalog
+
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://rudyvale.github.io/presence"
@@ -282,6 +284,7 @@ def update_asset_versions(paths: list[Path]) -> None:
 
 
 def main() -> None:
+    build_catalog()
     paths = sorted(ROOT.rglob("*.html"))
     for path in paths:
         update_document(path)

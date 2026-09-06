@@ -396,7 +396,9 @@
     return meta;
   };
 
-  const publishedStories = stories;
+  const publishedStories = [...stories].sort((left, right) => (
+    right.date.localeCompare(left.date) || left.url.localeCompare(right.url)
+  ));
   const editorialStories = publishedStories.filter((story) => story.promotable !== false);
   const featuredRoot = document.getElementById("featured-edits");
   const latestRoot = document.getElementById("latest-edits");
@@ -411,10 +413,7 @@
       ));
     const otherStories = editorialStories.filter((story) => story.featuredRank === null);
     const featured = [...pinnedFeatured, ...otherStories].slice(0, 3);
-    const featuredStories = new Set(featured);
-    const latestStories = editorialStories
-      .filter((story) => !featuredStories.has(story))
-      .slice(0, 4);
+    const latestStories = editorialStories.slice(0, 4);
 
     const featuredRows = featured.map((story) => {
       const article = document.createElement("article");
