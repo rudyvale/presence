@@ -333,7 +333,7 @@
   const safeStory = (story) => {
     if (!story || Object.getPrototypeOf(story) !== Object.prototype) return null;
     const title = cleanText(story.title, 300);
-    const author = cleanText(story.author, 300);
+    const author = cleanText(story.author ?? "", 300);
     const summary = cleanText(story.summary, 1200);
     const category = cleanText(story.category, 40);
     const type = cleanText(story.type, 100);
@@ -346,7 +346,7 @@
       story.featuredRank >= 1 && story.featuredRank <= 100
         ? story.featuredRank
         : null;
-    if (!title || !author || !summary || !category || !type || !date || !readingTime || !url) return null;
+    if (!title || author === null || !summary || !category || !type || !date || !readingTime || !url) return null;
     if (!["crypto", "technology", "companies"].includes(category)) return null;
     if (!type.toUpperCase().includes("PRESENCE") && !url.startsWith("articles/")) return null;
     return Object.freeze({
@@ -387,7 +387,7 @@
   const appendStoryMeta = (parent, story) => {
     const meta = document.createElement("p");
     meta.className = "story-author";
-    meta.append(document.createTextNode(`${story.author} · `));
+    if (story.author) meta.append(document.createTextNode(`${story.author} · `));
 
     const publicationTime = makePublicationTime(story.date);
     if (publicationTime) meta.append(publicationTime, document.createTextNode(" · "));
@@ -590,7 +590,7 @@
 
     const foot = document.createElement("div");
     foot.className = "archive-row__foot";
-    appendText(foot, "p", "story-author", item.authors);
+    if (item.authors) appendText(foot, "p", "story-author", item.authors);
     const sourceLink = document.createElement("a");
     sourceLink.className = "archive-row__source";
     sourceLink.href = item.localUrl;

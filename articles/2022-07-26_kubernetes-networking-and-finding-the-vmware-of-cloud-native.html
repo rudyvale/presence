@@ -47,7 +47,7 @@
       ],
       "author": {
         "@type": "Person",
-        "name": "Thomas Graf & Derrick Harris"
+        "name": "Thomas Graf"
       },
       "publisher": {
         "@id": "https://rudyvale.github.io/presence/#organization"
@@ -90,7 +90,7 @@
   <article>
     <span class="article__cat">Companies</span>
     <h1 class="article__title">Cilium, Service Meshes, and the Future of Enterprise Networking</h1>
-    <p class="article__meta">Thomas Graf &amp; Derrick Harris · 13 min read</p>
+    <p class="article__meta">Thomas Graf · 13 min read</p>
 
     <div class="article__body">
       <p class="article__image"><img src="../assets/img/articles/2022-07-26_kubernetes-networking-and-finding-the-vmware-of-cloud-native/images/01_3fc96aa2.webp" alt="" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async"></p>
@@ -98,7 +98,7 @@
       <p class="article__lede">In this interview, Graf talks about the roles Cilium and eBPF have in the expanding cloud-native networking ecosystem, along with broader shifts in Kubernetes adoption and development. He describes who is using and purchasing Kubernetes in large enterprises, where cloud native infrastructure still has room to improve, and how the push for standardization is fueling innovation.</p>
       <hr>
       <h2>eBPF and Cilium</h2>
-      <p><strong>FUTURE: How should we understand eBPF and Cilium in the broader context of computing and networking, and then specifically within the cloud native ecosystem?</strong></p>
+      <p><strong>How should we understand eBPF and Cilium in the broader context of computing and networking, and then specifically within the cloud native ecosystem?</strong></p>
       <p>THOMAS GRAF: At a high level, eBPF is the technology, and it operates at a very low level. It was built for kernel developers, and my own background is in kernel development. eBPF is to the kernel, to the operating system, what JavaScript is to a browser. It turns the operating system into something programmable, just as JavaScript makes the browser programmable. In the past, we had to move up to newer browser versions before we could use certain websites. Then JavaScript arrived, and suddenly application teams and developers could create huge applications — so much so that the most popular word-processing application was eventually displaced by an in-browser one. It sparked a massive wave of innovation.</p>
       <p>The same thing is taking place with eBPF, though at the operating system layer, because suddenly we can do things at the kernel or OS level where we can observe everything and govern everything — which is very important for security — without needing to modify kernel source code. We can essentially load programs into the kernel to extend what it can do and add new capabilities. That has also unlocked a huge wave of innovation. Hyperscalers like Facebook, Google, and Netflix are using this themselves, directly, with their own kernel teams.</p>
       <p>What Cilium contributes is that it takes this low-level eBPF technology and uses it to deliver a new wave of software infrastructure, especially for the cloud native wave. Think of it as software-defined networking and what Nicira, later VMware NSX, did for the virtualization industry. We are doing the same for cloud native, where there is a combination of cloud provider or public cloud infrastructure and on-premises infrastructure. And we are addressing networking, security, and observability use cases at the infrastructure layer with it.</p>
@@ -162,7 +162,7 @@
     </div>
 
         <section class="authors" aria-labelledby="author-profiles-title">
-      <h2 class="visually-hidden" id="author-profiles-title">About the authors</h2>
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
       <div class="author">
         <div class="author__avatar" aria-hidden="true">
           <img src="../assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
@@ -171,16 +171,6 @@
         <div class="author__links">
           <span>Explore</span>
           <a href="../index.html?author=Thomas%20Graf#future-archive" aria-label="More articles by Thomas Graf">More articles</a>
-        </div>
-      </div>
-      <div class="author">
-        <div class="author__avatar" aria-hidden="true">
-          <img src="../assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
-        </div>
-        <p class="author__bio"><strong>Derrick Harris</strong> is an editorial partner at a16z, focusing on enterprise and AI coverage for Future.</p>
-        <div class="author__links">
-          <span>Explore</span>
-          <a href="../index.html?author=Derrick%20Harris#future-archive" aria-label="More articles by Derrick Harris">More articles</a>
         </div>
       </div>
     </section>
@@ -241,6 +231,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/site.js?v=c5726b5f65bc618c"></script>
+<script src="../assets/js/site.js?v=9606824fff3f8caa"></script>
 </body>
 </html>

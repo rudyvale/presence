@@ -47,7 +47,7 @@
       ],
       "author": {
         "@type": "Person",
-        "name": "Sam Lambert & Derrick Harris"
+        "name": "Sam Lambert"
       },
       "publisher": {
         "@id": "https://rudyvale.github.io/presence/#organization"
@@ -90,7 +90,7 @@
   <article>
     <span class="article__cat">Technology</span>
     <h1 class="article__title">PlanetScale CEO on Cloud-Prem and Climbing the Engineering Ladder</h1>
-    <p class="article__meta">Sam Lambert &amp; Derrick Harris · 15 min read</p>
+    <p class="article__meta">Sam Lambert · 15 min read</p>
 
     <div class="article__body">
       <p class="article__image"><img src="../assets/img/articles/2022-08-02_planetscale-cloud-prem-engineering-management/images/01_b51c0fec.webp" alt="" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async"></p>
@@ -98,7 +98,7 @@
       <p class="article__lede">In this interview, Lambert talks through several subjects tied to cloud native software delivery models, such as what good serverless looks like, who ought to operate Kubernetes, and the rise of “cloud-prem” — a deployment model that blends the advantages of on-prem software and SaaS products. He also discusses what it was like to become a non-founder CEO, plus his guidance on when and how to transition from engineering into management.</p>
       <hr>
       <h2>What is cloud-prem?</h2>
-      <p><strong>FUTURE: You’ve described what PlanetScale is doing — at least its not pure-SaaS offering — as “cloud-prem” computing. How would you explain that phrase?</strong></p>
+      <p><strong>You’ve described what PlanetScale is doing — at least its not pure-SaaS offering — as “cloud-prem” computing. How would you explain that phrase?</strong></p>
       <p>SAM LAMBERT: Cloud-prem is a newer model — basically the cloud native answer to on-prem. In the past, companies have generally had to choose either an on-prem solution or a cloud solution, and trying to support both has usually been extremely hard. At GitHub, we faced that same tension between running github.com and also selling GitHub Enterprise as an on-prem product. With the cloud product, we needed to push and ship continuously. Making releases around that was a really hard problem, and creating architectures for both meant we were not serving the on-prem product as well as we might have; it was simply very tough to execute.</p>
       <p>When we joined PlanetScale, we chose to be cloud-only, but of course you can’t simply do that with a database product or with software that has strict compliance needs. So with cloud-prem, we basically place the data plane of our product into a VPC controlled by the user, while they rely on our control plane to coordinate it and we operate it. It effectively feels like you are just working with a normal cloud SaaS product, but the data stays in your account. Your security team can inspect it, and they have the confidence and trust of keeping it inside their infrastructure, without the drawbacks of having to patch, release, and run on-prem software themselves.</p>
       <p>There is another benefit too: if you are a large customer with a strong negotiated price with Amazon, for instance, you still pay that rate and preserve your committed Amazon spend inside your account.</p>
@@ -171,7 +171,7 @@
     </div>
 
         <section class="authors" aria-labelledby="author-profiles-title">
-      <h2 class="visually-hidden" id="author-profiles-title">About the authors</h2>
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
       <div class="author">
         <div class="author__avatar" aria-hidden="true">
           <img src="../assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
@@ -180,16 +180,6 @@
         <div class="author__links">
           <span>Explore</span>
           <a href="../index.html?author=Sam%20Lambert#future-archive" aria-label="More articles by Sam Lambert">More articles</a>
-        </div>
-      </div>
-      <div class="author">
-        <div class="author__avatar" aria-hidden="true">
-          <img src="../assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
-        </div>
-        <p class="author__bio"><strong>Derrick Harris</strong> is an editorial partner at a16z, focusing on enterprise and AI coverage for Future.</p>
-        <div class="author__links">
-          <span>Explore</span>
-          <a href="../index.html?author=Derrick%20Harris#future-archive" aria-label="More articles by Derrick Harris">More articles</a>
         </div>
       </div>
     </section>
@@ -250,6 +240,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/site.js?v=c5726b5f65bc618c"></script>
+<script src="../assets/js/site.js?v=9606824fff3f8caa"></script>
 </body>
 </html>

@@ -21,14 +21,16 @@ def publication_time(story: dict, class_name: str = "") -> str:
 
 
 def latest_card(story: dict) -> str:
+    byline = f"{escape(story['author'])} · " if story.get("author") else ""
     return f'''            <article class="latest-row">
               <h2><a href="{escape(story['url'])}">{escape(story['title'])}</a></h2>
-              <p class="story-author">{escape(story['author'])} · {publication_time(story)} · {escape(story['readingTime'])}</p>
+              <p class="story-author">{byline}{publication_time(story)} · {escape(story['readingTime'])}</p>
             </article>'''
 
 
 def news_card(story: dict) -> str:
     category = escape(story["category"])
+    byline = f"\n            <span>{escape(story['author'])}</span>" if story.get("author") else ""
     media = ""
     image_class = ""
     if story.get("image"):
@@ -45,8 +47,7 @@ def news_card(story: dict) -> str:
           </div>
           <h2><a href="{escape(story['url'])}">{escape(story['title'])}</a></h2>
           <p class="news-card__summary">{escape(story['summary'])}</p>
-          <div class="news-card__foot">
-            <span>{escape(story['author'])}</span>
+          <div class="news-card__foot">{byline}
             <span>{escape(story['readingTime'])}</span>
           </div>
         </article>'''

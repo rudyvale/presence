@@ -102,7 +102,7 @@
 
     const foot = document.createElement("div");
     foot.className = "news-card__foot";
-    appendText(foot, "span", "", story.author);
+    if (story.author) appendText(foot, "span", "", story.author);
     const readingTime = safeReadingTime(story.readingTime);
     if (readingTime) appendText(foot, "span", "", readingTime);
     article.append(foot);

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from html import unescape
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -41,6 +42,30 @@ def validate_catalog() -> list[str]:
     stories.sort(key=lambda story: story["date"], reverse=True)
     latest = [story for story in stories if story.get("promotable") is not False][:4]
     errors = []
+    biographies = json.loads((ROOT / "assets/data/author-bios.json").read_text(encoding="utf-8"))["authors"]
+    for story in stories:
+        expected_authors = story["author"].split(" & ") if story.get("author") else []
+        document = (ROOT / story["url"]).read_text(encoding="utf-8")
+        profile_authors = [
+            unescape(name)
+            for name in re.findall(r'class="author__bio"><strong>([^<]+)</strong>', document)
+        ]
+        if profile_authors != expected_authors:
+            errors.append(f"{story['url']}: author profiles do not match the catalog")
+        if any(name not in biographies for name in expected_authors):
+            errors.append(f"{story['url']}: contributor biography is missing")
+        for schema_text in re.findall(r'<script type="application/ld\+json">\s*(.*?)\s*</script>', document, re.DOTALL):
+            try:
+                graph = json.loads(schema_text).get("@graph", [])
+            except json.JSONDecodeError:
+                continue
+            for item in graph:
+                if item.get("@type") != "Article":
+                    continue
+                if item.get("author", {}).get("name", "") != story.get("author", ""):
+                    errors.append(f"{story['url']}: structured author does not match the catalog")
+                if not expected_authors and "author" in item:
+                    errors.append(f"{story['url']}: an unsigned article must not invent an author")
     for filename, slot, expected in (
         ("index.html", "LATEST-CARDS", latest),
         ("news.html", "NEWS-CARDS", stories),

@@ -63,7 +63,7 @@ def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
 
     if relative.startswith("articles/"):
         headline = capture(r'<h1[^>]*class="article__title"[^>]*>(.*?)</h1>', document, title.removesuffix(" — PRESENCE"))
-        author = capture(r'<p[^>]*class="article__meta"[^>]*>(.*?)\s*·', document, "PRESENCE Editorial")
+        author = capture(r'<p[^>]*class="article__meta"[^>]*>(.*?)\s*·', document)
         published = capture(r'<time[^>]*datetime="([^"]+)"', document)
         section = capture(r'<span[^>]*class="article__cat"[^>]*>(.*?)</span>', document)
         article = {
@@ -73,7 +73,7 @@ def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
             "description": description,
             "mainEntityOfPage": canonical,
             "image": [image],
-            "author": {"@type": "Person", "name": author},
+            **({"author": {"@type": "Person", "name": author}} if author else {}),
             "publisher": {"@id": f"{BASE_URL}/#organization"},
         }
         if published:
