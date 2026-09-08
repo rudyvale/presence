@@ -259,6 +259,7 @@ def update_feed() -> None:
 def update_asset_versions(paths: list[Path]) -> None:
     assets = (
         "assets/css/site.css",
+        "assets/css/about.css",
         "assets/css/fonts.css",
         "assets/js/site.js",
         "assets/js/news-data.js",
