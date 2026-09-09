@@ -13,9 +13,20 @@ MONTHS = (
 )
 
 
+def listing_date(story: dict) -> str:
+    return story.get("republishedDate") or story["date"]
+
+
+def date_label(value: str) -> str:
+    published = date.fromisoformat(value)
+    return f"{MONTHS[published.month - 1]} {published.day}, {published.year}"
+
+
 def publication_time(story: dict, class_name: str = "") -> str:
-    published = date.fromisoformat(story["date"])
+    published = date.fromisoformat(listing_date(story))
     label = f"{MONTHS[published.month - 1]} {published.day}, {published.year}"
+    if story.get("republishedDate"):
+        label = f"Republished {label}"
     attribute = f' class="{class_name}"' if class_name else ""
     return f'<time{attribute} datetime="{published.isoformat()}">{label}</time>'
 
@@ -67,15 +78,16 @@ def replace_slot(path: Path, slot: str, content: str, indent: str) -> None:
     path.write_text(document, encoding="utf-8", newline="\n")
 
 
-def build_catalog() -> None:
+def load_stories() -> list[dict]:
     source = (ROOT / "assets/js/news-data.js").read_text(encoding="utf-8")
     match = re.fullmatch(r"\s*window\.PRESENCE_NEWS\s*=\s*(\[.*\]);?\s*", source, re.DOTALL)
     if not match:
         raise ValueError("news-data.js must contain a JSON article array")
-    stories = sorted(
-        json.loads(match[1]),
-        key=lambda story: (-date.fromisoformat(story["date"]).toordinal(), story["url"]),
-    )
+    return json.loads(match[1])
+
+
+def build_catalog() -> None:
+    stories = sorted(load_stories(), key=lambda story: (-date.fromisoformat(listing_date(story)).toordinal(), story["url"]))
     latest = [story for story in stories if story.get("promotable") is not False][:4]
     replace_slot(ROOT / "index.html", "LATEST-CARDS", "\n".join(map(latest_card, latest)), "            ")
     replace_slot(ROOT / "news/index.html", "NEWS-CARDS", "\n\n".join(map(news_card, stories)), "        ")

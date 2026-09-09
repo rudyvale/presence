@@ -61,6 +61,8 @@
     return match && Number.isSafeInteger(Number(match[1])) ? value : null;
   };
 
+  const listingDate = (story) => safePublicationDate(story.republishedDate) || story.date;
+
   const makeCard = (story) => {
     const article = document.createElement("article");
     article.className = `news-card news-card--${story.category}`;
@@ -87,7 +89,8 @@
     meta.className = "news-card__meta";
     appendText(meta, "span", "news-card__category", categoryLabel(story.category));
     appendText(meta, "span", "news-card__type", story.type);
-    const publicationTime = makePublicationTime(story.date);
+    const publicationTime = makePublicationTime(listingDate(story));
+    if (publicationTime && safePublicationDate(story.republishedDate)) publicationTime.prepend("Republished ");
     if (publicationTime) meta.append(publicationTime);
     article.append(meta);
 
@@ -111,7 +114,7 @@
   };
 
   const orderedStories = [...stories].sort((left, right) => (
-    right.date.localeCompare(left.date) ||
+    listingDate(right).localeCompare(listingDate(left)) ||
     left.url.localeCompare(right.url)
   ));
 

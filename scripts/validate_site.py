@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from datetime import date
 from html import unescape
 from html.parser import HTMLParser
 import json
@@ -42,7 +43,7 @@ def validate_catalog() -> list[str]:
         json.loads(match[1]),
         key=lambda story: story["url"],
     )
-    stories.sort(key=lambda story: story["date"], reverse=True)
+    stories.sort(key=lambda story: story.get("republishedDate") or story["date"], reverse=True)
     latest = [story for story in stories if story.get("promotable") is not False][:4]
     errors = []
     biographies = json.loads((ROOT / "assets/data/author-bios.json").read_text(encoding="utf-8"))["authors"]
@@ -57,6 +58,17 @@ def validate_catalog() -> list[str]:
         if story.get("image") and not local_target(story["image"]).is_file():
             errors.append(f"{story['url']}: catalog image does not exist")
         document = target.read_text(encoding="utf-8")
+        republished = story.get("republishedDate")
+        if republished:
+            try:
+                if not date.fromisoformat(story["date"]) <= date.fromisoformat(republished) <= date.today():
+                    errors.append(f"{story['url']}: republication date is out of range")
+            except (ValueError, TypeError):
+                errors.append(f"{story['url']}: invalid republication date")
+            if not re.search(rf'class="article__meta">.*?<time[^>]*datetime="{re.escape(republished)}"[^>]*>Republished ', document):
+                errors.append(f"{story['url']}: missing visible republication date")
+            if f'Originally published <time datetime="{story["date"]}"' not in document:
+                errors.append(f"{story['url']}: missing original publication date")
         profile_authors = [
             unescape(name)
             for name in re.findall(r'class="author__bio"><strong>([^<]+)</strong>', document)
@@ -77,6 +89,8 @@ def validate_catalog() -> list[str]:
                     errors.append(f"{story['url']}: structured author does not match the catalog")
                 if not expected_authors and "author" in item:
                     errors.append(f"{story['url']}: an unsigned article must not invent an author")
+                if republished and (item.get("datePublished") != story["date"] or item.get("dateModified") != republished):
+                    errors.append(f"{story['url']}: original and republication metadata do not match the catalog")
     for filename, slot, expected in (
         ("index.html", "LATEST-CARDS", latest),
         ("news/index.html", "NEWS-CARDS", stories),
@@ -94,8 +108,17 @@ def validate_catalog() -> list[str]:
         dates = re.findall(r'<time\b[^>]*\bdatetime="([^"]+)"', fragments[0])
         if urls != [story["url"] for story in expected]:
             errors.append(f"{filename}: {slot} stories are missing, stale, or out of publication order")
-        if dates != [story["date"] for story in expected]:
+        if dates != [story.get("republishedDate") or story["date"] for story in expected]:
             errors.append(f"{filename}: {slot} publication dates do not match the catalog")
+        labels = re.findall(r'<time\b[^>]*>(.*?)</time>', fragments[0])
+        if [label.startswith("Republished ") for label in labels] != [bool(story.get("republishedDate")) for story in expected]:
+            errors.append(f"{filename}: {slot} republication labels do not match the catalog")
+    sitemap = ET.parse(ROOT / "sitemap.xml")
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    modified = {item.findtext("sm:loc", namespaces=ns): item.findtext("sm:lastmod", namespaces=ns) for item in sitemap.findall("sm:url", ns)}
+    for story in stories:
+        if story.get("republishedDate") and modified.get(BASE_URL + story["url"]) != story["republishedDate"]:
+            errors.append(f"{story['url']}: sitemap is missing the republication date")
     feed = ET.parse(ROOT / "feed.xml")
     feed_links = [node.text for node in feed.findall("channel/item/link")]
     if set(feed_links) != {BASE_URL + story["url"] for story in stories} or len(feed_links) != len(stories):

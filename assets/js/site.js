@@ -91,6 +91,14 @@
     return time;
   };
 
+  const listingDate = (story) => story.republishedDate || story.date;
+
+  const makeStoryTime = (story) => {
+    const time = makePublicationTime(listingDate(story));
+    if (time && story.republishedDate) time.prepend("Republished ");
+    return time;
+  };
+
   const motionSelector = [
     ".editorial-catalog .catalog-heading",
     ".featured-row",
@@ -342,6 +350,10 @@
     const category = cleanText(story.category, 40);
     const type = cleanText(story.type, 100);
     const date = safePublicationDate(cleanText(story.date, 10));
+    const republishedDate = story.republishedDate === undefined
+      ? null
+      : safePublicationDate(cleanText(story.republishedDate, 10));
+    if (story.republishedDate !== undefined && (!republishedDate || republishedDate < date)) return null;
     const readingTime = safeReadingTime(story.readingTime);
     const url = safeStoryUrl(story.url);
     const image = safeStoryImage(story.image);
@@ -361,6 +373,7 @@
       category,
       type,
       date,
+      republishedDate,
       readingTime,
       url,
       image,
@@ -393,7 +406,7 @@
     meta.className = "story-author";
     if (story.author) meta.append(document.createTextNode(`${story.author} · `));
 
-    const publicationTime = makePublicationTime(story.date);
+    const publicationTime = makeStoryTime(story);
     if (publicationTime) meta.append(publicationTime, document.createTextNode(" · "));
     meta.append(document.createTextNode(story.readingTime));
     parent.append(meta);
@@ -401,7 +414,7 @@
   };
 
   const publishedStories = [...stories].sort((left, right) => (
-    right.date.localeCompare(left.date) || left.url.localeCompare(right.url)
+    listingDate(right).localeCompare(listingDate(left)) || left.url.localeCompare(right.url)
   ));
   const editorialStories = publishedStories.filter((story) => story.promotable !== false);
   const featuredRoot = document.getElementById("featured-edits");
@@ -412,7 +425,7 @@
       .filter((story) => story.featuredRank !== null)
       .sort((left, right) => (
         left.featuredRank - right.featuredRank ||
-        right.date.localeCompare(left.date) ||
+        listingDate(right).localeCompare(listingDate(left)) ||
         left.url.localeCompare(right.url)
       ));
     const otherStories = editorialStories.filter((story) => story.featuredRank === null);
@@ -549,7 +562,7 @@
     const meta = document.createElement("p");
     meta.className = "archive-row__meta";
     appendText(meta, "span", "", categoryLabel(item.category));
-    const publicationTime = makePublicationTime(item.date);
+    const publicationTime = makeStoryTime(item);
     if (publicationTime) meta.append(publicationTime);
     const readingTime = safeReadingTime(item.readingTime);
     appendText(meta, "span", "", readingTime || item.source);
@@ -611,6 +624,7 @@
     title: story.title,
     authors: story.author,
     date: story.date,
+    republishedDate: story.republishedDate,
     readingTime: story.readingTime,
     source: "PRESENCE",
     category: story.category,
@@ -623,7 +637,7 @@
       if (!unique.has(item.key)) unique.set(item.key, item);
     });
     archiveState.items = [...unique.values()].sort((left, right) => (
-      right.date.localeCompare(left.date) || left.title.localeCompare(right.title, "en")
+      listingDate(right).localeCompare(listingDate(left)) || left.title.localeCompare(right.title, "en")
     ));
     archiveCount.textContent = String(archiveState.items.length);
     archiveControls.hidden = archiveState.items.length === 0;

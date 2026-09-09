@@ -11,7 +11,7 @@ from pathlib import Path
 import re
 from urllib.parse import urljoin
 
-from build_catalog import build_catalog
+from build_catalog import build_catalog, date_label, load_stories, publication_time
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
 
 
@@ -35,7 +35,7 @@ def absolute_url(value: str, canonical: str) -> str:
     return urljoin(canonical, value)
 
 
-def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
+def page_schema(path: Path, document: str, canonical: str, image: str, story: dict | None = None) -> dict:
     title = capture(r"<title>(.*?)</title>", document, "PRESENCE")
     description = capture(
         r'<meta\s+name="description"\s+content="([^"]*)"',
@@ -57,6 +57,8 @@ def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
         headline = capture(r'<h1[^>]*class="article__title"[^>]*>(.*?)</h1>', document, title.removesuffix(" — PRESENCE"))
         author = capture(r'<p[^>]*class="article__meta"[^>]*>(.*?)\s*·', document)
         published = capture(r'<time[^>]*datetime="([^"]+)"', document)
+        if story and story.get("republishedDate"):
+            published = story["date"]
         section = capture(r'<span[^>]*class="article__cat"[^>]*>(.*?)</span>', document)
         article = {
             "@type": "Article",
@@ -70,6 +72,8 @@ def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
         }
         if published:
             article["datePublished"] = published
+        if story and story.get("republishedDate"):
+            article["dateModified"] = story["republishedDate"]
         if section:
             article["articleSection"] = section
         return {"@context": "https://schema.org", "@graph": [organization, article]}
@@ -131,7 +135,20 @@ def add_article_follow(document: str) -> str:
     return document.replace("\n  </article>", f"{follow}\n  </article>", 1)
 
 
-def update_document(path: Path) -> None:
+def update_republication(document: str, story: dict | None) -> str:
+    if not story or not story.get("republishedDate"):
+        return document
+    byline = f"{escape(story['author'])} · " if story.get("author") else ""
+    meta = f'<p class="article__meta">{byline}{publication_time(story)} · {escape(story["readingTime"])}</p>'
+    original = f'<p class="article__edition">Originally published <time datetime="{story["date"]}">{date_label(story["date"])}</time>.</p>'
+    document = re.sub(r'\n\s*<p class="article__edition">.*?</p>', "", document, flags=re.DOTALL)
+    document, count = re.subn(r'<p class="article__meta">.*?</p>', lambda match: meta + "\n    " + original, document, count=1, flags=re.DOTALL)
+    if count != 1:
+        raise ValueError(f"Missing article byline for {story['url']}")
+    return document
+
+
+def update_document(path: Path, story: dict | None = None) -> None:
     document = path.read_text(encoding="utf-8")
     document = re.sub(
         rf"\n?{re.escape(SEO_START)}.*?{re.escape(SEO_END)}\n?",
@@ -142,6 +159,7 @@ def update_document(path: Path) -> None:
     document = add_search_link(document, path)
     if is_article(path):
         document = add_article_follow(document)
+        document = update_republication(document, story)
 
     canonical = canonical_for(path)
     default_image = f"{BASE_URL}/assets/img/presence-social.png"
@@ -178,6 +196,8 @@ def update_document(path: Path) -> None:
         f'<link rel="canonical" href="{escape(canonical, quote=True)}">',
         f'<meta property="og:url" content="{escape(canonical, quote=True)}">',
     ]
+    if story and story.get("republishedDate"):
+        additions.append(f'<meta property="article:modified_time" content="{story["republishedDate"]}">')
     if 'property="og:type"' not in document:
         additions.append(f'<meta property="og:type" content="{"article" if is_article(path) else "website"}">')
     if 'property="og:site_name"' not in document:
@@ -197,14 +217,14 @@ def update_document(path: Path) -> None:
     if 'name="twitter:image"' not in document:
         additions.append(f'<meta name="twitter:image" content="{og_image}">')
 
-    schema = page_schema(path, document, canonical, og_image)
+    schema = page_schema(path, document, canonical, og_image, story)
     schema_json = json.dumps(schema, ensure_ascii=False, indent=2).replace("</", "<\\/")
     seo_block = f"{SEO_START}\n" + "\n".join(additions) + f'\n<script type="application/ld+json">\n{schema_json}\n</script>\n{SEO_END}\n'
     document = document.replace("</head>", f"{seo_block}</head>", 1)
     path.write_text(document, encoding="utf-8", newline="\n")
 
 
-def write_sitemap(paths: list[Path]) -> None:
+def write_sitemap(paths: list[Path], stories: dict[str, dict]) -> None:
     entries = []
     for path in paths:
         if path.name == "404.html":
@@ -213,6 +233,7 @@ def write_sitemap(paths: list[Path]) -> None:
         relative = path.relative_to(ROOT).as_posix()
         published = re.match(r"articles/(\d{4}-\d{2}-\d{2})_", relative)
         lastmod = published.group(1) if published else date.today().isoformat()
+        lastmod = stories.get(route_for(path), {}).get("republishedDate") or lastmod
         entries.append(
             "  <url>\n"
             f"    <loc>{escape(canonical)}</loc>\n"
@@ -309,10 +330,11 @@ def update_asset_versions(paths: list[Path]) -> None:
 
 def main() -> None:
     build_catalog()
+    stories = {story["url"]: story for story in load_stories()}
     paths = content_pages()
     for path in paths:
-        update_document(path)
-    write_sitemap(paths)
+        update_document(path, stories.get(route_for(path)))
+    write_sitemap(paths, stories)
     update_feed()
     redirects = write_redirects(paths)
     update_asset_versions(paths + redirects)

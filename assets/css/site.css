@@ -743,6 +743,7 @@ textarea:focus-visible {
 
 .news-card__meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 9px;
   margin-bottom: 24px;
@@ -895,6 +896,12 @@ textarea:focus-visible {
 .article__meta {
   color: var(--muted);
   margin-bottom: 28px;
+}
+
+.article__edition {
+  margin: -18px 0 28px;
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 .article__body {
@@ -2783,6 +2790,7 @@ textarea:focus-visible {
 
 .archive-row__meta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 14px;

@@ -77,7 +77,8 @@ window.PRESENCE_NEWS = [
     "date": "2022-09-01",
     "readingTime": "13 min read",
     "url": "/articles/2022-09-01_user-research-as-you-grow/",
-    "promotable": true
+    "promotable": true,
+    "republishedDate": "2026-09-09"
   },
   {
     "category": "companies",
@@ -1221,7 +1222,8 @@ window.PRESENCE_NEWS = [
     "date": "2021-06-15",
     "readingTime": "14 min read",
     "url": "/articles/2021-06-15_north-star-metrics/",
-    "promotable": true
+    "promotable": true,
+    "republishedDate": "2026-09-09"
   },
   {
     "category": "crypto",
@@ -1265,7 +1267,8 @@ window.PRESENCE_NEWS = [
     "date": "2021-06-15",
     "readingTime": "10 min read",
     "url": "/articles/2021-06-15_product-thinking/",
-    "promotable": true
+    "promotable": true,
+    "republishedDate": "2026-09-09"
   },
   {
     "category": "crypto",
@@ -1477,7 +1480,8 @@ window.PRESENCE_NEWS = [
     "imageAlt": "Vitalik Buterin speaking on stage",
     "url": "/articles/2020-01-03_credible-neutrality-guiding-principle/",
     "promotable": true,
-    "featuredRank": 1
+    "featuredRank": 1,
+    "republishedDate": "2026-09-09"
   },
   {
     "category": "companies",
