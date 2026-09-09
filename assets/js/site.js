@@ -501,18 +501,29 @@
     });
   }
 
-  const archiveRoot = document.querySelector("[data-future-grid]");
+  const archiveRoot = document.querySelector("[data-archive-grid]");
   if (!archiveRoot) return;
 
-  const archiveCount = document.querySelector("[data-future-count]");
-  const archiveStatus = document.querySelector("[data-future-status]");
-  const archiveControls = document.querySelector("[data-future-controls]");
-  const archiveMore = document.querySelector("[data-future-more]");
-  const archiveSearch = document.getElementById("future-search");
-  const archiveCategory = document.getElementById("future-category");
+  const archiveCount = document.querySelector("[data-archive-count]");
+  const archiveStatus = document.querySelector("[data-archive-status]");
+  const archiveControls = document.querySelector("[data-archive-controls]");
+  const archiveMore = document.querySelector("[data-archive-more]");
+  const archiveSearch = document.getElementById("archive-search");
+  const archiveCategory = document.getElementById("archive-category");
   const archiveState = { items: [], visible: 24 };
 
   if (!archiveCount || !archiveStatus || !archiveControls || !archiveMore) return;
+
+  const normalizeArchiveHash = () => {
+    if (window.location.hash !== "#future-archive") return;
+    const section = document.getElementById("search");
+    if (!section) return;
+    window.history.replaceState(null, "", window.location.pathname + window.location.search + "#search");
+    section.scrollIntoView();
+  };
+
+  window.addEventListener("hashchange", normalizeArchiveHash);
+  normalizeArchiveHash();
 
   try {
     if (archiveSearch && window.location && typeof window.location.search === "string") {
@@ -530,49 +541,6 @@
     technology: "Technology",
     companies: "Companies"
   })[category] || "Technology";
-
-  const safeFutureUrl = (value) => {
-    try {
-      const url = new URL(value);
-      const decodedPath = decodeURIComponent(url.pathname);
-      return url.protocol === "https:" &&
-        url.hostname.toLowerCase() === "future.com" &&
-        !url.username &&
-        !url.password &&
-        !url.port &&
-        !url.search &&
-        !url.hash &&
-        /^\/[^/]+\/$/.test(decodedPath) &&
-        !decodedPath.includes("\\")
-          ? url.href
-          : null;
-    } catch (_error) {
-      return null;
-    }
-  };
-
-  const safeLocalArticleUrl = (value, id) => {
-    if (!Number.isSafeInteger(id) || id <= 0 || typeof value !== "string") return null;
-    const match = /^articles\/future\/([1-9]\d*)\.html$/.exec(value.trim());
-    return match && Number(match[1]) === id ? match[0] : null;
-  };
-
-  const validArchiveItem = (item) => (
-    item &&
-    Object.getPrototypeOf(item) === Object.prototype &&
-    Object.keys(item).sort().join(",") === "authors,category,date,excerpt,external,id,local_url,title,url" &&
-    item.external === true &&
-    Number.isSafeInteger(item.id) &&
-    item.id > 0 &&
-    Boolean(cleanText(item.title, 300)) &&
-    Boolean(cleanText(item.authors, 300)) &&
-    typeof item.excerpt === "string" &&
-    item.excerpt === "" &&
-    Boolean(safePublicationDate(item.date)) &&
-    ["crypto", "technology", "companies"].includes(item.category) &&
-    Boolean(safeFutureUrl(item.url)) &&
-    Boolean(safeLocalArticleUrl(item.local_url, item.id))
-  );
 
   const makeArchiveRow = (item) => {
     const article = document.createElement("article");
@@ -649,10 +617,9 @@
     localUrl: story.url
   }));
 
-  const updateArchive = (catalogItems = []) => {
-    const combined = [...localArchiveItems, ...catalogItems];
+  const updateArchive = () => {
     const unique = new Map();
-    combined.forEach((item) => {
+    localArchiveItems.forEach((item) => {
       if (!unique.has(item.key)) unique.set(item.key, item);
     });
     archiveState.items = [...unique.values()].sort((left, right) => (
@@ -665,68 +632,4 @@
 
   updateArchive();
 
-  fetch("/assets/data/future-catalog.json", {
-    credentials: "same-origin",
-    redirect: "error"
-  })
-    .then((response) => {
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const contentType = response.headers.get("content-type")?.split(";", 1)[0].trim().toLowerCase();
-      const contentLength = Number(response.headers.get("content-length") || 0);
-      if (contentType !== "application/json" || contentLength > 1_000_000) {
-        throw new Error("Invalid catalog response");
-      }
-      return response.text();
-    })
-    .then((document) => {
-      if (document.length > 1_000_000) throw new Error("Catalog is too large");
-      const payload = JSON.parse(document);
-      const payloadKeys = payload && Object.getPrototypeOf(payload) === Object.prototype
-        ? Object.keys(payload).sort().join(",")
-        : "";
-      if (
-        payloadKeys !== "api_total,count,excluded_presence_count,items,schema_version,source" ||
-        payload.schema_version !== 2 ||
-        payload.source !== "future.com" ||
-        !Number.isSafeInteger(payload.api_total) ||
-        !Number.isSafeInteger(payload.count) ||
-        !Number.isSafeInteger(payload.excluded_presence_count) ||
-        !Array.isArray(payload.items) ||
-        payload.count !== payload.items.length ||
-        payload.api_total !== payload.count + payload.excluded_presence_count
-      ) {
-        throw new Error("Invalid catalog schema");
-      }
-      const items = payload.items.filter(validArchiveItem);
-      const ids = new Set(items.map((item) => item.id));
-      const urls = new Set(items.map((item) => item.url));
-      const localUrls = new Set(items.map((item) => item.local_url));
-      if (
-        items.length !== payload.items.length ||
-        ids.size !== items.length ||
-        urls.size !== items.length ||
-        localUrls.size !== items.length
-      ) {
-        throw new Error("Invalid catalog records");
-      }
-      const catalogItems = items.map((item) => Object.freeze({
-        key: `catalog:${item.id}`,
-        title: item.title.trim(),
-        authors: item.authors.trim(),
-        date: item.date,
-        readingTime: null,
-        source: "Future",
-        category: item.category,
-        localUrl: safeLocalArticleUrl(item.local_url, item.id)
-      }));
-      updateArchive(catalogItems);
-    })
-    .catch(() => {
-      if (!localArchiveItems.length) {
-        archiveCount.textContent = "0";
-        archiveStatus.textContent = "The article archive is temporarily unavailable.";
-        archiveControls.hidden = true;
-        archiveMore.hidden = true;
-      }
-    });
 })();

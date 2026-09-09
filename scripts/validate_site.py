@@ -134,6 +134,10 @@ def main() -> int:
                 errors.append(f"{relative}: invalid JSON-LD ({exc})")
         if document.count('class="nav-search-link"') != 1:
             errors.append(f"{relative}: search navigation link count is not 1")
+        if '<a class="nav-search-link" href="/#search">Search</a>' not in document:
+            errors.append(f"{relative}: search navigation must point to /#search")
+        if re.search(r'(?:#future-archive|data-future-|(?:id|class|aria-labelledby)="[^"]*future-)', document):
+            errors.append(f"{relative}: legacy archive branding remains in navigation or controls")
         if is_article(page) and document.count("PRESENCE FOLLOW:START") != 1:
             errors.append(f"{relative}: article follow block count is not 1")
 

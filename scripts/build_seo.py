@@ -101,7 +101,7 @@ def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
 def add_search_link(document: str, path: Path) -> str:
     if 'class="nav-search-link"' in document:
         return document
-    link = '      <a class="nav-search-link" href="/#future-archive">Search</a>\n'
+    link = '      <a class="nav-search-link" href="/#search">Search</a>\n'
     return re.sub(
         r'(\s+<a href="/about/"(?: aria-current="page")?>About</a>)',
         f"\n{link}\\1",

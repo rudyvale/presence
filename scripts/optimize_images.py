@@ -96,7 +96,7 @@ def main() -> None:
         if updated != document:
             write_document(path, updated)
 
-    for relative in ("assets/js/news-data.js", "assets/data/future-catalog.json"):
+    for relative in ("assets/js/news-data.js",):
         path = ROOT / relative
         if not path.exists():
             continue
