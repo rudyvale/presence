@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What’s After Proof of Stake for Ethereum? — PRESENCE</title>
+<meta name="description" content="Danny Ryan details the path forward for scalability, explains the possibility of stateless Ethereum, and shares lessons learned from testing.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="What’s After Proof of Stake for Ethereum?">
+<meta property="og:description" content="Danny Ryan details the path forward for scalability, explains the possibility of stateless Ethereum, and shares lessons learned from testing.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What’s After Proof of Stake for Ethereum?">
+<meta name="twitter:description" content="Danny Ryan details the path forward for scalability, explains the possibility of stateless Ethereum, and shares lessons learned from testing.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
+<link rel="stylesheet" href="/assets/css/site.css?v=11ba79f3624a2658">
+<!-- PRESENCE SEO:START -->
+<link rel="canonical" href="https://presence.news/articles/2022-07-27_how-the-merge-will-impact-future-ethereum-upgrades/">
+<meta property="og:url" content="https://presence.news/articles/2022-07-27_how-the-merge-will-impact-future-ethereum-upgrades/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-social.png">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-social.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-social.png",
+      "sameAs": [
+        "https://t.me/presencemedia"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://presence.news/articles/2022-07-27_how-the-merge-will-impact-future-ethereum-upgrades/#article",
+      "headline": "What’s After Proof of Stake for Ethereum?",
+      "description": "Danny Ryan details the path forward for scalability, explains the possibility of stateless Ethereum, and shares lessons learned from testing.",
+      "mainEntityOfPage": "https://presence.news/articles/2022-07-27_how-the-merge-will-impact-future-ethereum-upgrades/",
+      "image": [
+        "https://presence.news/assets/img/presence-social.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Danny Ryan"
+      },
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      },
+      "articleSection": "Crypto"
+    }
+  ]
+}
+</script>
+<!-- PRESENCE SEO:END -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/news/#crypto">Crypto</a>
+      <a href="/news/#technology">Technology</a>
+      <a href="/news/#companies">Companies</a>
+      <a class="nav-search-link" href="/#future-archive">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap article-layout">
+  <article>
+    <span class="article__cat">Crypto</span>
+    <h1 class="article__title">What’s After Proof of Stake for Ethereum?</h1>
+    <p class="article__meta">Danny Ryan · 13 min read</p>
+
+    <div class="article__body">
+      <p class="article__image"><img src="/assets/img/articles/2022-07-27_how-the-merge-will-impact-future-ethereum-upgrades/images/01_a0a77108.webp" alt="" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async"></p>
+      <p class="article__lede">Ethereum’s largest upgrade ever — the switch to a proof-of-stake consensus mechanism — is nearly here. Yet while the Merge is meant to improve security and sustainability, it does not bring sharding, the long-awaited way to scale the network.</p>
+      <p class="article__lede">In Part I of our discussion with Ethereum Foundation (EF) researcher Danny Ryan, who has helped coordinate the upgrade process, we talked about what the Merge is intended to deliver in security and stability.</p>
+      <p>In Part II, Ryan discusses upgrades users may see down the line, including danksharding, stateless Ethereum, and security changes that address the growth of miner extractable value (MEV). He also describes how this effort, which has taken years, produced new ways to study and test future upgrades.</p>
+      <hr>
+      <h2>Coordination on a decentralized network</h2>
+      <p><strong>You mentioned the chance that miners will fork and keep attempting to use the old chain. But for the most part, this process has brought everyone along. What is your part in that as an Ethereum Foundation researcher? How is something so large coordinated?</strong></p>
+      <p>DANNY RYAN: I first began working on proof-of-stake matters around 2017, and even then it seemed like a done deal. That was five years ago. And the Ethereum community has been very prepared not to stand still and to do this properly, and to build a protocol that does not merely function today but, hopefully, functions for 100 years or longer.</p>
+      <p>So, early in its culture, when there was an intuition that proof of stake could be achieved securely and more effectively than proof of work, people were very enthusiastic about that. And by the time 2016, 2017 come around, people are not just enthusiastic about it, but they are eager for it to happen. It feels like this is deeply embedded in the Ethereum community’s culture: this is going to happen.</p>
+      <p>There are more delicate questions. There are less certain outcomes where the EF, the research group, and the clients outside the EF are all trying to find answers to issues and keep momentum going. At times the answers sit in a somewhat gray area — is this the proper answer? Do we do it now? Do we do it later? That becomes difficult, and the EF tries to help coordinate in those ways, help carry out R&amp;D to assess answers, help set up conversations to determine timelines and priorities and sequence.</p>
+      <p>But in the end, on most things, the EF’s goal is to help make the protocol more sustainable, secure, and scalable while keeping it decentralized — not to push one specific feature over another. So much of what we concentrate on in both technical work and social coordination is about enabling good information, good research, and good discussion so that the many people involved in R&amp;D, engineering, and the community can keep moving and reach decisions.</p>
+      <p><strong>In the last five years there have been many more voices brought into the community, and after the Merge, it is theoretically going to get more decentralized. What are your thoughts on the future upgrade process? Could we be looking at some kind of layer-one DAO to coordinate upgrades?</strong></p>
+      <p>As I understand it, the Ethereum community is not interested in on-chain voting — or any kind of plutocratic voting and upgrades — and the protocol is the one users choose to run. In general, there is wide agreement. Sometimes there are splits — for example, Ethereum vs. Ethereum classic. But in the end it is your right and the community’s right and users’ rights to decide what software they want to run. In general, we agree because people are trying to improve Ethereum, and there is not much conflict in some of the core things there.</p>
+      <p>So I do not expect a formal technical mechanism. I do expect the process to keep growing and changing and evolving in this kind of loose governance, where there are researchers, there are developers, there are community members, there are dapps, and things like that.</p>
+      <p>I would say that — and I think you pointed to it — there are more and more people at the table, and it is getting harder and harder to make decisions and ship things. I personally think that is a feature. I do believe that both from a reliability perspective for applications and users, and from avoiding capture over the long term, it is probably important for much of the Ethereum protocol to ossify. So although it is increasingly hard to be in the swirl of governance and try to ship, and sometimes it feels like I am trying to run with a weighted vest and weights on my ankles and now I have weights on my wrists, I think we have some important things to finish over the next few years. But I think it is going to be harder and harder to get things done. And I think that is a good thing.</p>
+      <p>Vitalik calls it “functional escape velocity.” Let’s get Ethereum to a point where it has enough scale and functionality that it can be extended and used in an infinite number of ways in the next layer of the stack. Have the EVM have minimum sufficient functionality, have enough data availability to support huge amounts of scale, and then applications can extend it in smart contracts. Layer twos can try new VMs inside their layer-two systems; you can scale Ethereum and so on and so forth.</p>
+      <div class="article__callout">
+        <p>I think it is going to get harder and harder to get things done. And I think that is a good thing.</p>
+      </div>
+      <h2>Shadow forks</h2>
+      <p><strong>One of the things that came out of this particular testing process was shadow forks, the process of copying live Ethereum data to a testnet to mimic a mainnet testing setting. Was that always part of the plan? And how do you think that may affect the R&amp;D process for future upgrades?</strong></p>
+      <p>We should have been doing shadow forks for the last four years. They are great; they are really cool. I basically take a set of nodes that we control — call it like 10, 20, 30 — and they believe a fork is coming, so they are on mainnet or one of these testnets and then at some fork condition, like block height, they all say, “Okay, we are on the new network.” And they fork and then they spend time in their own reality, but they have the mainnet-sized state.</p>
+      <p>And for a while you can send transactions from mainnet onto this forked reality to produce a reasonable amount of what looks like organic user activity, which is really good. It lets us test what turned out to be highly organic processes that are difficult to simulate. And that has been great. Pari [Jayanthi] and others who work on the DevOps team at EF have been coordinating these, and we learned so much from them. I think if you asked anyone, they would say, “Well, yeah, it would have been great if we were doing this three years ago, four years ago on every upgrade.”</p>
+      <p>But I will say one more thing. I have been saying it [since] a year ago and now we are in the long tail in security and testing: It is really pounding this thing, making sure all the edge cases are correct, making sure that when it arrives, it happens — we get one shot at it and it works. And it turns out the way the software is built with consensus-execution layer clients, there is just a lot to create in terms of testing. Shadow forks are one of them. Using other simulation environments that can test these two things together, like Kurtosis, Antithesis, and others.</p>
+      <p>There is some other work we need to do, like rewiring Hive, which is our integration nightly build test framework, so that it can support both of these types of clients and so that you can write tests where different complexities are happening on both sides of the aisle. All of that had to happen. First, the frameworks had to be built or changed. Then many of the tests had to be written. So the good thing with the Merge is we have really improved the tools in our toolbelt to be able to test upgrades in such a way that the next upgrade will be much more about writing the tests rather than thinking about how to even test it and writing the frameworks to test it.</p>
+      <h2>What comes after proof of stake?</h2>
+      <p><strong>Since this has been going on for a long time, at first sharding was supposed to come first. But ecosystem changes meant you could first move to proof of stake. Were there other ecosystem changes that appeared during this process that might shift your approach toward future upgrades?</strong></p>
+      <p>First of all, there are probably several reasons the proof-of-stake move was prioritized. One was to stop overpaying for security with proof of work. And the other was that scale was starting to come through these layer-two constructions. So, maybe if you have 10-100x scale coming from that, you can focus on this other thing and finish the job and unify these two separate systems: the beacon chain and the current mainnet.</p>
+      <p>There are a few other factors that have shaped the way we approach timelines and priorities. I said earlier that the broader MEV landscape has complicated some things. Once you start considering where MEV could lead, centralization and other security issues begin to appear. And over the past 12-plus months there has been a great deal of research into how to reduce some of those concerns through layer-one changes. Depending on how one evaluates the threats coming from the MEV world, that could move certain security features and security additions to L1 ahead of something else that may have been expected to come first.</p>
+      <p>One thing I find interesting is the sharding roadmap and the currently anticipated design, called danksharding, named for Dankrad [Feist], our researcher at the EF. The entire design is actually easier if you assume these highly motivated MEV actors are present. Not only have some of these outside actors changed how we think about security, they also change how we can think about building these protocols. If you assume MEV is there, if you assume these highly incentivized actors are prepared to do certain things because of MEV, then suddenly you have this third-party participant in consensus that maybe you can delegate things to, which in many cases can simplify things. So it’s not only negative effects that arise, but also new kinds of designs that become possible.</p>
+      <div class="article__callout">
+        <p>We’ve really improved the tools in our toolbox so we can test upgrades in a way that means the next upgrade will be far more about writing the tests than about figuring out how to test it at all.</p>
+      </div>
+      <p><strong>Is stateless Ethereum still being actively discussed and researched?</strong></p>
+      <p>Yes. The state — all the accounts and contracts and balances and such — is Ethereum’s state. Wherever you are in the blockchain, there is a state of reality. That thing expands over time, and it expands linearly. And if you raise the gas limit, it grows even faster. So this is a concern. If it grows faster than the memory and storage capacity of consumer machines, then you run into trouble actually running nodes on home computers and consumer hardware, which creates security and centralization concerns. Also, if you speak with some members of the GETH [client] team, the fact that the state keeps growing means they have to keep optimizing things. So it’s hard.</p>
+      <p>Stateless Ethereum and related research directions are a possible way to address this, where to execute a block I don’t actually need the whole state; there is sort of this hidden input when executing the function of a block. I need the pre-state, I need the block, and then I get the post-state to determine whether the block is valid. With stateless Ethereum, though, the state requirements — the accounts and other things needed to execute that particular block — are included in the block and are proofs that those are the correct state. Now executing a block and verifying Ethereum’s validity becomes just [having] the block, which is really nice. Now we can have full nodes that do not necessarily hold full state. It opens up an entire range of ways to build nodes. So I might have a node that fully validates and doesn’t have the state, I might have a node that only keeps the state relevant to me, or I might have very full nodes that have all the state and that sort of thing.</p>
+      <p>This is actively being worked on. I believe there is actually currently a testnet up with all the other fun stuff that has to happen to make this work. My current view is that the demand for sharding and L1 scale is greater than the imminent threat of state growth. So it is very likely, as one will be prioritized over the other, that scale will get priority.</p>
+      <p>That said, it’s hard to know. There is “proto-danksharding,” which is kind of like a step-by-step way to get a bit more scale. Maybe that happens and then stateless happens and then full sharding happens, depending on the needs and on the assessment of what is happening and the threats involved. I think the general view on state growth is that we need a path and we need to fix it, but [that] the immediate fires have been put out and that this isn’t something that will cripple Ethereum in the next couple of years. But it is something that has to be fixed.</p>
+      <p><strong>Walk me through the upgrades that we do know about after the Merge. Will there be a cleanup upgrade? Is that separate from the Shanghai upgrade? And when does sharding get introduced?</strong></p>
+      <p>Shanghai is likely to be the name of whatever the fork is after the Merge. To actually withdraw the funds you’ve been staking for almost two years now — [that does] not become enabled at the Merge. At first they were expected to be included, but given how complex the Merge was, over time it was decided to really pare it down and just get the Merge done without adding the extra functionality of withdrawals. I would very, very, very much expect withdrawals to be enabled in Shanghai — so, the first upgrade after the Merge. This has been promised to many, many people who have a lot of capital on the line and I don’t expect any problem with it. These are generally specified, there are tests written, and that sort of thing.</p>
+      <p>There are a number of other EVM [Ethereum Virtual Machine] improvements that I think would make it into this system — different mathematical operations, some different extensibility features, a somewhat better versioning approach within the EVM, and other capabilities. It is a bit of a pressure-release valve for EVM improvements, which have been set aside for several years now in order to do the Merge and other upgrades. And people really want to see some kind of minor scalability upgrade here. So it could be either proto-danksharding, which lays some of the groundwork for full sharding and provides a little more scale, or potentially calldata gas-price reductions, which are very easy but are not really a sustainable solution. So that’s what we expect, hopefully, in Shanghai: withdrawals and a bit of scale.</p>
+      <p>Then the question is: What comes after that? And that’s hard to know. If we do get a bit of scale there, and it is complementing the L2s really well and things are pretty good, then maybe there is a demand to do stateless at that point. Or if L2s have an insatiable need for more scale, then maybe that sets the stage for full danksharding.</p>
+      <p>Read the first part of our conversation with Danny Ryan to learn how the Merge gives rise to new types of network actors.</p>
+      <p>This interview has been edited and condensed.</p>
+    </div>
+
+        <section class="authors" aria-labelledby="author-profiles-title">
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Danny Ryan</strong> is a researcher with the Ethereum Foundation, where he helps coordinate network upgrades.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Danny%20Ryan#future-archive" aria-label="More articles by Danny Ryan">More articles</a>
+        </div>
+      </div>
+    </section>
+    <!-- PRESENCE FOLLOW:START -->
+    <aside class="article-follow" aria-labelledby="follow-presence-title">
+      <p class="article-follow__kicker">Follow PRESENCE</p>
+      <h2 id="follow-presence-title">New stories, without the noise.</h2>
+      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <div class="article-follow__actions">
+        <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+      </div>
+    </aside>
+    <!-- PRESENCE FOLLOW:END -->
+
+  </article>
+
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul class="popular">
+      <li><a href="/news/#crypto">Crypto</a></li>
+      <li><a href="/news/#technology">Technology</a></li>
+      <li><a href="/news/#companies">Companies</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/#crypto">Crypto</a></li>
+        <li><a href="/news/#technology">Technology</a></li>
+        <li><a href="/news/#companies">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=661454619bcebe34"></script>
+</body>
+</html>

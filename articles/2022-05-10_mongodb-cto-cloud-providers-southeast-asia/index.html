@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MongoDB CTO: Why On-Prem Software Is Still Big Business — PRESENCE</title>
+<meta name="description" content="MongoDB CTO Mark Porter discusses working with cloud providers as frenemies, and building consumer services for Southeast Asia at Grab.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="MongoDB CTO: Why On-Prem Software Is Still Big Business">
+<meta property="og:description" content="MongoDB CTO Mark Porter discusses working with cloud providers as frenemies, and building consumer services for Southeast Asia at Grab.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MongoDB CTO: Why On-Prem Software Is Still Big Business">
+<meta name="twitter:description" content="MongoDB CTO Mark Porter discusses working with cloud providers as frenemies, and building consumer services for Southeast Asia at Grab.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
+<link rel="stylesheet" href="/assets/css/site.css?v=11ba79f3624a2658">
+<!-- PRESENCE SEO:START -->
+<link rel="canonical" href="https://presence.news/articles/2022-05-10_mongodb-cto-cloud-providers-southeast-asia/">
+<meta property="og:url" content="https://presence.news/articles/2022-05-10_mongodb-cto-cloud-providers-southeast-asia/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-social.png">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-social.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-social.png",
+      "sameAs": [
+        "https://t.me/presencemedia"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://presence.news/articles/2022-05-10_mongodb-cto-cloud-providers-southeast-asia/#article",
+      "headline": "MongoDB CTO: Why On-Prem Software Is Still Big Business",
+      "description": "MongoDB CTO Mark Porter discusses working with cloud providers as frenemies, and building consumer services for Southeast Asia at Grab.",
+      "mainEntityOfPage": "https://presence.news/articles/2022-05-10_mongodb-cto-cloud-providers-southeast-asia/",
+      "image": [
+        "https://presence.news/assets/img/presence-social.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Mark Porter"
+      },
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      },
+      "articleSection": "Companies"
+    }
+  ]
+}
+</script>
+<!-- PRESENCE SEO:END -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/news/#crypto">Crypto</a>
+      <a href="/news/#technology">Technology</a>
+      <a href="/news/#companies">Companies</a>
+      <a class="nav-search-link" href="/#future-archive">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap article-layout">
+  <article>
+    <span class="article__cat">Companies</span>
+    <h1 class="article__title">MongoDB CTO: Why On-Prem Software Is Still Big Business</h1>
+    <p class="article__meta">Mark Porter · 15 min read</p>
+
+    <div class="article__body">
+      <p class="article__image"><img src="/assets/img/articles/2022-05-10_mongodb-cto-cloud-providers-southeast-asia/images/01_f9fc6643.webp" alt="" width="1200" height="628" loading="eager" fetchpriority="high" decoding="async"></p>
+      <p class="article__lede">MongoDB CTO Mark Porter has worked from nearly every angle of the technology business. Most recently he was CTO of core technology and transport at Grab, the Southeast Asian super-app, and before that he held leadership positions at Amazon Web Services and Oracle, among other companies.</p>
+      <p class="article__lede">In this interview, he discusses the easing tensions between software vendors and cloud providers, and why selling software that is installed locally is still a major business. Porter also goes deep on his time at Grab, offering perspective on what it means to build technology in a rapidly expanding market and manage a team spread across the globe.</p>
+      <hr>
+      <h2>Relational vs NoSQL, and cloud vs on-prem</h2>
+      <p><strong>Earlier, you were at Oracle and then AWS working on relational databases. You’ve worked on database systems at consumer-facing companies. Now, you’re at MongoDB working on a non-relational, or NoSQL, system. So where do things stand now in the relational versus non-relational debate?</strong></p>
+      <p>MARK PORTER: I believe relational is always going to be very valuable. There’s no question about that. A great deal of data fits a relational model, but that doesn’t mean you need a SQL-based relational database to use it. MongoDB supports relationships, and other databases do too. I’m going to say something a bit provocative: we see ourselves as a general-purpose database.</p>
+      <p>When it comes to actual SQL databases, I’ll share a short story. I was speaking with a CTO about a year ago, and this CTO has 75,000 people reporting to them. They told me, “Mark, I have a serious problem. Nobody graduating from school wants to learn my Oracle databases. Nobody graduating from school wants to learn SQL. And, in fact, the average age of my relational database experts is rising by almost a year every year. It’s an existential problem. I’m starting to wonder whether relational is the new COBOL.” That’s their line, not mine. And it suggests we will still use it — there are more than 2 million people programming in COBOL every day out there — but it’s not where the front line of innovation is happening. I truly think that describes where relational is today, for many reasons.</p>
+      <p>What about cloud versus on-prem? Has that already passed? MongoDB is generating a lot of revenue from its cloud products …</p>
+      <p>No, not at all. The cloud is where the focus is — it’s elastic and people can launch things quickly — but there are plenty of customers who either have to or choose to keep running on-prem. And there are many different reasons: there are data center reasons, there are reasons of not trusting the cloud, there are reasons related to competing with the cloud vendor.</p>
+      <p>Our business is about 40% on-premises and growing at a healthy rate. Our cloud business is larger and expanding faster, but our on-premises business is doing very well. In fact, if it were its own company, it would be an excellent business to be in. We do not see that business disappearing any time soon and, in fact, we do not see it leveling off any time soon.</p>
+      <div class="article__callout">
+        <p>There are a huge number of companies out there that are not technology companies. They are companies that use technology to achieve their other business . . . Those companies may simply need to remain on-prem for a while and move gradually and carefully to the cloud as it makes sense for their business.</p>
+      </div>
+      <p><strong>Does the company have a business-driven preference about where it wants customers to run?</strong></p>
+      <p>The reality is that we believe we can make customers happier faster and more effectively, and do the operability and heavy lifting for them better, in the cloud. That means we keep the system running with five-nines availability across millions of clusters. We can give them built-in search so they do not have to deploy their own search cluster. We can provide automatic sync with their Realm mobile applications. I cannot provide those things on-premises.</p>
+      <p>So do we believe people can innovate faster in the cloud? Yes. But that does not mean that the people who are on-premises or even building hybrid clusters are not also very important customers doing very important work.</p>
+      <p><strong>What is the reason for staying on-premises? Is it security? Control? Cost?</strong></p>
+      <p>A lot of it is inertia, and there are two kinds of inertia that keep people on-premises. One kind is cultural inertia — they know how to do it, it is already there, they have invested in their data centers, all of that. The other kind is technological inertia, where they built systems that work.</p>
+      <p>And, frankly, there are a huge number of companies out there that are not technology companies. These are companies that use technology to carry out their other business, like a shipping company or a food company, but they use technology. Those companies may simply need to remain on-prem for a while and move gradually and carefully to the cloud as it makes sense for their business. You and I live technology every day. To us, it is existentially obvious that people should make the investment and do the work to move to the cloud. For many companies, they are focused on their core business, and technology is a side business for them.</p>
+      <div class="article__callout">
+        <p>The cloud providers are recognizing that their job is to build the house, and that house has great electricity, it has great plumbing, it has great security. But you do not want to hire the cloud providers to build your furniture.</p>
+      </div>
+      <h2>Working with cloud providers</h2>
+      <p><strong>There appears to be a frenemy relationship between cloud providers and software vendors. Is that easier to navigate or manage at a large software vendor, compared with a startup or smaller vendor?</strong></p>
+      <p>That is changing a lot this year. That frenemy relationship is becoming a friends relationship.</p>
+      <p>What we are seeing is the rise of third-party vendors like us, Confluent, and Snowflake, and all of us are making best-of-breed software. The cloud providers are realizing that their job is to build the house, and that house has great electricity, it has great plumbing, it has great security. But you do not want to hire the cloud providers to build your furniture. Your furniture is that beautiful sofa or that beautiful china cabinet, and we are building that, Confluent is building that, and other companies are building it. And the cloud providers are realizing this.</p>
+      <p><strong>Why is this happening now? Is it a matter of resources, or something else?</strong></p>
+      <p>I do not want to speak for my partners, with whom, from a commercial standpoint, we have to make sure we maintain great relationships. They are big companies. They are in all of our accounts.</p>
+      <p>But I will say that you and I both know the real currency of an executive team is attention. And my attention is 100%, every day, on building the best application data platform on the planet. Amazon’s attention is on many, many things. Google’s attention is on many, many things. I do not see the world changing in a way that would keep me from building a better data platform than Amazon can.</p>
+      <p>Naturally, the cloud providers will show up in all of these areas, but they won’t be the strongest offerings in every one of them, and I think that much is obvious. Clay Christensen wrote about when to move vertical and when to go horizontal, and it is completely evident that we are now in a period when best-of-breed products are being layered horizontally.</p>
+      <div class="article__callout">
+        <p>You and I both know the actual currency of an executive team is its attention. And my attention is 100% on building the best application data platform on the planet. Amazon’s attention is on many things. Google’s attention is on many things.</p>
+      </div>
+      <p><strong>Should startups be a bit more cautious about these relationships than large, established vendors?</strong></p>
+      <p>I think the cloud providers are coming to see that they have to be customer-obsessed and that they need to move past this frenemy dynamic. But, yes, if I were building software, I would probably be very careful about my licensing. I’d be careful about what I did, because the last thing you want is to fail when you win. The last thing you want is to have success and then suddenly see some big competitor show up.</p>
+      <p>My advice is to stay developer-obsessed, work alongside the cloud providers, and give them the benefit of the doubt that they will be your friends — but be thoughtful about the controls around your software so you don’t get exploited.</p>
+      <h2>On building apps for, and managing teams in, Southeast Asia</h2>
+      <h2>Running remote teams</h2>
+      <p>Let’s discuss another company you’ve worked at — Grab — starting with where it is based.</p>
+      <p>Grab was started in Malaysia, soon relocated to Singapore, is now headquartered in Singapore, and has offices in all nine major Southeast Asian countries. It has many offices in hundreds of cities, and then has R&amp;D centers in nine different places — from Romania to Seattle — that reported to me. In theory, I was based in Seattle. In practice, I spent three out of four weeks each month in Singapore, and a tremendous amount of time on airplanes to visit my family on weekends.</p>
+      <p>What is it like to manage such a distributed team? Even if you were at headquarters often, it sounds as though many of the engineers weren’t there.</p>
+      <p>Managing the nine engineering teams that reported to me in that distributed setup was never an issue, because the time zones were close enough. Seattle time was always a little too far away, but we were able to handle it. Running the engineering organization in a distributed way was perfectly fine.</p>
+      <p>The reason I was in Singapore was for the executives. Grab was a company where all of the executives were in Singapore, and you were expected to be awake on Singapore time and make decisions on Singapore time. Grab, like many companies — and MongoDB is no different — has a very tight executive team that speaks with one another constantly. I can’t even count how many times a day I talk to one of my other C-level peers, and that demands being in the same time zone.</p>
+      <div class="article__callout">
+        <p>We would sometimes launch new consumer services in two weeks from ideation to being up on the page. Just relentless experimentation and relentless analytics.</p>
+      </div>
+      <p><strong>How have the pandemic and the related move to remote work altered that?</strong></p>
+      <p>Our executive team is spread across time zones, but I get up a little early. Some other people in other time zones get up a little late and work a little late. But I do think executive teams need a certain number of hours of overlap during the day, because that is when the key deep decisions happen. You can get on a call and, in 15 minutes, accomplish something that would have taken 25 emails. You just make a decision in real time.</p>
+      <p>So, there is no replacement for human interaction, but it does not have to happen in person. I am not one of those people who thinks we all have to return to offices. We have a remote work model, we have a flexible remote work model, and we have an in-office work model, and we let people pick those work models. I think it only requires intentional relationship-building. I can build a great relationship with anyone over Zoom; it just takes doing it intentionally.</p>
+      <p>Of course, when I meet them for dinner or drinks or whatever once a year, that is great, but it is not essential to the relationship.</p>
+      <h2>The Southeast Asian tech market</h2>
+      <p>What is distinctive about the Southeast Asian market compared with, say, the U.S. or China? Southeast Asia has a huge population and a broad diaspora, but it seems relatively misunderstood, or perhaps not understood.</p>
+      <p>I will answer through the lens of Grab. The company’s stated mission is to improve the lives of 650 million Southeast Asians (probably more than that now). When I started at Grab, over 60% of people did not have any kind of digital footprint whatsoever. Ninety percent of them did not have a bank account; money was in cash. And what Grab did was bring a wallet.</p>
+      <p>The reason super-apps are taking off in places like Southeast Asia is because they bring the wallet with them, so you can bring your entire digital lifestyle with you. And so Grab does food, payments, banking and lending, and you can pay your utility bills. You can do all these things that you never used to be able to do, and it is all built around this concept of a wallet on your cellphone. Everyone has cell phones, and so that is the platform.</p>
+      <p>When I was at Grab, drivers would tell us they had jobs because of us, and that they might be the only people in their families with steady jobs. So what Grab was doing through that wallet, through that penetration, was magical.</p>
+      <div class="article__callout">
+        <p>I do think executive teams need to have some number of hours of overlap during the day, because that is when the key deep decisions happen.</p>
+      </div>
+      <p><strong>How is a “super-app” different from an engineering perspective?</strong></p>
+      <p>As CTO, it was genuinely fascinating for me to step into the most aggressive B2C role I ever held. We had teams that would move with real speed and force. Sometimes we would ship new consumer products in two weeks, from the idea stage to live on the page. It was nonstop experimentation and nonstop analytics. We had more than 600 analysts at Grab doing nothing except studying consumer analytics across tens of millions of people a day in the app.</p>
+      <p><strong>Is there anything about the market itself — the people, the geography, the institutions — that makes this kind of app so useful in that part of the world?</strong></p>
+      <p>I’m not sure the technology is any superior, but the demographics are definitely different because Southeast Asia was such a fast-developing region with very little inherited infrastructure. Inherited infrastructure is not necessarily the issue, but inherited companies guarding the money they make from that inherited infrastructure is the issue. In the U.S., we have all these things happening where there are all of these businesses — cab businesses, food businesses, et cetera. In Southeast Asia, there is much less of that.</p>
+      <p>So with a company like Kudo, which was a company Grab ran for grocery stores and grocery delivery, we were able to launch something like 1,000 stores in a six-month span. And we were making transactions within a month of the first idea. That would be unthinkable in the United States. People simply move faster because there is so much less infrastructure.</p>
+      <p>On top of that, there is also this idea that there are only two platforms. There is iOS and Android. If you are on those two platforms, you are officially everywhere, and that helps enormously with delivery speed.</p>
+      <div class="article__callout">
+        <p>If you look in countries like Malaysia and Indonesia, people are starting up these businesses very quickly and there is no competition. . . . You can start up a startup in Indonesia in two weeks.</p>
+      </div>
+      <p><strong>What does the technology industry look like across Southeast Asia? How does it differ from country to country?</strong></p>
+      <p>One of the worst things we can do as westerners is say things like “the Southeast Asian market.” What I had to learn when I went there is that I was really dealing with nine entirely different countries. We ran our businesses differently in those nine countries. It was astonishing to me.</p>
+      <p>When you think about the startup culture, Singapore has a culture where all these large multinationals have moved in and they are all competing for talent. In fact, it is almost like a miniature Silicon Valley, with all of the advantages and drawbacks of that — truly excellent talent but, wow, a real shark fest of fighting for that talent.</p>
+      <p>If you look in countries like Malaysia and Indonesia, people are starting up these businesses very quickly and there is no competition. They are putting new apps on the internet and — I’ll be very direct — it is almost this magnificent dream for a developer. You can start up a startup in Indonesia in two weeks. Talent, however, is harder to find. So the Indonesian government and the Malaysian government, as examples, are working with companies like Grab to educate people. Grab has programs to educate, if I remember correctly, something like 10,000 developers a month. It was our goal because we are all there to lift the ecosystem up.</p>
+      <p><strong>Is it fair to say that it is easier to get up to speed as a developer in a situation like that, compared to the United States where you have lots of people who have been doing it for years at a very high level?</strong></p>
+      <p>What we saw was that if you think about the three-tier architecture, mobile app development over there is magnificent. Backend-server app development over there is not as good as in the U.S. because they have not been doing it as long, but they are catching up fast and learning quickly. They also very naturally want to rely on managed services for the data layer, and the cloud in general, because they have not been doing it for decades. Whereas in the U.S. and Europe, I run into people all the time who want to write those second and third levels of the stack.</p>
+      <div class="article__callout">
+        <p>If you get the culture right, the technology is doable and even easy. If you do not get the culture right, everything is hard — and I mean really hard.</p>
+      </div>
+      <p><strong>As a region, Southeast Asia is nearing a billion people, but it seems like there is not a big focus on it as a sales market — even for APAC teams. Is this an accurate assessment?</strong></p>
+      <p>A disclaimer that I’m not an economist. But I will tell you this: India and Southeast Asia are the sleeping beasts that are going to waken. There are so many people there moving so fast as their GDP goes up, despite recent issues that we’re all having. If you put India and the other countries together, you get about 2 billion people. That area is going to become a massive focus for the world over the long haul.</p>
+      <p><strong>What are some things you learned at Grab, from an engineering or management perspective, that have stuck with you?</strong></p>
+      <p>Everyone talks about top-down versus bottom-up, and things like OKRs, but that is just a polished way of doing top-down management. What I learned at Grab is that while managers feel better about top-down management, there are still things that go well and things that go poorly. And if you think about bottom-up engineering empowerment, which is what we had at Grab and what we have at MongoDB, a different set of things goes right, and a different set of things goes wrong.</p>
+      <p>I’ll take the bottom-up empowerment every day, because the mistakes that go wrong there are easily fixable and you have this power of unbelievably fast-moving technology. Executives just cannot keep up with that; they are always behind by a year or two, so you really need them to meet in the middle. But you need to get the culture right. When I talk to companies, I talk about candor, context, empowerment, and psychological safety. That is what builds a bottom-up empowered engineering organization.</p>
+      <p>If you get the culture right, the technology is doable and even easy. If you do not get the culture right, everything is hard — and I mean really hard.</p>
+    </div>
+
+        <section class="authors" aria-labelledby="author-profiles-title">
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Mark Porter</strong> is CTO of MongoDB. He has previously held leadership positions at Grab, Amazon Web Services, and Oracle, among other places.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Mark%20Porter#future-archive" aria-label="More articles by Mark Porter">More articles</a>
+        </div>
+      </div>
+    </section>
+    <!-- PRESENCE FOLLOW:START -->
+    <aside class="article-follow" aria-labelledby="follow-presence-title">
+      <p class="article-follow__kicker">Follow PRESENCE</p>
+      <h2 id="follow-presence-title">New stories, without the noise.</h2>
+      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <div class="article-follow__actions">
+        <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+      </div>
+    </aside>
+    <!-- PRESENCE FOLLOW:END -->
+
+  </article>
+
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul class="popular">
+      <li><a href="/news/#crypto">Crypto</a></li>
+      <li><a href="/news/#technology">Technology</a></li>
+      <li><a href="/news/#companies">Companies</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/#crypto">Crypto</a></li>
+        <li><a href="/news/#technology">Technology</a></li>
+        <li><a href="/news/#companies">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=661454619bcebe34"></script>
+</body>
+</html>

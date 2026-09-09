@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Two Things We’ll Need for the Next AlphaFold — PRESENCE</title>
+<meta name="description" content="AI expert Daphne Koller of insitro identifies what we&#x27;ll need for future AlphaFold-level successes and explains why some fail the academia-to-biotech transition.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="The Two Things We’ll Need for the Next AlphaFold">
+<meta property="og:description" content="AI expert Daphne Koller of insitro identifies what we&#x27;ll need for future AlphaFold-level successes and explains why some fail the academia-to-biotech transition.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Two Things We’ll Need for the Next AlphaFold">
+<meta name="twitter:description" content="AI expert Daphne Koller of insitro identifies what we&#x27;ll need for future AlphaFold-level successes and explains why some fail the academia-to-biotech transition.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
+<link rel="stylesheet" href="/assets/css/site.css?v=11ba79f3624a2658">
+<!-- PRESENCE SEO:START -->
+<link rel="canonical" href="https://presence.news/articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold/">
+<meta property="og:url" content="https://presence.news/articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-social.png">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-social.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-social.png",
+      "sameAs": [
+        "https://t.me/presencemedia"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://presence.news/articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold/#article",
+      "headline": "The Two Things We’ll Need for the Next AlphaFold",
+      "description": "AI expert Daphne Koller of insitro identifies what we'll need for future AlphaFold-level successes and explains why some fail the academia-to-biotech transition.",
+      "mainEntityOfPage": "https://presence.news/articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold/",
+      "image": [
+        "https://presence.news/assets/img/presence-social.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Daphne Koller"
+      },
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      },
+      "articleSection": "Technology"
+    }
+  ]
+}
+</script>
+<!-- PRESENCE SEO:END -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/news/#crypto">Crypto</a>
+      <a href="/news/#technology">Technology</a>
+      <a href="/news/#companies">Companies</a>
+      <a class="nav-search-link" href="/#future-archive">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap article-layout">
+  <article>
+    <span class="article__cat">Technology</span>
+    <h1 class="article__title">The Two Things We’ll Need for the Next AlphaFold</h1>
+    <p class="article__meta">Daphne Koller · 14 min read</p>
+
+    <div class="article__body">
+      <p class="article__image"><img src="/assets/img/articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold/images/01_53636a67.webp" alt="" width="1200" height="628" loading="eager" fetchpriority="high" decoding="async"></p>
+      <p class="article__lede">Daphne Koller is the founder and CEO of insitro. Before insitro, she was Chief Computing Officer at Calico. She was also a Professor in Stanford University’s Computer Science department before shifting mid-career to co-found Coursera, and that became her next professional chapter there.</p>
+      <p class="article__lede">In this interview, she discusses some of the difficulties in building accurate machine learning models from biomedical data and how she is addressing them. We also look at AlphaFold’s success, why it happened now, and whether similar leapfrogs can be expected in other areas of biomedical ML. But first, we start by exploring what drew her away from a successful academic career and hear her perspective on how to succeed after the PI-to-industry transition in that new setting, too.</p>
+      <hr>
+      <p><strong>You were a Professor at Stanford focused on AI research, and then you moved into industry when you founded Coursera in 2012. What prompted that decision for you then?</strong></p>
+      <p>DAPHNE KOLLER: I had started to feel a growing urgency to make a more direct difference in the world, rather than indirectly through students or papers. I tried to do that with some of my work, for instance on cancer histopathology, and it never really translated into impact from inside an academic setting for me in practice at Stanford back then there.</p>
+      <p>Then the work I had started at Stanford on technology-assisted education sort of grew into the launch of those first massive open online courses. We saw the effect they were having, not just in the number of people participating, 100,000-plus per course, but also in the fact that participants came from every country, every age group, and every walk of life. I felt I had to see it through and not simply assume someone else would carry the baton forward for the long term there.</p>
+      <div class="article__callout">
+        <p>Some of the least successful transitions I’ve seen from academia into industry are people who keep the PI mindset.</p>
+      </div>
+      <p>So I took what was meant to be a two-year leave of absence. But then I really enjoyed it and didn’t feel the company was in a position that I could leave it that way. So Stanford pushed me to choose, and I did, and I really haven’t looked back since at all there.</p>
+      <p><strong>For someone going through this kind of transition right now, is there anything that you wish you’d known at the time back then in hindsight?</strong></p>
+      <p>I think it’s important for people to appreciate how different life in industry is from life in academia. One difference is structure. There are certain things you do at a company that are much less free-form than in academia. But maybe even more fundamental than that are two other things that matter a lot here too.</p>
+      <p>One is that being in a company is really a team sport. It’s not about what you do or what your accomplishments are. It’s about what the company as a whole, especially in a startup, can achieve by functioning as a team. You have to be willing to set aside your ego. Some of the least successful transitions I’ve seen from academia into industry are people who keep the principal investigator (PI) mindset behind there.</p>
+      <div class="article__callout">
+        <p>At insitro, we have a fundamental core value: we engage with one another openly, constructively, and with respect. Every one of those words matters deeply indeed here.</p>
+      </div>
+      <p>The other major difference is building for durability rather than for the quick win. In academia, you do the work and then it becomes a paper. You get a lot of visibility from that work. But beyond the manuscript, there is often no lasting artifact that remains. The code you write, if you’re lucky, gets put on GitHub, but it is rarely meant for reuse by anyone else, including even the person who wrote it. The data set may be placed in some repository, but you do not really think of it as a durable artifact that you expect others to build on over time in practice there too.</p>
+      <p>In industry, there’s no point to that. There’s no such thing as a quick win. Sure, you can do proofs of concept and similar things. But in the end, what you build has to let other people add on top of it. So you need to think about how to build something robust enough to stand the test of time and let other people use it well there too.</p>
+      <p><strong>You’ve been very successful at building a culture that encourages cross-functional collaboration, bridging tech and biology. What’s your philosophy on how to create that there?</strong></p>
+      <p>You have to be intentional about culture, no matter what. Culture is one of those things that if you let it develop on its own, it will often drift toward the worst. Especially as you grow and bring in new people who have not necessarily fully understood what you’re doing and will add their own color to it. That will often end up either diluting the culture or even pulling it in the wrong direction.</p>
+      <p>So you have to be deliberate about instilling the culture, hiring for it, rewarding it, using it in performance reviews and other ways, highlighting examples of it, and putting in organizational structures that make it easier to do the right thing than the wrong thing everywhere really.</p>
+      <div class="article__callout">
+        <p>What would it take to have a similar leapfrog in other areas? I would say two things. One is a substantial amount of high-quality data. . . The other is having a really well-defined question and a way to assess whether you’re solving the problem properly there.</p>
+      </div>
+      <p>At insitro, one of our core values is that we engage with one another openly, constructively, and with respect. All of those words matter greatly here too.</p>
+      <p>‘Engagement’ means that we actually talk to one another, not sit off in our little teams. ‘Openly’ means we have to be open both to expressing our ignorance and to asking naive questions. And when someone from a discipline outside our own makes a naive suggestion, do not dismiss it. Maybe it is a good idea. Often it is.</p>
+      <p>‘Constructively’ means that all these discussions need to be held with the aim of making the outcome better rather than of being the smartest person in the room. And ‘respect’ means you have to have deep respect for the expertise and the value that each person brings to the endeavor, regardless of their role, their background, or their level.</p>
+      <p>So I think it is about hiring the right people: life scientists who want to understand how to do data science on the data they generate. Or machine learning data scientists who want to work very closely with the life scientists to make sure the machine learning they are doing is not some abstract exercise but has real value for patients. And some people who speak both languages, because they are absolutely critical as translators in practice here too.</p>
+      <p><strong>Maybe you can act as that kind of translator for me for a moment. Arguably the biggest scientific advance of the past year was the development of truly accurate AI-powered protein folding predictions. This was a huge benchmark for showing the potential of using AI to tackle hard biological questions. What do you think changed, such that machine learning methods are now starting to gain traction in biology and biopharma?</strong></p>
+      <p>If I had to point to the single biggest contributor to AlphaFold’s success, it would be data availability overall there.</p>
+      <p>It is certainly true that the machine learning methods used were very thoughtful and very sophisticated. That is an area where the field as a whole has made tremendous progress across multiple types of problems in natural language, speech, and images over the years there.</p>
+      <p>AlphaFold builds on several of those advances, along with years of insight and reasoning that shaped the older protein-folding algorithms. They rely on many of the same tricks, but not in the usual hand-coded way that had typically been used to build an algorithm. Instead, those ideas served as a foundation for designing a machine learning model that absorbed those insights but essentially learned the model details from the data. But that is where it ultimately comes back to the data.</p>
+      <p>What would it take to achieve a similar leap forward in other fields? I would point to two things. First, you need substantial amounts of high-quality data. In this case, that means the sequences and the structures they fold into, which came out of a huge community effort to crystallize protein structures, measure them, and make them publicly available.</p>
+      <p>The second is having a question that is really well specified, plus a way to judge whether you are actually solving it. That is what lets the machine optimize. And when you think about some of the other critical problems we face in biology and drug discovery, neither condition holds. Take the example of predicting which small molecule will modulate a protein, which is the next step beyond protein folding. How much data do we have in the public domain? Not much. And much of it is poor quality. In many cases, it is measured very inconsistently. There are not many gold-standard data sets one could use to judge progress. And this is a problem where at least I posed a well-defined question.</p>
+      <div class="article__callout">
+        <p>I design an experiment specifically to train a machine learning model. When you do that, it turns out the experimental design is actually quite different from the experimental design you use when you are trying to make a scientific discovery.</p>
+      </div>
+      <p>If you think about an even higher-level question, such as whether modulating this gene will have clinical benefit for patients, there is no very clear database showing that if I modulated this target, it helped this patient population. And there is no well-defined ground truth.</p>
+      <p>So how do you build a machine learning model, and how do you evaluate whether it is improving as you keep optimizing the model architecture? That is really at the core of this: a shortage of data and a lack of a well-defined problem where progress can truly be assessed.</p>
+      <p><strong>Are there any particular disease areas where machine learning is already suitable today? Are there specific problems that seem defined enough, or diseases where we have the data to do this?</strong></p>
+      <p>So let me clarify. When I said these are hard, I did not say they were impossibly hard or that they should not be pursued. It is really important to determine whether intervening in a particular gene is actually going to modulate a disease. And that raises an interesting question for anyone working on it: how do I build a proxy data set that lets us answer the question?</p>
+      <p>At insitro, we tackle this by looking at two complementary kinds of data. One is human genetics, where nature has intervened in a gene and we can then see what clinical effect that had. The other is a human cell-based system where we can actually intervene in a gene and observe what happens.</p>
+      <p>The question is how you combine those two types of data, neither of which gives you exactly the information you would want, and use them as input to the right machine learning approach. And how do you define the problem the machine learning algorithm is meant to solve? But that is one way to get around the problem of creating a proxy data set.</p>
+      <p>The other way to get around this proxy data set problem is that biology, chemistry, and the life sciences have given us, in the last two years, a number of methods that allow biological and chemical data to be created at scale.</p>
+      <div class="article__callout">
+        <p>There also needs to be more standardization in how experiments are carried out and more sharing of core methods and protocols.</p>
+      </div>
+      <p>What we are doing at insitro, and I think others are beginning to do as well, is creating data for the specific purpose not of scientific hypothesis discovery or validation, but of machine learning methods.</p>
+      <p>That is, we design an experiment specifically to train a machine learning model. When you do that, it turns out the experimental design is actually quite different from the experimental design you use when you are trying to make a scientific discovery.</p>
+      <p><strong>Getting to the issue of needing large amounts of good data: it is pretty widely recognized that the large human genetic datasets commonly used are not representative of the genetic diversity of the general population. So how is it possible to avoid bias when building an AI platform from biased data? How do you make sure that you discover and develop drugs that work for the general population, knowing that limitation in the data?</strong></p>
+      <p>Yeah, so I think that is a really important question and it helps to separate it out. I mean, if what we were trying to do was build a predictive model from genetics to phenotype, then obviously if you train a model on Caucasians, it does not give good predictions on African Americans.</p>
+      <p>But if what you are doing is finding the core biological processes that drive disease, then in the end we are all human beings and it is the same set of biologies that are usually dysfunctional in disease regardless of who has the disease. Now, the proportion of biological mechanism X versus biological mechanism Y causing the disease could be different because each of us has a tendency toward a particular set of mutations based on our own genetics and the background we come from. But if someone else has the same mutations as me, they still cause a disease in the same way. It is just that those mutations may occur less often in their population than they do in mine. So it certainly biases the set of discoveries you can make, but it usually does not change the validity of those discoveries.</p>
+      <div class="article__callout">
+        <p>In many cases, it is actually better to have one standard even if it is imperfect than to have a million standards that do not agree with each other.</p>
+      </div>
+      <p>Now, I absolutely think that we will want to broaden our genetic diversity as we try to study diseases that are much more common in certain populations. Or if we want to uncover new mechanisms for certain diseases that are more common in one population than in another. That way we can make sure that we find enough examples of those mechanisms so that we have drugs that also target those.</p>
+      <p><strong>Coming back to an earlier point you made about academics not being motivated to build for durability. A lot of the open-source software in the bioscience community tends to come out of academic labs but then, for the reasons you mentioned, it is not very well maintained. Interestingly, at Insitro you open sourced your data science tool redun last year. Given that companies build for durability, as you said, could companies releasing their code and workflows as open source be a possible solution to this lack of durability in bioscience software tools?</strong></p>
+      <p>I think it is certainly a big part of it. We were very proud to release redun because it is such a broadly useful tool that helps address what to my mind is one of the biggest gaps, which is how to do reproducible science. It effectively tracks the version you used for every single step of your process. So if you need to reproduce the result you put in place, then you know how you did that. It tracks data provenance.</p>
+      <p>It is not going to be the whole solution, though, because right now there is so much variability in the data types we generate, how they are generated, and even how to think about them. There also needs to be more standardization in how experiments are done and more sharing of core methods and protocols. That too will help with the reproducibility problem.</p>
+      <p>We also do not do enough as a community to really establish a consistent set of best practices and standards for things everyone does. That would be hugely helpful, not only for making science more reproducible but also for creating a data repository that is much more useful for machine learning.</p>
+      <p>I mean, if you have a bunch of data gathered from separate experiments under separate conditions, and you try to combine them and run machine learning on that, it is just going to go crazy. It is going to overfit on things that have nothing to do with the underlying biology because those are going to be much stronger and more predictive signals than the biology you are trying to study. So I think we need to do better as a community to enable reproducible science.</p>
+      <p><strong>How do you see the solutions for reproducibility, as you described, coming together?</strong></p>
+      <p>I think some communities have done a better job than others at establishing a set of standards that most people follow. For instance, the statistical genetics community has a set of tools there is consensus on for calling variants, measuring linkage disequilibrium, measuring association, and for how they define genome-wide significance.</p>
+      <p>Each of those choices can be questioned, and there are improvements that can be made to all of them. But in many cases, it is actually better to have one standard even if it is imperfect than to have a million standards that conflict with each other.</p>
+    </div>
+
+        <section class="authors" aria-labelledby="author-profiles-title">
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Daphne Koller</strong> is CEO and Founder of insitro, a machine-learning enabled drug discovery company. She previously was a Stanford CS Professor before co-founding Coursera and Engageli.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Daphne%20Koller#future-archive" aria-label="More articles by Daphne Koller">More articles</a>
+        </div>
+      </div>
+    </section>
+    <!-- PRESENCE FOLLOW:START -->
+    <aside class="article-follow" aria-labelledby="follow-presence-title">
+      <p class="article-follow__kicker">Follow PRESENCE</p>
+      <h2 id="follow-presence-title">New stories, without the noise.</h2>
+      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <div class="article-follow__actions">
+        <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+      </div>
+    </aside>
+    <!-- PRESENCE FOLLOW:END -->
+
+  </article>
+
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul class="popular">
+      <li><a href="/news/#crypto">Crypto</a></li>
+      <li><a href="/news/#technology">Technology</a></li>
+      <li><a href="/news/#companies">Companies</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/#crypto">Crypto</a></li>
+        <li><a href="/news/#technology">Technology</a></li>
+        <li><a href="/news/#companies">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=661454619bcebe34"></script>
+</body>
+</html>

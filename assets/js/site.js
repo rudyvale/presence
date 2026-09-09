@@ -1,6 +1,10 @@
 (() => {
   "use strict";
 
+  if (window.location.pathname.endsWith("/index.html")) {
+    window.history.replaceState(null, "", window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+  }
+
   const toggle = document.querySelector(".nav__toggle");
   const menu = document.getElementById("nav-menu");
   if (toggle && menu) {
@@ -195,14 +199,14 @@
   const readingArticle = document.querySelector("main.article-layout > article");
   const articleMeta = readingArticle?.querySelector(".article__meta");
   if (articleMeta && !articleMeta.querySelector("time")) {
-    let articleFilename = window.location.pathname.split("/").pop() || "";
+    let articleFilename = window.location.pathname.replace(/\/(?:index\.html)?$/, "").split("/").pop() || "";
     try {
       articleFilename = decodeURIComponent(articleFilename);
     } catch (_error) {
       articleFilename = "";
     }
 
-    const filenameDate = /^(\d{4}-\d{2}-\d{2})_[a-z0-9]+(?:-[a-z0-9]+)*\.html$/.exec(articleFilename)?.[1];
+    const filenameDate = /^(\d{4}-\d{2}-\d{2})_[a-z0-9]+(?:-[a-z0-9]+)*(?:\.html)?$/.exec(articleFilename)?.[1];
     const publicationTime = makePublicationTime(filenameDate);
     if (publicationTime) {
       articleMeta.prepend(publicationTime, document.createTextNode(" · "));
@@ -312,14 +316,14 @@
 
   const safeStoryUrl = (value) => (
     typeof value === "string" &&
-    /^articles\/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*\.html$/.test(value)
+    /^\/articles\/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*\/$/.test(value)
       ? value
       : null
   );
 
   const safeStoryImage = (value) => (
     typeof value === "string" &&
-    /^assets\/img\/articles\/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\.(?:avif|jpe?g|png|webp)$/.test(value)
+    /^\/assets\/img\/articles\/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\.(?:avif|jpe?g|png|webp)$/.test(value)
       ? value
       : null
   );
@@ -348,7 +352,7 @@
         : null;
     if (!title || author === null || !summary || !category || !type || !date || !readingTime || !url) return null;
     if (!["crypto", "technology", "companies"].includes(category)) return null;
-    if (!type.toUpperCase().includes("PRESENCE") && !url.startsWith("articles/")) return null;
+    if (!type.toUpperCase().includes("PRESENCE") && !url.startsWith("/articles/")) return null;
     return Object.freeze({
       ...story,
       title,
@@ -661,7 +665,7 @@
 
   updateArchive();
 
-  fetch("assets/data/future-catalog.json", {
+  fetch("/assets/data/future-catalog.json", {
     credentials: "same-origin",
     redirect: "error"
   })

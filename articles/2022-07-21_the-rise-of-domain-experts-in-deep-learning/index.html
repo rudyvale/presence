@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Rise of Domain Experts in Deep Learning — PRESENCE</title>
+<meta name="description" content="Jeremy Howard of fast.ai discusses the impacts of deep learning and AI now being accessible to people without PhDs in those spaces.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="The Rise of Domain Experts in Deep Learning">
+<meta property="og:description" content="Jeremy Howard of fast.ai discusses the impacts of deep learning and AI now being accessible to people without PhDs in those spaces.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Rise of Domain Experts in Deep Learning">
+<meta name="twitter:description" content="Jeremy Howard of fast.ai discusses the impacts of deep learning and AI now being accessible to people without PhDs in those spaces.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
+<link rel="stylesheet" href="/assets/css/site.css?v=11ba79f3624a2658">
+<!-- PRESENCE SEO:START -->
+<link rel="canonical" href="https://presence.news/articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning/">
+<meta property="og:url" content="https://presence.news/articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-social.png">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-social.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-social.png",
+      "sameAs": [
+        "https://t.me/presencemedia"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://presence.news/articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning/#article",
+      "headline": "The Rise of Domain Experts in Deep Learning",
+      "description": "Jeremy Howard of fast.ai discusses the impacts of deep learning and AI now being accessible to people without PhDs in those spaces.",
+      "mainEntityOfPage": "https://presence.news/articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning/",
+      "image": [
+        "https://presence.news/assets/img/presence-social.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Jeremy Howard"
+      },
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      },
+      "articleSection": "Technology"
+    }
+  ]
+}
+</script>
+<!-- PRESENCE SEO:END -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/news/#crypto">Crypto</a>
+      <a href="/news/#technology">Technology</a>
+      <a href="/news/#companies">Companies</a>
+      <a class="nav-search-link" href="/#future-archive">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap article-layout">
+  <article>
+    <span class="article__cat">Technology</span>
+    <h1 class="article__title">The Rise of Domain Experts in Deep Learning</h1>
+    <p class="article__meta">Jeremy Howard · 17 min read</p>
+
+    <div class="article__body">
+      <p class="article__image"><img src="/assets/img/articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning/images/01_f06ba7ea.webp" alt="" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async"></p>
+      <p class="article__lede">Jeremy Howard is an artificial intelligence researcher and co-founder of fast.ai, a platform that helps non-experts learn artificial intelligence and machine learning. Before launching fast.ai, he started several companies — including FastMail and Enlitic, a pioneer in bringing deep learning into medicine — and served as president and chief scientist of the machine-learning competition platform Kaggle.</p>
+      <p class="article__lede">In this conversation, Howard talks about what it means for different industries and even entire regions now that people without PhDs from specialized research labs can create and use deep learning models. Among other subjects in that wide frame, he offers his views on the best ways to stay current with state-of-the-art methods, prompt engineering as an emerging skill, and the advantages and drawbacks of code-generation tools such as Codex.</p>
+      <hr>
+      <p><strong>After leading fast.ai for the past several years, what changes are you seeing from the fact that so many more people now know the basic ideas of deep learning — compared with several years ago, when people with that knowledge were unicorns?</strong></p>
+      <p>JEREMY HOWARD: When we launched fast.ai, there were, essentially, five major university research labs doing deep learning — and the only people who knew how to do almost anything with deep learning were people who were at, or had been at, those five labs. In general, code was not being shared, much less data. Even the papers were not explaining the details of how to get things working in practice, partly because academic venues didn’t really care about practical implementation. The emphasis was on theory.</p>
+      <p>So at the start, it was a very open question: “Is it possible to do world-class deep learning without a PhD?” We now know the answer is yes; we demonstrated that in our very first course. Our earliest alumni went on to earn patents using deep learning, to found companies using deep learning, and to publish in top venues using deep learning.</p>
+      <p>I think your question is exactly the right one, which is what happens when domain experts become effective deep learning practitioners? That’s where we’ve seen the most interesting activity. In general, the best startups are the ones created by people who personally have an itch to scratch. They used to be recruiters, so they build a recruiting startup, or they used to be a paralegal, so they build a legal startup, or whatever. And they’re like, “Oh, I hate this part of the job I had. And now that I know about deep learning, I realize I could nearly automate the whole thing.”</p>
+      <p>Many of our students also are doing or have done PhDs, but not in math or computer science; instead, they’re pursuing them in chemoinformatics, proteomics, data journalism, or similar fields. And we very often see them able to take their research to an entirely new level. For instance, we’re beginning to see, for the first time, some large databases and data corpuses of public library materials starting to show up on the internet. And there are people in that field — library science — now who are doing things where it never even crossed anybody’s mind that they could do anything on that scale before. But suddenly, it’s like, “Oh, my god, look at what happens when you analyze a library as a thing.”</p>
+      <p>I gave a talk at an animal husbandry conference where everyone was talking about deep learning. To me, that’s a very non-obvious use, but to them it’s by far the most obvious use. People are using it to solve real-world problems with real-world data under real-world constraints.</p>
+      <p>From my experience over the last few years, it seems that deep learning can be applied to almost every industry — not every part of every industry, but some parts of almost every industry.</p>
+      <div class="article__callout">
+        <p>We got to know one guy who had been doing a lot of interesting work with malaria diagnostics, which, as you can imagine, is not the top problem people in San Francisco were trying to solve.</p>
+      </div>
+      <p>It seems like that reversal of knowledge bases — with deep learning now supporting domain expertise — could alter the balance between theory and application.</p>
+      <p>Right, and you can see that happening. One of the major things early in the deep learning era was the work Google Brain did, where they examined lots of YouTube videos and found that cats were a latent factor in many videos. Their model learned to identify cats because it saw so many of them. And that’s very interesting work, but nobody then went off and built a company on that.</p>
+      <p>The things people were building — again, useful, but only within certain areas — like Google and Apple image photo-search got good very quickly because you could actually search for the things shown in the photos. That’s really helpful. And that’s the kind of work everybody was doing — either very abstract work or very first-world-problem work. There’s nothing wrong with that, but there are plenty of other things that also need work.</p>
+      <p>So I was thrilled when, after a couple of years, I looked at the demographics of the people who had taken our course and found that one of the largest cities outside the U.S. was Lagos [the capital of Nigeria]. I thought that was really great because this is a community that wasn’t previously doing deep learning. I literally asked people in the first course: “Anybody here from Africa?” And I think there was one guy from the Ivory Coast who had to get things burned to CD-ROM in his library because they don’t have enough internet connection. So it really grew quite quickly.</p>
+      <p>And then it was nice because we started getting groups of people from Uganda, Kenya, and Nigeria flying into San Francisco to take the course in person and getting to know one another. We got to know one guy, for example, who had been doing lots of interesting work with malaria diagnostics, which, as you can imagine, is not the top problem people in San Francisco were trying to solve.</p>
+      <div class="article__callout">
+        <p>It feels to me that having 16 different large language models trained on 5% of the internet is like having 16 water pipes come into your house and 16 sets of electricity cables come into your house.</p>
+      </div>
+      <p><strong>What does the average career path look like for someone coming out of a deep learning program like yours?</strong></p>
+      <p>It’s extremely varied. It’s really changed a lot from the early days, when it was just this super early-adopter mindset — the people who were mostly either entrepreneurs or PhDs and early postdocs, and who just love cutting-edge research and trying new things. It’s not only early adopters anymore, it’s also people who are trying to catch up or keep up with the way their industry is changing.</p>
+      <p>These days, a lot of it is people who are like, “Oh, my god, I feel like deep learning is starting to destroy expertise in my industry. People are doing things with a little deep learning that I can’t even imagine, and I don’t want to miss out.” Some people are looking a little farther ahead, and they’re more like, “Well, nobody is really using deep learning in my industry, but I can’t imagine it’s the one industry that won’t be affected, so I want to be first.”</p>
+      <p>Some people definitely have an idea for a company they want to build.</p>
+      <p>Another thing we get a lot of is companies sending a bunch of their research or engineering teams to take the course just because they feel this is a corporate capability they should have. And it’s especially helpful now with the online APIs people can play with — Codex or DALL-E or whatever — and get a sense of, “Oh, this is a bit like something I do in my job, but it’s a bit different if I could tweak it in these ways.”</p>
+      <p>However, these models may also have the unfortunate side effect of increasing the tendency for people to feel that AI innovation is only for big companies, and that it is beyond their abilities. They may choose to be passive consumers of the technology because they don’t believe they have any ability to personally build something that would be any better than what Google or OpenAI might be building.</p>
+      <div class="article__callout">
+        <p>A model that decides whether or not you seem to like a movie and a model that can generate haikus are going to be 98% the same . . . It’s very, very rare that we actually need to train a huge model from scratch on a vast swath of the internet.</p>
+      </div>
+      <p><strong>Even if that’s the case — if you can’t outbuild OpenAI or Google — surely there’s a way to benefit from what they’ve done, from API access to incredibly powerful models, right?</strong></p>
+      <p>The first point is that this isn’t true, at least not in any broad sense. What is happening now is a split in AI training: on one side, Google and OpenAI, focused on building models as general as possible, and nearly always with AGI in mind. I’m not judging whether that is good or bad; it is certainly producing useful tools for ordinary people, so that is fine for us normal folks, which is perfectly acceptable in practice today, at least.</p>
+      <p>But there is a completely different route, which is the one almost all of our students choose: “How can I address the real world problems of people in my community as pragmatically as possible?” And there is far less overlap than you might expect between the two approaches, the two datasets, and the two techniques used here.</p>
+      <p>In my field, we almost never train a model from zero. It is basically always fine tuning. So we do benefit from the work of the big players, but only through freely available, downloadable models. Things like the open source large language models from BigScience are useful.</p>
+      <p>However, they will probably remain 6 to 12 months behind the big players until, perhaps, we discover a more democratic way to do this. To me, having 16 different large language models trained on 5% of the internet feels like having 16 water pipes and 16 sets of electricity cables running into your house. It seems as if this ought to be more like a public utility. Competition is great, but it would also be nice to see better cooperation, so we would not all have to waste time duplicating the same work.</p>
+      <p>So, yes, for our own purposes, we end up fine tuning models that other people have already built. It is a bit like how the human genome and the monkey genome are almost completely identical, except for a few percent here and there, which actually turns out to matter a lot. It is the same with neural nets: a model that tells whether you seem to enjoy a movie and a model that can produce haikus will be 98% the same, because most of it is about understanding the world and understanding language and things like that. It is very, very rare that we truly need to train a huge model from scratch on a vast stretch of the internet.</p>
+      <p>And that is why you absolutely can compete with Google and OpenAI — because they are probably not even going to be in your space. If you are trying to build something that automates paralegal work, or helps with disaster resilience planning, or generates a better understanding of gendered language over the last 100 years or whatever, you are not competing with Google; you are competing with the niche in your own domain.</p>
+      <div class="article__callout">
+        <p>There is a major coding skill right now in knowing how to move faster . . . by being really good at writing the right Codex comments . . . For many people, that is probably a more valuable and immediate thing to learn than becoming really strong at coding.</p>
+      </div>
+      <p><strong>How important is it to stay current with all the progress in AI, especially if you are using it at a smaller scale?</strong></p>
+      <p>No one can keep up with all the progress. You have to keep up with some of it, but the techniques we are actually working with change very slowly nowadays. The difference between the 2017 fast.ai course and the 2018 fast.ai course was huge, and between the 2018 and 2019 courses it was huge-ish. These days, very little shifts over a couple of years.</p>
+      <p>The things we think of as especially important, like the rise of the transformer architecture, for example, are actually a few years old now and are mostly just a stack of plain feed forward neural network layers with some dot products in between. It is great, but for someone who wants to understand it and already knows convnets, recurrent nets, and basic multilayer perceptrons, it is only a few hours of work.</p>
+      <p>One of the big changes over the last couple of years is that more people are beginning to understand the practical side of training a model well. For instance, DeepMind recently published a paper that basically showed that all language models out there were far less efficient than they should have been, literally because they were missing some basic steps. Facebook — and specifically a Facebook intern was the lead author on the paper — built something called ConvNeXt, which is basically a statement that says, “Here is what happens if we take an ordinary convolutional neural network and just add the obvious tweaks everybody knows about.” And they are basically the state of the art image model now.</p>
+      <p>So, yes, keeping current with the foundational basics of how to build good deep learning models is much less difficult than it appears. And you definitely do not have to read every paper in the field. Especially at this point, now that things are moving so much more slowly.</p>
+      <p>But I do think it is useful to have a broad grasp, not only of your own special area. Let us say you are a computer vision person: it helps a lot to be good at NLP, collaborative filtering, and tabular analysis too — and vice versa, because there is nowhere near enough cross pollination among these groups. And every so often, someone looks into another area, borrows some of its ideas, and ends up with a breakthrough result.</p>
+      <p>This is exactly what I did with ULMFiT four or five years ago. I said, “Let’s apply all the basic computer vision transfer learning techniques to NLP,” and got a state of the art result by miles. Researchers at OpenAI did something similar, but swapped my RNN for a transformer and scaled it up, and that became GPT. We all know how that went.</p>
+      <div class="article__callout">
+        <p>Keeping current with the foundational basics of how to build good deep learning models is much less difficult than it appears. And you definitely do not have to read every paper in the field.</p>
+      </div>
+      <p><strong>You have mentioned that we have seen a step function shift in AI in the past three to six months. Can you explain that?</strong></p>
+      <p>I would actually call it a hook rather than a step function. I think we are on an exponential curve, and from time to time, you can notice that things have clearly sped up in a visible way. Where we have arrived is that pre trained models trained on very large corpuses of text and images can now do very impressive one shot or few shot things in fairly general ways, partly because in the last few months people have become better at understanding prompt engineering. Essentially, it is knowing how to ask the right question — the “explain your reasoning” step by step kind of prompts.</p>
+      <p>And we are finding that these models are actually capable of doing things that many academics have been telling us are not possible in terms of a compositional understanding of the world and being able to show step by step reasoning. A lot of people had been saying, “Oh, you have to use symbolic techniques; neural nets and deep learning will never get there.” Well, it turns out that they do. I think when we can all see that it can do these things people claimed it could never do, it makes us a bit bolder about trying to do more with them.</p>
+      <p>It makes me think of the first time I saw a video on the internet, which I remember showing my mum because it was a physiotherapy video, and she is a physiotherapist. It was a video of a joint mobility exercise in your shoulder, and I think it was 128 by 128 pixels. It was black and white, heavily compressed, and perhaps about 3 or 4 seconds long. I was very excited, and I said to my mum, “Wow, look at this: a video on the internet!” And, of course, she was not excited at all. She said, “What is the use of that? This is the most pointless thing I have ever seen.”</p>
+      <p>Of course, I was thinking that one day this was going to be a thousand by a thousand pixels, 60 frames a second, full color, beautiful video. The proof is there; now it is just waiting for the rest to catch up.</p>
+      <p>So I think when people saw the really low quality images from deep learning in the early days, there was not much excitement because most people do not realize that technology scales like this. Now that we can actually create high quality, full color images that look far better than nearly any of us could picture or photograph, people do not need imagination. They can just see that what is being done right now is very impressive. I think that makes a big difference.</p>
+      <div class="article__callout">
+        <p>I feel like HCI is the biggest missing piece in nearly every deep learning project I have seen . . . If I were in HCI, I would want my whole field to focus on the question of how we interact with deep learning algorithms.</p>
+      </div>
+      <p>The idea of prompt engineering — if not as a whole new career, then at least as a new skill set — is really interesting, actually.</p>
+      <p>It is, and I am terrible at it. For example, DALL-E does not really know how to write text properly, which would not be a problem except that it loves to put text in all of its bloody images. So there are always these random symbols and I cannot, for the life of me, figure out how to come up with a prompt that does not have text in it. And then sometimes I will just randomly change a word here or there and, suddenly, none of them have text anymore. There is some trick to this, and I have not quite figured it out yet.</p>
+      <p>Also, for instance, one important coding skill right now is knowing how to move faster in practice — especially if you are not a particularly strong coder — by becoming very good at crafting the right Codex comments so it generates things for you. It also means knowing what sorts of mistakes it tends to make, what kinds of things it does well and poorly, and how to get it to produce a test for the thing it just built for you.</p>
+      <p>For many people, that is probably a more valuable, immediate thing to learn than becoming really good at coding it.</p>
+      <p><strong>Specifically on Codex, what do you think about the idea of machine-generated code here?</strong></p>
+      <p>I wrote a blog post about it when GitHub Copilot came out, actually. At the time, I thought, “Wow, this is really cool and impressive, but I’m not quite sure how useful it is.” And I’m still not sure either.</p>
+      <p>One big reason is that I think we all know deep learning models have no sense of whether they are right or wrong. Codex has improved a lot since I looked at its first version, but it still produces a lot of wrong code. Also, it tends to write verbose code because it is generating average code. For me, turning average code into code that I like and know is correct is much slower than simply writing it from scratch — at least in languages I know well there.</p>
+      <p>But I think there is a whole human-computer interface (HCI) question here, and I think HCI is the biggest missing piece in nearly every deep learning project I have seen: almost never do these things fully replace humans. So we are working together with these algorithms. If I were in HCI, I would want my whole field to be centered on the question of how we interact with deep learning algorithms. Because we have spent decades learning how to interact with graphical user interfaces, command-line interfaces, and web interfaces, but this is a completely different thing from anything else.</p>
+      <p>And I don’t know how I, as a programmer, best interact with something like Codex. I bet there are really powerful ways to do it in every area — creating interfaces and binding data, building algorithms, and so on — but I have no idea what those things are.</p>
+    </div>
+
+        <section class="authors" aria-labelledby="author-profiles-title">
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Jeremy Howard</strong> is a research scientist and co-founder of fast.ai. He previously founded Enlitic and FastMail, among other companies and was president and chief scientist of Kaggle.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Jeremy%20Howard#future-archive" aria-label="More articles by Jeremy Howard">More articles</a>
+        </div>
+      </div>
+    </section>
+    <!-- PRESENCE FOLLOW:START -->
+    <aside class="article-follow" aria-labelledby="follow-presence-title">
+      <p class="article-follow__kicker">Follow PRESENCE</p>
+      <h2 id="follow-presence-title">New stories, without the noise.</h2>
+      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <div class="article-follow__actions">
+        <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+      </div>
+    </aside>
+    <!-- PRESENCE FOLLOW:END -->
+
+  </article>
+
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul class="popular">
+      <li><a href="/news/#crypto">Crypto</a></li>
+      <li><a href="/news/#technology">Technology</a></li>
+      <li><a href="/news/#companies">Companies</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/#crypto">Crypto</a></li>
+        <li><a href="/news/#technology">Technology</a></li>
+        <li><a href="/news/#companies">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=661454619bcebe34"></script>
+</body>
+</html>

@@ -7,7 +7,7 @@ window.PRESENCE_NEWS = [
     "author": "Changpeng Zhao",
     "date": "2026-08-19",
     "readingTime": "7 min read",
-    "url": "articles/2026-08-19_changpeng-zhao-bitcoin-outlook-2027.html",
+    "url": "/articles/2026-08-19_changpeng-zhao-bitcoin-outlook-2027/",
     "promotable": true,
     "featuredRank": 2
   },
@@ -19,7 +19,7 @@ window.PRESENCE_NEWS = [
     "author": "Alex Svanevik",
     "date": "2023-09-20",
     "readingTime": "9 min read",
-    "url": "articles/2023-09-20_nansen-alex-svanevik-ai-asia-onchain-intelligence.html",
+    "url": "/articles/2023-09-20_nansen-alex-svanevik-ai-asia-onchain-intelligence/",
     "promotable": true,
     "featuredRank": 3
   },
@@ -31,7 +31,7 @@ window.PRESENCE_NEWS = [
     "author": "Yat Siu",
     "date": "2023-09-20",
     "readingTime": "15 min read",
-    "url": "articles/2023-09-20_yat-siu-ownership-economy-will-be-worth-trillions.html",
+    "url": "/articles/2023-09-20_yat-siu-ownership-economy-will-be-worth-trillions/",
     "promotable": true,
     "featuredRank": 4
   },
@@ -43,7 +43,7 @@ window.PRESENCE_NEWS = [
     "author": "Jimmy Lin",
     "date": "2022-10-05",
     "readingTime": "12 min read",
-    "url": "articles/2022-10-05_why-applying-machine-learning-to-biology-is-hard-but-worth-it.html",
+    "url": "/articles/2022-10-05_why-applying-machine-learning-to-biology-is-hard-but-worth-it/",
     "promotable": true
   },
   {
@@ -54,7 +54,7 @@ window.PRESENCE_NEWS = [
     "author": "Andrej Safundzic",
     "date": "2022-09-27",
     "readingTime": "11 min read",
-    "url": "articles/2022-09-27_did-we-overeat-on-software.html",
+    "url": "/articles/2022-09-27_did-we-overeat-on-software/",
     "promotable": true
   },
   {
@@ -65,7 +65,7 @@ window.PRESENCE_NEWS = [
     "author": "Zach Caceres",
     "date": "2022-09-13",
     "readingTime": "6 min read",
-    "url": "articles/2022-09-13_cities-broken-api.html",
+    "url": "/articles/2022-09-13_cities-broken-api/",
     "promotable": true
   },
   {
@@ -76,7 +76,7 @@ window.PRESENCE_NEWS = [
     "author": "Ryan Glasgow",
     "date": "2022-09-01",
     "readingTime": "13 min read",
-    "url": "articles/2022-09-01_user-research-as-you-grow.html",
+    "url": "/articles/2022-09-01_user-research-as-you-grow/",
     "promotable": true
   },
   {
@@ -87,7 +87,7 @@ window.PRESENCE_NEWS = [
     "author": "Michael Mignano",
     "date": "2022-08-31",
     "readingTime": "18 min read",
-    "url": "articles/2022-08-31_grow-or-die-supergoals.html",
+    "url": "/articles/2022-08-31_grow-or-die-supergoals/",
     "promotable": true
   },
   {
@@ -98,7 +98,7 @@ window.PRESENCE_NEWS = [
     "author": "Magda Zernicka-Goetz",
     "date": "2022-08-30",
     "readingTime": "12 min read",
-    "url": "articles/2022-08-30_what-synthetic-embryos-can-do.html",
+    "url": "/articles/2022-08-30_what-synthetic-embryos-can-do/",
     "promotable": true
   },
   {
@@ -109,7 +109,7 @@ window.PRESENCE_NEWS = [
     "author": "Jason Fried",
     "date": "2022-08-29",
     "readingTime": "15 min read",
-    "url": "articles/2022-08-29_jason-fried-basecamp-hey-interview.html",
+    "url": "/articles/2022-08-29_jason-fried-basecamp-hey-interview/",
     "promotable": true
   },
   {
@@ -120,7 +120,7 @@ window.PRESENCE_NEWS = [
     "author": "Chase Chapman & Nuzayra Haque-Shah & Austin Hurwitz",
     "date": "2022-08-26",
     "readingTime": "14 min read",
-    "url": "articles/2022-08-26_thinking-through-cc0-and-ip-for-nfts.html",
+    "url": "/articles/2022-08-26_thinking-through-cc0-and-ip-for-nfts/",
     "promotable": true
   },
   {
@@ -131,7 +131,7 @@ window.PRESENCE_NEWS = [
     "author": "Chris Herd",
     "date": "2022-08-23",
     "readingTime": "5 min read",
-    "url": "articles/2022-08-23_remote-startups-hire-top-talent.html",
+    "url": "/articles/2022-08-23_remote-startups-hire-top-talent/",
     "promotable": true
   },
   {
@@ -142,7 +142,7 @@ window.PRESENCE_NEWS = [
     "author": "Josh Nicholson",
     "date": "2022-08-18",
     "readingTime": "11 min read",
-    "url": "articles/2022-08-18_how-to-build-gpt-3-for-science.html",
+    "url": "/articles/2022-08-18_how-to-build-gpt-3-for-science/",
     "promotable": true
   },
   {
@@ -153,7 +153,7 @@ window.PRESENCE_NEWS = [
     "author": "Jason Feifer",
     "date": "2022-08-17",
     "readingTime": "6 min read",
-    "url": "articles/2022-08-17_cycle-of-tech-panics-build-for-tomorrow.html",
+    "url": "/articles/2022-08-17_cycle-of-tech-panics-build-for-tomorrow/",
     "promotable": true
   },
   {
@@ -164,7 +164,7 @@ window.PRESENCE_NEWS = [
     "author": "Jon Radoff",
     "date": "2022-08-12",
     "readingTime": "13 min read",
-    "url": "articles/2022-08-12_unbundling-digital-identity-unlocks-new-ways-to-play-and-build.html",
+    "url": "/articles/2022-08-12_unbundling-digital-identity-unlocks-new-ways-to-play-and-build/",
     "promotable": true
   },
   {
@@ -175,7 +175,7 @@ window.PRESENCE_NEWS = [
     "author": "Dirk Hoerig",
     "date": "2022-08-11",
     "readingTime": "13 min read",
-    "url": "articles/2022-08-11_headless-commerce-change-how-we-buy.html",
+    "url": "/articles/2022-08-11_headless-commerce-change-how-we-buy/",
     "promotable": true
   },
   {
@@ -186,7 +186,7 @@ window.PRESENCE_NEWS = [
     "author": "Ben Stokes",
     "date": "2022-08-09",
     "readingTime": "9 min read",
-    "url": "articles/2022-08-09_developers-side-projects.html",
+    "url": "/articles/2022-08-09_developers-side-projects/",
     "promotable": true
   },
   {
@@ -197,7 +197,7 @@ window.PRESENCE_NEWS = [
     "author": "Patrick Mineault",
     "date": "2022-08-04",
     "readingTime": "18 min read",
-    "url": "articles/2022-08-04_applications-ai-models-of-the-brain-aka-neuroai.html",
+    "url": "/articles/2022-08-04_applications-ai-models-of-the-brain-aka-neuroai/",
     "promotable": true
   },
   {
@@ -208,7 +208,7 @@ window.PRESENCE_NEWS = [
     "author": "Chris Tweten",
     "date": "2022-08-03",
     "readingTime": "9 min read",
-    "url": "articles/2022-08-03_will-gpt-3-ai-change-seo.html",
+    "url": "/articles/2022-08-03_will-gpt-3-ai-change-seo/",
     "promotable": true
   },
   {
@@ -219,7 +219,7 @@ window.PRESENCE_NEWS = [
     "author": "Sam Lambert",
     "date": "2022-08-02",
     "readingTime": "15 min read",
-    "url": "articles/2022-08-02_planetscale-cloud-prem-engineering-management.html",
+    "url": "/articles/2022-08-02_planetscale-cloud-prem-engineering-management/",
     "promotable": true
   },
   {
@@ -230,7 +230,7 @@ window.PRESENCE_NEWS = [
     "author": "Danny Ryan",
     "date": "2022-07-27",
     "readingTime": "13 min read",
-    "url": "articles/2022-07-27_how-the-merge-will-impact-future-ethereum-upgrades.html",
+    "url": "/articles/2022-07-27_how-the-merge-will-impact-future-ethereum-upgrades/",
     "promotable": true
   },
   {
@@ -241,7 +241,7 @@ window.PRESENCE_NEWS = [
     "author": "Danny Ryan",
     "date": "2022-07-27",
     "readingTime": "15 min read",
-    "url": "articles/2022-07-27_what-the-merge-means-for-ethereum-with-danny-ryan.html",
+    "url": "/articles/2022-07-27_what-the-merge-means-for-ethereum-with-danny-ryan/",
     "promotable": true
   },
   {
@@ -252,7 +252,7 @@ window.PRESENCE_NEWS = [
     "author": "Thomas Graf",
     "date": "2022-07-26",
     "readingTime": "13 min read",
-    "url": "articles/2022-07-26_kubernetes-networking-and-finding-the-vmware-of-cloud-native.html",
+    "url": "/articles/2022-07-26_kubernetes-networking-and-finding-the-vmware-of-cloud-native/",
     "promotable": true
   },
   {
@@ -263,7 +263,7 @@ window.PRESENCE_NEWS = [
     "author": "Jeremy Howard",
     "date": "2022-07-21",
     "readingTime": "17 min read",
-    "url": "articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning.html",
+    "url": "/articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning/",
     "promotable": true
   },
   {
@@ -274,7 +274,7 @@ window.PRESENCE_NEWS = [
     "author": "Justine Moore & John Koelliker",
     "date": "2022-07-18",
     "readingTime": "9 min read",
-    "url": "articles/2022-07-18_when-where-how-to-expand-marketplace-businesses.html",
+    "url": "/articles/2022-07-18_when-where-how-to-expand-marketplace-businesses/",
     "promotable": true
   },
   {
@@ -285,7 +285,7 @@ window.PRESENCE_NEWS = [
     "author": "Elena Burger",
     "date": "2022-07-15",
     "readingTime": "10 min read",
-    "url": "articles/2022-07-15_info-diet-a16z-crypto-elena-burger.html",
+    "url": "/articles/2022-07-15_info-diet-a16z-crypto-elena-burger/",
     "promotable": true
   },
   {
@@ -296,7 +296,7 @@ window.PRESENCE_NEWS = [
     "author": "Vassilis Tziokas",
     "date": "2022-07-12",
     "readingTime": "11 min read",
-    "url": "articles/2022-07-12_sales-enablement-the-underrated-cog-of-enterprise-commercial-engines.html",
+    "url": "/articles/2022-07-12_sales-enablement-the-underrated-cog-of-enterprise-commercial-engines/",
     "promotable": true
   },
   {
@@ -307,7 +307,7 @@ window.PRESENCE_NEWS = [
     "author": "Presence Editorial",
     "date": "2022-06-30",
     "readingTime": "2 min read",
-    "url": "articles/2022-06-30_first-half-2022-web3-decentralized-science-desci.html",
+    "url": "/articles/2022-06-30_first-half-2022-web3-decentralized-science-desci/",
     "promotable": true
   },
   {
@@ -318,7 +318,7 @@ window.PRESENCE_NEWS = [
     "author": "Presence Editorial",
     "date": "2022-06-29",
     "readingTime": "4 min read",
-    "url": "articles/2022-06-29_crypto-web3-so-far-in-2022.html",
+    "url": "/articles/2022-06-29_crypto-web3-so-far-in-2022/",
     "promotable": true
   },
   {
@@ -329,7 +329,7 @@ window.PRESENCE_NEWS = [
     "author": "Presence Editorial",
     "date": "2022-06-27",
     "readingTime": "3 min read",
-    "url": "articles/2022-06-27_the-year-in-ai-so-far-massive-models-and-how-to-use-them.html",
+    "url": "/articles/2022-06-27_the-year-in-ai-so-far-massive-models-and-how-to-use-them/",
     "promotable": true
   },
   {
@@ -340,7 +340,7 @@ window.PRESENCE_NEWS = [
     "author": "Thomas Dimson",
     "date": "2022-06-24",
     "readingTime": "14 min read",
-    "url": "articles/2022-06-24_forget-open-source-algorithms-focus-on-experiments-instead.html",
+    "url": "/articles/2022-06-24_forget-open-source-algorithms-focus-on-experiments-instead/",
     "promotable": true
   },
   {
@@ -351,7 +351,7 @@ window.PRESENCE_NEWS = [
     "author": "Daphne Koller",
     "date": "2022-06-22",
     "readingTime": "14 min read",
-    "url": "articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold.html",
+    "url": "/articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold/",
     "promotable": true
   },
   {
@@ -362,7 +362,7 @@ window.PRESENCE_NEWS = [
     "author": "Peter Yang",
     "date": "2022-06-16",
     "readingTime": "7 min read",
-    "url": "articles/2022-06-16_a-practical-guide-to-nft-memberships-for-creators.html",
+    "url": "/articles/2022-06-16_a-practical-guide-to-nft-memberships-for-creators/",
     "promotable": true
   },
   {
@@ -373,7 +373,7 @@ window.PRESENCE_NEWS = [
     "author": "Nusqe Spanton",
     "date": "2022-06-10",
     "readingTime": "13 min read",
-    "url": "articles/2022-06-10_synbio-algae-carbon-neutral-biomanufacturing.html",
+    "url": "/articles/2022-06-10_synbio-algae-carbon-neutral-biomanufacturing/",
     "promotable": true
   },
   {
@@ -384,7 +384,7 @@ window.PRESENCE_NEWS = [
     "author": "Kim Lewandowski",
     "date": "2022-06-09",
     "readingTime": "14 min read",
-    "url": "articles/2022-06-09_securing-the-software-supply-chain.html",
+    "url": "/articles/2022-06-09_securing-the-software-supply-chain/",
     "promotable": true
   },
   {
@@ -395,7 +395,7 @@ window.PRESENCE_NEWS = [
     "author": "Michelle Kennedy",
     "date": "2022-06-03",
     "readingTime": "6 min read",
-    "url": "articles/2022-06-03_info-diet-peanut-ceo-michelle-kennedy.html",
+    "url": "/articles/2022-06-03_info-diet-peanut-ceo-michelle-kennedy/",
     "promotable": true
   },
   {
@@ -406,7 +406,7 @@ window.PRESENCE_NEWS = [
     "author": "Jeff Decker",
     "date": "2022-06-03",
     "readingTime": "13 min read",
-    "url": "articles/2022-06-03_the-iron-man-model-startups-military.html",
+    "url": "/articles/2022-06-03_the-iron-man-model-startups-military/",
     "promotable": true
   },
   {
@@ -417,7 +417,7 @@ window.PRESENCE_NEWS = [
     "author": "Beena Ammanath",
     "date": "2022-05-27",
     "readingTime": "9 min read",
-    "url": "articles/2022-05-27_7-techniques-for-building-reliable-ai-models.html",
+    "url": "/articles/2022-05-27_7-techniques-for-building-reliable-ai-models/",
     "promotable": true
   },
   {
@@ -428,7 +428,7 @@ window.PRESENCE_NEWS = [
     "author": "Melissa Daimler",
     "date": "2022-05-20",
     "readingTime": "13 min read",
-    "url": "articles/2022-05-20_practices-company-culture-design.html",
+    "url": "/articles/2022-05-20_practices-company-culture-design/",
     "promotable": true
   },
   {
@@ -439,7 +439,7 @@ window.PRESENCE_NEWS = [
     "author": "Jeremiah Lowin",
     "date": "2022-05-19",
     "readingTime": "11 min read",
-    "url": "articles/2022-05-19_negative-engineering-and-the-art-of-failing-successfully.html",
+    "url": "/articles/2022-05-19_negative-engineering-and-the-art-of-failing-successfully/",
     "promotable": true
   },
   {
@@ -450,7 +450,7 @@ window.PRESENCE_NEWS = [
     "author": "Jacob Westphal",
     "date": "2022-05-18",
     "readingTime": "19 min read",
-    "url": "articles/2022-05-18_college-ambassador-program-how-to-for-startups.html",
+    "url": "/articles/2022-05-18_college-ambassador-program-how-to-for-startups/",
     "promotable": true
   },
   {
@@ -461,7 +461,7 @@ window.PRESENCE_NEWS = [
     "author": "Frederic Lalonde",
     "date": "2022-05-16",
     "readingTime": "16 min read",
-    "url": "articles/2022-05-16_hoppers-big-bet-all-travelers-worry-but-not-about-the-same-thing.html",
+    "url": "/articles/2022-05-16_hoppers-big-bet-all-travelers-worry-but-not-about-the-same-thing/",
     "promotable": true
   },
   {
@@ -472,7 +472,7 @@ window.PRESENCE_NEWS = [
     "author": "Rajiv Ayyangar",
     "date": "2022-05-12",
     "readingTime": "6 min read",
-    "url": "articles/2022-05-12_info-diet-tandem-ceo-rajiv-ayyangar.html",
+    "url": "/articles/2022-05-12_info-diet-tandem-ceo-rajiv-ayyangar/",
     "promotable": true
   },
   {
@@ -483,7 +483,7 @@ window.PRESENCE_NEWS = [
     "author": "Tyler Cowen & Daniel Gross",
     "date": "2022-05-11",
     "readingTime": "8 min read",
-    "url": "articles/2022-05-11_how-to-make-talent-scouts-work-for-you.html",
+    "url": "/articles/2022-05-11_how-to-make-talent-scouts-work-for-you/",
     "promotable": true
   },
   {
@@ -494,7 +494,7 @@ window.PRESENCE_NEWS = [
     "author": "Mark Porter",
     "date": "2022-05-10",
     "readingTime": "15 min read",
-    "url": "articles/2022-05-10_mongodb-cto-cloud-providers-southeast-asia.html",
+    "url": "/articles/2022-05-10_mongodb-cto-cloud-providers-southeast-asia/",
     "promotable": true
   },
   {
@@ -505,7 +505,7 @@ window.PRESENCE_NEWS = [
     "author": "",
     "date": "2022-05-06",
     "readingTime": "10 min read",
-    "url": "articles/2022-05-06_7-essential-ingredients-of-a-metaverse.html",
+    "url": "/articles/2022-05-06_7-essential-ingredients-of-a-metaverse/",
     "promotable": true
   },
   {
@@ -516,7 +516,7 @@ window.PRESENCE_NEWS = [
     "author": "Amber Atherton",
     "date": "2022-05-03",
     "readingTime": "7 min read",
-    "url": "articles/2022-05-03_to-start-building-a-community-master-these-two-concepts.html",
+    "url": "/articles/2022-05-03_to-start-building-a-community-master-these-two-concepts/",
     "promotable": true
   },
   {
@@ -527,7 +527,7 @@ window.PRESENCE_NEWS = [
     "author": "Sari Azout",
     "date": "2022-05-02",
     "readingTime": "11 min read",
-    "url": "articles/2022-05-02_the-future-of-search-is-boutique.html",
+    "url": "/articles/2022-05-02_the-future-of-search-is-boutique/",
     "promotable": true
   },
   {
@@ -538,7 +538,7 @@ window.PRESENCE_NEWS = [
     "author": "Sean Kim",
     "date": "2022-04-29",
     "readingTime": "6 min read",
-    "url": "articles/2022-04-29_info-diet-sean-kim.html",
+    "url": "/articles/2022-04-29_info-diet-sean-kim/",
     "promotable": true
   },
   {
@@ -549,7 +549,7 @@ window.PRESENCE_NEWS = [
     "author": "John List",
     "date": "2022-04-22",
     "readingTime": "14 min read",
-    "url": "articles/2022-04-22_data-science-and-economics-art-of-ideas.html",
+    "url": "/articles/2022-04-22_data-science-and-economics-art-of-ideas/",
     "promotable": true
   },
   {
@@ -560,7 +560,7 @@ window.PRESENCE_NEWS = [
     "author": "Jocelynn Pearl",
     "date": "2022-04-21",
     "readingTime": "10 min read",
-    "url": "articles/2022-04-21_a-guide-to-decentralized-biotech.html",
+    "url": "/articles/2022-04-21_a-guide-to-decentralized-biotech/",
     "promotable": true
   },
   {
@@ -571,7 +571,7 @@ window.PRESENCE_NEWS = [
     "author": "Frederic Kerrest",
     "date": "2022-04-18",
     "readingTime": "9 min read",
-    "url": "articles/2022-04-18_managing-your-mental-health-while-running-a-startup.html",
+    "url": "/articles/2022-04-18_managing-your-mental-health-while-running-a-startup/",
     "promotable": true
   },
   {
@@ -582,7 +582,7 @@ window.PRESENCE_NEWS = [
     "author": "Olivia Moore & Brandon Barros",
     "date": "2022-04-14",
     "readingTime": "20 min read",
-    "url": "articles/2022-04-14_marketplace-100.html",
+    "url": "/articles/2022-04-14_marketplace-100/",
     "promotable": true
   },
   {
@@ -593,7 +593,7 @@ window.PRESENCE_NEWS = [
     "author": "Patrick Woods",
     "date": "2022-04-12",
     "readingTime": "12 min read",
-    "url": "articles/2022-04-12_drive-business-growth-by-fostering-community-gtc.html",
+    "url": "/articles/2022-04-12_drive-business-growth-by-fostering-community-gtc/",
     "promotable": true
   },
   {
@@ -604,7 +604,7 @@ window.PRESENCE_NEWS = [
     "author": "Sonal Chokshi",
     "date": "2022-04-07",
     "readingTime": "31 min read",
-    "url": "articles/2022-04-07_web3-decentralization-models-framework-principles-how-to.html",
+    "url": "/articles/2022-04-07_web3-decentralization-models-framework-principles-how-to/",
     "promotable": true
   },
   {
@@ -615,7 +615,7 @@ window.PRESENCE_NEWS = [
     "author": "Jenny Wang & Michael Chiang",
     "date": "2022-04-04",
     "readingTime": "6 min read",
-    "url": "articles/2022-04-04_can-community-composability-help-web2-users-make-the-jump-to-web3.html",
+    "url": "/articles/2022-04-04_can-community-composability-help-web2-users-make-the-jump-to-web3/",
     "promotable": true
   },
   {
@@ -626,7 +626,7 @@ window.PRESENCE_NEWS = [
     "author": "Jennifer Li & Sarah Wang & Jamie Sullivan",
     "date": "2022-03-23",
     "readingTime": "10 min read",
-    "url": "articles/2022-03-23_data50.html",
+    "url": "/articles/2022-03-23_data50/",
     "promotable": true
   },
   {
@@ -637,7 +637,7 @@ window.PRESENCE_NEWS = [
     "author": "Babak Siavoshy",
     "date": "2022-03-18",
     "readingTime": "15 min read",
-    "url": "articles/2022-03-18_data-rights-stifle-innovation-in-the-dod.html",
+    "url": "/articles/2022-03-18_data-rights-stifle-innovation-in-the-dod/",
     "promotable": true
   },
   {
@@ -648,7 +648,7 @@ window.PRESENCE_NEWS = [
     "author": "Gary Hoberman",
     "date": "2022-03-17",
     "readingTime": "9 min read",
-    "url": "articles/2022-03-17_the-key-to-enterprise-sales.html",
+    "url": "/articles/2022-03-17_the-key-to-enterprise-sales/",
     "promotable": true
   },
   {
@@ -659,7 +659,7 @@ window.PRESENCE_NEWS = [
     "author": "Afton Vechery",
     "date": "2022-03-11",
     "readingTime": "9 min read",
-    "url": "articles/2022-03-11_what-modern-fertility-founder-afton-vechery-reads.html",
+    "url": "/articles/2022-03-11_what-modern-fertility-founder-afton-vechery-reads/",
     "promotable": true
   },
   {
@@ -670,7 +670,7 @@ window.PRESENCE_NEWS = [
     "author": "Niko Grupen",
     "date": "2022-03-08",
     "readingTime": "9 min read",
-    "url": "articles/2022-03-08_alphafold-gpt-3-and-how-to-augment-intelligence-with-ai-pt-2.html",
+    "url": "/articles/2022-03-08_alphafold-gpt-3-and-how-to-augment-intelligence-with-ai-pt-2/",
     "promotable": true
   },
   {
@@ -681,7 +681,7 @@ window.PRESENCE_NEWS = [
     "author": "Niko Grupen",
     "date": "2022-03-07",
     "readingTime": "12 min read",
-    "url": "articles/2022-03-07_alphafold-gpt-3-and-how-to-augment-intelligence-with-ai.html",
+    "url": "/articles/2022-03-07_alphafold-gpt-3-and-how-to-augment-intelligence-with-ai/",
     "promotable": true
   },
   {
@@ -692,7 +692,7 @@ window.PRESENCE_NEWS = [
     "author": "Richard Socher",
     "date": "2022-03-02",
     "readingTime": "16 min read",
-    "url": "articles/2022-03-02_a-decade-of-deep-learning-ai-startup.html",
+    "url": "/articles/2022-03-02_a-decade-of-deep-learning-ai-startup/",
     "promotable": true
   },
   {
@@ -703,7 +703,7 @@ window.PRESENCE_NEWS = [
     "author": "",
     "date": "2022-02-23",
     "readingTime": "2 min read",
-    "url": "articles/2022-02-23_announcing-search-new-host-the-a16z-podcast.html",
+    "url": "/articles/2022-02-23_announcing-search-new-host-the-a16z-podcast/",
     "promotable": true
   },
   {
@@ -714,7 +714,7 @@ window.PRESENCE_NEWS = [
     "author": "Mahesh Vellanki",
     "date": "2022-02-18",
     "readingTime": "11 min read",
-    "url": "articles/2022-02-18_missing-link-web2-web3-custody-wallets.html",
+    "url": "/articles/2022-02-18_missing-link-web2-web3-custody-wallets/",
     "promotable": true
   },
   {
@@ -725,7 +725,7 @@ window.PRESENCE_NEWS = [
     "author": "George Fraser",
     "date": "2022-02-17",
     "readingTime": "12 min read",
-    "url": "articles/2022-02-17_sql-needs-software-libraries.html",
+    "url": "/articles/2022-02-17_sql-needs-software-libraries/",
     "promotable": true
   },
   {
@@ -736,7 +736,7 @@ window.PRESENCE_NEWS = [
     "author": "Jean Yang",
     "date": "2022-02-16",
     "readingTime": "13 min read",
-    "url": "articles/2022-02-16_software-development-building-for-99-developers.html",
+    "url": "/articles/2022-02-16_software-development-building-for-99-developers/",
     "promotable": true
   },
   {
@@ -747,7 +747,7 @@ window.PRESENCE_NEWS = [
     "author": "Amjad Masad",
     "date": "2022-02-14",
     "readingTime": "5 min read",
-    "url": "articles/2022-02-14_what-replit-ceo-amjad-massad-reads.html",
+    "url": "/articles/2022-02-14_what-replit-ceo-amjad-massad-reads/",
     "promotable": true
   },
   {
@@ -758,7 +758,7 @@ window.PRESENCE_NEWS = [
     "author": "Elliot Turner",
     "date": "2022-02-11",
     "readingTime": "10 min read",
-    "url": "articles/2022-02-11_ai-ml-foundation-models-for-the-rest-of-us.html",
+    "url": "/articles/2022-02-11_ai-ml-foundation-models-for-the-rest-of-us/",
     "promotable": true
   },
   {
@@ -769,7 +769,7 @@ window.PRESENCE_NEWS = [
     "author": "",
     "date": "2022-02-09",
     "readingTime": "10 min read",
-    "url": "articles/2022-02-09_what-is-decentralized-science-aka-desci.html",
+    "url": "/articles/2022-02-09_what-is-decentralized-science-aka-desci/",
     "promotable": true
   },
   {
@@ -780,7 +780,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2022-02-04",
     "readingTime": "26 min read",
-    "url": "articles/2022-02-04_go-to-market-in-web3.html",
+    "url": "/articles/2022-02-04_go-to-market-in-web3/",
     "promotable": true
   },
   {
@@ -791,7 +791,7 @@ window.PRESENCE_NEWS = [
     "author": "Justin Gage",
     "date": "2022-01-28",
     "readingTime": "16 min read",
-    "url": "articles/2022-01-28_excel-in-tech-without-learning-to-code.html",
+    "url": "/articles/2022-01-28_excel-in-tech-without-learning-to-code/",
     "promotable": true
   },
   {
@@ -802,7 +802,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2022-01-13",
     "readingTime": "14 min read",
-    "url": "articles/2022-01-13_defi-gives-financial-privacy-will-regulation-take-it-away.html",
+    "url": "/articles/2022-01-13_defi-gives-financial-privacy-will-regulation-take-it-away/",
     "promotable": true
   },
   {
@@ -813,7 +813,7 @@ window.PRESENCE_NEWS = [
     "author": "Carly Ayres",
     "date": "2022-01-11",
     "readingTime": "10 min read",
-    "url": "articles/2022-01-11_automated-design-apps-design-systems.html",
+    "url": "/articles/2022-01-11_automated-design-apps-design-systems/",
     "promotable": true
   },
   {
@@ -824,7 +824,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-12-17",
     "readingTime": "18 min read",
-    "url": "articles/2021-12-17_the-future-of-work-daos-crypto-networks.html",
+    "url": "/articles/2021-12-17_the-future-of-work-daos-crypto-networks/",
     "promotable": true
   },
   {
@@ -835,7 +835,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-12-09",
     "readingTime": "3 min read",
-    "url": "articles/2021-12-09_the-web3-playbook-using-token-incentives-to-bootstrap-new-networks.html",
+    "url": "/articles/2021-12-09_the-web3-playbook-using-token-incentives-to-bootstrap-new-networks/",
     "promotable": true
   },
   {
@@ -846,7 +846,7 @@ window.PRESENCE_NEWS = [
     "author": "Niya Dragova",
     "date": "2021-12-08",
     "readingTime": "17 min read",
-    "url": "articles/2021-12-08_equity-compensation-in-tech.html",
+    "url": "/articles/2021-12-08_equity-compensation-in-tech/",
     "promotable": true
   },
   {
@@ -857,7 +857,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-11-20",
     "readingTime": "9 min read",
-    "url": "articles/2021-11-20_dao-canon.html",
+    "url": "/articles/2021-11-20_dao-canon/",
     "promotable": true
   },
   {
@@ -868,7 +868,7 @@ window.PRESENCE_NEWS = [
     "author": "",
     "date": "2021-11-18",
     "readingTime": "11 min read",
-    "url": "articles/2021-11-18_decentralized-identity-on-chain-reputation.html",
+    "url": "/articles/2021-11-18_decentralized-identity-on-chain-reputation/",
     "promotable": true
   },
   {
@@ -879,7 +879,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-11-16",
     "readingTime": "17 min read",
-    "url": "articles/2021-11-16_blockchain-networks-and-the-human-factor-how-to-know-whether-theyre-accessible.html",
+    "url": "/articles/2021-11-16_blockchain-networks-and-the-human-factor-how-to-know-whether-theyre-accessible/",
     "promotable": true
   },
   {
@@ -890,7 +890,7 @@ window.PRESENCE_NEWS = [
     "author": "Dan Runcie",
     "date": "2021-11-10",
     "readingTime": "9 min read",
-    "url": "articles/2021-11-10_creator-economy-levels.html",
+    "url": "/articles/2021-11-10_creator-economy-levels/",
     "promotable": true
   },
   {
@@ -901,7 +901,7 @@ window.PRESENCE_NEWS = [
     "author": "Keith Schacht",
     "date": "2021-11-04",
     "readingTime": "9 min read",
-    "url": "articles/2021-11-04_web-browser-for-kids.html",
+    "url": "/articles/2021-11-04_web-browser-for-kids/",
     "promotable": true
   },
   {
@@ -912,7 +912,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-11-03",
     "readingTime": "20 min read",
-    "url": "articles/2021-11-03_building-and-running-a-dao-why-governance-matters.html",
+    "url": "/articles/2021-11-03_building-and-running-a-dao-why-governance-matters/",
     "promotable": true
   },
   {
@@ -923,7 +923,7 @@ window.PRESENCE_NEWS = [
     "author": "Nathan Baschez",
     "date": "2021-10-28",
     "readingTime": "11 min read",
-    "url": "articles/2021-10-28_creator-platforms-neglect-the-sell.html",
+    "url": "/articles/2021-10-28_creator-platforms-neglect-the-sell/",
     "promotable": true
   },
   {
@@ -934,7 +934,7 @@ window.PRESENCE_NEWS = [
     "author": "Rui Ma",
     "date": "2021-10-19",
     "readingTime": "8 min read",
-    "url": "articles/2021-10-19_strategy-behind-china-tech.html",
+    "url": "/articles/2021-10-19_strategy-behind-china-tech/",
     "promotable": true
   },
   {
@@ -945,7 +945,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-10-13",
     "readingTime": "3 min read",
-    "url": "articles/2021-10-13_tokens-are-a-new-digital-primitive.html",
+    "url": "/articles/2021-10-13_tokens-are-a-new-digital-primitive/",
     "promotable": true
   },
   {
@@ -956,7 +956,7 @@ window.PRESENCE_NEWS = [
     "author": "Parag Khanna",
     "date": "2021-10-12",
     "readingTime": "9 min read",
-    "url": "articles/2021-10-12_the-world-needs-a-new-protocol-for-global-travel.html",
+    "url": "/articles/2021-10-12_the-world-needs-a-new-protocol-for-global-travel/",
     "promotable": true
   },
   {
@@ -967,7 +967,7 @@ window.PRESENCE_NEWS = [
     "author": "Molly Mielke",
     "date": "2021-10-08",
     "readingTime": "10 min read",
-    "url": "articles/2021-10-08_software-style-over-branding.html",
+    "url": "/articles/2021-10-08_software-style-over-branding/",
     "promotable": true
   },
   {
@@ -978,7 +978,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-10-07",
     "readingTime": "3 min read",
-    "url": "articles/2021-10-07_why-web3-matters.html",
+    "url": "/articles/2021-10-07_why-web3-matters/",
     "promotable": true
   },
   {
@@ -989,7 +989,7 @@ window.PRESENCE_NEWS = [
     "author": "Dave Edwards",
     "date": "2021-10-05",
     "readingTime": "22 min read",
-    "url": "articles/2021-10-05_music-copyright-ugc.html",
+    "url": "/articles/2021-10-05_music-copyright-ugc/",
     "promotable": true
   },
   {
@@ -1000,7 +1000,7 @@ window.PRESENCE_NEWS = [
     "author": "",
     "date": "2021-09-30",
     "readingTime": "15 min read",
-    "url": "articles/2021-09-30_reputation-based-systems.html",
+    "url": "/articles/2021-09-30_reputation-based-systems/",
     "promotable": true
   },
   {
@@ -1011,7 +1011,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-09-27",
     "readingTime": "10 min read",
-    "url": "articles/2021-09-27_stablecoins-stability-and-financial-inclusion.html",
+    "url": "/articles/2021-09-27_stablecoins-stability-and-financial-inclusion/",
     "promotable": true
   },
   {
@@ -1022,7 +1022,7 @@ window.PRESENCE_NEWS = [
     "author": "Julio Vasconcellos",
     "date": "2021-09-22",
     "readingTime": "8 min read",
-    "url": "articles/2021-09-22_latin-america-creator-economy.html",
+    "url": "/articles/2021-09-22_latin-america-creator-economy/",
     "promotable": true
   },
   {
@@ -1033,7 +1033,7 @@ window.PRESENCE_NEWS = [
     "author": "Scott Gottlieb",
     "date": "2021-09-21",
     "readingTime": "7 min read",
-    "url": "articles/2021-09-21_global-labs-pose-major-threat-heres-what-u-s-should-do.html",
+    "url": "/articles/2021-09-21_global-labs-pose-major-threat-heres-what-u-s-should-do/",
     "promotable": true
   },
   {
@@ -1044,7 +1044,7 @@ window.PRESENCE_NEWS = [
     "author": "Andrew Scott",
     "date": "2021-09-15",
     "readingTime": "7 min read",
-    "url": "articles/2021-09-15_economic-case-for-curbing-aging.html",
+    "url": "/articles/2021-09-15_economic-case-for-curbing-aging/",
     "promotable": true
   },
   {
@@ -1055,7 +1055,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-09-13",
     "readingTime": "11 min read",
-    "url": "articles/2021-09-13_minimum-viable-participation-in-crypto-games-costs-accessibility.html",
+    "url": "/articles/2021-09-13_minimum-viable-participation-in-crypto-games-costs-accessibility/",
     "promotable": true
   },
   {
@@ -1066,7 +1066,7 @@ window.PRESENCE_NEWS = [
     "author": "Hannah Zeavin",
     "date": "2021-09-08",
     "readingTime": "10 min read",
-    "url": "articles/2021-09-08_virtual-therapy-distanced-intimacy.html",
+    "url": "/articles/2021-09-08_virtual-therapy-distanced-intimacy/",
     "promotable": true
   },
   {
@@ -1077,7 +1077,7 @@ window.PRESENCE_NEWS = [
     "author": "José Luis Ricón",
     "date": "2021-09-08",
     "readingTime": "28 min read",
-    "url": "articles/2021-09-08_why-california-burns-the-facts-behind-the-flames.html",
+    "url": "/articles/2021-09-08_why-california-burns-the-facts-behind-the-flames/",
     "promotable": true
   },
   {
@@ -1088,7 +1088,7 @@ window.PRESENCE_NEWS = [
     "author": "Jean Yang",
     "date": "2021-09-08",
     "readingTime": "19 min read",
-    "url": "articles/2021-09-08_the-case-for-developer-experience.html",
+    "url": "/articles/2021-09-08_the-case-for-developer-experience/",
     "promotable": true
   },
   {
@@ -1099,7 +1099,7 @@ window.PRESENCE_NEWS = [
     "author": "Marty Strenczewilk",
     "date": "2021-09-08",
     "readingTime": "13 min read",
-    "url": "articles/2021-09-08_esports-business-models.html",
+    "url": "/articles/2021-09-08_esports-business-models/",
     "promotable": true
   },
   {
@@ -1110,7 +1110,7 @@ window.PRESENCE_NEWS = [
     "author": "Sonal Chokshi",
     "date": "2021-07-29",
     "readingTime": "3 min read",
-    "url": "articles/2021-07-29_the-best-of-the-a16z-podcast-now-on-future.html",
+    "url": "/articles/2021-07-29_the-best-of-the-a16z-podcast-now-on-future/",
     "promotable": true
   },
   {
@@ -1121,7 +1121,7 @@ window.PRESENCE_NEWS = [
     "author": "Presence Editorial",
     "date": "2021-06-25",
     "readingTime": "1 min read",
-    "url": "articles/2021-06-25_future-com-welcome-what-now-next.html",
+    "url": "/articles/2021-06-25_future-com-welcome-what-now-next/",
     "promotable": true
   },
   {
@@ -1132,7 +1132,7 @@ window.PRESENCE_NEWS = [
     "author": "Ryan Petersen",
     "date": "2021-06-24",
     "readingTime": "10 min read",
-    "url": "articles/2021-06-24_global-shipping-infrastructure-and-ever-given.html",
+    "url": "/articles/2021-06-24_global-shipping-infrastructure-and-ever-given/",
     "promotable": true
   },
   {
@@ -1143,7 +1143,7 @@ window.PRESENCE_NEWS = [
     "author": "Rajiv Ayyangar",
     "date": "2021-06-16",
     "readingTime": "17 min read",
-    "url": "articles/2021-06-16_hybrid-anxiety-optimism-future-of-work.html",
+    "url": "/articles/2021-06-16_hybrid-anxiety-optimism-future-of-work/",
     "promotable": true
   },
   {
@@ -1154,7 +1154,7 @@ window.PRESENCE_NEWS = [
     "author": "Betül Kaçar",
     "date": "2021-06-16",
     "readingTime": "6 min read",
-    "url": "articles/2021-06-16_extinction-mining-ancient-innovation-future-solutions.html",
+    "url": "/articles/2021-06-16_extinction-mining-ancient-innovation-future-solutions/",
     "promotable": true
   },
   {
@@ -1165,7 +1165,7 @@ window.PRESENCE_NEWS = [
     "author": "Nicole Forsgren",
     "date": "2021-06-15",
     "readingTime": "12 min read",
-    "url": "articles/2021-06-15_on-workplace-productivity.html",
+    "url": "/articles/2021-06-15_on-workplace-productivity/",
     "promotable": true
   },
   {
@@ -1176,7 +1176,7 @@ window.PRESENCE_NEWS = [
     "author": "Caleb Watney",
     "date": "2021-06-15",
     "readingTime": "21 min read",
-    "url": "articles/2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall.html",
+    "url": "/articles/2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall/",
     "promotable": true
   },
   {
@@ -1187,7 +1187,7 @@ window.PRESENCE_NEWS = [
     "author": "Wes Kao",
     "date": "2021-06-15",
     "readingTime": "15 min read",
-    "url": "articles/2021-06-15_cohort-based-courses.html",
+    "url": "/articles/2021-06-15_cohort-based-courses/",
     "promotable": true
   },
   {
@@ -1198,7 +1198,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-06-15",
     "readingTime": "14 min read",
-    "url": "articles/2021-06-15_what-is-decentralized-finance.html",
+    "url": "/articles/2021-06-15_what-is-decentralized-finance/",
     "promotable": true
   },
   {
@@ -1209,7 +1209,7 @@ window.PRESENCE_NEWS = [
     "author": "Joshua Browder",
     "date": "2021-06-15",
     "readingTime": "9 min read",
-    "url": "articles/2021-06-15_law-as-code.html",
+    "url": "/articles/2021-06-15_law-as-code/",
     "promotable": true
   },
   {
@@ -1220,7 +1220,7 @@ window.PRESENCE_NEWS = [
     "author": "Lenny Rachitsky",
     "date": "2021-06-15",
     "readingTime": "14 min read",
-    "url": "articles/2021-06-15_north-star-metrics.html",
+    "url": "/articles/2021-06-15_north-star-metrics/",
     "promotable": true
   },
   {
@@ -1231,7 +1231,7 @@ window.PRESENCE_NEWS = [
     "author": "",
     "date": "2021-06-15",
     "readingTime": "8 min read",
-    "url": "articles/2021-06-15_creator-tokens-and-community-tokens.html",
+    "url": "/articles/2021-06-15_creator-tokens-and-community-tokens/",
     "promotable": true
   },
   {
@@ -1242,7 +1242,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-06-15",
     "readingTime": "16 min read",
-    "url": "articles/2021-06-15_crypto-and-community-owned-characters.html",
+    "url": "/articles/2021-06-15_crypto-and-community-owned-characters/",
     "promotable": true
   },
   {
@@ -1253,7 +1253,7 @@ window.PRESENCE_NEWS = [
     "author": "Jamie Catherwood",
     "date": "2021-06-15",
     "readingTime": "19 min read",
-    "url": "articles/2021-06-15_speculation-is-necessary-governments-can-help.html",
+    "url": "/articles/2021-06-15_speculation-is-necessary-governments-can-help/",
     "promotable": true
   },
   {
@@ -1264,7 +1264,7 @@ window.PRESENCE_NEWS = [
     "author": "Julie Zhuo",
     "date": "2021-06-15",
     "readingTime": "10 min read",
-    "url": "articles/2021-06-15_product-thinking.html",
+    "url": "/articles/2021-06-15_product-thinking/",
     "promotable": true
   },
   {
@@ -1275,7 +1275,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-06-15",
     "readingTime": "17 min read",
-    "url": "articles/2021-06-15_a-taxonomy-of-tokens-distinctions-with-a-difference.html",
+    "url": "/articles/2021-06-15_a-taxonomy-of-tokens-distinctions-with-a-difference/",
     "promotable": true
   },
   {
@@ -1286,7 +1286,7 @@ window.PRESENCE_NEWS = [
     "author": "Patrick Woods",
     "date": "2021-06-15",
     "readingTime": "15 min read",
-    "url": "articles/2021-06-15_community-e2-89-a0-marketing-why-we-need-go-to-community-not-just-go-to-market.html",
+    "url": "/articles/2021-06-15_community-e2-89-a0-marketing-why-we-need-go-to-community-not-just-go-to-market/",
     "promotable": true
   },
   {
@@ -1297,7 +1297,7 @@ window.PRESENCE_NEWS = [
     "author": "Patrick Collison & Tyler Cowen & Patrick Hsu",
     "date": "2021-06-15",
     "readingTime": "18 min read",
-    "url": "articles/2021-06-15_what-we-learned-doing-fast-grants.html",
+    "url": "/articles/2021-06-15_what-we-learned-doing-fast-grants/",
     "promotable": true
   },
   {
@@ -1308,7 +1308,7 @@ window.PRESENCE_NEWS = [
     "author": "Bruno Macaes",
     "date": "2021-06-15",
     "readingTime": "10 min read",
-    "url": "articles/2021-06-15_the-world-game.html",
+    "url": "/articles/2021-06-15_the-world-game/",
     "promotable": true
   },
   {
@@ -1319,7 +1319,7 @@ window.PRESENCE_NEWS = [
     "author": "Jade Raymond",
     "date": "2021-06-15",
     "readingTime": "11 min read",
-    "url": "articles/2021-06-15_fans-drive-hit-ips.html",
+    "url": "/articles/2021-06-15_fans-drive-hit-ips/",
     "promotable": true
   },
   {
@@ -1330,7 +1330,7 @@ window.PRESENCE_NEWS = [
     "author": "Katie Stockton",
     "date": "2021-06-15",
     "readingTime": "7 min read",
-    "url": "articles/2021-06-15_the-new-market-momentum-reading-the-technical-indicators.html",
+    "url": "/articles/2021-06-15_the-new-market-momentum-reading-the-technical-indicators/",
     "promotable": true
   },
   {
@@ -1341,7 +1341,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-06-15",
     "readingTime": "10 min read",
-    "url": "articles/2021-06-15_how-composability-unlocks-crypto-and-everything-else.html",
+    "url": "/articles/2021-06-15_how-composability-unlocks-crypto-and-everything-else/",
     "promotable": true
   },
   {
@@ -1352,7 +1352,7 @@ window.PRESENCE_NEWS = [
     "author": "Zoran Basich",
     "date": "2021-06-15",
     "readingTime": "9 min read",
-    "url": "articles/2021-06-15_a-privacy-layer-for-the-web-can-change-everything.html",
+    "url": "/articles/2021-06-15_a-privacy-layer-for-the-web-can-change-everything/",
     "promotable": true
   },
   {
@@ -1363,7 +1363,7 @@ window.PRESENCE_NEWS = [
     "author": "Byrne Hobart",
     "date": "2021-06-15",
     "readingTime": "10 min read",
-    "url": "articles/2021-06-15_well-behaved-bubbles-history-innovation.html",
+    "url": "/articles/2021-06-15_well-behaved-bubbles-history-innovation/",
     "promotable": true
   },
   {
@@ -1374,7 +1374,7 @@ window.PRESENCE_NEWS = [
     "author": "Malcolm MacLeod",
     "date": "2021-06-15",
     "readingTime": "12 min read",
-    "url": "articles/2021-06-15_publomics-replication-crisis.html",
+    "url": "/articles/2021-06-15_publomics-replication-crisis/",
     "promotable": true
   },
   {
@@ -1385,7 +1385,7 @@ window.PRESENCE_NEWS = [
     "author": "Dan Wang",
     "date": "2021-06-15",
     "readingTime": "7 min read",
-    "url": "articles/2021-06-15_the-silicon-in-silicon-valley-again.html",
+    "url": "/articles/2021-06-15_the-silicon-in-silicon-valley-again/",
     "promotable": true
   },
   {
@@ -1396,7 +1396,7 @@ window.PRESENCE_NEWS = [
     "author": "Leidy Klotz",
     "date": "2021-06-15",
     "readingTime": "6 min read",
-    "url": "articles/2021-06-15_the-untapped-potential-of-subtraction.html",
+    "url": "/articles/2021-06-15_the-untapped-potential-of-subtraction/",
     "promotable": true
   },
   {
@@ -1407,7 +1407,7 @@ window.PRESENCE_NEWS = [
     "author": "Joost van Dreunen",
     "date": "2021-06-15",
     "readingTime": "9 min read",
-    "url": "articles/2021-06-15_the-creator-economy-for-gaming.html",
+    "url": "/articles/2021-06-15_the-creator-economy-for-gaming/",
     "promotable": true
   },
   {
@@ -1418,7 +1418,7 @@ window.PRESENCE_NEWS = [
     "author": "Sonal Chokshi",
     "date": "2021-04-02",
     "readingTime": "12 min read",
-    "url": "articles/2021-04-02_nft-canon.html",
+    "url": "/articles/2021-04-02_nft-canon/",
     "promotable": true
   },
   {
@@ -1429,7 +1429,7 @@ window.PRESENCE_NEWS = [
     "author": "Chris Dixon",
     "date": "2021-02-27",
     "readingTime": "5 min read",
-    "url": "articles/2021-02-27_nfts-thousand-true-fans.html",
+    "url": "/articles/2021-02-27_nfts-thousand-true-fans/",
     "promotable": true
   },
   {
@@ -1440,7 +1440,7 @@ window.PRESENCE_NEWS = [
     "author": "Chris Dixon",
     "date": "2021-01-14",
     "readingTime": "5 min read",
-    "url": "articles/2021-01-14_control-software-powers-internet.html",
+    "url": "/articles/2021-01-14_control-software-powers-internet/",
     "promotable": true
   },
   {
@@ -1451,7 +1451,7 @@ window.PRESENCE_NEWS = [
     "author": "Presence Editorial",
     "date": "2020-12-28",
     "readingTime": "22 min read",
-    "url": "articles/2020-12-28_state-crypto-builders-guide.html",
+    "url": "/articles/2020-12-28_state-crypto-builders-guide/",
     "promotable": true
   },
   {
@@ -1462,7 +1462,7 @@ window.PRESENCE_NEWS = [
     "author": "Jesse Walden",
     "date": "2020-04-08",
     "readingTime": "5 min read",
-    "url": "articles/2020-04-08_crypto-business-model.html",
+    "url": "/articles/2020-04-08_crypto-business-model/",
     "promotable": true
   },
   {
@@ -1473,9 +1473,9 @@ window.PRESENCE_NEWS = [
     "author": "Vitalik Buterin",
     "date": "2020-01-03",
     "readingTime": "11 min read",
-    "image": "assets/img/articles/2020-01-03_credible-neutrality-guiding-principle/vitalik-buterin.webp",
+    "image": "/assets/img/articles/2020-01-03_credible-neutrality-guiding-principle/vitalik-buterin.webp",
     "imageAlt": "Vitalik Buterin speaking on stage",
-    "url": "articles/2020-01-03_credible-neutrality-guiding-principle.html",
+    "url": "/articles/2020-01-03_credible-neutrality-guiding-principle/",
     "promotable": true,
     "featuredRank": 1
   },
@@ -1487,7 +1487,7 @@ window.PRESENCE_NEWS = [
     "author": "Anu Hariharan",
     "date": "2016-03-07",
     "readingTime": "1 min read",
-    "url": "articles/2016-03-07_all-about-network-effects.html",
+    "url": "/articles/2016-03-07_all-about-network-effects/",
     "promotable": true
   }
 ];

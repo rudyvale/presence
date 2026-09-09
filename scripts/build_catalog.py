@@ -78,7 +78,7 @@ def build_catalog() -> None:
     )
     latest = [story for story in stories if story.get("promotable") is not False][:4]
     replace_slot(ROOT / "index.html", "LATEST-CARDS", "\n".join(map(latest_card, latest)), "            ")
-    replace_slot(ROOT / "news.html", "NEWS-CARDS", "\n\n".join(map(news_card, stories)), "        ")
+    replace_slot(ROOT / "news/index.html", "NEWS-CARDS", "\n\n".join(map(news_card, stories)), "        ")
     print(f"Catalog listings updated: {len(latest)} latest, {len(stories)} news stories")
 
 

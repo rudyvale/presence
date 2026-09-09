@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
 import re
 import time
@@ -62,7 +61,7 @@ def update_tag(tag: str, document_path: Path, converted: dict[str, str]) -> str:
     value = match.group(1)
     if value.startswith(("http://", "https://", "data:")) or not re.search(r"\.(?:png|jpe?g)$", value, re.IGNORECASE):
         return tag
-    source = (document_path.parent / value).resolve()
+    source = (ROOT / value.lstrip("/") if value.startswith("/") else document_path.parent / value).resolve()
     try:
         source.relative_to(ROOT)
     except ValueError:
@@ -71,7 +70,7 @@ def update_tag(tag: str, document_path: Path, converted: dict[str, str]) -> str:
         return tag
 
     target = convert(source)
-    target_value = Path(os.path.relpath(target, document_path.parent)).as_posix()
+    target_value = "/" + target.relative_to(ROOT).as_posix()
     converted[source.relative_to(ROOT).as_posix()] = target.relative_to(ROOT).as_posix()
     tag = tag[: match.start(1)] + target_value + tag[match.end(1) :]
 
@@ -115,7 +114,7 @@ def main() -> None:
     for path in html_paths:
         document = path.read_text(encoding="utf-8")
         updated = re.sub(
-            r'(<link\s+rel="icon"\s+href="(?:\.\./)?assets/img/)presence-social\.png("\s+type="image/png">)',
+            r'(<link\s+rel="icon"\s+href="/assets/img/)presence-social\.png("\s+type="image/png">)',
             r'\1presence-icon.png\2',
             document,
             count=1,

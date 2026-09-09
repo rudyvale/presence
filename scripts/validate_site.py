@@ -9,14 +9,17 @@ import json
 from pathlib import Path
 import re
 import sys
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
 from PIL import Image
+from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
 
 
-ROOT = Path(__file__).resolve().parents[1]
-BASE_URL = "https://presence.news"
+def local_target(reference: str, page: Path = ROOT / "index.html") -> Path:
+    clean = unquote(urlsplit(reference).path)
+    target = (ROOT / clean.lstrip("/") if clean.startswith("/") else page.parent / clean).resolve()
+    return target / "index.html" if target.is_dir() else target
 
 
 class ReferenceParser(HTMLParser):
@@ -45,7 +48,15 @@ def validate_catalog() -> list[str]:
     biographies = json.loads((ROOT / "assets/data/author-bios.json").read_text(encoding="utf-8"))["authors"]
     for story in stories:
         expected_authors = story["author"].split(" & ") if story.get("author") else []
-        document = (ROOT / story["url"]).read_text(encoding="utf-8")
+        target = local_target(story["url"])
+        if not target.is_file():
+            errors.append(f"{story['url']}: catalog article does not exist")
+            continue
+        if not re.fullmatch(r"/articles/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*/", story["url"]):
+            errors.append(f"{story['url']}: catalog article must use a clean route")
+        if story.get("image") and not local_target(story["image"]).is_file():
+            errors.append(f"{story['url']}: catalog image does not exist")
+        document = target.read_text(encoding="utf-8")
         profile_authors = [
             unescape(name)
             for name in re.findall(r'class="author__bio"><strong>([^<]+)</strong>', document)
@@ -68,7 +79,7 @@ def validate_catalog() -> list[str]:
                     errors.append(f"{story['url']}: an unsigned article must not invent an author")
     for filename, slot, expected in (
         ("index.html", "LATEST-CARDS", latest),
-        ("news.html", "NEWS-CARDS", stories),
+        ("news/index.html", "NEWS-CARDS", stories),
     ):
         document = (ROOT / filename).read_text(encoding="utf-8")
         fragments = re.findall(
@@ -85,15 +96,23 @@ def validate_catalog() -> list[str]:
             errors.append(f"{filename}: {slot} stories are missing, stale, or out of publication order")
         if dates != [story["date"] for story in expected]:
             errors.append(f"{filename}: {slot} publication dates do not match the catalog")
+    feed = ET.parse(ROOT / "feed.xml")
+    feed_links = [node.text for node in feed.findall("channel/item/link")]
+    if set(feed_links) != {BASE_URL + story["url"] for story in stories} or len(feed_links) != len(stories):
+        errors.append("RSS links do not match the clean catalog routes")
     return errors
 
 
 def main() -> int:
     errors = validate_catalog()
-    pages = sorted(ROOT.rglob("*.html"))
-    article_pages = sorted((ROOT / "articles").glob("*.html"))
+    pages = content_pages()
+    article_pages = [page for page in pages if is_article(page)]
+    redirects = {legacy_path(page): page for page in pages if legacy_path(page) is not None}
+    all_pages = set(ROOT.rglob("*.html"))
+    if all_pages != set(pages) | set(redirects):
+        errors.append("HTML files exist outside the clean routes and legacy redirects")
     expected_sitemap = {
-        f"{BASE_URL}/" if page.name == "index.html" else f"{BASE_URL}/{page.relative_to(ROOT).as_posix()}"
+        canonical_for(page)
         for page in pages
         if page.name != "404.html"
     }
@@ -103,6 +122,8 @@ def main() -> int:
         relative = page.relative_to(ROOT).as_posix()
         if document.count('<link rel="canonical"') != 1:
             errors.append(f"{relative}: canonical count is not 1")
+        if f'<link rel="canonical" href="{canonical_for(page)}">' not in document:
+            errors.append(f"{relative}: canonical does not match the clean route")
         schemas = re.findall(r'<script type="application/ld\+json">\s*(.*?)\s*</script>', document, re.DOTALL)
         if len(schemas) != 1:
             errors.append(f"{relative}: JSON-LD count is not 1")
@@ -113,26 +134,46 @@ def main() -> int:
                 errors.append(f"{relative}: invalid JSON-LD ({exc})")
         if document.count('class="nav-search-link"') != 1:
             errors.append(f"{relative}: search navigation link count is not 1")
-        if page.parent.name == "articles" and document.count("PRESENCE FOLLOW:START") != 1:
+        if is_article(page) and document.count("PRESENCE FOLLOW:START") != 1:
             errors.append(f"{relative}: article follow block count is not 1")
 
         parser = ReferenceParser()
         parser.feed(document)
         for reference in parser.references:
             parsed = urlsplit(reference)
-            if parsed.scheme or reference.startswith(("#", "//")):
+            if reference.startswith("#"):
+                continue
+            if (parsed.scheme or parsed.netloc) and parsed.netloc != urlsplit(BASE_URL).netloc:
                 continue
             clean = parsed.path
             if not clean:
                 continue
-            target = (ROOT / clean.lstrip("/") if clean.startswith("/") else page.parent / clean).resolve()
+            target = local_target(reference, page)
             try:
                 target.relative_to(ROOT)
             except ValueError:
                 errors.append(f"{relative}: reference escapes site root: {reference}")
                 continue
-            if not target.exists():
+            if not target.is_file():
                 errors.append(f"{relative}: missing reference: {reference}")
+            if clean.endswith(".html") and clean != "/404.html":
+                errors.append(f"{relative}: internal link still uses .html: {reference}")
+
+    for redirect, destination in redirects.items():
+        if not redirect.is_file():
+            errors.append(f"{redirect.relative_to(ROOT)}: missing legacy redirect")
+            continue
+        document = redirect.read_text(encoding="utf-8")
+        route = route_for(destination)
+        required = (
+            f'data-presence-redirect="{route}"',
+            f'<link rel="canonical" href="{BASE_URL}{route}">',
+            f'<noscript><meta http-equiv="refresh" content="0; url={route}"></noscript>',
+            f'<a href="{route}">',
+            'src="/assets/js/redirect.js?v=',
+        )
+        if not all(value in document for value in required):
+            errors.append(f"{redirect.relative_to(ROOT)}: incomplete or incorrect legacy redirect")
 
     site_text = "\n".join(page.read_text(encoding="utf-8") for page in pages)
     removed_mailbox = "contact" + "@" + "presence.media"
@@ -142,7 +183,7 @@ def main() -> int:
     sitemap = ET.parse(ROOT / "sitemap.xml")
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     actual_sitemap = {node.text or "" for node in sitemap.findall("sm:url/sm:loc", namespace)}
-    if actual_sitemap != expected_sitemap:
+    if actual_sitemap != expected_sitemap or len(sitemap.findall("sm:url", namespace)) != len(expected_sitemap):
         errors.append(
             f"sitemap mismatch: expected {len(expected_sitemap)}, found {len(actual_sitemap)}"
         )
@@ -162,6 +203,7 @@ def main() -> int:
     checks = {
         "HTML pages": len(pages),
         "Article pages": len(article_pages),
+        "Legacy redirects": len(redirects),
         "Sitemap URLs": len(actual_sitemap),
         "WebP assets": len(list((ROOT / "assets" / "img").rglob("*.webp"))),
         "Errors": len(errors),

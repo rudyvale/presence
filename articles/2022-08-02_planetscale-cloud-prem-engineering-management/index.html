@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PlanetScale CEO on Cloud-Prem and Climbing the Engineering Ladder — PRESENCE</title>
+<meta name="description" content="Sam Lambert is CEO of PlanetScale, a MySQL-compatiable serverless database provider. Prior to joining PlanetScale (then as chief product officer), he was VP of engineering at GitHub. In this interview, Lambert…">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="PlanetScale CEO on Cloud-Prem and Climbing the Engineering Ladder">
+<meta property="og:description" content="Sam Lambert is CEO of PlanetScale, a MySQL-compatiable serverless database provider. Prior to joining PlanetScale (then as chief product officer), he was VP of engineering at GitHub. In this interview, Lambert…">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PlanetScale CEO on Cloud-Prem and Climbing the Engineering Ladder">
+<meta name="twitter:description" content="Sam Lambert is CEO of PlanetScale, a MySQL-compatiable serverless database provider. Prior to joining PlanetScale (then as chief product officer), he was VP of engineering at GitHub. In this interview, Lambert…">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
+<link rel="stylesheet" href="/assets/css/site.css?v=11ba79f3624a2658">
+<!-- PRESENCE SEO:START -->
+<link rel="canonical" href="https://presence.news/articles/2022-08-02_planetscale-cloud-prem-engineering-management/">
+<meta property="og:url" content="https://presence.news/articles/2022-08-02_planetscale-cloud-prem-engineering-management/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-social.png">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-social.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-social.png",
+      "sameAs": [
+        "https://t.me/presencemedia"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://presence.news/articles/2022-08-02_planetscale-cloud-prem-engineering-management/#article",
+      "headline": "PlanetScale CEO on Cloud-Prem and Climbing the Engineering Ladder",
+      "description": "Sam Lambert is CEO of PlanetScale, a MySQL-compatiable serverless database provider. Prior to joining PlanetScale (then as chief product officer), he was VP of engineering at GitHub. In this interview, Lambert…",
+      "mainEntityOfPage": "https://presence.news/articles/2022-08-02_planetscale-cloud-prem-engineering-management/",
+      "image": [
+        "https://presence.news/assets/img/presence-social.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Sam Lambert"
+      },
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      },
+      "articleSection": "Technology"
+    }
+  ]
+}
+</script>
+<!-- PRESENCE SEO:END -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/news/#crypto">Crypto</a>
+      <a href="/news/#technology">Technology</a>
+      <a href="/news/#companies">Companies</a>
+      <a class="nav-search-link" href="/#future-archive">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap article-layout">
+  <article>
+    <span class="article__cat">Technology</span>
+    <h1 class="article__title">PlanetScale CEO on Cloud-Prem and Climbing the Engineering Ladder</h1>
+    <p class="article__meta">Sam Lambert · 15 min read</p>
+
+    <div class="article__body">
+      <p class="article__image"><img src="/assets/img/articles/2022-08-02_planetscale-cloud-prem-engineering-management/images/01_b51c0fec.webp" alt="" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async"></p>
+      <p class="article__lede">Sam Lambert is CEO of PlanetScale, a MySQL-compatible serverless database provider. Before PlanetScale, where he served as chief product officer, he was VP of engineering at GitHub.</p>
+      <p class="article__lede">In this interview, Lambert talks through several subjects tied to cloud native software delivery models, such as what good serverless looks like, who ought to operate Kubernetes, and the rise of “cloud-prem” — a deployment model that blends the advantages of on-prem software and SaaS products. He also discusses what it was like to become a non-founder CEO, plus his guidance on when and how to transition from engineering into management.</p>
+      <hr>
+      <h2>What is cloud-prem?</h2>
+      <p><strong>You’ve described what PlanetScale is doing — at least its not pure-SaaS offering — as “cloud-prem” computing. How would you explain that phrase?</strong></p>
+      <p>SAM LAMBERT: Cloud-prem is a newer model — basically the cloud native answer to on-prem. In the past, companies have generally had to choose either an on-prem solution or a cloud solution, and trying to support both has usually been extremely hard. At GitHub, we faced that same tension between running github.com and also selling GitHub Enterprise as an on-prem product. With the cloud product, we needed to push and ship continuously. Making releases around that was a really hard problem, and creating architectures for both meant we were not serving the on-prem product as well as we might have; it was simply very tough to execute.</p>
+      <p>When we joined PlanetScale, we chose to be cloud-only, but of course you can’t simply do that with a database product or with software that has strict compliance needs. So with cloud-prem, we basically place the data plane of our product into a VPC controlled by the user, while they rely on our control plane to coordinate it and we operate it. It effectively feels like you are just working with a normal cloud SaaS product, but the data stays in your account. Your security team can inspect it, and they have the confidence and trust of keeping it inside their infrastructure, without the drawbacks of having to patch, release, and run on-prem software themselves.</p>
+      <p>There is another benefit too: if you are a large customer with a strong negotiated price with Amazon, for instance, you still pay that rate and preserve your committed Amazon spend inside your account.</p>
+      <p>What sort of resistance do you see? There are some hardline SaaS and on-prem organizations out there …</p>
+      <p>We can offer you pure SaaS, where we keep the data in our account, and people are totally happy with that. The real objection comes when people only want on-prem. But the cloud-prem model is really beginning to land. We have regulated companies using the product because they see the twin advantage of keeping data local so security or compliance is satisfied, while also avoiding the burden of managing it.</p>
+      <p>That is why this model is so unusually compelling and such a moment in time: Because it sidesteps the issue of companies not wanting to do on-prem — and of it being an old, dead model, basically — while still largely satisfying the requirements that on-prem would.</p>
+      <p>Still, yes, you do face resistance at times. Some companies simply will not trust SaaS software, but the cloud is rapidly eroding that. Like, you don’t get to choose when or how Amazon updates S3 and improves S3; it just happens. It is all about earning trust from many customers that you are the right company to handle a specific job for them, and helping them become more comfortable with that.</p>
+      <div class="article__callout">
+        <p>You can’t create the best developer experience when you’re shipping on-prem software. You can’t keep improving continuously. You can’t manage quality, availability, uptime — all of those things are part of the experience.</p>
+      </div>
+      <p><strong>Developers can be quite strong-minded about the databases they choose. How does the cloud-prem deployment model affect developer experience?</strong></p>
+      <p>It is more that the deployment model removes the blockers. You can’t create the best developer experience when you’re shipping on-prem software. You can’t keep improving continuously. You can’t manage quality, availability, uptime — all of those things are part of the experience. If you are not managing the service yourself, it is very difficult to deliver such a high level of experience.</p>
+      <p>A major blocker for SaaS-only, naturally, is that some users need to keep data under their own control. A major blocker for on-prem may be scalability. So the cloud-prem model is more of a way to remove those blockers and offer everyone the best of both worlds.</p>
+      <h2>Who should run Kubernetes?</h2>
+      <p><strong>What role does Kubernetes play in your deployment model? And what do you believe Kubernetes should generally do for something like a cloud-prem deployment?</strong></p>
+      <p>Kubernetes lets us deploy into customer environments in a highly standardized way, and it appears the same as the Kubernetes cluster we operate internally. Architecturally, we are also built on Vitess, which runs on Kubernetes and was created on Borg, the predecessor to Kubernetes at Google. So, by design, it is very self-healing. If you lose pods or lose infrastructure, it heals itself pretty much; failovers are not something you need to handle manually.</p>
+      <p>In our model, users do not have to run the Kubernetes clusters that we deploy. We do not use the model of deploying onto an existing Kubernetes cluster, which some on-prem vendors do as a way to try to make it easier. I am skeptical that it is any easier, honestly.</p>
+      <p>Most people do not need to run Kubernetes. It is a strong backend for infrastructure providers, but I do not think it is necessarily the best deployment mechanism for most companies. I think many people have gone down that path and found little or no value in doing it.</p>
+      <div class="article__callout">
+        <p>If you uploaded a file to Dropbox and they asked you, “How many servers would you like us to keep this on so that it stays highly available?” You would be like, “Isn’t that what I’m paying you for?”</p>
+      </div>
+      <p><strong>Is there a scale at which it starts to make sense, in your view? Or a specific use case, like running an internal platform team?</strong></p>
+      <p>If you are doing what we do, where you want to simplify infrastructure and have something that is flexible like Kubernetes, then it is great. But that level of flexibility is so open-ended that if you are simply building, say, an ecommerce company that wants to host a website, you do not need Kubernetes in the backend to do that.</p>
+      <p>It is very broadly adopted, and I think many people try to build these internal platforms and view Kubernetes as a way to have simple internal infrastructure. That is just not the case; it does not go far enough with the end-user experience. People should use the cloud for what it does best, and let the clouds and people like us run Kubernetes as a way to simplify what we do.</p>
+      <p><strong>But surely there’s some threshold where an organization is large enough to make running something like Kubernetes in-house worthwhile, right? Like what you were doing at GitHub?</strong></p>
+      <p>If you have a lot of hosts to look after — and we’re talking about thousands of machines, which is not many companies — and you want infrastructure that is a bit more self-healing or can take advantage of a huge fleet of machines, that gives you the flexibility to deal with these things.</p>
+      <p>I think the question every company should ask, regardless of the technical decision, is: Does this set us apart for our customers? Is there an end-user story or requirement that improves because we run and operate this infrastructure ourselves? And if the answer is no, then you shouldn’t do it with any technology at all.</p>
+      <p>Basically, almost nobody can now make a case for hosting their own Git. It’s just absurd not to spend the ridiculously small amount of money to let GitHub or GitLab handle it for you. That debate is over; there’s no advantage to doing it yourself. As serverless and technology in general improve, that boundary keeps shifting for everyone. You’re just not going to build an internal database team or ops team that is better than service providers like us.</p>
+      <p>And even if you could, how would the users know? What would it change for your user base? Very little — 99.9 percent of the time, they do not care about your stack. Every company should mostly just do the things that affect the needle for its own users and use as much managed infrastructure as it possibly can.</p>
+      <div class="article__callout">
+        <p>Security is a user experience issue, and it’s very foundational. It’s hard to be secure if you make it hard for your users to do the right thing.</p>
+      </div>
+      <h2>Security, serverless, and AWS</h2>
+      <p><strong>How do you think security and data privacy concerns are changing, especially for SaaS providers?</strong></p>
+      <p>Everyone cares about security. It’s something we have to treat extremely seriously as a company that stores people’s data. One pattern I’ve noticed is that companies are seeking their compliance certifications much earlier than they used to. Now you basically have to get SOC 2 certification almost right away, or you’re not going to be able to compete. (If you want a good piece of reading, Fly.io wrote a blog post on SOC 2 that’s worth checking out.)</p>
+      <p>And more broadly, companies are very enthusiastic about certain capabilities that are now table stakes, like single sign-on authentication, audit logs, and proper revocable access tokens.</p>
+      <p>For example, if you accidentally commit your database credentials to a public GitHub repository, we revoke them immediately so people can’t access your database. That’s the sort of thing that used to happen — people would push their AWS credentials into an open source repository and then their account would suddenly be used for Bitcoin mining and they’d rack up tens of thousands of dollars in charges, or their data would be out on the internet</p>
+      <p>My hot take, ultimately, is that security is a user experience issue and it’s very foundational. It’s hard to be secure if you make it hard for your users to do the right thing. If you make security non-default, and something people have to remember and configure, they’re more likely to make mistakes. So, for instance, you cannot connect to PlanetScale in a non-encrypted way — you can’t. People want that because they want to be lazy or because they want to do things in particular ways. We simply don’t allow it. The outcome is that nobody can screw up and send their data in plain text over the internet. That, again, is part of user experience.</p>
+      <div class="article__callout">
+        <p>For every [cloud provider service] — and there are hundreds on Amazon — there are five hot young startups competing with it. And it’s going to get very hard to care about that many users and use cases and keep it scaling.</p>
+      </div>
+      <p><strong>You mentioned serverless earlier. What’s your working definition of serverless?</strong></p>
+      <p>The way I explain it is that good serverless products should only expose what you absolutely need to control in order to get things done. If you uploaded a file to Dropbox and they asked you, “How many servers would you like us to keep this on so that it stays highly available?” You’d be like, “Isn’t that what I’m paying you for?” Is that the promise of the cloud? The cloud should be a lot more than just adding vCPUs and memory, but in the cloud.</p>
+      <p>Serverless asks, “What is the unit of value for the user? What does the user want to do?” And it doesn’t make them do anything beyond that. So, for me, it’s an optimistic movement that heads toward simplicity and better product design.</p>
+      <p><strong>How would you describe the relationship between your company and cloud providers right now? Is “frenemies” an accurate description?</strong></p>
+      <p>It’s interesting, because we compete in some ways, but we also drive a lot more usage to their platform. For customers running our managed, cloud-prem version, we work with Amazon reps so that people don’t leave for Google; they stay on Amazon and they use our software. So the reps still get a ton of consumption, we get our share of that whole deal, and it’s great. I think they’re slowly going to move backward and let companies like us be the end-user experience. And ultimately they’re still winning, because they are still selling servers at larger and larger volumes.</p>
+      <p>But we’re in this interesting middle stage, where they’re not just big box retailers. They still do compete with us on certain products, but it’s getting much harder because, now, for every one of their services — and there are hundreds on Amazon — there are five hot young startups competing against it. And it’s going to get very tough to care about that many users and use cases and keep it scaling.</p>
+      <div class="article__callout">
+        <p>If you’re the kind of manager who isn’t constantly trying to move up the ladder — but just gets done what you say you’re going to do, and you’re collegial while you do it, and you help people win and you push people forward — you just naturally get invited into bigger rooms.</p>
+      </div>
+      <h2>Moving from IC to management</h2>
+      <p><strong>Unrelatedly: You weren’t the CEO of PlanetScale at first. How did your move from CPO to CEO happen?</strong></p>
+      <p>When I joined, the company was doing things a little differently. We were doing hosted Vitess, which was the old product we had. I decided I wanted to build an amazing database product with Vitess at its core, where Vitess was the underlying engine, but not the final product. So we basically threw away the old product and built this new one, and it became very successful. And then I hired a lot of people from my previous company, GitHub, and people I knew well.</p>
+      <p>At that point, a lot of the company and the culture were people who had come to work with me — to work together again — so a double shift in the culture and the product came in through what I wanted to do. The last logical step was to align everything under that vision. That’s why I became the CEO.</p>
+      <p>It was a straightforward handoff that got done very, very fast. I mean, our founders are excellent. They launched the company, they built it, and then they passed it on, like many founders do. Some companies should have made that change much earlier, really.</p>
+      <p><strong>You moved up at GitHub pretty fast too, from DBA to VP of engineering. What’s your guidance for making those kinds of shifts well, and for deciding whether moving into management is actually the right choice for you personally?</strong></p>
+      <p>First, if you’re at a company where you only get influence by becoming a manager, you’re at the wrong company. A lot of people leave an individual contributor role and become a manager just to stay in the room, and that’s awful for themselves and it rarely helps anyone there.</p>
+      <p>My advice is to become a manager if you deeply care about people and about the results that great people can produce. You can go too far the other way, where you are only a people manager and do not care about the work. I think, in the end, you want to see great things get built, and you do that through a culture and by empowering people. So if those are the things you care about and can create, become a manager.</p>
+      <p>I really cared about those things. I came to GitHub as an engineer, and I had an impact there and loved it. And I knew that to scale, and for us to keep doing great engineering, we needed strong management. I wanted to build a high-performing culture with great engineers. So I started doing that, and we made a lot of changes. The company grew, but I kept working very steadily with people I knew were doing good things, and from there I just kept growing up.</p>
+      <p>You always get asked to do more. If you’re the kind of manager who is not always trying to climb the ladder — but instead simply does what you said you would do, stays collegial while doing it, helps people win, and pushes people forward — you naturally get invited into bigger rooms. That happened over time. And then eventually, yes, I was leading a large team there as a VP because I always did exactly what the business needed, stayed with it, worked hard, and empowered people.</p>
+      <p>And the thing I’m most proud of is how many people came from GitHub to PlanetScale because they knew that. You know what I mean? They didn’t have to. To me, that was a sign that I had shown I could consistently do what I said I was going to do as a leader. People came for that.</p>
+      <p>As an aside: Very often, managers ruin companies. We wrote a management manifesto that lays out how we feel about that role.</p>
+      <div class="article__callout">
+        <p>If you can’t handle the idea that your mistakes will mess with people’s careers, and that people truly depend on you, then [management is] not for you.</p>
+      </div>
+      <p><strong>If you’re an IC looking to transition into management, what’s the first step?</strong></p>
+      <p>I think you have to start learning to think sociologically about the dynamics of the team and the people around you, and how you can influence how people work together as a team. Becoming a tech lead, for example, has a lot more social dynamics to it than just writing the best code. You have to think about things we depend on, the people we depend on, and how we are shaping our organization to reflect the work that we’re going to do — without having to get into the thoughts and feelings of people and actually managing them. So a good way is to try and lead a project that has a lot of cross-functional work and dependencies, and requires people functioning well together, to see if you have the ability to inspire people to get their work done as a group.</p>
+      <p>If you can do that successfully, then you can start to learn the skills it takes to actually work with people well and be their manager. Because that’s a hard role; it’s a role of servitude. People put their careers in your hands, and that’s something you have to take very seriously. If you can’t handle the idea that your mistakes will mess with people’s careers, and that people truly depend on you, then it’s not for you.</p>
+      <p>If you think you can do it and want to help people become better versions of themselves, dig in.</p>
+    </div>
+
+        <section class="authors" aria-labelledby="author-profiles-title">
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Sam Lambert</strong> is CEO of PlanetScale. He was previously VP of engineering at GitHub.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Sam%20Lambert#future-archive" aria-label="More articles by Sam Lambert">More articles</a>
+        </div>
+      </div>
+    </section>
+    <!-- PRESENCE FOLLOW:START -->
+    <aside class="article-follow" aria-labelledby="follow-presence-title">
+      <p class="article-follow__kicker">Follow PRESENCE</p>
+      <h2 id="follow-presence-title">New stories, without the noise.</h2>
+      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <div class="article-follow__actions">
+        <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+      </div>
+    </aside>
+    <!-- PRESENCE FOLLOW:END -->
+
+  </article>
+
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul class="popular">
+      <li><a href="/news/#crypto">Crypto</a></li>
+      <li><a href="/news/#technology">Technology</a></li>
+      <li><a href="/news/#companies">Companies</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/#crypto">Crypto</a></li>
+        <li><a href="/news/#technology">Technology</a></li>
+        <li><a href="/news/#companies">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=661454619bcebe34"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to Build a GPT-3 for Science — PRESENCE</title>
+<meta name="description" content="A GPT-3-like AI model for science would accelerate innovation and improve reproducibility. Creating it will require us to unlock research.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="How to Build a GPT-3 for Science">
+<meta property="og:description" content="A GPT-3-like AI model for science would accelerate innovation and improve reproducibility. Creating it will require us to unlock research.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Build a GPT-3 for Science">
+<meta name="twitter:description" content="A GPT-3-like AI model for science would accelerate innovation and improve reproducibility. Creating it will require us to unlock research.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
+<link rel="stylesheet" href="/assets/css/site.css?v=11ba79f3624a2658">
+<!-- PRESENCE SEO:START -->
+<link rel="canonical" href="https://presence.news/articles/2022-08-18_how-to-build-gpt-3-for-science/">
+<meta property="og:url" content="https://presence.news/articles/2022-08-18_how-to-build-gpt-3-for-science/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-social.png">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-social.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-social.png",
+      "sameAs": [
+        "https://t.me/presencemedia"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://presence.news/articles/2022-08-18_how-to-build-gpt-3-for-science/#article",
+      "headline": "How to Build a GPT-3 for Science",
+      "description": "A GPT-3-like AI model for science would accelerate innovation and improve reproducibility. Creating it will require us to unlock research.",
+      "mainEntityOfPage": "https://presence.news/articles/2022-08-18_how-to-build-gpt-3-for-science/",
+      "image": [
+        "https://presence.news/assets/img/presence-social.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Josh Nicholson"
+      },
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      },
+      "articleSection": "Technology"
+    }
+  ]
+}
+</script>
+<!-- PRESENCE SEO:END -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/news/#crypto">Crypto</a>
+      <a href="/news/#technology">Technology</a>
+      <a href="/news/#companies">Companies</a>
+      <a class="nav-search-link" href="/#future-archive">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap article-layout">
+  <article>
+    <span class="article__cat">Technology</span>
+    <h1 class="article__title">How to Build a GPT-3 for Science</h1>
+    <p class="article__meta">Josh Nicholson · 11 min read</p>
+
+    <div class="article__body">
+      <p class="article__image"><img src="/assets/img/articles/2022-08-18_how-to-build-gpt-3-for-science/images/01_a82d1700.webp" alt="" width="1200" height="628" loading="eager" fetchpriority="high" decoding="async"></p>
+      <p>Want to make an image of velociraptors laboring on a skyscraper, in the style of “Lunch Atop A Skyscraper” of 1932? Use DALL-E. Want to make a fictional standup-comedy set by Peter Thiel, Elon Musk, and Larry Page? Use GPT-3. Want to truly understand COVID-19 research and answer questions from evidence? Learn Boolean searching, read scientific papers, and maybe earn a PhD, because there are no generative AI models trained on the huge body of scientific research publications. If there were, getting evidence-based, plain-language answers to scientific questions would be one of the easiest gains. Generative AI for science could help reverse the slowing pace of innovation in science by making it simpler and cheaper to discover new ideas. Such models could also offer data-backed warnings about therapeutic hypotheses that are bound to fail, offsetting human bias and avoiding billion-dollar, decades-long dead ends. Finally, such models could help address the reproducibility crisis by mapping, weighting, and putting research findings in context, giving a score for trustworthiness.</p>
+      <p>So why don’t we have a DALL-E or GPT-3 for science? The answer is that although scientific research is the world’s most valuable content, it is also the world’s least accessible and understandable content. I’ll describe what it would take to unlock scientific data at scale to make generative AI for science feasible, and how it would change the way we interact with research.</p>
+      <h2>What makes scientific research data challenging</h2>
+      <p>Research publications are among the world’s most crucial repositories of content and information ever produced. They connect ideas and findings across eras and fields, and are permanently kept by a network of libraries. They rest on evidence, analysis, specialist insight, and statistical relationships. They are enormously valuable, yet they remain mostly hidden from the web and are used very inefficiently. The web is full of cute, cuddly cat videos but largely missing cutting-edge cancer research. For example, the Web of Science is one of the most comprehensive indexes of scientific knowledge. It has existed for decades, but most readers have probably never even heard of it, much less used it. Most of us do not have access to research papers, and even when we do, they are dense, hard to read, and delivered as a PDF — a format made for printing, not for the web. Because scientific papers are not readily accessible, we cannot easily use the data to train generative models like GPT-3 or DALL-E. Can you imagine if a researcher could suggest an experiment and an AI model could instantly say whether it had been done before (and even better, provide the result)? Then, after they have data from a new experiment, the AI could propose a follow-up experiment based on the outcome. Finally, imagine the time that could be saved if the researcher could upload their results and the AI model could draft the resulting manuscript for them. The nearest thing we have ever had to a DALL-E of science is Google Scholar, but it is not a sustainable or scalable answer. IBM Watson also aimed to do much of what I describe here, but most of the work preceded recent advances in large language models and did not use the right or enough data to live up to the marketing hype.</p>
+      <p>For the kind of value unlock I am talking about, we need long-term investment, commitment, and vision. As was recently proposed in Future, we need to treat scientific publications as substrates that can be combined and analyzed at scale. Once we remove the barriers, we will be able to use science to supply data-hungry generative AI models. These models have huge potential to speed up science and raise scientific literacy, such as by training them to produce new scientific ideas, helping scientists manage and move through the vast scientific literature, helping spot flawed or even falsified research, and synthesizing and translating complex research findings into ordinary human speech.</p>
+      <h2>How do we get a DALL-E or GPT-3 for science?</h2>
+      <p>If you work in tech, showing a friend outputs from generative AI models like DALL-E or GPT-3 is like showing them magic. These tools are the next generation of the web. They come from synthesizing massive amounts of information, going beyond a simple link, to create tools with generative power. So how can we create a similarly magical experience in science, where anyone can ask a question of the scientific literature in plain language and receive an understandable answer supported by evidence? How can we help researchers create, develop, refine, and test their hypotheses? How can we possibly avoid wasting billions of dollars on failing hypotheses in Alzheimer’s research and mistaken links between genetics and depression?</p>
+      <p>The answers to these questions may sound like science fiction, but there is proof that we can do remarkable and unimaginable things when scientific work is used for more than the sum of its parts. Indeed, using nearly 200,000 protein structures in the Protein Data Bank has given AlphaFold the ability to predict protein structures accurately, something that was just done for every protein ever documented (over 200 million!). Using research papers in a similar way to protein structures would be a natural next move.</p>
+      <h2>Decompose papers into their minimal components</h2>
+      <p>Research papers contain a great deal of valuable information, including figures, charts, statistical relationships, and references to other papers. Breaking them into separate components and using them at scale could help us train machines for different kinds of science-related jobs, prompts or queries. Simple questions might be answered with training on one component type, but more complex questions or prompts would require bringing in multiple component types, and understanding how they relate to one another.</p>
+      <p>Some examples of complex potential prompts are:</p>
+      <p>“Tell me why this hypothesis is wrong” “Tell me why my treatment idea won’t work” “Generate a new treatment idea” “What evidence is there to support social policy X?” “Who has published the most reliable research in this field?” “Write me a scientific paper based on my data”</p>
+      <p>Some groups are making progress on this vision. For example, Elicit applies GPT-3 to millions of paper titles and abstracts to help answer researchers’ questions — a bit like Alexa, but for science. System extracts statistical relations between entities showing how different concepts and entities are connected. Primer does not focus on research papers per se, but it does work with arXiv and offers a dashboard of information used by corporations and governments to synthesize and understand large volumes of data from many sources.</p>
+      <h2>Access all the components</h2>
+      <p>Unfortunately, these groups mostly depend on titles and abstracts only, not full texts, since roughly five out of six articles are not freely or easily accessible. For groups like Web of Science and Google that do have the data or the papers, their licenses and scope of use are limited or unclear. In Google’s case, it is not clear why there have been no publicly announced efforts to train AI models on the full-text scientific research in Google Scholar. Amazingly, this did not even change in the middle of the COVID-19 pandemic, which brought the world to a halt. The Google AI team did step up, building a prototype that let the public ask about COVID-19. But — and here’s the catch — they did it using only open access papers from PubMed, not Google Scholar.</p>
+      <p>The issue of gaining access to papers and using them for more than reading them one at a time is something groups have pushed for for decades. I have personally worked on it for nearly a decade myself, launching an open access publishing platform called The Winnower during the final year of my PhD, and then working to build the article of the future at another startup called Authorea. While neither of those efforts fully worked out the way I wanted them to, they brought me to my current work at scite, which has, at least in part, solved the access issue by working directly with publishers.</p>
+      <h2>Connect the components and define relationships</h2>
+      <p>Our goal at scite is to introduce the next generation of citations — called Smart Citations — which show how and why any article, researcher, journal, or topic has been cited and more broadly discussed in the literature. By working with publishers, we pull the sentences directly from full-text articles where they use their references in-text. These sentences provide a qualitative view into how papers were cited by newer work. It is a bit like Rotten Tomatoes for research.</p>
+      <p>This requires access to full-text articles, and collaboration with publishers, so that we can use machine learning to extract and analyze citation statements at scale. Because there were enough Open Access articles to get started, we were able to build out the proof of concept and, one by one, we showed publishers the improved discoverability of articles indexed in our system and gave them a system to display better metrics for more responsible research assessment. What we saw as expert statements, they saw as previews of their articles. Publishers have now joined in en masse and we have indexed over 1.1 billion Smart Citations from more than half of all articles published.</p>
+      <h2>Use relational data to train AI models</h2>
+      <p>The components and relations extracted from papers could be used to train new large language models for research. GPT-3, while extremely powerful, was not built to operate on science and performs poorly at answering questions you might encounter on the SAT. When GPT-2 (an earlier version of GPT-3) was adapted by training it on millions of research papers, it performed better than GPT-2 alone on specific knowledge tasks. This shows that the data used to train the models is extremely important.</p>
+      <p>Some groups have recently used GPT-3 to write academic papers, and while this is impressive, the facts or arguments they might purport to show could be very wrong. If the model can’t get simple SAT-style questions right, can we trust it to write a full paper? SCIgen, which predates GPT-3 by nearly 20 years, showed that generating papers that look real is relatively easy. Their system, while much simpler, generated papers that were accepted into various conferences. We need a model that doesn’t just look scientific but is scientific, and that requires a system to verify claims for machines and humans. Meta recently introduced a system for verifying Wikipedia citations, something some publishers have vocally wished they had for scholarly publications.</p>
+      <h2>Current progress</h2>
+      <p>Again, one major blocker to bringing this system to fruition is a lack of access to the papers and resources needed to create it. Where papers or information become available for use at scale, we do see tools and new models flourish. The Google Patent team used 100 million patents to train a system to help with patent analysis, effectively a GooglePatentBERT. Others have introduced models like BioBERT and SciBERT, and despite the fact that they have been trained on only about ~1% of scientific texts in only specific subject domains, they are impressive at scholarly tasks, including our citation classification system at scite.</p>
+      <p>More recently, a ScholarBERT model has been released, and it appears to draw effectively on the full body of scientific literature to train BERT. It sidesteps the access problem but is notably silent on the method, merely stressing that its use is “non-consumptive.” That kind of use may open the door for others to read articles without explicit publisher permission and could be an important step toward creating a DALL-E for science. Oddly, though, ScholarBERT performed worse on several specialized knowledge tasks than smaller science language models such as SciBERT.</p>
+      <p>Just as important, BERT-style models are far smaller in scale than large language models such as GPT-3, and they do not support the same broad prompting and in-context learning that has fueled much of the GPT-3 excitement. The question is still there: what if we used ScholarBERT’s same data to train a larger generative model like GPT-3? What if we could somehow show where the machine’s answers came from, perhaps linking them straight back to the literature, as with Smart Citations?</p>
+      <h2>Why now?Why now?</h2>
+      <p>Thankfully, papers are opening up and machines are getting more powerful. We can now start using the information inside papers and linked repositories to train machines to answer questions and generate new ideas from research. This could change healthcare, policy, technology, and everything around us. Imagine not searching only for document titles but for answers themselves, and how that would reshape research and workflows across every field.</p>
+      <p>Freeing the world’s scientific knowledge from the two barriers of accessibility and comprehensibility will help shift us from a web centered on clicks, views, likes, and attention to one centered on evidence, data, and veracity. Pharma is plainly motivated to make this happen, which explains the rising number of startups using AI to identify possible drug targets — but I think the public, governments, and anyone who uses Google may be willing to give up free searches in exchange for trust and saved time. The world urgently needs such a system, and it needs it quickly.</p>
+    </div>
+
+        <section class="authors" aria-labelledby="author-profiles-title">
+      <h2 class="visually-hidden" id="author-profiles-title">About the author</h2>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Josh Nicholson</strong> is co-founder and CEO of scite. He holds a PhD in Cell Biology from Virginia Tech and has built and sold two companies aimed at improving how researchers collaborate and publish their work.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Josh%20Nicholson#future-archive" aria-label="More articles by Josh Nicholson">More articles</a>
+        </div>
+      </div>
+    </section>
+    <!-- PRESENCE FOLLOW:START -->
+    <aside class="article-follow" aria-labelledby="follow-presence-title">
+      <p class="article-follow__kicker">Follow PRESENCE</p>
+      <h2 id="follow-presence-title">New stories, without the noise.</h2>
+      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <div class="article-follow__actions">
+        <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+      </div>
+    </aside>
+    <!-- PRESENCE FOLLOW:END -->
+
+  </article>
+
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul class="popular">
+      <li><a href="/news/#crypto">Crypto</a></li>
+      <li><a href="/news/#technology">Technology</a></li>
+      <li><a href="/news/#companies">Companies</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/#crypto">Crypto</a></li>
+        <li><a href="/news/#technology">Technology</a></li>
+        <li><a href="/news/#companies">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=661454619bcebe34"></script>
+</body>
+</html>

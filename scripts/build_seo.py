@@ -9,13 +9,12 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import re
-from urllib.parse import quote, urljoin
+from urllib.parse import urljoin
 
 from build_catalog import build_catalog
+from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
 
 
-ROOT = Path(__file__).resolve().parents[1]
-BASE_URL = "https://presence.news"
 SEO_START = "<!-- PRESENCE SEO:START -->"
 SEO_END = "<!-- PRESENCE SEO:END -->"
 FOLLOW_MARKER = "<!-- PRESENCE FOLLOW:START -->"
@@ -28,13 +27,6 @@ def clean_text(value: str) -> str:
 def capture(pattern: str, document: str, default: str = "") -> str:
     match = re.search(pattern, document, re.IGNORECASE | re.DOTALL)
     return clean_text(match.group(1)) if match else default
-
-
-def canonical_for(path: Path) -> str:
-    relative = path.relative_to(ROOT).as_posix()
-    if relative == "index.html":
-        return f"{BASE_URL}/"
-    return f"{BASE_URL}/{quote(relative, safe='/-_.')}"
 
 
 def absolute_url(value: str, canonical: str) -> str:
@@ -83,9 +75,9 @@ def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
         return {"@context": "https://schema.org", "@graph": [organization, article]}
 
     page_type = {
-        "news.html": "CollectionPage",
-        "about.html": "AboutPage",
-        "contact.html": "ContactPage",
+        "news/index.html": "CollectionPage",
+        "about/index.html": "AboutPage",
+        "contact/index.html": "ContactPage",
     }.get(relative, "WebPage")
     webpage = {
         "@type": page_type,
@@ -109,10 +101,9 @@ def page_schema(path: Path, document: str, canonical: str, image: str) -> dict:
 def add_search_link(document: str, path: Path) -> str:
     if 'class="nav-search-link"' in document:
         return document
-    prefix = "../" if path.parent.name == "articles" else ""
-    link = f'      <a class="nav-search-link" href="{prefix}index.html#future-archive">Search</a>\n'
+    link = '      <a class="nav-search-link" href="/#future-archive">Search</a>\n'
     return re.sub(
-        r'(\s+<a href="(?:\.\./)?about\.html"(?: aria-current="page")?>About</a>)',
+        r'(\s+<a href="/about/"(?: aria-current="page")?>About</a>)',
         f"\n{link}\\1",
         document,
         count=1,
@@ -129,7 +120,7 @@ def add_article_follow(document: str) -> str:
       <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
       <div class="article-follow__actions">
         <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
-        <a class="btn btn--quiet" href="../feed.xml">Follow RSS</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
       </div>
     </aside>
     <!-- PRESENCE FOLLOW:END -->
@@ -149,7 +140,7 @@ def update_document(path: Path) -> None:
         flags=re.DOTALL,
     )
     document = add_search_link(document, path)
-    if path.parent.name == "articles":
+    if is_article(path):
         document = add_article_follow(document)
 
     canonical = canonical_for(path)
@@ -183,13 +174,12 @@ def update_document(path: Path) -> None:
         document,
         "Technology, power, and the ideas shaping what comes next.",
     )
-    is_article = path.parent.name == "articles"
     additions = [
         f'<link rel="canonical" href="{escape(canonical, quote=True)}">',
         f'<meta property="og:url" content="{escape(canonical, quote=True)}">',
     ]
     if 'property="og:type"' not in document:
-        additions.append(f'<meta property="og:type" content="{"article" if is_article else "website"}">')
+        additions.append(f'<meta property="og:type" content="{"article" if is_article(path) else "website"}">')
     if 'property="og:site_name"' not in document:
         additions.append('<meta property="og:site_name" content="PRESENCE">')
     if 'property="og:title"' not in document:
@@ -253,7 +243,39 @@ def update_feed() -> None:
         1,
     )
     document = document.replace("<link>./articles/", f"<link>{BASE_URL}/articles/")
+    document = re.sub(
+        rf"(<link>{re.escape(BASE_URL)}/articles/[^<]+)\.html(</link>)",
+        r"\1/\2",
+        document,
+    )
     path.write_text(document, encoding="utf-8", newline="\n")
+
+
+def write_redirects(paths: list[Path]) -> list[Path]:
+    redirects = []
+    for path in paths:
+        legacy = legacy_path(path)
+        if legacy is None:
+            continue
+        target = escape(route_for(path), quote=True)
+        canonical = escape(canonical_for(path), quote=True)
+        document = f'''<!doctype html>
+<html lang="en" data-presence-redirect="{target}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; script-src 'self'; object-src 'none'">
+<title>Page moved — PRESENCE</title>
+<link rel="canonical" href="{canonical}">
+<script src="/assets/js/redirect.js?v=0"></script>
+<noscript><meta http-equiv="refresh" content="0; url={target}"></noscript>
+</head>
+<body><p>This page has moved. <a href="{target}">Continue to PRESENCE</a>.</p></body>
+</html>
+'''
+        legacy.write_text(document, encoding="utf-8", newline="\n")
+        redirects.append(legacy)
+    return redirects
 
 
 def update_asset_versions(paths: list[Path]) -> None:
@@ -265,6 +287,7 @@ def update_asset_versions(paths: list[Path]) -> None:
         "assets/js/news-data.js",
         "assets/js/news.js",
         "assets/js/contact.js",
+        "assets/js/redirect.js",
     )
     versions = {
         asset: sha256((ROOT / asset).read_bytes()).hexdigest()[:16]
@@ -275,7 +298,7 @@ def update_asset_versions(paths: list[Path]) -> None:
         for asset, version in versions.items():
             filename = asset.rsplit("/", 1)[-1]
             document = re.sub(
-                rf'((?:\.\./)?{re.escape(asset)})\?v=[a-f0-9]+',
+                rf'({re.escape(asset)})\?v=[a-f0-9]+',
                 rf'\1?v={version}',
                 document,
             )
@@ -286,13 +309,15 @@ def update_asset_versions(paths: list[Path]) -> None:
 
 def main() -> None:
     build_catalog()
-    paths = sorted(ROOT.rglob("*.html"))
+    paths = content_pages()
     for path in paths:
         update_document(path)
     write_sitemap(paths)
     update_feed()
-    update_asset_versions(paths)
+    redirects = write_redirects(paths)
+    update_asset_versions(paths + redirects)
     print(f"SEO updated for {len(paths)} HTML pages")
+    print(f"Legacy redirects updated: {len(redirects)}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What We Learned Doing Fast Grants — PRESENCE</title>
+<meta name="description" content="We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="What We Learned Doing Fast Grants">
+<meta property="og:description" content="We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What We Learned Doing Fast Grants">
+<meta name="twitter:description" content="We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
+<link rel="stylesheet" href="/assets/css/site.css?v=11ba79f3624a2658">
+<!-- PRESENCE SEO:START -->
+<link rel="canonical" href="https://presence.news/articles/2021-06-15_what-we-learned-doing-fast-grants/">
+<meta property="og:url" content="https://presence.news/articles/2021-06-15_what-we-learned-doing-fast-grants/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-social.png">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-social.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-social.png",
+      "sameAs": [
+        "https://t.me/presencemedia"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://presence.news/articles/2021-06-15_what-we-learned-doing-fast-grants/#article",
+      "headline": "What We Learned Doing Fast Grants",
+      "description": "We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.",
+      "mainEntityOfPage": "https://presence.news/articles/2021-06-15_what-we-learned-doing-fast-grants/",
+      "image": [
+        "https://presence.news/assets/img/presence-social.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Patrick Collison & Tyler Cowen & Patrick Hsu"
+      },
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      },
+      "articleSection": "Technology"
+    }
+  ]
+}
+</script>
+<!-- PRESENCE SEO:END -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/news/#crypto">Crypto</a>
+      <a href="/news/#technology">Technology</a>
+      <a href="/news/#companies">Companies</a>
+      <a class="nav-search-link" href="/#future-archive">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap article-layout">
+  <article>
+    <span class="article__cat">Technology</span>
+    <h1 class="article__title">What We Learned Doing Fast Grants</h1>
+    <p class="article__meta">Patrick Collison &amp; Tyler Cowen &amp; Patrick Hsu · 18 min read</p>
+
+    <div class="article__body">
+      <p class="article__image"><img src="/assets/img/articles/2021-06-15_what-we-learned-doing-fast-grants/images/01_1e44676e.webp" alt="" width="1200" height="628" loading="eager" fetchpriority="high" decoding="async"></p>
+      <p>The COVID-19 pandemic is not finished, and it could still end up killing more than ten million people around the world. From the start, the institutional response was sluggish. While officials, including, regrettably, prominent scientific officeholders, issued reassuring public statements, the U.S. did almost no surveillance sequencing in January or February, even as outbreaks began in China and Italy. The CDC mishandled the first diagnostic test. And even after usable tests were available, they were still consistently slow and difficult for ordinary people to get. We did not begin well.</p>
+      <p>As the first U.S. lockdowns began in March last year, we contacted several leading scientists and were surprised to find that funding for COVID-19 research was not easy to access. We had assumed the U.S.’s huge government funding apparatus would be mobilized, with decisions arriving in days, if not hours. That is what happened during World War II, which killed fewer Americans.</p>
+      <p>Instead, we discovered that scientists — including some of the world’s foremost virologists and coronavirus researchers — were left waiting, hoping for rulings on whether they could redirect their existing funding toward this rapidly expanding disaster. It is worth looking at the National Institutes of Health (NIH)’s application overview for this, released in March 2020, to get a concrete sense of what people seeking emergency funding were up against.</p>
+      <p>So, in early April, we chose to launch Fast Grants, which we hoped would become one of the faster channels for emergency science funding during the pandemic. Our expectations were modest, given our inexperience and lack of preparation, but we thought that even a small speed gain would be worthwhile in light of the disaster’s scale.</p>
+      <p>The initial idea was straightforward: an application form that scientists could finish in under 30 minutes and that would produce funding decisions within 48 hours, followed by the money a few days later.</p>
+      <p>We built the program under the umbrella of the Mercatus Center at George Mason University, secured some seed funding, and created the website. Roughly 10 days after the idea first came up, we went live. To help find the most immediately deserving applicants, our standards were fairly strict: eligibility was limited to “principal investigators” (that is, scientists leading their own labs or research programs) who were already doing COVID-19-related research, rather than those who merely had ideas about how they might do so.</p>
+      <p>Given these criteria, we expected to receive at most a few hundred applications. Within a week, however, we had 4,000 serious applications, with virtually no spam. Within a few days, we started to distribute millions of dollars of grants, and, over the course of 2020, we raised over $50 million and made over 260 grants. All of this was done at a cost of less than 3% Mercatus overhead, thanks in part to infrastructure assembled for Emergent Ventures, which was also designed to make speedy and efficient (non-biomedical) grants.</p>
+      <p>The grant applications were refereed by a team of 20 mostly early-career individuals drawn from top universities and labs, who worked hard to vet and review the more than 6,000 applications received over the course of the program. Every funded application was reviewed by at least three reviewers, but unanimity was not required: the goal was to identify projects that at least one or two reviewers thought were very much worth funding. (Successful NIH grant applications, on the other hand, are typically reviewed by 10-20 scientists and program officers across three phases of review.)</p>
+      <p>“Let’s do it” was the operative mindset, and we worried far more about failing to back important work than about appearing ridiculous.</p>
+      <p>The first round of grants went out within 48 hours. Later rounds, which often needed extra review of earlier findings, were awarded within two weeks. These timeframes were far shorter than the other funding options available to most scientists. Recipients were asked to do little beyond publishing open access preprints and sending monthly one-paragraph updates. We let research teams reallocate funds in any reasonable way, so long as they were used for research tied to COVID-19. Beyond the 20 reviewers, who likely devoted about 20-40 hours each, the entire Fast Grants staff was four part-time people, each spending only a few hours a week on the project after the initial setup.</p>
+      <p>We intend to take a closer look at these projects in the future, but some of the notable work supported by Fast Grants includes:</p>
+      <ul>
+        <li>The SalivaDirect team at Yale showed that saliva-based COVID-19 tests can perform just as well as tests using nasopharyngeal swabs. This was crucial for easing shortages of swabs and trained clinicians, who are needed to administer swab-based tests, at the start of the pandemic. We funded several clinical trials for repurposed drugs. The interim readout for one of these trials, just completed, indicates that one common generic drug may cut hospitalization from COVID-19 by about 40%. We expect an announcement on this soon. Research on the causes of different COVID-19 outcomes based on underlying genetic factors and immune response profiles. Research on “Long COVID”, which is now being followed by a clinical trial on whether COVID-19 vaccines can improve symptoms. Monitoring the spread of new COVID-19 “variants of concern” before other funding sources had arrived, through a diversified regional network of sequencing labs.</li>
+      </ul>
+      <p>So far, about 356 papers found through Google Scholar credit Fast Grants. Fast Grants recipients have published a number of highly cited papers, including Lucas et al (Nature, 2020) on misdirected immune responses in patients who develop severe COVID-19; Gordon et al (Nature, 2020) on virus-host protein interactions that point to new therapeutic approaches; Robbiani et al (Nature, 2020) on the strength of antibody responses in recovering COVID-19 patients; and Korber et al (Cell, 2020) on following the spread of spike variants that may be more transmissible.</p>
+      <p>Other Fast Grants investments were more speculative, and may or may not pay off in the future, or in the next pandemic. Examples include:</p>
+      <ul>
+        <li>Work on a possible pan-coronavirus vaccine at Caltech. Work on a possible pan-enterovirus (another class of RNA virus) drug at Stanford University that has since attracted follow-on funding. Multiple grants to different labs working on CRISPR-based COVID-19 at-home testing. One example is smartphone-based COVID-19 detection, being developed at UC Berkeley and Gladstone Institutes.</li>
+      </ul>
+      <p>Of course, many of our grants do not seem to have produced useful discoveries, but that is probably true under any plausible funding system and can even be viewed as evidence of risk-taking in how projects were chosen. A longer list of grant recipients is available at fastgrants.org (though not all recipients chose to be listed), and it is certainly possible that the most important grants we made will not be clear for years.</p>
+      <h2>What surprised us?</h2>
+      <p>We were pleasantly surprised that so many donors were willing to back a completely unproven project. That may sound bland, but it is worth stressing: several people gave seven-figure gifts without ever speaking with us. We did not expect that! Some donors, though not all, are listed on our website. We were encouraged that so many people had the nerve to move quickly despite the chance of looking foolish if Fast Grants failed.</p>
+      <p>We found it notable that relatively few organizations contributed to Fast Grants. The project seemed somewhat odd, and individuals seemed much more willing to accept the “risk”. (That said, a few institutions did contribute substantial amounts, and we are very grateful to those that did.) More broadly, we suspect that many worthwhile projects in the world are blocked by something like this: funders, especially institutional funders, are often unwilling to support something unusual simply because they trust the people behind it. Too often, the default aim of funders is to find established things that resemble everything else — it is usually easier to defend backing a long-established institution. But, of course, the most valuable opportunities are often the ones that look quite different, and a structural bias toward familiarity can easily work against innovation.</p>
+      <p>We were very positively surprised by the quality of the applications. We had an open call and a very short application form. Even with thousands of submissions, a small group of committed reviewers was able to score them within days. We were helped substantially by software for assigning reviews, tracking application scores, and so on, which we built ourselves. But the speed came in large part from an unapologetic effort to quickly identify promising projects rather than to optimize for perfection or fairness. While we think our reviewers generally did a very good job (we doubt we would have changed our decisions much even with more reviewer time), we would not claim that 48-hour turnaround is ideal in every situation. Still, we do think the possibility of such turnarounds suggests that other grantmakers may be able to make decisions much faster.</p>
+      <p>We initially imagined that scientists at top universities would quickly get plenty of funding, and that Fast Grants’ comparative advantage might be in spotting promising work outside the most prestigious institutions. Even though we did not formally include institution environment or reputation in our assessment method at all, unlike, for example, NIH grant scoring processes, we were surprised to find that a large share of our grants went to people at top twenty institutions, with major recipient institutions including Berkeley, Stanford, MIT, and UCSF. In addition, many of these Fast Grant recipients had little or no other funding when they applied. We did not expect people at top universities to have such a hard time getting funding during the pandemic.</p>
+      <p>To better understand these funding problems, we recently carried out a survey of Fast Grants recipients, asking how much their Fast Grant sped up their work. 32% said that Fast Grants accelerated their work by “a few months”, which is roughly what we had hoped for at the outset given that the disease was killing thousands of Americans every single day.</p>
+      <p>But in addition, 64% of respondents told us that the work in question would not have happened without a Fast Grant.</p>
+      <p>For instance, SalivaDirect, the highly successful spit test from Yale University, could not get timely funding from its own School of Public Health, even though Yale has an endowment of over $30 billion. Fast Grants also made numerous grants to UC Berkeley researchers, and the UC Berkeley press office itself said in May 2020: “One notably absent funder, however, is the federal government. While federal agencies have announced that researchers can apply to repurpose existing funds toward Covid-19 research and have promised new emergency funds to projects focused on the pandemic, disbursement has been painfully slow. …Despite many UC Berkeley proposals submitted to the National Institutes of Health since the pandemic began, none have been granted.” [Emphasis ours.]</p>
+      <p>It was a troubling shock that so many top-tier researchers said they would have been unable to carry out their COVID-related work without this support.</p>
+      <p>One of the most straightforward ways to blunt a new infectious disease is to identify an existing drug that can block it effectively. There are roughly 1,800 FDA-approved drugs already available — what if one of them is active against COVID-19? In tissue culture, it is fairly simple, though operationally complicated, to screen many drugs and find some that might reduce the virus. These broad screens will probably produce a group of plausible candidates that can then be tested in humans. Although the details vary by drug, these trials can be quite safe — after all, they use drugs that have already been approved.</p>
+      <p>With that aim, we supported a number of drug trials in the U.S. Still, we were dismayed that very few of them actually took place. This was usually due to delays from university institutional review boards (IRBs) and comparable internal administrative bodies, which were consistently slow to clear trials even in the midst of the pandemic. (The issues with IRBs have been discussed elsewhere.) This reflects a wider pattern: we were surprised that many organizations kept operating almost as if it were “business as usual” instead of shifting into emergency pandemic mode. For instance, university administrative bodies such as Environment, Health, and Safety departments were often slow to approve crucial lab work.</p>
+      <p>Setting institutional obstacles aside, clinical trial enrollment, management, and execution are still highly inefficient and costly. It is extremely hard to run human clinical trials quickly and inexpensively, even when the drug under study is already known to be safe. Consequently, more than a year into the pandemic, there are completed U.S. clinical trials for only 10 drugs intended to treat COVID-19, a scant total given how valuable effective treatments could be. Cutting the cost and time of human clinical trials is likely one of the biggest chances to improve U.S. healthcare both during pandemics and beyond them.</p>
+      <p>We were surprised that some clearly deserving organizations were left without enough support. For instance, Addgene, a widely known nonprofit that provides essential reagents to scientists doing molecular biology research, was left severely underfunded last spring/summer amid lab shutdowns. If Addgene’s supply chain had been interrupted, it could have slowed or stopped a range of global scientific efforts aimed at COVID-19, since Addgene distributes critical reagents for coronavirus-related research. Fortunately, we were able to make a grant that helped keep its operations going. On another front, as multiple variants of concern — including B.117 and B.1.351 — emerged in late 2020 and early 2021, we were surprised that the U.S. was doing very little surveillance sequencing with a turnaround fast enough to detect their spread in real time. Fast Grants funded several leading sequencing labs and helped make possible about a sixfold rise in U.S. surveillance sequencing around the start of 2021.</p>
+      <p>A recurring pattern in all of this is that fairly obvious opportunities were not taken up by incumbent institutions. We cite examples of what Fast Grants did not to suggest any sort of exceptional brilliance, but rather to stress the reverse: Fast Grants pursued low-hanging fruit and chose the most obvious bets. What was unusual was not cleverness in identifying worthwhile things to fund, but simply finding a way to actually do it. To us, this implies that mainstream institutions probably have too few smart administrators entrusted with flexible budgets that can be moved quickly without setting off major red tape or committee-led consensus.</p>
+      <p>This lack of empowerment points to larger problems of institutional judgment and institutional courage that were persistent throughout the pandemic. The repeated shortcomings of major organizations, including the CDC and the WHO, have been described in detail elsewhere. Intelligent individuals have been a more dependable source of guidance than any well-known institution. Strong institutional judgment — in which evidence is correctly assessed and then reconsidered as new evidence emerges — has too often been scarce. In a similar way, institutions have repeatedly been reluctant to depart from their ordinary, non-pandemic routines. IRBs, universities, and funding agencies stayed slow. The FDA failed to authorize rapid tests in a timely manner. The EU and many other political entities were too slow to finance and buy vaccines. Some agencies objected to the hugely successful British Recovery Trials because they believed an accelerated process would be unfair. We think these can be seen as failures of institutional courage. We have no doubt that many people inside these bodies would have preferred to move into “pandemic mode”, but something about the institutional sociology clearly made that hard. Why did so many of the organizations we ought to have depended on perform so badly? We think this question merits thorough investigation.</p>
+      <p>Finally, we were definitely surprised, and greatly relieved, by how fast and how well vaccine development succeeded. The route to vaccines turned out to be a strong example of the synergy among basic research, the pharmaceutical/biotech industries, and both private and public funders. We would not have had vaccine candidates as rapidly as we did without a great deal of foundational science work carefully carried out, sometimes for decades, by people such as Katalin Karikó, Kizzmekia Corbett, Jason McLellan, and many hundreds of others. While much about our science funding systems could improve, we should not lose sight of what did work. This research was ultimately supported, and that is no small accomplishment. The funders involved, including the NIH, deserve our deep gratitude. On the translation side, Moderna, BioNTech, and Novavax, makers of the vaccine candidates that performed best in clinical trials, all began as privately backed biotech startups that depended on risk-tolerant funders, highlighting the importance of a lively private ecosystem.</p>
+      <p>More broadly, in pointing to some of our surprise at what went poorly during the pandemic, we do not want our remarks to seem one-sided. Many things went well. Operation Warp Speed, an interagency project in which both the NIH and FDA took part, was an excellent and successful example of bold action and also institutional courage. We were able to produce vaccines as quickly as we did partly because the NIH funded three grants at UT Austin before 2020; because of these, we had a stabilized spike protein ready to use. This protein sequence was used in both the Moderna and BioNTech mRNA vaccines. There are many other examples of essential work that had been supported before it was urgently needed in 2020. It is also important to recognize much of the unglamorous infrastructure that allowed science to move quickly during the pandemic, such as databases maintained by the National Center for Biotechnology Information (NCBI, part of the U.S. National Library of Medicine), which are enabled and funded by the NIH and other public funding bodies.</p>
+      <h2>What does Fast Grants reveal about science funding models?</h2>
+      <p>We think the pandemic shows both the strengths and the weaknesses of our current science funding models. As a society, we are highly committed to supporting science, and our public institutions sustain a rich ecosystem of excellent researchers. The scientific discoveries that will end the pandemic are already underway.</p>
+      <p>At the same time, this support for science exists in a monocultural and generally conservative form. The organizations involved in science funding, especially the NIH, require long applications and put those applications through multiple layers of administrative review, written and in-person peer review, program officer review, advisory council review, and even council of councils review. Consensus carries a great deal of weight. Scientists are discouraged from pursuing research outside their usual fields, and there is a strong preference for funding later-career rather than younger people. It is hard for bodies such as the NIH to adjust as circumstances shift.</p>
+      <p class="article__image"><img src="/assets/img/articles/2021-06-15_what-we-learned-doing-fast-grants/images/02_55bb0b83.webp" alt="" width="2000" height="522" loading="lazy" decoding="async"></p>
+      <p>Even if someone believes that NIH-like models are the best way to fund much of the scientific establishment, it is hard to think they should be so dominant. Wouldn’t a variety of approaches and mechanisms be better? Isn’t experimentation the very heart of science?</p>
+      <p>To get a more specific sense of the nature of these issues, since anecdotes are common but only go so far, we conducted a survey of Fast Grants recipients and asked broader questions about their views on science funding.</p>
+      <p>57% of respondents told us that they spend more than one quarter of their time on grant applications. This seems crazy. We spend enormous effort training scientists and then force them to devote a substantial share of their time seeking alms rather than focusing on the research they were hired to do.</p>
+      <p>The harmful effects of our funding system appear to be more subtle than simply adding bureaucratic overhead, however.</p>
+      <p>In our survey of scientists who received Fast Grants, 78% said they would change their research program “a lot” if their existing funding could be used without constraints. We think this figure is far too high: the current grant funding apparatus does not let some of the best scientists in the world pursue the research agendas they themselves believe are best.</p>
+      <p class="article__image"><img src="/assets/img/articles/2021-06-15_what-we-learned-doing-fast-grants/images/03_abd6402c.webp" alt="" width="2000" height="1806" loading="lazy" decoding="async"></p>
+      <p>Scientists sit in the paradoxical position of being seen as the very best people to fund in order to make important discoveries, yet not trustworthy enough to decide what work would actually make the most sense!</p>
+      <p>We all want more high-impact discoveries. 81% percent of those who responded said their research programs would become more ambitious if they had such flexible funding. 62% said they would pursue work outside their normal field (which the NIH explicitly discourages), and 44% said they would pursue more hypotheses that others regard as unlikely (which the NIH also selects against because of its consensus-oriented ranking mechanisms).</p>
+      <p>Many people argue that modern science is too often centered on incremental discoveries. To us, this survey shows clearly that such conservatism is not what scientists themselves prefer. Instead, we have unintentionally built a system that clips the wings of the world’s smartest researchers, and that is a long-term mistake.</p>
+      <p>* * *</p>
+      <p>It is hard to assess the ultimate importance of Fast Grants. Would the pandemic have played out differently if Fast Grants had not happened? Most importantly, Fast Grants did not alter the vaccine timeline, and vaccines were plainly the most important part of the response. Even so, we think the clinical and testing work we funded may have sped up improvements in a few key areas. We hope that some of the work we funded may still produce substantial results. We will never know the counterfactual, but our best judgment is that some quite important work was accelerated by perhaps six months. (Even though a majority of Fast Grants recipients tell us the work would not have happened without its support, it is quite possible that most would have eventually found some way to raise the money.) If this assessment is correct, we regard Fast Grants as a great success.</p>
+      <p>Maybe the key lesson we have drawn from running Fast Grants is that different science-funding models can, in fact, work. José Luis Ricón has written at length about several funding models for science. The broad takeaway is that we still do not know what works, or what mix of structures would make the most sense. The conventional science-funding system, as NIH illustrates, takes it for granted that slowness is fine, or at least acceptable; or, more charitably, that a careful, consensus-driven process is best. Under NIH rules, a grant application will usually lead to a decision somewhere between 200 and 600 days later.</p>
+      <p>For us, Fast Grants suggests that making the application process more efficient may not just speed up discoveries, but also improve long-run results by leaving scientists more time for real science — giving teams room to follow where the work points. That could free up more ambitious, high-impact research that is otherwise limited by structural obstacles.</p>
+      <p>We asked Fast Grants recipients how effectively they thought established science-funding institutions responded during the pandemic. On average, they rated them “5” on a 10-point scale. We think this reflects an important directional truth: we could do much better.</p>
+      <p>That frustration from scientists was nonetheless balanced by optimism. When asked how much the pandemic altered their view of how fast things can happen in science, the average score was “9.”</p>
+      <p>To us, these findings indicate that scientists want something better, and are confident that better is genuinely possible. We hope many other actors will run their own experiments, share the results, and discover important and effective new ways to support the discoveries the world still urgently requires.</p>
+    </div>
+
+        <section class="authors" aria-labelledby="author-profiles-title">
+      <h2 class="visually-hidden" id="author-profiles-title">About the authors</h2>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Patrick Collison</strong> is chief executive officer and co-founder of Stripe, a technology company that builds economic infrastructure for the internet.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Patrick%20Collison#future-archive" aria-label="More articles by Patrick Collison">More articles</a>
+        </div>
+      </div>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Tyler Cowen</strong> is Professor of Economics at George Mason University, Faculty Director of the Mercatus Center, and Director of Fast Grants.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Tyler%20Cowen#future-archive" aria-label="More articles by Tyler Cowen">More articles</a>
+        </div>
+      </div>
+      <div class="author">
+        <div class="author__avatar" aria-hidden="true">
+          <img src="/assets/img/presence-logo.webp" alt="" width="64" height="64" decoding="async" loading="lazy">
+        </div>
+        <p class="author__bio"><strong>Patrick Hsu</strong> is an assistant professor of bioengineering at the University of California, Berkeley and a pioneer of CRISPR technologies for human genome editing.</p>
+        <div class="author__links">
+          <span>Explore</span>
+          <a href="/?author=Patrick%20Hsu#future-archive" aria-label="More articles by Patrick Hsu">More articles</a>
+        </div>
+      </div>
+    </section>
+    <!-- PRESENCE FOLLOW:START -->
+    <aside class="article-follow" aria-labelledby="follow-presence-title">
+      <p class="article-follow__kicker">Follow PRESENCE</p>
+      <h2 id="follow-presence-title">New stories, without the noise.</h2>
+      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <div class="article-follow__actions">
+        <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+      </div>
+    </aside>
+    <!-- PRESENCE FOLLOW:END -->
+
+  </article>
+
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul class="popular">
+      <li><a href="/news/#crypto">Crypto</a></li>
+      <li><a href="/news/#technology">Technology</a></li>
+      <li><a href="/news/#companies">Companies</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/#crypto">Crypto</a></li>
+        <li><a href="/news/#technology">Technology</a></li>
+        <li><a href="/news/#companies">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=661454619bcebe34"></script>
+</body>
+</html>
