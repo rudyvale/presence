@@ -16,7 +16,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_URL = "https://rudyvale.github.io/presence"
+BASE_URL = "https://presence.news"
 
 
 class ReferenceParser(HTMLParser):
@@ -125,7 +125,7 @@ def main() -> int:
             clean = parsed.path
             if not clean:
                 continue
-            target = (page.parent / clean).resolve()
+            target = (ROOT / clean.lstrip("/") if clean.startswith("/") else page.parent / clean).resolve()
             try:
                 target.relative_to(ROOT)
             except ValueError:

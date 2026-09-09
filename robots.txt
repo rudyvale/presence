@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rudyvale.github.io/presence/sitemap.xml
+Sitemap: https://presence.news/sitemap.xml

@@ -15,7 +15,7 @@ from build_catalog import build_catalog
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_URL = "https://rudyvale.github.io/presence"
+BASE_URL = "https://presence.news"
 SEO_START = "<!-- PRESENCE SEO:START -->"
 SEO_END = "<!-- PRESENCE SEO:END -->"
 FOLLOW_MARKER = "<!-- PRESENCE FOLLOW:START -->"
