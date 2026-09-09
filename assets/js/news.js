@@ -90,7 +90,6 @@
     appendText(meta, "span", "news-card__category", categoryLabel(story.category));
     appendText(meta, "span", "news-card__type", story.type);
     const publicationTime = makePublicationTime(listingDate(story));
-    if (publicationTime && safePublicationDate(story.republishedDate)) publicationTime.prepend("Republished ");
     if (publicationTime) meta.append(publicationTime);
     article.append(meta);
 

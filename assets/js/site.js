@@ -93,11 +93,7 @@
 
   const listingDate = (story) => story.republishedDate || story.date;
 
-  const makeStoryTime = (story) => {
-    const time = makePublicationTime(listingDate(story));
-    if (time && story.republishedDate) time.prepend("Republished ");
-    return time;
-  };
+  const makeStoryTime = (story) => makePublicationTime(listingDate(story));
 
   const motionSelector = [
     ".editorial-catalog .catalog-heading",

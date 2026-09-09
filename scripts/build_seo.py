@@ -11,7 +11,7 @@ from pathlib import Path
 import re
 from urllib.parse import urljoin
 
-from build_catalog import build_catalog, date_label, load_stories, publication_time
+from build_catalog import build_catalog, load_stories, publication_time
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
 
 
@@ -140,9 +140,8 @@ def update_republication(document: str, story: dict | None) -> str:
         return document
     byline = f"{escape(story['author'])} · " if story.get("author") else ""
     meta = f'<p class="article__meta">{byline}{publication_time(story)} · {escape(story["readingTime"])}</p>'
-    original = f'<p class="article__edition">Originally published <time datetime="{story["date"]}">{date_label(story["date"])}</time>.</p>'
     document = re.sub(r'\n\s*<p class="article__edition">.*?</p>', "", document, flags=re.DOTALL)
-    document, count = re.subn(r'<p class="article__meta">.*?</p>', lambda match: meta + "\n    " + original, document, count=1, flags=re.DOTALL)
+    document, count = re.subn(r'<p class="article__meta">.*?</p>', lambda match: meta, document, count=1, flags=re.DOTALL)
     if count != 1:
         raise ValueError(f"Missing article byline for {story['url']}")
     return document

@@ -17,16 +17,9 @@ def listing_date(story: dict) -> str:
     return story.get("republishedDate") or story["date"]
 
 
-def date_label(value: str) -> str:
-    published = date.fromisoformat(value)
-    return f"{MONTHS[published.month - 1]} {published.day}, {published.year}"
-
-
 def publication_time(story: dict, class_name: str = "") -> str:
     published = date.fromisoformat(listing_date(story))
     label = f"{MONTHS[published.month - 1]} {published.day}, {published.year}"
-    if story.get("republishedDate"):
-        label = f"Republished {label}"
     attribute = f' class="{class_name}"' if class_name else ""
     return f'<time{attribute} datetime="{published.isoformat()}">{label}</time>'
 

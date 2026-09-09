@@ -65,10 +65,8 @@ def validate_catalog() -> list[str]:
                     errors.append(f"{story['url']}: republication date is out of range")
             except (ValueError, TypeError):
                 errors.append(f"{story['url']}: invalid republication date")
-            if not re.search(rf'class="article__meta">.*?<time[^>]*datetime="{re.escape(republished)}"[^>]*>Republished ', document):
-                errors.append(f"{story['url']}: missing visible republication date")
-            if f'Originally published <time datetime="{story["date"]}"' not in document:
-                errors.append(f"{story['url']}: missing original publication date")
+            if not re.search(rf'class="article__meta">.*?<time[^>]*datetime="{re.escape(republished)}"', document):
+                errors.append(f"{story['url']}: missing current display date")
         profile_authors = [
             unescape(name)
             for name in re.findall(r'class="author__bio"><strong>([^<]+)</strong>', document)
@@ -111,8 +109,8 @@ def validate_catalog() -> list[str]:
         if dates != [story.get("republishedDate") or story["date"] for story in expected]:
             errors.append(f"{filename}: {slot} publication dates do not match the catalog")
         labels = re.findall(r'<time\b[^>]*>(.*?)</time>', fragments[0])
-        if [label.startswith("Republished ") for label in labels] != [bool(story.get("republishedDate")) for story in expected]:
-            errors.append(f"{filename}: {slot} republication labels do not match the catalog")
+        if any(label.startswith("Republished ") for label in labels):
+            errors.append(f"{filename}: {slot} dates still contain republication labels")
     sitemap = ET.parse(ROOT / "sitemap.xml")
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     modified = {item.findtext("sm:loc", namespaces=ns): item.findtext("sm:lastmod", namespaces=ns) for item in sitemap.findall("sm:url", ns)}
@@ -143,6 +141,8 @@ def main() -> int:
     for page in pages:
         document = page.read_text(encoding="utf-8")
         relative = page.relative_to(ROOT).as_posix()
+        if re.search(r'<time\b[^>]*>\s*Republished\b|class="article__edition"', document):
+            errors.append(f"{relative}: publication history remains in the page interface")
         if document.count('<link rel="canonical"') != 1:
             errors.append(f"{relative}: canonical count is not 1")
         if f'<link rel="canonical" href="{canonical_for(page)}">' not in document:
