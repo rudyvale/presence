@@ -38,7 +38,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Why Applying Machine Learning to Biology is Hard – But Worth It",
+    "title": "What It Takes to Make Machine Learning Work in Biology",
     "summary": "Computational genomics pioneer Jimmy Lin explains what many machine learning-focused biotech companies and get wrong about hiring, data, and communication.",
     "author": "Jimmy Lin",
     "date": "2022-10-05",
@@ -49,7 +49,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Did We Overeat on Software?",
+    "title": "When More Software Stops Helping a Company",
     "summary": "Lumos CEO Andrej Safundizc explains why companies that use software wisely have a competitive advantage over those that blindly consume it.",
     "author": "Andrej Safundzic",
     "date": "2022-09-27",
@@ -60,7 +60,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Our Cities Have an API Problem. Startups Can Fix It.",
+    "title": "Treating Cities Like Platforms: The Case for Better Land-Use Rules",
     "summary": "What if we viewed America’s cities as technological systems? Startups need to compete directly with legacy cities to offer better Land Use APIs.",
     "author": "Zach Caceres",
     "date": "2022-09-13",
@@ -71,7 +71,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Research Twice, Build Once: How to Know Your Users as You Grow",
+    "title": "How Growing Companies Can Stay Close to Their Users",
     "summary": "Sprig founder and CEO Ryan Glasgow explains why the key to building successful products is understanding your users and what they want.",
     "author": "Ryan Glasgow",
     "date": "2022-09-01",
@@ -83,7 +83,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Grow or Die: A Framework for Turning Your Company Around Fast",
+    "title": "Using One Urgent Goal to Turn a Company Around",
     "summary": "When your back's against the wall, you need a SuperGoal: a high stakes, focusing goal that instills a sense of urgency and clarity.",
     "author": "Michael Mignano",
     "date": "2022-08-31",
@@ -94,7 +94,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "What Synthetic Embryos Can and Can’t Do, Now and in the Future",
+    "title": "Synthetic Embryos: Scientific Promise and Practical Limits",
     "summary": "Caltech Professor Magda Zernicka-Goetz explains recent progress in building 'synthetic' embryos from stem cells and their applications.",
     "author": "Magda Zernicka-Goetz",
     "date": "2022-08-30",
@@ -105,7 +105,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Jason Fried on Why He Doesn’t Do Planning or Politics at Work",
+    "title": "Jason Fried on Small Teams, Short Cycles, and Building to Last",
     "summary": "The Basecamp and HEY cofounder discusses the power of short-term thinking, his framework for startup longevity, and the key thing he looks for when hiring remote.",
     "author": "Jason Fried",
     "date": "2022-08-29",
@@ -116,7 +116,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Thinking Through CC0 and IP for NFT Communities",
+    "title": "CC0 or Commercial Rights: The Choice Facing NFT Communities",
     "summary": "A Slack chat to talk about CC0, commercial rights for NFTs, and the future of intellectual property in web3.",
     "author": "Chase Chapman & Nuzayra Haque-Shah & Austin Hurwitz",
     "date": "2022-08-26",
@@ -127,7 +127,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Remote Startups Will Win the War for Top Talent",
+    "title": "Why Flexible Startups Have an Edge in Hiring",
     "summary": "Forty percent of workers are considering quitting. Management that opts for empty arguments to force people back in-office will bleed talent to their competition.",
     "author": "Chris Herd",
     "date": "2022-08-23",
@@ -138,7 +138,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "How to Build a GPT-3 for Science",
+    "title": "What a GPT-3 for Scientific Research Would Require",
     "summary": "A GPT-3-like AI model for science would accelerate innovation and improve reproducibility. Creating it will require us to unlock research.",
     "author": "Josh Nicholson",
     "date": "2022-08-18",
@@ -149,7 +149,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Tech Fear-Mongering Isn’t New—But It’s Time to Break the Cycle",
+    "title": "Why Technology Panics Repeat and How to Move Past Them",
     "summary": "Tech fears tend to follow a 4-step cycle fueled by politicians, scientists, and media, according to Jason Feifer's new book, Build For Tomorrow.",
     "author": "Jason Feifer",
     "date": "2022-08-17",
@@ -160,7 +160,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Unbundling Digital Identity Unlocks New Ways to Play and Build",
+    "title": "Avatars, Wallets, and the Many Parts of Digital Identity",
     "summary": "Technologies such as avatars and digital wallets are unbundling our digital identities and rebundling them in new ways.",
     "author": "Jon Radoff",
     "date": "2022-08-12",
@@ -171,7 +171,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "How Headless Commerce Will Change How and Where We Buy",
+    "title": "Commerce Beyond the Storefront: The Headless Approach",
     "summary": "Commercetools CEO Dirk Hoerig explains headless commerce and microservices, and why we'll see innovation in AR, in-car, and B2B commerce.",
     "author": "Dirk Hoerig",
     "date": "2022-08-11",
@@ -182,7 +182,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Why Developers Are Building So Many Side Projects",
+    "title": "Small Bets, New Skills: The Appeal of Developer Side Projects",
     "summary": "From unleashing creativity to mitigating risk, Ben Stokes of Tiny Projects shares some of the main reasons why developers are building so many side projects.",
     "author": "Ben Stokes",
     "date": "2022-08-09",
@@ -193,7 +193,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "AI’s Next Frontier: Brains on Demand",
+    "title": "Modeling the Brain to Predict What People See and Hear",
     "summary": "AI-created models of the brain will enhance art, advertising, and health by predicting how our minds will respond to images and sounds.",
     "author": "Patrick Mineault",
     "date": "2022-08-04",
@@ -204,7 +204,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "How AI Copywriters Are Changing SEO",
+    "title": "AI-Generated Copy and the Changing Work of SEO",
     "summary": "GPT-3 is a neural network machine learning model used to generate text. Chris Tweten explores how AI copywriters compare to humans and their potential to change SEO.",
     "author": "Chris Tweten",
     "date": "2022-08-03",
@@ -215,7 +215,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "PlanetScale CEO on Cloud-Prem and Climbing the Engineering Ladder",
+    "title": "Sam Lambert on Cloud-Prem Databases and Engineering Leadership",
     "summary": "Sam Lambert is CEO of PlanetScale, a MySQL-compatiable serverless database provider. Prior to joining PlanetScale (then as chief product officer), he was VP of engineering at GitHub. In this interview, Lambert…",
     "author": "Sam Lambert",
     "date": "2022-08-02",
@@ -226,7 +226,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "What’s After Proof of Stake for Ethereum?",
+    "title": "Ethereum After the Merge: Scaling, Statelessness, and the Road Ahead",
     "summary": "Danny Ryan details the path forward for scalability, explains the possibility of stateless Ethereum, and shares lessons learned from testing.",
     "author": "Danny Ryan",
     "date": "2022-07-27",
@@ -237,7 +237,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "What the Merge Means for Ethereum",
+    "title": "Danny Ryan on Ethereum’s Transition to Proof of Stake",
     "summary": "The Ethereum Foundation's Danny Ryan discusses how the Merge will increase security and explains how proof of stake impacts developers.",
     "author": "Danny Ryan",
     "date": "2022-07-27",
@@ -248,7 +248,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Cilium, Service Meshes, and the Future of Enterprise Networking",
+    "title": "Thomas Graf on Cilium and Networking for Kubernetes",
     "summary": "Isovalent co-founder and Cilium creator Thomas Graf discusses the state of cloud native networking and where the future of enterprise Kubernetes lies.",
     "author": "Thomas Graf",
     "date": "2022-07-26",
@@ -259,7 +259,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Rise of Domain Experts in Deep Learning",
+    "title": "How Deep Learning Became Accessible to Domain Specialists",
     "summary": "Jeremy Howard of fast.ai discusses the impacts of deep learning and AI now being accessible to people without PhDs in those spaces.",
     "author": "Jeremy Howard",
     "date": "2022-07-21",
@@ -270,7 +270,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "When to Expand Your Marketplace Business, According to 14 Operators",
+    "title": "How Marketplace Operators Decide When and Where to Expand",
     "summary": "Takeaways from 30 successful marketplaces—including Uber, Airbnb, Tinder, and Instacart—on when, where, and how to grow.",
     "author": "Justine Moore & John Koelliker",
     "date": "2022-07-18",
@@ -281,7 +281,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Info Diet: a16z Crypto’s Elena Burger",
+    "title": "Inside Elena Burger’s Reading and Media Routine",
     "summary": "Info Diet offers a peek into the personally curated feeds and media habits of the people shaping the future. In each installment, a different builder spends two days chronicling all the content they consume in order…",
     "author": "Elena Burger",
     "date": "2022-07-15",
@@ -292,7 +292,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Sales Enablement: The Underrated Cog of Enterprise Commercial Engines",
+    "title": "The People, Processes, and Tools Behind Effective Sales Teams",
     "summary": "Sales enablement — the use of people, processes, and tech to improve sales productivity — is key for a well-oiled, agile, and high-performing sales machine.",
     "author": "Vassilis Tziokas",
     "date": "2022-07-12",
@@ -303,7 +303,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Mid-year Recap: Web3 and Science Collide",
+    "title": "DeSci in the First Half of 2022: Research Meets Web3",
     "summary": "The first half of 2022 saw momentum gains for a movement at the intersection of web3 and science: decentralized science (DeSci).",
     "author": "Presence Editorial",
     "date": "2022-06-30",
@@ -314,7 +314,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Crypto/Web3 So Far in 2022",
+    "title": "Seven Crypto and Web3 Ideas From the First Half of 2022",
     "summary": "Seven pieces that cover some of the big ideas, movements, and research areas in crypto and web3 over the last several months.",
     "author": "Presence Editorial",
     "date": "2022-06-29",
@@ -325,7 +325,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Year in AI So Far: Massive Models and How to Use Them",
+    "title": "AI in Early 2022: Bigger Models and Practical Applications",
     "summary": "A recap of artificial intelligence and machine learning coverage in Future so far in 2022, as well as the biggest advances in AI/ML research.",
     "author": "Presence Editorial",
     "date": "2022-06-27",
@@ -336,7 +336,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "How Recommendation Algorithms Actually Work",
+    "title": "Recommendation Systems Need Experiments, Not Just Open Code",
     "summary": "What would meaningful transparency mean for social media platforms? The author of Instagram's original ranking algorithm lays out a vision.",
     "author": "Thomas Dimson",
     "date": "2022-06-24",
@@ -347,7 +347,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Two Things We’ll Need for the Next AlphaFold",
+    "title": "Daphne Koller on the Ingredients for Another AlphaFold Breakthrough",
     "summary": "AI expert Daphne Koller of insitro identifies what we'll need for future AlphaFold-level successes and explains why some fail the academia-to-biotech transition.",
     "author": "Daphne Koller",
     "date": "2022-06-22",
@@ -358,7 +358,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "A Practical Guide to NFT Memberships for Creators",
+    "title": "Building a Membership Business With NFTs",
     "summary": "Benefits and challenges of NFTs as a monetization channel, how creators are using them in practice, and more.",
     "author": "Peter Yang",
     "date": "2022-06-16",
@@ -369,7 +369,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Can Synthetic Biology and Pond Scum Deliver Carbon-Neutral Manufacturing?",
+    "title": "Microalgae and the Search for Cleaner Manufacturing",
     "summary": "An interview with Provectus Algae CEO Nusqe Spanton about starting a synbio company, using microalgae as a platform, bioprospecting and more.",
     "author": "Nusqe Spanton",
     "date": "2022-06-10",
@@ -380,7 +380,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Why the Software Supply Chain Needs More Security",
+    "title": "Protecting the Dependencies Behind Modern Software",
     "summary": "Chainguard's Kim Lewandowski explains why secure software supply chains are all the rage right now, and why open source is a double-edged security sword.",
     "author": "Kim Lewandowski",
     "date": "2022-06-09",
@@ -391,7 +391,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Info Diet: Peanut CEO Michelle Kennedy",
+    "title": "What Michelle Kennedy Reads to Build and Unwind",
     "summary": "The London-based entrepreneur gets her daily fix of venture news, reads up on motherhood narratives, and winds down with sleep stories.",
     "author": "Michelle Kennedy",
     "date": "2022-06-03",
@@ -402,7 +402,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "The Iron Man Model: How Startups and the Military Can Work Together",
+    "title": "How Defense Startups Can Build a Working Relationship With the Pentagon",
     "summary": "In order to create Iron Man-like innovations, defense tech startups must optimally engage the Pentagon instead of treating it as just another customer.",
     "author": "Jeff Decker",
     "date": "2022-06-03",
@@ -413,7 +413,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "7 Techniques for Building Reliable AI Models",
+    "title": "Seven Ways to Make AI Models Hold Up in Production",
     "summary": "As enterprises grow their AI footprints, they must pay attention to data quality and real-world conditions to ensure what works in the lab works in production.",
     "author": "Beena Ammanath",
     "date": "2022-05-27",
@@ -424,7 +424,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "How to Design (and Redesign) the Practices of Company Culture",
+    "title": "Changing Company Culture Through Everyday Practices",
     "summary": "This book excerpt \"ReCulturing\" by Melissa Daimler shares mindsets for evolving the practices that shape a company culture, especially for communication.",
     "author": "Melissa Daimler",
     "date": "2022-05-20",
@@ -435,7 +435,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "What Is Negative Engineering?",
+    "title": "The Engineering Work That Keeps Small Failures Small",
     "summary": "Negative engineering is the time-consuming and sometimes frustrating work that engineers do to ensure small bugs don't take down systems.",
     "author": "Jeremiah Lowin",
     "date": "2022-05-19",
@@ -446,7 +446,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "A Startup’s Guide to Launching College Ambassador Programs",
+    "title": "Building a College Ambassador Program for Your Startup",
     "summary": "This 101 guide on college ambassador programs for consumer startup covers the what, why, and when, how to get started, incentive structures, metrics, and more.",
     "author": "Jacob Westphal",
     "date": "2022-05-18",
@@ -457,7 +457,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Hopper CEO on Super-App Ambitions and Becoming an Everything Startup",
+    "title": "Fred Lalonde on Hopper’s Expansion Beyond Travel Booking",
     "summary": "A Q&A with Fred Lalonde on building for Gen Z, the gamification of travel, and more.",
     "author": "Frederic Lalonde",
     "date": "2022-05-16",
@@ -468,7 +468,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Info Diet: Tandem CEO Rajiv Ayyangar",
+    "title": "A Look at Rajiv Ayyangar’s Daily Information Habits",
     "summary": "Info Diet offers a peek into the personally curated feeds and media habits of the people shaping the future. In each installment, a different builder spends two days chronicling all the content they consume in order…",
     "author": "Rajiv Ayyangar",
     "date": "2022-05-12",
@@ -479,7 +479,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "How to Make Talent Scouts Work for You",
+    "title": "Using Talent Scouts to Find People Others Overlook",
     "summary": "This excerpt from from Talent, by Tyler Cowen and Daniel Gross, focuses on how scouts can be useful for identifying talented entrepreneurs and employees.",
     "author": "Tyler Cowen & Daniel Gross",
     "date": "2022-05-11",
@@ -490,7 +490,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "MongoDB CTO: Why On-Prem Software Is Still Big Business",
+    "title": "Mark Porter on Databases, Cloud Partnerships, and On-Prem Demand",
     "summary": "MongoDB CTO Mark Porter discusses working with cloud providers as frenemies, and building consumer services for Southeast Asia at Grab.",
     "author": "Mark Porter",
     "date": "2022-05-10",
@@ -501,7 +501,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "7 Essential Ingredients of a Metaverse",
+    "title": "The Seven Building Blocks of an Open Metaverse",
     "summary": "There has been a lot of buzz about “the metaverse” since its coinage in the ‘90s, but especially during the pandemic (given the surge in online activity), and even more so after Facebook changed its name to Meta. Is…",
     "author": "",
     "date": "2022-05-06",
@@ -512,7 +512,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "To Start Building a Community, Master These Two Concepts",
+    "title": "Two Foundations for Turning a Product’s Audience Into a Community",
     "summary": "Increasingly, building a successful startup involves not only building a product that people can’t get enough of, but also building an engaged, loyal community around that product. Today, most founders are acutely…",
     "author": "Amber Atherton",
     "date": "2022-05-03",
@@ -523,7 +523,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Future of Search Is Boutique",
+    "title": "Why Smaller, Curated Search Engines Deserve a Place",
     "summary": "The way to improve search is not to mimic Google, but instead to build boutique search engines that index, curate, and organize things in new ways.",
     "author": "Sari Azout",
     "date": "2022-05-02",
@@ -534,7 +534,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Info Diet: Kajabi President Sean Kim",
+    "title": "Inside Sean Kim’s Reading, Listening, and Viewing Routine",
     "summary": "Info Diet offers a peek into the personally curated feeds and media habits of the people shaping the future. In each installment, a different builder spends two days chronicling everything they read, follow, listen…",
     "author": "Sean Kim",
     "date": "2022-04-29",
@@ -545,7 +545,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Will It Scale? Applying Data, Science, and Economics to the Art of Ideas",
+    "title": "John List on Testing Whether an Idea Can Scale",
     "summary": "Walmart Chief Economist John List on using data analysis and the scientific method to bridge the gap between idea and successful venture.",
     "author": "John List",
     "date": "2022-04-22",
@@ -556,7 +556,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "A Guide to Decentralized Biotech",
+    "title": "Shared Labs and DAOs: Rethinking How Biotech Gets Built",
     "summary": "Shared lab space, DAO-funded projects, and other signs of big structural change in a traditionally centralized industry.",
     "author": "Jocelynn Pearl",
     "date": "2022-04-21",
@@ -567,7 +567,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Managing Your Mental Health While Running a Startup",
+    "title": "Protecting Your Mental Health as a Startup Founder",
     "summary": "Okta co-founder Frederic Kerrest explains why all startup founders need to stay mentally, emotionally, and physically fit.",
     "author": "Frederic Kerrest",
     "date": "2022-04-18",
@@ -578,7 +578,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "The Marketplace 100: 2022",
+    "title": "Inside the 2022 Marketplace 100 Rankings",
     "summary": "2022 marks our third year releasing the Marketplace 100, a ranking of the largest consumer-facing marketplace startups and private companies. When we started this series in early 2020 (based on data from 2019), we…",
     "author": "Olivia Moore & Brandon Barros",
     "date": "2022-04-14",
@@ -589,7 +589,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "How to Drive Business Growth By Fostering Your Community",
+    "title": "Creating Customer Value Through Community Building",
     "summary": "We know how to capture value via go-to-market campaigns. Here's how to create value for users via go-to-community (GTC) efforts.",
     "author": "Patrick Woods",
     "date": "2022-04-12",
@@ -600,7 +600,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Decentralization for Web3 Builders: Principles, Models, How",
+    "title": "A Builder’s Framework for Decentralizing Web3 Projects",
     "summary": "The promise of decentralization has been heavily discussed and debated, from why it matters to the bigger question of who will control the software that powers the internet. These questions are critical, because as…",
     "author": "Sonal Chokshi",
     "date": "2022-04-07",
@@ -611,7 +611,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Can ‘Community Composability’ Help Web2 Users Make the Jump to Web3?",
+    "title": "Bringing Existing Communities From Web2 Into Web3",
     "summary": "A new idea to help web3 reach widespread adoption.",
     "author": "Jenny Wang & Michael Chiang",
     "date": "2022-04-04",
@@ -622,7 +622,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Data50: The World’s Top 50 Data Startups",
+    "title": "Data50: Mapping the Leading Data Startups of 2022",
     "summary": "Over a decade after the idea of “big data” was first born, data continues to be one of the most important and furiously growing innovation drivers across both large enterprises and new startups. From providing pulse…",
     "author": "Jennifer Li & Sarah Wang & Jamie Sullivan",
     "date": "2022-03-23",
@@ -633,7 +633,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "How Data Rights Stifle Innovation in the DoD (and How to Fix Them)",
+    "title": "Reworking Defense Data Rights to Make Room for Innovation",
     "summary": "The Defense Department should test new categories of data rights for software licenses. The current ones inhibit competition and dissuade modern software companies.",
     "author": "Babak Siavoshy",
     "date": "2022-03-18",
@@ -644,7 +644,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "The Key to Enterprise Sales Is Understanding Enterprises",
+    "title": "Selling to Enterprises Starts With Understanding How They Operate",
     "summary": "Unqork founder Gary Hoberman, who spent decades managing Wall Street IT budgets, gives advice for startups getting started with enterprise sales.",
     "author": "Gary Hoberman",
     "date": "2022-03-17",
@@ -655,7 +655,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Info Diet: Modern Fertility CEO Afton Vechery",
+    "title": "What Afton Vechery Reads, Follows, and Listens To",
     "summary": "The health-tech founder shares the content she consumes to stay ahead of the curve, from fertility journals to fashion newsletters.",
     "author": "Afton Vechery",
     "date": "2022-03-11",
@@ -666,7 +666,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "AlphaFold, GPT-3 and How to Augment Intelligence with AI (Pt. 2)",
+    "title": "Putting GPT-3 and Codex Into Human Workflows: Part Two",
     "summary": "To truly augment human intelligence, we need to design new workflows for machine learning models such as GPT-3 and Codex.",
     "author": "Niko Grupen",
     "date": "2022-03-08",
@@ -677,7 +677,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "AlphaFold, GPT-3 and How to Augment Intelligence with AI",
+    "title": "How AlphaFold and GPT-3 Can Extend Human Capabilities: Part One",
     "summary": "Thanks to a set of new AI models, we can reimagine common workflows, processes, and user experiences to augment human intelligence.",
     "author": "Niko Grupen",
     "date": "2022-03-07",
@@ -688,7 +688,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "A Decade of Deep Learning: How the AI Startup Experience Has Evolved",
+    "title": "Richard Socher on Ten Years of Change in AI Startups",
     "summary": "Richard Socher discusses advances in NLP, and how the experience for AI startups has changed since the early days of deep learning.",
     "author": "Richard Socher",
     "date": "2022-03-02",
@@ -710,7 +710,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "The Missing Link Between Web2 and Web3: Custody",
+    "title": "Why Custody Is Central to Bringing Web2 Users Into Crypto",
     "summary": "Crypto faces a major barrier when it comes to mainstream adoption: The user journey is complicated and not yet built-out, and it’s not at all easy or intuitive for people new to crypto to even do the simplest…",
     "author": "Mahesh Vellanki",
     "date": "2022-02-18",
@@ -721,7 +721,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Why SQL Needs Software Libraries",
+    "title": "The Case for Reusable Software Libraries in SQL",
     "summary": "Fivetran CEO George Fraser discusses the lack of software libraries for SQL, and how their emergence could change the nature of data analysis.",
     "author": "George Fraser",
     "date": "2022-02-17",
@@ -732,7 +732,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Building for the 99% Developers",
+    "title": "Developer Tools for the Teams Outside Big Tech",
     "summary": "Software development is not all clean code and automated processes -- and it never will be. Buyers and vendors both need to realize this.",
     "author": "Jean Yang",
     "date": "2022-02-16",
@@ -743,7 +743,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Info Diet: Replit CEO Amjad Masad",
+    "title": "Amjad Masad’s Reading Routine at Replit",
     "summary": "Info Diet offers a peek into the personally curated feeds and media habits of the people shaping the future. In each installment, a different builder spends two days chronicling everything they read, follow, listen…",
     "author": "Amjad Masad",
     "date": "2022-02-14",
@@ -754,7 +754,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "How to Use Massive AI Models (Like GPT-3) in Your Startup",
+    "title": "A Startup’s Options for Working With Large AI Models",
     "summary": "Foundation models and cloud APIs bring opportunities, risks, and limitations for startups that want to innovate in AI and machine learning.",
     "author": "Elliot Turner",
     "date": "2022-02-11",
@@ -765,7 +765,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "A Guide to DeSci, the Latest Web3 Movement",
+    "title": "How DeSci Uses Web3 Tools to Organize Scientific Research",
     "summary": "A growing number of scientists and entrepreneurs are leveraging blockchain tools, including smart contracts and tokens, in an attempt to improve modern science. Collectively, their work has become known as the…",
     "author": "",
     "date": "2022-02-09",
@@ -776,7 +776,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Go-to-Market in Web3: New Mindsets, Tactics, Metrics",
+    "title": "Launching in Web3: Communities, Incentives, and Growth Metrics",
     "summary": "Every company faces some version of the “cold start problem”: How do you get started from nothing? How do you acquire customers? How do you create network effects — where your product or service becomes more valuable…",
     "author": "Zoran Basich",
     "date": "2022-02-04",
@@ -787,7 +787,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "How to Excel in Tech Without Learning to Code",
+    "title": "Building a Technology Career Without Becoming a Programmer",
     "summary": "Technical literacy is key to career success, even for non-engineers. Learn how to master the tools of your trade and build a solid tech foundation.",
     "author": "Justin Gage",
     "date": "2022-01-28",
@@ -798,7 +798,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "DeFi Gives Financial Privacy — Will Regulation Take It Away?",
+    "title": "Financial Privacy in DeFi and the Questions Regulation Raises",
     "summary": "The Fourth Amendment protects our privacy rights in material that we keep private. The government can’t search our homes or computers, for instance, unless it has a warrant based on specific probable cause to believe…",
     "author": "Zoran Basich",
     "date": "2022-01-13",
@@ -809,7 +809,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Software Is Automating Design. What Does That Mean For Designers?",
+    "title": "How Design Automation Changes the Designer’s Role",
     "summary": "Popular design software like Figma and Canva force experienced designers to adopt new roles: project manager, systems architect, and user advocate.",
     "author": "Carly Ayres",
     "date": "2022-01-11",
@@ -820,7 +820,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "The Future of Work is Not Corporate — It’s DAOs and Crypto Networks",
+    "title": "Earning a Living Through DAOs and Crypto Networks",
     "summary": "In the future, it’s likely that the average person will not work for a company. Instead, people will earn income in non-traditional ways by taking actions such as playing games, learning new skills, creating art, or…",
     "author": "Zoran Basich",
     "date": "2021-12-17",
@@ -831,7 +831,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "The Web3 Playbook: Using Token Incentives to Bootstrap New Networks",
+    "title": "How Token Incentives Help New Networks Get Started",
     "summary": "The killer app of the internet is networks. The web and email are networks. Social apps like Instagram and Twitter are networks. Marketplaces like Uber and Airbnb are networks. Networks get more valuable with more…",
     "author": "Zoran Basich",
     "date": "2021-12-09",
@@ -842,7 +842,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Rethinking Equity Compensation: From Lottery Ticket to Financial Wedge",
+    "title": "Treating Employee Equity as an Investment, Not a Windfall",
     "summary": "Smart equity management strategies for employees with RSUs or stock options, a future-forward vision for companies, and a wish-list for builders.",
     "author": "Niya Dragova",
     "date": "2021-12-08",
@@ -853,7 +853,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "DAOs, A Canon",
+    "title": "A Reading Guide to DAOs, Their Governance, and Their Uses",
     "summary": "What is (and isn’t) a DAO? Why do DAOs matter? How do DAOs fit into web3, crypto, the creator economy, future of work, and many other areas? Inspired by our NFT Canon earlier this year (and original Crypto Canon)…",
     "author": "Zoran Basich",
     "date": "2021-11-20",
@@ -864,7 +864,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Decentralized Identity: Your Reputation Travels With You",
+    "title": "Making Online Reputation Portable With Decentralized Identity",
     "summary": "This is the second installment of a two-part series on reputation systems in web3. Read part one here. Web3 is based on the premise that each internet user will have a unique internet identifier, like an email…",
     "author": "",
     "date": "2021-11-18",
@@ -875,7 +875,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Blockchain Networks and the Human Factor: How to Know Whether They’re Accessible",
+    "title": "Measuring Blockchain Access Beyond Speed and Transaction Fees",
     "summary": "As blockchain technology rapidly gains the attention of a mass audience, the conversation is still centered solely around technical topics related to the scalability of a network — transactions per second, latency…",
     "author": "Zoran Basich",
     "date": "2021-11-16",
@@ -886,7 +886,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Overlooked Levels of the Creator Economy",
+    "title": "From Hobbyist to Mogul: What Creators Need at Every Stage",
     "summary": "Are creator platforms enabling the 99 percent to chase their childhood dreams? Or are they helping the 0.1 percent expand their wealth?",
     "author": "Dan Runcie",
     "date": "2021-11-10",
@@ -897,7 +897,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Future of Kidtech: A Web Browser for the Under-10 Set",
+    "title": "Designing a Web Browser for Children Under Ten",
     "summary": "Our narrow view of “kidtech”—games and shows, ad infinitum—is a missed opportunity. There's room for an audio-visual browser designed for kids.",
     "author": "Keith Schacht",
     "date": "2021-11-04",
@@ -908,7 +908,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Building and Running a DAO: Why Governance Matters",
+    "title": "The Governance Choices That Shape a DAO",
     "summary": "As DeFi and NFT communities grow enormously in size, how to govern decentralized protocols takes on added importance. Now and over the next few years, one of the most immediate challenges facing these communities is…",
     "author": "Zoran Basich",
     "date": "2021-11-03",
@@ -919,7 +919,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "What’s Next for Creator Platforms? Learning to Sell",
+    "title": "Creator Platforms Need to Help Make the Sale",
     "summary": "In the rush to build frictionless payment features, the actual sales pitch—the \"here's why you should pay\"—is too often an afterthought.",
     "author": "Nathan Baschez",
     "date": "2021-10-28",
@@ -930,7 +930,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Brazen Strategy Behind China Tech’s Growth",
+    "title": "Why China’s Tech Companies Keep Reinventing Their Core Products",
     "summary": "Taking a page from China's relentless willingness to experiment with core apps.",
     "author": "Rui Ma",
     "date": "2021-10-19",
@@ -941,7 +941,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Tokens: A New Digital Primitive",
+    "title": "Why Tokens Can Be More Than Money or Collectibles",
     "summary": "Major computing waves generally have two eras: the skeuomorphic era and the native era. In the skeuomorphic era, the design thinking is largely adapted from older domains. For example, the early web was mostly…",
     "author": "Zoran Basich",
     "date": "2021-10-13",
@@ -952,7 +952,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "The World Needs a New Protocol for Global Travel",
+    "title": "Rethinking the Rules That Govern Global Travel",
     "summary": "Excerpted from MOVE: The Forces Uprooting Us, by Parag Khanna. Copyright © 2021 by Parag Khanna. Excerpted with permission by Scribner, a division of Simon & Schuster Inc., for Future by a16z. The Great Lockdown of…",
     "author": "Parag Khanna",
     "date": "2021-10-12",
@@ -963,7 +963,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Why We Crave Software With Style Over “Branding”",
+    "title": "Making Software People Can Recognize Themselves In",
     "summary": "Modern software’s uniformity has fueled a craving for more interesting, opinionated tools — turning inanimate pixels into something with soul.",
     "author": "Molly Mielke",
     "date": "2021-10-08",
@@ -974,7 +974,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Why Web3 Matters",
+    "title": "Web3 and the Return of User-Owned Networks",
     "summary": "Web1 (roughly 1990-2005) was about open protocols that were decentralized and community-governed. Most of the value accrued to the edges of the network — users and builders. Web2 (roughly 2005-2020) was about siloed…",
     "author": "Zoran Basich",
     "date": "2021-10-07",
@@ -985,7 +985,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "The Music Industry Is Built on Artists, but Shuns Creators",
+    "title": "What Music Can Learn From Gaming’s Creator Ecosystem",
     "summary": "If the music business can revise its draconian approach to copyright and UGC, it will empower tech startups to do for audio what TikTok did for video.",
     "author": "Dave Edwards",
     "date": "2021-10-05",
@@ -996,7 +996,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "A Novel Framework for Reputation-Based Systems",
+    "title": "Designing Reputation Systems That Reward Useful Contributions",
     "summary": "Reputation systems present an opportunity for platforms to recognize—and thus incentivize—participants’ high-quality contributions, including content creation, moderation, community building, and gameplay. This is…",
     "author": "",
     "date": "2021-09-30",
@@ -1007,7 +1007,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Stablecoins, Stability, and Financial Inclusion",
+    "title": "The Role Stablecoins Could Play in Financial Access",
     "summary": "The promise of providing financial services to underserved communities around the globe is a key motivation for our work, and we’ve been concerned by a counterintuitive trend that’s taken root in Western economies…",
     "author": "Zoran Basich",
     "date": "2021-09-27",
@@ -1018,7 +1018,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Inside Latin America’s Creator Economy: Rich in Influence, Poor in Cash",
+    "title": "Why Latin America’s Creators Struggle to Turn Reach Into Revenue",
     "summary": "Though LatAm leads the world in internet and digital media consumption, its creators still struggle to cash in on their influence.",
     "author": "Julio Vasconcellos",
     "date": "2021-09-22",
@@ -1029,7 +1029,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Global Labs Pose Major Threat — Here’s What U.S. Should Do",
+    "title": "Scott Gottlieb on Laboratory Risks and the U.S. Response",
     "summary": "The following is an excerpt from the book UNCONTROLLED SPREAD by Scott Gottlieb, MD. Copyright © 2021 by Scott Gottlieb. Published on Future with permission by Harper, an imprint of HarperCollins Publishers.…",
     "author": "Scott Gottlieb",
     "date": "2021-09-21",
@@ -1040,7 +1040,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Average American Would Pay $242,000 For One Extra Year of Good Health",
+    "title": "The Economic Value of an Extra Year in Good Health",
     "summary": "New economic research supports a shift from the pursuit of longevity to a focus on healthspan: more healthy time over the duration of one’s life.",
     "author": "Andrew Scott",
     "date": "2021-09-15",
@@ -1051,7 +1051,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Minimum Viable Participation in Crypto: Games, Costs, & Accessibility",
+    "title": "Lowering the Barriers to Participation in Crypto Games",
     "summary": "When people talk about the recent past and envision the distant future of crypto, conversation always comes back to the cycle of wealth creation and redistribution. Consciously or unconsciously, there’s an…",
     "author": "Zoran Basich",
     "date": "2021-09-13",
@@ -1062,7 +1062,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Therapist Will See You Now. But Where?",
+    "title": "What Virtual Therapy Changes About Connection and Care",
     "summary": "As therapists and patients debate a return to the physical office, both must consider the newly discovered advantages of \"distanced intimacy.\"",
     "author": "Hannah Zeavin",
     "date": "2021-09-08",
@@ -1073,7 +1073,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Why California Burns: The Facts Behind the Flames",
+    "title": "Understanding the Forces Behind California’s Wildfires",
     "summary": "“There is broad consensus in the scientific community that wildfire behavior is changing across the American West in general, and in California in particular. … All indicators shown—wildfire occurrence, total area…",
     "author": "José Luis Ricón",
     "date": "2021-09-08",
@@ -1084,7 +1084,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Case for ‘Developer Experience’",
+    "title": "Building Developer Tools for Messy, Evolving Systems",
     "summary": "How are developers supposed to manage and coordinate fast-moving, heterogeneous systems including maintenance & operations — and free themselves to build?",
     "author": "Jean Yang",
     "date": "2021-09-08",
@@ -1095,7 +1095,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "It’s Time for Esports to Stop Idolizing Traditional Sports",
+    "title": "Why Esports Needs Its Own Business Model",
     "summary": "Esports are pioneering the future of sports engagement. But to succeed, they need to stop chasing the NBA and NFL.",
     "author": "Marty Strenczewilk",
     "date": "2021-09-08",
@@ -1128,7 +1128,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Global Shipping Infrastructure and the Ever Given",
+    "title": "What the Ever Given Exposed About Global Shipping",
     "summary": "The Ever Given container ship blocked the Suez Canal in March 2021 and cost the world time and money. This is not a one-off disaster. It’s an omen of a global problem.",
     "author": "Ryan Petersen",
     "date": "2021-06-24",
@@ -1139,7 +1139,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Hybrid Anxiety and Hybrid Optimism: The Near Future of Work",
+    "title": "The Difficult Choices Behind Making Hybrid Work Succeed",
     "summary": "We will inevitably blend distributed work with in-person, but the details are much harder than they appear.",
     "author": "Rajiv Ayyangar",
     "date": "2021-06-16",
@@ -1150,7 +1150,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Extinction Isn’t an End: Mining Ancient Innovation for Future Solutions",
+    "title": "What Extinct Life Can Teach Us About Solving New Problems",
     "summary": "It's easy to think extinction equals failure, but in fact, past life may encode the solutions to our most pressing future problems.",
     "author": "Betül Kaçar",
     "date": "2021-06-16",
@@ -1161,7 +1161,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "On Workplace Productivity",
+    "title": "Measuring Productivity by Outcomes Instead of Activity",
     "summary": "What does it mean to be productive? At the beginning of the pandemic, when many workers went remote, some managers were tempted to start counting things — whether hours, objects, or other things. But they’re about…",
     "author": "Nicole Forsgren",
     "date": "2021-06-15",
@@ -1172,7 +1172,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "A Marshall Plan to Solve the Global Vaccine Shortfall",
+    "title": "A Plan to Close the Global COVID-19 Vaccine Gap",
     "summary": "While COVID-19 vaccinations in the U.S. are continuing apace, calls are growing for a more ambitious strategy to rapidly vaccinate the entire world, and especially in developing nations. Legal proceedings around this…",
     "author": "Caleb Watney",
     "date": "2021-06-15",
@@ -1183,7 +1183,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "In Online Ed, Content Is No Longer King—Cohorts Are",
+    "title": "Why Learning Together Gives Online Courses an Edge",
     "summary": "Consumers pay for what’s scarce. And within the crowded, cheap, content-rich world of online education, what's scarce is community.",
     "author": "Wes Kao",
     "date": "2021-06-15",
@@ -1194,7 +1194,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Decentralized Finance: What It Is, Why It Matters",
+    "title": "Understanding the Building Blocks of Decentralized Finance",
     "summary": "There’s been a lot of hype, buzz, skepticism, confusion, and excitement around decentralized finance aka “DeFi,” the ecosystem of blockchain-enabled products and services that replace traditional financial…",
     "author": "Zoran Basich",
     "date": "2021-06-15",
@@ -1205,7 +1205,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Law As Code: A Legal System Shaped By Software",
+    "title": "How Software Could Reshape Legal Systems",
     "summary": "With software we can improve transparency, automate tedious processes, and in some cases, even avoid the need for costly lawyers altogether.",
     "author": "Joshua Browder",
     "date": "2021-06-15",
@@ -1216,7 +1216,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Choosing Your North Star Metric",
+    "title": "Finding the Metric That Guides Your Business",
     "summary": "How to decide the guiding metrics for every type of business, based on a survey of employees at over 40 of today's most successful growth-stage companies.",
     "author": "Lenny Rachitsky",
     "date": "2021-06-15",
@@ -1228,7 +1228,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Why Creator Tokens Will Precede Community Tokens",
+    "title": "How Creator Tokens Could Pave the Way for Community Tokens",
     "summary": "Over the past year, social tokens — those issued by creators and communities to access exclusive perks and invest in works — have taken off in the world of crypto and beyond. Celebrity artists and athletes like…",
     "author": "",
     "date": "2021-06-15",
@@ -1239,7 +1239,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "“Fantasy Hollywood” — Crypto and Community-Owned Characters",
+    "title": "Building Entertainment Around Characters a Community Owns",
     "summary": "Every day we consume popular entertainment centered on characters. A collection of successful characters can become the foundation for a franchise — e.g. Star Wars, Marvel, Harry Potter — that can span decades, and…",
     "author": "Zoran Basich",
     "date": "2021-06-15",
@@ -1250,7 +1250,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Speculation is Necessary. Governments Can Help.",
+    "title": "Channeling Speculation Toward Productive Investment",
     "summary": "Instead of trying to eradicate speculative manias, we should channel investors’ innate affinity for speculation into productive ventures.",
     "author": "Jamie Catherwood",
     "date": "2021-06-15",
@@ -1261,7 +1261,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Power of Product Thinking",
+    "title": "Developing the Judgment Behind Products People Love",
     "summary": "Product thinking is the skill of knowing what makes a product useful — and loved — by people. As with all skills, it can be nurtured and developed.",
     "author": "Julie Zhuo",
     "date": "2021-06-15",
@@ -1273,7 +1273,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Designing Internet-Native Economies: A Guide to Crypto Tokens",
+    "title": "The Different Roles Tokens Play in Digital Economies",
     "summary": "One of the big, frequently discussed ideas of crypto is that it enables creators and communities to build their own internet-native economies. A key component of these economies is tokens, which got a bad rap during…",
     "author": "Zoran Basich",
     "date": "2021-06-15",
@@ -1284,7 +1284,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "Community ≠ Marketing: Why We Need Go-to-Community, Not Just Go-to-Market",
+    "title": "Why Building a Community Requires More Than Marketing",
     "summary": "Community is the “new” moat (or so some have said), and it’s true: Having a community helps protect against competitor companies or products entering your territory. Whether that community is a group of power users…",
     "author": "Patrick Woods",
     "date": "2021-06-15",
@@ -1295,7 +1295,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "What We Learned Doing Fast Grants",
+    "title": "Fast Grants and the Case for More Flexible Science Funding",
     "summary": "We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.",
     "author": "Patrick Collison & Tyler Cowen & Patrick Hsu",
     "date": "2021-06-15",
@@ -1306,7 +1306,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The World Game",
+    "title": "How Technology Changes the Rules of Global Competition",
     "summary": "Technology is the set of rules that now governs global shifts. The task for builders and technologists is to discover all possibilities contained therein.",
     "author": "Bruno Macaes",
     "date": "2021-06-15",
@@ -1317,7 +1317,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Fans, Not Professional Developers, Will Drive the Hit IPs of the Future",
+    "title": "How Fans Help Build Enduring Entertainment Franchises",
     "summary": "The franchises of the future need to be designed to ensure quality and canon even when we hand over ownership to the fans.",
     "author": "Jade Raymond",
     "date": "2021-06-15",
@@ -1328,7 +1328,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "The New Market Momentum: Reading the Technical Indicators",
+    "title": "Using Technical Indicators to Read Shifts in Market Momentum",
     "summary": "Given the emergence of new forms of unpredictability, mathematical indicators that can isolate breakouts and trend shifts are crucial.",
     "author": "Katie Stockton",
     "date": "2021-06-15",
@@ -1339,7 +1339,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Composability is Innovation",
+    "title": "How Composable Software Creates Room for New Ideas",
     "summary": "While many in tech and beyond have heard of bitcoin, cryptocurrency, and the concept of a blockchain, less well-known are smart contracts, the major innovation of Ethereum. They’re programs that anyone can write and…",
     "author": "Zoran Basich",
     "date": "2021-06-15",
@@ -1350,7 +1350,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "How the Coming Privacy Layer Will Fix the Broken Web",
+    "title": "Rebuilding the Web Around Personal Data Privacy",
     "summary": "Our private lives have become a public commodity. Today, the business model of the web is to provide free services in exchange for personal data. Web services then sell this data. The user is not given a choice and…",
     "author": "Zoran Basich",
     "date": "2021-06-15",
@@ -1361,7 +1361,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Well-Behaved Bubbles Often Make History",
+    "title": "When Speculative Bubbles Help Coordinate Innovation",
     "summary": "The right kind of bubble brings together the right group of people at the right time — it's a coordinating mechanism that can do a surprising amount of good.",
     "author": "Byrne Hobart",
     "date": "2021-06-15",
@@ -1372,7 +1372,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "An “Omics” Answer to the Replication Crisis",
+    "title": "Using Large-Scale Literature Analysis to Tackle the Replication Crisis",
     "summary": "One possible solution to the replication crisis is to apply big data, \"omics\"-like approaches to the scientific literature: aka Publomics.",
     "author": "Malcolm MacLeod",
     "date": "2021-06-15",
@@ -1383,7 +1383,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Silicon in Silicon Valley, Again",
+    "title": "Why Progress in the Physical World Still Matters to Tech",
     "summary": "From responding to a pandemic — with novel mRNA vaccines — to building the future — with SpaceX’s rockets and Apple’s new chips — we are seeing that the material world still has the power to thrill. But even though…",
     "author": "Dan Wang",
     "date": "2021-06-15",
@@ -1394,7 +1394,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Untapped Potential of Less",
+    "title": "Solving Problems by Taking Things Away",
     "summary": "To harness the untapped power of subtraction in the future, we need to understand why we haven’t embraced it in the past.",
     "author": "Leidy Klotz",
     "date": "2021-06-15",
@@ -1405,7 +1405,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "The Creator Economy Comes for Gaming",
+    "title": "How Players Are Becoming Creators and Earning Through Games",
     "summary": "Players are finding new ways to monetize, whether by building original game worlds, selling in-game goods, or engaging with fans using new streamer tools.",
     "author": "Joost van Dreunen",
     "date": "2021-06-15",
@@ -1416,7 +1416,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "NFT Canon",
+    "title": "A Curated Guide to Understanding and Building With NFTs",
     "summary": "The NFT Canon is a go-to resource for artists and creators, developers, corporations and institutions, communities and other organizations seeking to understand or do more with non-fungible tokens. It’s a curated…",
     "author": "Sonal Chokshi",
     "date": "2021-04-02",
@@ -1427,7 +1427,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "NFTs and a Thousand True Fans",
+    "title": "How NFTs Could Help Creators Build Around Their Closest Fans",
     "summary": "In his classic 2008 essay “1000 True Fans,” Kevin Kelly predicted that the internet would transform the economics of creative activities: To be a successful creator you don’t need millions. You don’t need millions of…",
     "author": "Chris Dixon",
     "date": "2021-02-27",
@@ -1438,7 +1438,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Who Will Control the Software That Powers the Internet?",
+    "title": "The Choice Between Open Protocols and Privately Owned Platforms",
     "summary": "As the internet has evolved over its 35-year lifespan, control over its most important services has gradually shifted from open source protocols maintained by non-profit communities to proprietary services operated…",
     "author": "Chris Dixon",
     "date": "2021-01-14",
@@ -1449,7 +1449,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "The State of Crypto: A Builder’s Guide From Crypto Startup School",
+    "title": "Lessons for Crypto Builders From the 2020 Startup School",
     "summary": "Crypto has gone through an eventful year. Decentralized exchanges and platforms that allow users to trade, loan, or borrow cryptocurrency have soared in volume. Developers are taking advantage of the flexible…",
     "author": "Presence Editorial",
     "date": "2020-12-28",
@@ -1460,7 +1460,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Crypto’s Business Model is Familiar. What Isn’t is Who Benefits",
+    "title": "How Crypto Changes Who Captures a Network’s Value",
     "summary": "Many entrepreneurs and investors think that crypto projects can’t capture value because they are based on open source code. The thinking goes that if you develop open source code, someone will come along and copy it…",
     "author": "Jesse Walden",
     "date": "2020-04-08",
@@ -1471,7 +1471,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "ARTICLE",
-    "title": "Credible Neutrality As A Guiding Principle",
+    "title": "Vitalik Buterin on Building Systems People Can Trust as Fair",
     "summary": "Vitalik Buterin argues that mechanisms governing high-stakes outcomes must be credibly neutral, then sets out practical rules for making them fair, legible, and effective.",
     "author": "Vitalik Buterin",
     "date": "2020-01-03",
@@ -1486,7 +1486,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "companies",
     "type": "ARTICLE",
-    "title": "All about Network Effects",
+    "title": "Understanding Network Effects, Platforms, and Marketplaces",
     "summary": "What is a network effect? How do we untangle the nuances of ‘network effects’ with ‘marketplaces’ and ‘platforms’? What’s the difference between network effects, virality, supply-side economies of scale?",
     "author": "Anu Hariharan",
     "date": "2016-03-07",
