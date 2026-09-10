@@ -50,7 +50,7 @@ def page_schema(path: Path, document: str, canonical: str, image: str, story: di
         "name": "PRESENCE",
         "url": f"{BASE_URL}/",
         "logo": f"{BASE_URL}/assets/img/presence-social.png",
-        "sameAs": ["https://t.me/presencemedia"],
+        "sameAs": ["https://t.me/presencemedia", "https://x.com/PresenceWeb3"],
     }
 
     if relative.startswith("articles/"):
@@ -115,20 +115,27 @@ def add_search_link(document: str, path: Path) -> str:
 
 
 def add_article_follow(document: str) -> str:
-    if FOLLOW_MARKER in document:
-        return document
     follow = f'''\n    {FOLLOW_MARKER}
     <aside class="article-follow" aria-labelledby="follow-presence-title">
       <p class="article-follow__kicker">Follow PRESENCE</p>
       <h2 id="follow-presence-title">New stories, without the noise.</h2>
-      <p>Get new PRESENCE stories in Telegram or follow the open RSS feed in your reader.</p>
+      <p>Follow PRESENCE on Telegram and X, or read new stories in your RSS reader.</p>
       <div class="article-follow__actions">
         <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
+        <a class="btn btn--quiet" href="https://x.com/PresenceWeb3" target="_blank" rel="noopener noreferrer">Follow on X</a>
         <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
       </div>
     </aside>
     <!-- PRESENCE FOLLOW:END -->
 '''
+    if FOLLOW_MARKER in document:
+        return re.sub(
+            rf'\n\s*{re.escape(FOLLOW_MARKER)}.*?<!-- PRESENCE FOLLOW:END -->\n?',
+            lambda match: follow,
+            document,
+            count=1,
+            flags=re.DOTALL,
+        )
     marker = '\n    <section class="authors"'
     if marker in document:
         return document.replace(marker, f"{follow}{marker}", 1)
@@ -215,6 +222,8 @@ def update_document(path: Path, story: dict | None = None) -> None:
         additions.append(f'<meta name="twitter:description" content="{escape(description, quote=True)}">')
     if 'name="twitter:image"' not in document:
         additions.append(f'<meta name="twitter:image" content="{og_image}">')
+    if 'name="twitter:site"' not in document:
+        additions.append('<meta name="twitter:site" content="@PresenceWeb3">')
 
     schema = page_schema(path, document, canonical, og_image, story)
     schema_json = json.dumps(schema, ensure_ascii=False, indent=2).replace("</", "<\\/")
