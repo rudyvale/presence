@@ -49,7 +49,7 @@ def page_schema(path: Path, document: str, canonical: str, image: str, story: di
         "@id": f"{BASE_URL}/#organization",
         "name": "PRESENCE",
         "url": f"{BASE_URL}/",
-        "logo": f"{BASE_URL}/assets/img/presence-social.png",
+        "logo": f"{BASE_URL}/assets/img/presence-icon.png",
         "sameAs": ["https://t.me/presencemedia", "https://x.com/PresenceWeb3"],
     }
 
@@ -66,7 +66,7 @@ def page_schema(path: Path, document: str, canonical: str, image: str, story: di
             "headline": headline,
             "description": description,
             "mainEntityOfPage": canonical,
-            "image": [image],
+            **({"image": [image]} if image else {}),
             **({"author": {"@type": "Person", "name": author}} if author else {}),
             "publisher": {"@id": f"{BASE_URL}/#organization"},
         }
@@ -168,10 +168,16 @@ def update_document(path: Path, story: dict | None = None) -> None:
         document = update_republication(document, story)
 
     canonical = canonical_for(path)
-    default_image = f"{BASE_URL}/assets/img/presence-social.png"
+    document = re.sub(
+        r'<meta\s+(?:property="og:image"|name="twitter:image")\s+content="([^"]+)"\s*/?>\n?',
+        lambda match: "" if "/assets/img/presence-social.png" in match.group(1) or "/assets/img/presence-editorial-cover-" in match.group(1) else match.group(0),
+        document,
+        flags=re.IGNORECASE,
+    )
 
     og_image_match = re.search(r'<meta\s+property="og:image"\s+content="([^"]+)"', document, re.IGNORECASE)
-    og_image = absolute_url(og_image_match.group(1), canonical) if og_image_match else default_image
+    og_image = absolute_url(og_image_match.group(1), canonical) if og_image_match else ""
+    card_type = "summary_large_image" if og_image else "summary"
 
     document = re.sub(
         r'(<meta\s+property="og:image"\s+content=")([^"]+)(")',
@@ -187,7 +193,7 @@ def update_document(path: Path, story: dict | None = None) -> None:
     )
     document = re.sub(
         r'(<meta\s+name="twitter:card"\s+content=")[^"]+("\s*/?>)',
-        r'\1summary_large_image\2',
+        lambda match: f"{match.group(1)}{card_type}{match.group(2)}",
         document,
         flags=re.IGNORECASE,
     )
@@ -212,15 +218,13 @@ def update_document(path: Path, story: dict | None = None) -> None:
         additions.append(f'<meta property="og:title" content="{escape(title, quote=True)}">')
     if 'property="og:description"' not in document:
         additions.append(f'<meta property="og:description" content="{escape(description, quote=True)}">')
-    if not og_image_match:
-        additions.append(f'<meta property="og:image" content="{default_image}">')
     if 'name="twitter:card"' not in document:
-        additions.append('<meta name="twitter:card" content="summary_large_image">')
+        additions.append(f'<meta name="twitter:card" content="{card_type}">')
     if 'name="twitter:title"' not in document:
         additions.append(f'<meta name="twitter:title" content="{escape(title, quote=True)}">')
     if 'name="twitter:description"' not in document:
         additions.append(f'<meta name="twitter:description" content="{escape(description, quote=True)}">')
-    if 'name="twitter:image"' not in document:
+    if og_image and 'name="twitter:image"' not in document:
         additions.append(f'<meta name="twitter:image" content="{og_image}">')
     if 'name="twitter:site"' not in document:
         additions.append('<meta name="twitter:site" content="@PresenceWeb3">')
