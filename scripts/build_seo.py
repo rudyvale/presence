@@ -9,7 +9,6 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import re
-from urllib.parse import urljoin
 
 from build_catalog import build_catalog, load_stories, publication_time
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
@@ -18,6 +17,8 @@ from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article
 SEO_START = "<!-- PRESENCE SEO:START -->"
 SEO_END = "<!-- PRESENCE SEO:END -->"
 FOLLOW_MARKER = "<!-- PRESENCE FOLLOW:START -->"
+SOCIAL_IMAGE = f"{BASE_URL}/assets/img/presence-banner-82e5cd328f.png"
+SOCIAL_IMAGE_ALT = "Presence — crypto, technology, and the people behind it."
 
 
 def clean_text(value: str) -> str:
@@ -27,12 +28,6 @@ def clean_text(value: str) -> str:
 def capture(pattern: str, document: str, default: str = "") -> str:
     match = re.search(pattern, document, re.IGNORECASE | re.DOTALL)
     return clean_text(match.group(1)) if match else default
-
-
-def absolute_url(value: str, canonical: str) -> str:
-    if value.startswith(("https://", "http://")):
-        return value
-    return urljoin(canonical, value)
 
 
 def page_schema(path: Path, document: str, canonical: str, image: str, story: dict | None = None) -> dict:
@@ -169,31 +164,8 @@ def update_document(path: Path, story: dict | None = None) -> None:
 
     canonical = canonical_for(path)
     document = re.sub(
-        r'<meta\s+(?:property="og:image"|name="twitter:image")\s+content="([^"]+)"\s*/?>\n?',
-        lambda match: "" if "/assets/img/presence-social.png" in match.group(1) or "/assets/img/presence-editorial-cover-" in match.group(1) else match.group(0),
-        document,
-        flags=re.IGNORECASE,
-    )
-
-    og_image_match = re.search(r'<meta\s+property="og:image"\s+content="([^"]+)"', document, re.IGNORECASE)
-    og_image = absolute_url(og_image_match.group(1), canonical) if og_image_match else ""
-    card_type = "summary_large_image" if og_image else "summary"
-
-    document = re.sub(
-        r'(<meta\s+property="og:image"\s+content=")([^"]+)(")',
-        lambda match: f"{match.group(1)}{absolute_url(match.group(2), canonical)}{match.group(3)}",
-        document,
-        flags=re.IGNORECASE,
-    )
-    document = re.sub(
-        r'(<meta\s+name="twitter:image"\s+content=")([^"]+)(")',
-        lambda match: f"{match.group(1)}{absolute_url(match.group(2), canonical)}{match.group(3)}",
-        document,
-        flags=re.IGNORECASE,
-    )
-    document = re.sub(
-        r'(<meta\s+name="twitter:card"\s+content=")[^"]+("\s*/?>)',
-        lambda match: f"{match.group(1)}{card_type}{match.group(2)}",
+        r'<meta\s+(?:property="og:image(?::[a-z_]+)?"|name="twitter:(?:card|image(?::alt)?)")\s+content="[^"]*"\s*/?>\n?',
+        "",
         document,
         flags=re.IGNORECASE,
     )
@@ -207,6 +179,14 @@ def update_document(path: Path, story: dict | None = None) -> None:
     additions = [
         f'<link rel="canonical" href="{escape(canonical, quote=True)}">',
         f'<meta property="og:url" content="{escape(canonical, quote=True)}">',
+        f'<meta property="og:image" content="{SOCIAL_IMAGE}">',
+        '<meta property="og:image:type" content="image/png">',
+        '<meta property="og:image:width" content="1500">',
+        '<meta property="og:image:height" content="500">',
+        f'<meta property="og:image:alt" content="{escape(SOCIAL_IMAGE_ALT, quote=True)}">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:image" content="{SOCIAL_IMAGE}">',
+        f'<meta name="twitter:image:alt" content="{escape(SOCIAL_IMAGE_ALT, quote=True)}">',
     ]
     if story and story.get("republishedDate"):
         additions.append(f'<meta property="article:modified_time" content="{story["republishedDate"]}">')
@@ -218,18 +198,14 @@ def update_document(path: Path, story: dict | None = None) -> None:
         additions.append(f'<meta property="og:title" content="{escape(title, quote=True)}">')
     if 'property="og:description"' not in document:
         additions.append(f'<meta property="og:description" content="{escape(description, quote=True)}">')
-    if 'name="twitter:card"' not in document:
-        additions.append(f'<meta name="twitter:card" content="{card_type}">')
     if 'name="twitter:title"' not in document:
         additions.append(f'<meta name="twitter:title" content="{escape(title, quote=True)}">')
     if 'name="twitter:description"' not in document:
         additions.append(f'<meta name="twitter:description" content="{escape(description, quote=True)}">')
-    if og_image and 'name="twitter:image"' not in document:
-        additions.append(f'<meta name="twitter:image" content="{og_image}">')
     if 'name="twitter:site"' not in document:
         additions.append('<meta name="twitter:site" content="@PresenceWeb3">')
 
-    schema = page_schema(path, document, canonical, og_image, story)
+    schema = page_schema(path, document, canonical, SOCIAL_IMAGE, story)
     schema_json = json.dumps(schema, ensure_ascii=False, indent=2).replace("</", "<\\/")
     seo_block = f"{SEO_START}\n" + "\n".join(additions) + f'\n<script type="application/ld+json">\n{schema_json}\n</script>\n{SEO_END}\n'
     document = document.replace("</head>", f"{seo_block}</head>", 1)
