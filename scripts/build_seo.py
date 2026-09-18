@@ -21,6 +21,19 @@ SOCIAL_IMAGE = f"{BASE_URL}/assets/img/presence-banner-82e5cd328f.png"
 SOCIAL_IMAGE_ALT = "Presence — crypto, technology, and the people behind it."
 
 
+def social_image_metadata() -> list[str]:
+    return [
+        f'<meta property="og:image" content="{SOCIAL_IMAGE}">',
+        '<meta property="og:image:type" content="image/png">',
+        '<meta property="og:image:width" content="1500">',
+        '<meta property="og:image:height" content="500">',
+        f'<meta property="og:image:alt" content="{escape(SOCIAL_IMAGE_ALT, quote=True)}">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:image" content="{SOCIAL_IMAGE}">',
+        f'<meta name="twitter:image:alt" content="{escape(SOCIAL_IMAGE_ALT, quote=True)}">',
+    ]
+
+
 def clean_text(value: str) -> str:
     return " ".join(unescape(re.sub(r"<[^>]+>", " ", value)).split())
 
@@ -179,14 +192,7 @@ def update_document(path: Path, story: dict | None = None) -> None:
     additions = [
         f'<link rel="canonical" href="{escape(canonical, quote=True)}">',
         f'<meta property="og:url" content="{escape(canonical, quote=True)}">',
-        f'<meta property="og:image" content="{SOCIAL_IMAGE}">',
-        '<meta property="og:image:type" content="image/png">',
-        '<meta property="og:image:width" content="1500">',
-        '<meta property="og:image:height" content="500">',
-        f'<meta property="og:image:alt" content="{escape(SOCIAL_IMAGE_ALT, quote=True)}">',
-        '<meta name="twitter:card" content="summary_large_image">',
-        f'<meta name="twitter:image" content="{SOCIAL_IMAGE}">',
-        f'<meta name="twitter:image:alt" content="{escape(SOCIAL_IMAGE_ALT, quote=True)}">',
+        *social_image_metadata(),
     ]
     if story and story.get("republishedDate"):
         additions.append(f'<meta property="article:modified_time" content="{story["republishedDate"]}">')
@@ -268,14 +274,30 @@ def write_redirects(paths: list[Path]) -> list[Path]:
             continue
         target = escape(route_for(path), quote=True)
         canonical = escape(canonical_for(path), quote=True)
+        source = path.read_text(encoding="utf-8")
+        title = escape(capture(r"<title>(.*?)</title>", source, "PRESENCE"), quote=True)
+        description = escape(capture(r'<meta\s+name="description"\s+content="([^"]*)"', source), quote=True)
+        preview = "\n".join([
+            f'<meta name="description" content="{description}">',
+            f'<meta property="og:url" content="{canonical}">',
+            f'<meta property="og:type" content="{"article" if is_article(path) else "website"}">',
+            '<meta property="og:site_name" content="PRESENCE">',
+            f'<meta property="og:title" content="{title}">',
+            f'<meta property="og:description" content="{description}">',
+            f'<meta name="twitter:title" content="{title}">',
+            f'<meta name="twitter:description" content="{description}">',
+            '<meta name="twitter:site" content="@PresenceWeb3">',
+            *social_image_metadata(),
+        ])
         document = f'''<!doctype html>
 <html lang="en" data-presence-redirect="{target}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; script-src 'self'; object-src 'none'">
-<title>Page moved — PRESENCE</title>
+<title>{title}</title>
 <link rel="canonical" href="{canonical}">
+{preview}
 <script src="/assets/js/redirect.js?v=0"></script>
 <noscript><meta http-equiv="refresh" content="0; url={target}"></noscript>
 </head>

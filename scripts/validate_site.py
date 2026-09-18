@@ -14,6 +14,7 @@ from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
 from PIL import Image
+from build_seo import SOCIAL_IMAGE, SOCIAL_IMAGE_ALT
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
 
 
@@ -27,11 +28,41 @@ class ReferenceParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.references: list[str] = []
+        self.metadata: dict[str, list[str]] = {}
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "meta":
+            key = attributes.get("property") or attributes.get("name")
+            if key:
+                self.metadata.setdefault(key, []).append(attributes.get("content") or "")
         for name, value in attrs:
             if value and name in {"src", "href"}:
                 self.references.append(value)
+
+
+def validate_social_metadata(parser: ReferenceParser, relative: str, canonical: str) -> list[str]:
+    expected = {
+        "og:url": canonical,
+        "og:image": SOCIAL_IMAGE,
+        "og:image:type": "image/png",
+        "og:image:width": "1500",
+        "og:image:height": "500",
+        "og:image:alt": SOCIAL_IMAGE_ALT,
+        "twitter:card": "summary_large_image",
+        "twitter:image": SOCIAL_IMAGE,
+        "twitter:image:alt": SOCIAL_IMAGE_ALT,
+        "twitter:site": "@PresenceWeb3",
+    }
+    errors = []
+    for key, value in expected.items():
+        if parser.metadata.get(key) != [value]:
+            errors.append(f"{relative}: missing, duplicate, or incorrect {key}")
+    for key in ("og:title", "og:description", "twitter:title", "twitter:description"):
+        values = parser.metadata.get(key, [])
+        if len(values) != 1 or not values[0].strip():
+            errors.append(f"{relative}: missing or duplicate {key}")
+    return errors
 
 
 def validate_catalog() -> list[str]:
@@ -166,6 +197,7 @@ def main() -> int:
 
         parser = ReferenceParser()
         parser.feed(document)
+        errors.extend(validate_social_metadata(parser, relative, canonical_for(page)))
         for reference in parser.references:
             parsed = urlsplit(reference)
             if reference.startswith("#"):
@@ -191,6 +223,9 @@ def main() -> int:
             errors.append(f"{redirect.relative_to(ROOT)}: missing legacy redirect")
             continue
         document = redirect.read_text(encoding="utf-8")
+        parser = ReferenceParser()
+        parser.feed(document)
+        errors.extend(validate_social_metadata(parser, redirect.relative_to(ROOT).as_posix(), canonical_for(destination)))
         route = route_for(destination)
         required = (
             f'data-presence-redirect="{route}"',
@@ -227,10 +262,19 @@ def main() -> int:
         except Exception as exc:  # noqa: BLE001 - acceptance should report every decoder failure
             errors.append(f"{image_path.relative_to(ROOT).as_posix()}: invalid WebP ({exc})")
 
+    try:
+        with Image.open(local_target(SOCIAL_IMAGE)) as image:
+            if image.format != "PNG" or image.size != (1500, 500):
+                errors.append("Social banner format or dimensions do not match the metadata")
+            image.verify()
+    except Exception as exc:
+        errors.append(f"Social banner is missing or invalid: {exc}")
+
     checks = {
         "HTML pages": len(pages),
         "Article pages": len(article_pages),
         "Legacy redirects": len(redirects),
+        "Social previews": len(pages) + len(redirects),
         "Sitemap URLs": len(actual_sitemap),
         "WebP assets": len(list((ROOT / "assets" / "img").rglob("*.webp"))),
         "Errors": len(errors),
