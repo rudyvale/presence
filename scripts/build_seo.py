@@ -162,6 +162,17 @@ def update_republication(document: str, story: dict | None) -> str:
     return document
 
 
+def add_article_disclaimer(document: str) -> str:
+    paragraphs = json.loads((ROOT / "assets/data/article-disclaimer.json").read_text(encoding="utf-8"))["paragraphs"]
+    content = "\n".join(f"      <p>{escape(paragraph)}</p>" for paragraph in paragraphs)
+    disclaimer = f'    <aside class="article-disclaimer" aria-label="Disclaimer">\n{content}\n    </aside>\n'
+    document = re.sub(r'\n?[ \t]*<aside class="article-disclaimer"[^>]*>.*?</aside>\n?', "\n", document, flags=re.DOTALL)
+    marker = f"    {FOLLOW_MARKER}"
+    if marker not in document:
+        raise ValueError("Missing article follow block for disclaimer placement")
+    return document.replace(marker, disclaimer + "\n" + marker, 1)
+
+
 def update_document(path: Path, story: dict | None = None) -> None:
     document = path.read_text(encoding="utf-8")
     document = re.sub(
@@ -174,6 +185,7 @@ def update_document(path: Path, story: dict | None = None) -> None:
     if is_article(path):
         document = add_article_follow(document)
         document = update_republication(document, story)
+        document = add_article_disclaimer(document)
 
     canonical = canonical_for(path)
     document = re.sub(

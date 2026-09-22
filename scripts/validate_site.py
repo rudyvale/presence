@@ -157,6 +157,7 @@ def validate_catalog() -> list[str]:
 
 def main() -> int:
     errors = validate_catalog()
+    disclaimer_paragraphs = json.loads((ROOT / "assets/data/article-disclaimer.json").read_text(encoding="utf-8"))["paragraphs"]
     pages = content_pages()
     article_pages = [page for page in pages if is_article(page)]
     redirects = {legacy_path(page): page for page in pages if legacy_path(page) is not None}
@@ -194,6 +195,16 @@ def main() -> int:
             errors.append(f"{relative}: legacy archive branding remains in navigation or controls")
         if is_article(page) and document.count("PRESENCE FOLLOW:START") != 1:
             errors.append(f"{relative}: article follow block count is not 1")
+        if is_article(page):
+            disclaimers = list(re.finditer(r'<aside class="article-disclaimer"[^>]*>(.*?)</aside>', document, re.DOTALL))
+            if len(disclaimers) != 1:
+                errors.append(f"{relative}: disclaimer count is not 1")
+            else:
+                paragraphs = [unescape(text) for text in re.findall(r'<p>(.*?)</p>', disclaimers[0][1], re.DOTALL)]
+                if paragraphs != disclaimer_paragraphs:
+                    errors.append(f"{relative}: disclaimer differs from the supplied copy")
+                if not document.find('class="article__body"') < disclaimers[0].start() < document.find("PRESENCE FOLLOW:START"):
+                    errors.append(f"{relative}: disclaimer must follow the article and precede the follow block")
 
         parser = ReferenceParser()
         parser.feed(document)

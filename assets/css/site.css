@@ -921,6 +921,24 @@ textarea:focus-visible {
   height: auto;
 }
 
+.article-disclaimer {
+  margin: 32px 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.article-disclaimer p {
+  margin: 0;
+}
+
+.article-disclaimer p + p {
+  margin-top: 1em;
+}
+
 .article-follow {
   display: grid;
   gap: 16px;
