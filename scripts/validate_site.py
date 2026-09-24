@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 import re
 import sys
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote, urljoin, urlsplit
 import xml.etree.ElementTree as ET
 
 from PIL import Image
@@ -29,6 +29,9 @@ class ReferenceParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.references: list[str] = []
         self.metadata: dict[str, list[str]] = {}
+        self.rss_links: list[dict[str, str | None]] = []
+        self.article_images: list[str] = []
+        self.article_image_tag: str | None = None
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = dict(attrs)
@@ -36,9 +39,19 @@ class ReferenceParser(HTMLParser):
             key = attributes.get("property") or attributes.get("name")
             if key:
                 self.metadata.setdefault(key, []).append(attributes.get("content") or "")
+        if tag == "link" and attributes.get("type") == "application/rss+xml":
+            self.rss_links.append(attributes)
+        if tag in {"p", "figure"} and "article__image" in (attributes.get("class") or "").split():
+            self.article_image_tag = tag
+        if tag == "img" and self.article_image_tag and attributes.get("src"):
+            self.article_images.append(attributes["src"])
         for name, value in attrs:
             if value and name in {"src", "href"}:
                 self.references.append(value)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == self.article_image_tag:
+            self.article_image_tag = None
 
 
 def validate_social_metadata(parser: ReferenceParser, relative: str, canonical: str) -> list[str]:
@@ -76,6 +89,12 @@ def validate_catalog() -> list[str]:
     )
     stories.sort(key=lambda story: story.get("republishedDate") or story["date"], reverse=True)
     latest = [story for story in stories if story.get("promotable") is not False][:4]
+    editorial = [story for story in stories if story.get("promotable") is not False]
+    pinned = sorted(
+        [story for story in editorial if isinstance(story.get("featuredRank"), int) and 1 <= story["featuredRank"] <= 100],
+        key=lambda story: story["featuredRank"],
+    )
+    featured = (pinned + [story for story in editorial if story not in pinned])[:3]
     errors = []
     biographies = json.loads((ROOT / "assets/data/author-bios.json").read_text(encoding="utf-8"))["authors"]
     for story in stories:
@@ -89,6 +108,10 @@ def validate_catalog() -> list[str]:
         if story.get("image") and not local_target(story["image"]).is_file():
             errors.append(f"{story['url']}: catalog image does not exist")
         document = target.read_text(encoding="utf-8")
+        parser = ReferenceParser()
+        parser.feed(document)
+        image_source = next(iter(parser.article_images), story.get("image", ""))
+        expected_image = urljoin(BASE_URL + story["url"], image_source) if image_source else ""
         republished = story.get("republishedDate")
         if republished:
             try:
@@ -111,16 +134,29 @@ def validate_catalog() -> list[str]:
                 graph = json.loads(schema_text).get("@graph", [])
             except json.JSONDecodeError:
                 continue
-            for item in graph:
-                if item.get("@type") != "Article":
-                    continue
-                if item.get("author", {}).get("name", "") != story.get("author", ""):
+            articles = [item for item in graph if item.get("@type") == "Article"]
+            if len(articles) != 1:
+                errors.append(f"{story['url']}: expected one structured Article")
+            for item in articles:
+                authors = item.get("author", [])
+                authors = [authors] if isinstance(authors, dict) else authors
+                if not isinstance(authors, list) or any(not isinstance(author, dict) for author in authors):
+                    errors.append(f"{story['url']}: invalid structured authors")
+                elif [author.get("name") for author in authors] != expected_authors or any(author.get("@type") != "Person" for author in authors):
                     errors.append(f"{story['url']}: structured author does not match the catalog")
                 if not expected_authors and "author" in item:
                     errors.append(f"{story['url']}: an unsigned article must not invent an author")
+                if expected_image:
+                    if item.get("image") != [expected_image]:
+                        errors.append(f"{story['url']}: structured image does not match the article hero")
+                    if urlsplit(expected_image).scheme not in {"http", "https"} or not urlsplit(expected_image).netloc:
+                        errors.append(f"{story['url']}: structured image must use an absolute HTTP URL")
+                elif "image" in item:
+                    errors.append(f"{story['url']}: structured image has no representative article image")
                 if republished and (item.get("datePublished") != story["date"] or item.get("dateModified") != republished):
                     errors.append(f"{story['url']}: original and republication metadata do not match the catalog")
     for filename, slot, expected in (
+        ("index.html", "FEATURED-CARDS", featured),
         ("index.html", "LATEST-CARDS", latest),
         ("news/index.html", "NEWS-CARDS", stories),
     ):
@@ -142,12 +178,6 @@ def validate_catalog() -> list[str]:
         labels = re.findall(r'<time\b[^>]*>(.*?)</time>', fragments[0])
         if any(label.startswith("Republished ") for label in labels):
             errors.append(f"{filename}: {slot} dates still contain republication labels")
-    sitemap = ET.parse(ROOT / "sitemap.xml")
-    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-    modified = {item.findtext("sm:loc", namespaces=ns): item.findtext("sm:lastmod", namespaces=ns) for item in sitemap.findall("sm:url", ns)}
-    for story in stories:
-        if story.get("republishedDate") and modified.get(BASE_URL + story["url"]) != story["republishedDate"]:
-            errors.append(f"{story['url']}: sitemap is missing the republication date")
     feed = ET.parse(ROOT / "feed.xml")
     feed_links = [node.text for node in feed.findall("channel/item/link")]
     if set(feed_links) != {BASE_URL + story["url"] for story in stories} or len(feed_links) != len(stories):
@@ -209,6 +239,11 @@ def main() -> int:
         parser = ReferenceParser()
         parser.feed(document)
         errors.extend(validate_social_metadata(parser, relative, canonical_for(page)))
+        expected_robots = "noindex,follow" if page.name == "404.html" else "max-image-preview:large"
+        if parser.metadata.get("robots") != [expected_robots]:
+            errors.append(f"{relative}: incorrect indexing or image preview directives")
+        if len(parser.rss_links) != 1 or parser.rss_links[0].get("href") != BASE_URL + "/feed.xml" or "alternate" not in (parser.rss_links[0].get("rel") or "").split():
+            errors.append(f"{relative}: missing, duplicate, or incorrect RSS discovery link")
         for reference in parser.references:
             parsed = urlsplit(reference)
             if reference.startswith("#"):
@@ -256,6 +291,8 @@ def main() -> int:
     sitemap = ET.parse(ROOT / "sitemap.xml")
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     actual_sitemap = {node.text or "" for node in sitemap.findall("sm:url/sm:loc", namespace)}
+    if sitemap.findall("sm:url/sm:lastmod", namespace):
+        errors.append("sitemap must omit lastmod until significant modification dates are tracked")
     if actual_sitemap != expected_sitemap or len(sitemap.findall("sm:url", namespace)) != len(expected_sitemap):
         errors.append(
             f"sitemap mismatch: expected {len(expected_sitemap)}, found {len(actual_sitemap)}"

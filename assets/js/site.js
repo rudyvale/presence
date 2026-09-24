@@ -474,8 +474,8 @@
       return article;
     });
 
-    featuredRoot.replaceChildren(...featuredRows);
-    latestRoot.replaceChildren(...latestRows);
+    if (!featuredRoot.querySelector(".featured-row")) featuredRoot.replaceChildren(...featuredRows);
+    if (!latestRoot.querySelector(".latest-row")) latestRoot.replaceChildren(...latestRows);
   }
 
   const ticker = document.querySelector("[data-story-ticker]");
@@ -489,9 +489,10 @@
       if (hidden) sequence.setAttribute("aria-hidden", "true");
 
       tickerStories.forEach((story, index) => {
-        const link = document.createElement(hidden ? "span" : "a");
+        const link = document.createElement("a");
         link.className = "story-ticker__item";
-        if (!hidden) link.href = story.url;
+        link.href = story.url;
+        if (hidden) link.tabIndex = -1;
         const label = document.createElement("span");
         label.textContent = index === 0 ? "Latest" : story.category;
         link.append(label, document.createTextNode(story.title));
@@ -593,10 +594,14 @@
     });
   };
 
-  const renderArchive = () => {
+  const renderArchive = ({ append = false, focusNew = false } = {}) => {
     const filtered = filteredArchiveItems();
     const visible = filtered.slice(0, archiveState.visible);
-    archiveRoot.replaceChildren(...visible.map(makeArchiveRow));
+    const previousCount = append ? archiveRoot.children.length : 0;
+    const rows = visible.slice(previousCount).map(makeArchiveRow);
+    if (append) archiveRoot.append(...rows);
+    else archiveRoot.replaceChildren(...rows);
+    if (focusNew) rows[0]?.querySelector("h3 a")?.focus();
     archiveMore.hidden = visible.length >= filtered.length;
     archiveStatus.textContent = filtered.length
       ? `Showing ${visible.length} of ${filtered.length} articles.`
@@ -610,9 +615,9 @@
 
   archiveSearch?.addEventListener("input", resetAndRenderArchive);
   archiveCategory?.addEventListener("change", resetAndRenderArchive);
-  archiveMore?.addEventListener("click", () => {
+  archiveMore?.addEventListener("click", (event) => {
     archiveState.visible += 24;
-    renderArchive();
+    renderArchive({ append: true, focusNew: event.detail === 0 });
   });
 
   const localArchiveItems = publishedStories.map((story) => Object.freeze({

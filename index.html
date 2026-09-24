@@ -15,9 +15,11 @@
 <meta property="og:description" content="Focused coverage of technology, crypto, science, and the companies shaping what comes next.">
 
 <link rel="stylesheet" href="/assets/css/fonts.css?v=2623dfcbb6f68f80">
-<link rel="stylesheet" href="/assets/css/site.css?v=0095686d16498429">
+<link rel="stylesheet" href="/assets/css/site.css?v=41df64a3d6717e00">
 <!-- PRESENCE SEO:START -->
 <link rel="canonical" href="https://presence.news/">
+<link rel="alternate" type="application/rss+xml" title="PRESENCE RSS" href="https://presence.news/feed.xml">
+<meta name="robots" content="max-image-preview:large">
 <meta property="og:url" content="https://presence.news/">
 <meta property="og:image" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
 <meta property="og:image:type" content="image/png">
@@ -110,9 +112,11 @@
 <main id="main">
   <section class="editorial-catalog" aria-labelledby="catalog-title">
     <div class="catalog-wrap">
-      <h1 class="visually-hidden" id="catalog-title">PRESENCE newsroom</h1>
-      <div class="catalog-follow" aria-label="Follow PRESENCE">
-        <p><span>FOLLOW PRESENCE</span><strong>New stories from Presence.</strong></p>
+      <div class="catalog-follow">
+        <div class="catalog-intro">
+          <h1 id="catalog-title">Crypto, with context.</h1>
+          <p>Founder essays, interviews and reporting.</p>
+        </div>
         <div class="catalog-follow__actions">
           <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
           <a class="btn btn--quiet" href="https://x.com/PresenceWeb3" target="_blank" rel="noopener noreferrer">Follow on X</a>
@@ -127,6 +131,32 @@
           </div>
 
           <div class="featured-list" id="featured-edits">
+            <template data-presence-slot="FEATURED-CARDS:START"></template>
+            <article class="featured-row featured-row--with-image">
+              <div class="featured-row__main">
+                <h2><a href="/articles/2020-01-03_credible-neutrality-guiding-principle/">Vitalik Buterin on Building Systems People Can Trust as Fair</a></h2>
+                <p class="story-author">Vitalik Buterin · <time datetime="2026-09-09">September 9, 2026</time> · 11 min read</p>
+                <p class="featured-row__summary">Vitalik Buterin argues that mechanisms governing high-stakes outcomes must be credibly neutral, then sets out practical rules for making them fair, legible, and effective.</p>
+              </div>
+              <a class="featured-row__media" href="/articles/2020-01-03_credible-neutrality-guiding-principle/" aria-label="Read Vitalik Buterin on Building Systems People Can Trust as Fair">
+                <img src="/assets/img/articles/2020-01-03_credible-neutrality-guiding-principle/vitalik-buterin.webp" alt="Vitalik Buterin speaking on stage" width="1280" height="720" decoding="async" fetchpriority="high">
+              </a>
+            </article>
+            <article class="featured-row">
+              <div class="featured-row__main">
+                <h2><a href="/articles/2026-08-19_changpeng-zhao-bitcoin-outlook-2027/">CZ on Bitcoin’s Correction, 2027 Outlook and Corporate Adoption</a></h2>
+                <p class="story-author">Changpeng Zhao · <time datetime="2026-08-19">August 19, 2026</time> · 7 min read</p>
+              </div>
+              <p class="featured-row__summary">Binance co-founder Changpeng Zhao explains why bitcoin corrections are normal, what institutional adoption could mean for 2027, and how exchanges scale through record volumes.</p>
+            </article>
+            <article class="featured-row">
+              <div class="featured-row__main">
+                <h2><a href="/articles/2023-09-20_nansen-alex-svanevik-ai-asia-onchain-intelligence/">AI, Asia and Onchain Intelligence: An Interview With Nansen’s Alex Svanevik</a></h2>
+                <p class="story-author">Alex Svanevik · <time datetime="2023-09-20">September 20, 2023</time> · 9 min read</p>
+              </div>
+              <p class="featured-row__summary">Nansen CEO Alex Svanevik on building through the bear market, moving AI to the front of the product, exchange transparency after FTX, and why Asia matters for the next stage of crypto.</p>
+            </article>
+            <template data-presence-slot="FEATURED-CARDS:END"></template>
           </div>
         </section>
 
@@ -234,10 +264,10 @@
         </label>
       </div>
 
-      <p class="archive-status" data-archive-status aria-live="polite">Loading the article archive…</p>
+      <p class="archive-status" data-archive-status aria-live="polite"><a href="/news/">Browse every story in the newsroom.</a></p>
       <div class="archive-grid" data-archive-grid></div>
       <button class="archive-more" type="button" data-archive-more hidden>Show more</button>
-      <noscript><p class="archive-status">JavaScript is required to browse the article archive.</p></noscript>
+      <noscript><p class="archive-status">Enable JavaScript to search by title, author or topic.</p></noscript>
     </div>
   </section>
 </main>
@@ -277,6 +307,6 @@
 </footer>
 
 <script src="/assets/js/news-data.js?v=c33a66573c08b747"></script>
-<script src="/assets/js/site.js?v=c63948cda85ee69e"></script>
+<script src="/assets/js/site.js?v=a736894dedc4650b"></script>
 </body>
 </html>

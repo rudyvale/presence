@@ -3,12 +3,12 @@
 
 from __future__ import annotations
 
-from datetime import date
 from html import escape, unescape
 from hashlib import sha256
 import json
 from pathlib import Path
 import re
+from urllib.parse import urljoin, urlsplit
 
 from build_catalog import build_catalog, load_stories, publication_time
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
@@ -43,7 +43,18 @@ def capture(pattern: str, document: str, default: str = "") -> str:
     return clean_text(match.group(1)) if match else default
 
 
-def page_schema(path: Path, document: str, canonical: str, image: str, story: dict | None = None) -> dict:
+def article_image(document: str, canonical: str, story: dict | None = None) -> str:
+    source = capture(
+        r'<(?:p|figure)\b[^>]*class="[^"]*\barticle__image\b[^"]*"[^>]*>\s*<img\b[^>]*src="([^"]+)"',
+        document,
+        (story or {}).get("image", ""),
+    )
+    image = urljoin(canonical, source) if source else ""
+    parsed = urlsplit(image)
+    return image if parsed.scheme in {"http", "https"} and parsed.netloc else ""
+
+
+def page_schema(path: Path, document: str, canonical: str, story: dict | None = None) -> dict:
     title = capture(r"<title>(.*?)</title>", document, "PRESENCE")
     description = capture(
         r'<meta\s+name="description"\s+content="([^"]*)"',
@@ -63,7 +74,9 @@ def page_schema(path: Path, document: str, canonical: str, image: str, story: di
 
     if relative.startswith("articles/"):
         headline = capture(r'<h1[^>]*class="article__title"[^>]*>(.*?)</h1>', document, title.removesuffix(" — PRESENCE"))
-        author = capture(r'<p[^>]*class="article__meta"[^>]*>(.*?)\s*·', document)
+        author = story.get("author", "") if story is not None else capture(r'<p[^>]*class="article__meta"[^>]*>(.*?)\s*·', document)
+        authors = [{"@type": "Person", "name": name.strip()} for name in author.split(" & ") if name.strip()]
+        image = article_image(document, canonical, story)
         published = capture(r'<time[^>]*datetime="([^"]+)"', document)
         if story and story.get("republishedDate"):
             published = story["date"]
@@ -75,7 +88,7 @@ def page_schema(path: Path, document: str, canonical: str, image: str, story: di
             "description": description,
             "mainEntityOfPage": canonical,
             **({"image": [image]} if image else {}),
-            **({"author": {"@type": "Person", "name": author}} if author else {}),
+            **({"author": authors[0] if len(authors) == 1 else authors} if authors else {}),
             "publisher": {"@id": f"{BASE_URL}/#organization"},
         }
         if published:
@@ -194,6 +207,8 @@ def update_document(path: Path, story: dict | None = None) -> None:
         document,
         flags=re.IGNORECASE,
     )
+    document = re.sub(r'<meta\s+name="robots"\s+content="[^"]*"\s*/?>\n?', "", document, flags=re.IGNORECASE)
+    document = re.sub(r'<link\b(?=[^>]*\btype="application/rss\+xml")[^>]*>\n?', "", document, flags=re.IGNORECASE)
 
     title = capture(r"<title>(.*?)</title>", document, "PRESENCE")
     description = capture(
@@ -203,6 +218,8 @@ def update_document(path: Path, story: dict | None = None) -> None:
     )
     additions = [
         f'<link rel="canonical" href="{escape(canonical, quote=True)}">',
+        f'<link rel="alternate" type="application/rss+xml" title="PRESENCE RSS" href="{BASE_URL}/feed.xml">',
+        f'<meta name="robots" content="{"noindex,follow" if path.name == "404.html" else "max-image-preview:large"}">',
         f'<meta property="og:url" content="{escape(canonical, quote=True)}">',
         *social_image_metadata(),
     ]
@@ -223,27 +240,22 @@ def update_document(path: Path, story: dict | None = None) -> None:
     if 'name="twitter:site"' not in document:
         additions.append('<meta name="twitter:site" content="@PresenceWeb3">')
 
-    schema = page_schema(path, document, canonical, SOCIAL_IMAGE, story)
+    schema = page_schema(path, document, canonical, story)
     schema_json = json.dumps(schema, ensure_ascii=False, indent=2).replace("</", "<\\/")
     seo_block = f"{SEO_START}\n" + "\n".join(additions) + f'\n<script type="application/ld+json">\n{schema_json}\n</script>\n{SEO_END}\n'
     document = document.replace("</head>", f"{seo_block}</head>", 1)
     path.write_text(document, encoding="utf-8", newline="\n")
 
 
-def write_sitemap(paths: list[Path], stories: dict[str, dict]) -> None:
+def write_sitemap(paths: list[Path]) -> None:
     entries = []
     for path in paths:
         if path.name == "404.html":
             continue
         canonical = canonical_for(path)
-        relative = path.relative_to(ROOT).as_posix()
-        published = re.match(r"articles/(\d{4}-\d{2}-\d{2})_", relative)
-        lastmod = published.group(1) if published else date.today().isoformat()
-        lastmod = stories.get(route_for(path), {}).get("republishedDate") or lastmod
         entries.append(
             "  <url>\n"
             f"    <loc>{escape(canonical)}</loc>\n"
-            f"    <lastmod>{lastmod}</lastmod>\n"
             "  </url>"
         )
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(entries) + "\n</urlset>\n"
@@ -356,7 +368,7 @@ def main() -> None:
     paths = content_pages()
     for path in paths:
         update_document(path, stories.get(route_for(path)))
-    write_sitemap(paths, stories)
+    write_sitemap(paths)
     update_feed()
     redirects = write_redirects(paths)
     update_asset_versions(paths + redirects)

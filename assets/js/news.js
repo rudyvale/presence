@@ -156,17 +156,32 @@
   };
 
   const categoryFromHash = () => window.location.hash.slice(1).toLowerCase() || "all";
+  const restoreLocation = () => {
+    search.value = new URLSearchParams(window.location.search).get("q") || "";
+    render(categoryFromHash());
+  };
 
   filters.forEach((button) => {
     button.addEventListener("click", () => {
       const category = button.dataset.newsFilter;
-      window.history.replaceState(null, "", category === "all" ? "#all" : `#${category}`);
+      if (category !== categoryFromHash()) {
+        const url = new URL(window.location.href);
+        url.hash = category;
+        window.history.pushState(null, "", url);
+      }
       render(category);
     });
   });
 
   window.addEventListener("hashchange", () => render(categoryFromHash()));
-  search.addEventListener("input", () => render(categoryFromHash()));
+  window.addEventListener("popstate", restoreLocation);
+  search.addEventListener("input", () => {
+    const url = new URL(window.location.href);
+    if (search.value.trim()) url.searchParams.set("q", search.value.trim());
+    else url.searchParams.delete("q");
+    window.history.replaceState(null, "", url);
+    render(categoryFromHash());
+  });
   updateCounts();
-  render(categoryFromHash());
+  restoreLocation();
 })();

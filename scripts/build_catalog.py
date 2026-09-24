@@ -32,6 +32,25 @@ def latest_card(story: dict) -> str:
             </article>'''
 
 
+def featured_card(story: dict) -> str:
+    byline = f"{escape(story['author'])} · " if story.get("author") else ""
+    summary = f'<p class="featured-row__summary">{escape(story["summary"])}</p>'
+    image = story.get("image")
+    image_class = " featured-row--with-image" if image else ""
+    media = f'''<a class="featured-row__media" href="{escape(story['url'])}" aria-label="Read {escape(story['title'])}">
+                <img src="{escape(image)}" alt="{escape(story.get('imageAlt', ''))}" width="1280" height="720" decoding="async" fetchpriority="high">
+              </a>''' if image else summary
+    card = f'''            <article class="featured-row{image_class}">
+              <div class="featured-row__main">
+                <h2><a href="{escape(story['url'])}">{escape(story['title'])}</a></h2>
+                <p class="story-author">{byline}{publication_time(story)} · {escape(story['readingTime'])}</p>
+                {summary if image else ''}
+              </div>
+              {media}
+            </article>'''
+    return "\n".join(line.rstrip() for line in card.splitlines() if line.strip())
+
+
 def news_card(story: dict) -> str:
     category = escape(story["category"])
     byline = f"\n            <span>{escape(story['author'])}</span>" if story.get("author") else ""
@@ -81,10 +100,17 @@ def load_stories() -> list[dict]:
 
 def build_catalog() -> None:
     stories = sorted(load_stories(), key=lambda story: (-date.fromisoformat(listing_date(story)).toordinal(), story["url"]))
-    latest = [story for story in stories if story.get("promotable") is not False][:4]
+    editorial = [story for story in stories if story.get("promotable") is not False]
+    latest = editorial[:4]
+    pinned = sorted(
+        [story for story in editorial if isinstance(story.get("featuredRank"), int) and 1 <= story["featuredRank"] <= 100],
+        key=lambda story: story["featuredRank"],
+    )
+    featured = (pinned + [story for story in editorial if story not in pinned])[:3]
+    replace_slot(ROOT / "index.html", "FEATURED-CARDS", "\n".join(map(featured_card, featured)), "            ")
     replace_slot(ROOT / "index.html", "LATEST-CARDS", "\n".join(map(latest_card, latest)), "            ")
     replace_slot(ROOT / "news/index.html", "NEWS-CARDS", "\n\n".join(map(news_card, stories)), "        ")
-    print(f"Catalog listings updated: {len(latest)} latest, {len(stories)} news stories")
+    print(f"Catalog listings updated: {len(featured)} featured, {len(latest)} latest, {len(stories)} news stories")
 
 
 if __name__ == "__main__":
