@@ -15,7 +15,7 @@ import xml.etree.ElementTree as ET
 
 from PIL import Image
 from build_seo import SOCIAL_IMAGE, SOCIAL_IMAGE_ALT
-from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
+from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, redirect_pages, route_for
 
 
 def local_target(reference: str, page: Path = ROOT / "index.html") -> Path:
@@ -105,9 +105,16 @@ def validate_catalog() -> list[str]:
             continue
         if not re.fullmatch(r"/articles/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*/", story["url"]):
             errors.append(f"{story['url']}: catalog article must use a clean route")
+        displayed_date = story.get("republishedDate") or story["date"]
+        if story["url"].split("/")[2][:10] != displayed_date:
+            errors.append(f"{story['url']}: route date does not match the displayed article date {displayed_date}")
         if story.get("image") and not local_target(story["image"]).is_file():
             errors.append(f"{story['url']}: catalog image does not exist")
         document = target.read_text(encoding="utf-8")
+        meta = re.search(r'<p class="article__meta">(.*?)</p>', document, re.DOTALL)
+        rendered_time = re.search(r'<time\b[^>]*datetime="([^"]+)"', meta[1]) if meta else None
+        if not meta or (rendered_time and rendered_time[1] != displayed_date):
+            errors.append(f"{story['url']}: article byline date does not match the catalog")
         parser = ReferenceParser()
         parser.feed(document)
         image_source = next(iter(parser.article_images), story.get("image", ""))
@@ -190,7 +197,7 @@ def main() -> int:
     disclaimer_paragraphs = json.loads((ROOT / "assets/data/article-disclaimer.json").read_text(encoding="utf-8"))["paragraphs"]
     pages = content_pages()
     article_pages = [page for page in pages if is_article(page)]
-    redirects = {legacy_path(page): page for page in pages if legacy_path(page) is not None}
+    redirects = redirect_pages(pages)
     all_pages = set(ROOT.rglob("*.html"))
     if all_pages != set(pages) | set(redirects):
         errors.append("HTML files exist outside the clean routes and legacy redirects")
@@ -261,6 +268,8 @@ def main() -> int:
                 continue
             if not target.is_file():
                 errors.append(f"{relative}: missing reference: {reference}")
+            if target in redirects:
+                errors.append(f"{relative}: internal link uses an old article route: {reference}")
             if clean.endswith(".html") and clean != "/404.html":
                 errors.append(f"{relative}: internal link still uses .html: {reference}")
 

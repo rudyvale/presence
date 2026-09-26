@@ -11,7 +11,7 @@ import re
 from urllib.parse import urljoin, urlsplit
 
 from build_catalog import build_catalog, load_stories, publication_time
-from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, legacy_path, route_for
+from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, redirect_pages, route_for
 
 
 SEO_START = "<!-- PRESENCE SEO:START -->"
@@ -292,10 +292,7 @@ def update_feed() -> None:
 
 def write_redirects(paths: list[Path]) -> list[Path]:
     redirects = []
-    for path in paths:
-        legacy = legacy_path(path)
-        if legacy is None:
-            continue
+    for legacy, path in redirect_pages(paths).items():
         target = escape(route_for(path), quote=True)
         canonical = escape(canonical_for(path), quote=True)
         source = path.read_text(encoding="utf-8")
@@ -328,6 +325,7 @@ def write_redirects(paths: list[Path]) -> list[Path]:
 <body><p>This page has moved. <a href="{target}">Continue to PRESENCE</a>.</p></body>
 </html>
 '''
+        legacy.parent.mkdir(parents=True, exist_ok=True)
         legacy.write_text(document, encoding="utf-8", newline="\n")
         redirects.append(legacy)
     return redirects

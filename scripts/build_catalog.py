@@ -100,6 +100,9 @@ def load_stories() -> list[dict]:
 
 def build_catalog() -> None:
     stories = sorted(load_stories(), key=lambda story: (-date.fromisoformat(listing_date(story)).toordinal(), story["url"]))
+    for story in stories:
+        if not story["url"].startswith(f"/articles/{listing_date(story)}_"):
+            raise ValueError(f"Article route date must match its display date: {story['url']}")
     editorial = [story for story in stories if story.get("promotable") is not False]
     latest = editorial[:4]
     pinned = sorted(

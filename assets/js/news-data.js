@@ -76,7 +76,7 @@ window.PRESENCE_NEWS = [
     "author": "Ryan Glasgow",
     "date": "2022-09-01",
     "readingTime": "13 min read",
-    "url": "/articles/2022-09-01_user-research-as-you-grow/",
+    "url": "/articles/2026-09-09_user-research-as-you-grow/",
     "promotable": true,
     "republishedDate": "2026-09-09"
   },
@@ -1221,7 +1221,7 @@ window.PRESENCE_NEWS = [
     "author": "Lenny Rachitsky",
     "date": "2021-06-15",
     "readingTime": "14 min read",
-    "url": "/articles/2021-06-15_north-star-metrics/",
+    "url": "/articles/2026-09-09_north-star-metrics/",
     "promotable": true,
     "republishedDate": "2026-09-09"
   },
@@ -1266,7 +1266,7 @@ window.PRESENCE_NEWS = [
     "author": "Julie Zhuo",
     "date": "2021-06-15",
     "readingTime": "10 min read",
-    "url": "/articles/2021-06-15_product-thinking/",
+    "url": "/articles/2026-09-09_product-thinking/",
     "promotable": true,
     "republishedDate": "2026-09-09"
   },
@@ -1478,7 +1478,7 @@ window.PRESENCE_NEWS = [
     "readingTime": "11 min read",
     "image": "/assets/img/articles/2020-01-03_credible-neutrality-guiding-principle/vitalik-buterin.webp",
     "imageAlt": "Vitalik Buterin speaking on stage",
-    "url": "/articles/2020-01-03_credible-neutrality-guiding-principle/",
+    "url": "/articles/2026-09-09_credible-neutrality-guiding-principle/",
     "promotable": true,
     "featuredRank": 1,
     "republishedDate": "2026-09-09"

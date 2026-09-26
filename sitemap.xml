@@ -7,9 +7,6 @@
     <loc>https://presence.news/articles/2016-03-07_all-about-network-effects/</loc>
   </url>
   <url>
-    <loc>https://presence.news/articles/2020-01-03_credible-neutrality-guiding-principle/</loc>
-  </url>
-  <url>
     <loc>https://presence.news/articles/2020-04-08_crypto-business-model/</loc>
   </url>
   <url>
@@ -55,13 +52,7 @@
     <loc>https://presence.news/articles/2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall/</loc>
   </url>
   <url>
-    <loc>https://presence.news/articles/2021-06-15_north-star-metrics/</loc>
-  </url>
-  <url>
     <loc>https://presence.news/articles/2021-06-15_on-workplace-productivity/</loc>
-  </url>
-  <url>
-    <loc>https://presence.news/articles/2021-06-15_product-thinking/</loc>
   </url>
   <url>
     <loc>https://presence.news/articles/2021-06-15_publomics-replication-crisis/</loc>
@@ -388,9 +379,6 @@
     <loc>https://presence.news/articles/2022-08-31_grow-or-die-supergoals/</loc>
   </url>
   <url>
-    <loc>https://presence.news/articles/2022-09-01_user-research-as-you-grow/</loc>
-  </url>
-  <url>
     <loc>https://presence.news/articles/2022-09-13_cities-broken-api/</loc>
   </url>
   <url>
@@ -407,6 +395,18 @@
   </url>
   <url>
     <loc>https://presence.news/articles/2026-08-19_changpeng-zhao-bitcoin-outlook-2027/</loc>
+  </url>
+  <url>
+    <loc>https://presence.news/articles/2026-09-09_credible-neutrality-guiding-principle/</loc>
+  </url>
+  <url>
+    <loc>https://presence.news/articles/2026-09-09_north-star-metrics/</loc>
+  </url>
+  <url>
+    <loc>https://presence.news/articles/2026-09-09_product-thinking/</loc>
+  </url>
+  <url>
+    <loc>https://presence.news/articles/2026-09-09_user-research-as-you-grow/</loc>
   </url>
   <url>
     <loc>https://presence.news/contact/</loc>
