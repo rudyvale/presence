@@ -15,6 +15,8 @@ def article_redirects() -> dict[str, str]:
         raise ValueError("Article redirects must be an object")
     for source, target in redirects.items():
         for route in (source, target):
+            if route == target and route in {"/about/", "/news/"}:
+                continue
             if not isinstance(route, str) or not re.fullmatch(r"/articles/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*/", route):
                 raise ValueError(f"Invalid article redirect route: {route}")
             date.fromisoformat(route.split("/")[2][:10])

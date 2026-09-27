@@ -44,7 +44,8 @@ window.PRESENCE_NEWS = [
     "date": "2022-10-05",
     "readingTime": "12 min read",
     "url": "/articles/2022-10-05_why-applying-machine-learning-to-biology-is-hard-but-worth-it/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2022-10-05_why-applying-machine-learning-to-biology-is-hard-but-worth-it/images/presence-machine-learning-biology-d56204e63f.jpg"
   },
   {
     "category": "companies",
@@ -55,7 +56,8 @@ window.PRESENCE_NEWS = [
     "date": "2022-09-27",
     "readingTime": "11 min read",
     "url": "/articles/2022-09-27_did-we-overeat-on-software/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2022-09-27_did-we-overeat-on-software/images/presence-software-overload-660874c7cd.jpg"
   },
   {
     "category": "companies",
@@ -66,7 +68,8 @@ window.PRESENCE_NEWS = [
     "date": "2022-09-13",
     "readingTime": "6 min read",
     "url": "/articles/2022-09-13_cities-broken-api/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2022-09-13_cities-broken-api/images/presence-cities-api-e2180fa517.jpg"
   },
   {
     "category": "companies",
@@ -78,7 +81,8 @@ window.PRESENCE_NEWS = [
     "readingTime": "13 min read",
     "url": "/articles/2026-09-09_user-research-as-you-grow/",
     "promotable": true,
-    "republishedDate": "2026-09-09"
+    "republishedDate": "2026-09-09",
+    "image": "/assets/img/articles/2022-09-01_user-research-as-you-grow/images/presence-user-research-a2ad7aad55.jpg"
   },
   {
     "category": "companies",
@@ -326,7 +330,7 @@ window.PRESENCE_NEWS = [
     "category": "technology",
     "type": "ARTICLE",
     "title": "AI in Early 2022: Bigger Models and Practical Applications",
-    "summary": "A recap of artificial intelligence and machine learning coverage in Future so far in 2022, as well as the biggest advances in AI/ML research.",
+    "summary": "A recap of artificial intelligence and machine learning coverage so far in 2022, as well as the biggest advances in AI/ML research.",
     "author": "Presence Editorial",
     "date": "2022-06-27",
     "readingTime": "3 min read",
@@ -1101,28 +1105,6 @@ window.PRESENCE_NEWS = [
     "date": "2021-09-08",
     "readingTime": "13 min read",
     "url": "/articles/2021-09-08_esports-business-models/",
-    "promotable": true
-  },
-  {
-    "category": "technology",
-    "type": "ARTICLE",
-    "title": "The Best of the a16z Podcast, Now on Future",
-    "summary": "Today, we’re releasing transcripts from some of our most popular episodes of the a16z Podcast here on Future.com, our new media site exploring the technologies driving the future, as told by the people building it.",
-    "author": "Sonal Chokshi",
-    "date": "2021-07-29",
-    "readingTime": "3 min read",
-    "url": "/articles/2021-07-29_the-best-of-the-a16z-podcast-now-on-future/",
-    "promotable": true
-  },
-  {
-    "category": "technology",
-    "type": "ARTICLE",
-    "title": "Future – What’s Next?",
-    "summary": "Welcome to Future, a place to make sense of, well, the future as technology changes the way we work, live, and play.",
-    "author": "Presence Editorial",
-    "date": "2021-06-25",
-    "readingTime": "1 min read",
-    "url": "/articles/2021-06-25_future-com-welcome-what-now-next/",
     "promotable": true
   },
   {

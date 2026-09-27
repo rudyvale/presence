@@ -113,6 +113,13 @@ def build_catalog() -> None:
     replace_slot(ROOT / "index.html", "FEATURED-CARDS", "\n".join(map(featured_card, featured)), "            ")
     replace_slot(ROOT / "index.html", "LATEST-CARDS", "\n".join(map(latest_card, latest)), "            ")
     replace_slot(ROOT / "news/index.html", "NEWS-CARDS", "\n\n".join(map(news_card, stories)), "        ")
+    news_path = ROOT / "news/index.html"
+    document = news_path.read_text(encoding="utf-8")
+    counts = {category: sum(story["category"] == category for story in stories) for category in {story["category"] for story in stories}}
+    counts["all"] = len(stories)
+    document = re.sub(r'(data-news-count="([a-z]+)">)\d+', lambda match: match[1] + str(counts[match[2]]), document)
+    document = re.sub(r'placeholder="Search \d+ stories"', f'placeholder="Search {len(stories)} stories"', document)
+    news_path.write_text(document, encoding="utf-8", newline="\n")
     print(f"Catalog listings updated: {len(featured)} featured, {len(latest)} latest, {len(stories)} news stories")
 
 

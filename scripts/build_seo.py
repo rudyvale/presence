@@ -3,14 +3,17 @@
 
 from __future__ import annotations
 
+from datetime import date, datetime, timezone
+from email.utils import format_datetime, parsedate_to_datetime
 from html import escape, unescape
 from hashlib import sha256
 import json
 from pathlib import Path
 import re
 from urllib.parse import urljoin, urlsplit
+import xml.etree.ElementTree as ET
 
-from build_catalog import build_catalog, load_stories, publication_time
+from build_catalog import build_catalog, listing_date, load_stories, publication_time
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, redirect_pages, route_for
 
 
@@ -144,7 +147,10 @@ def add_article_follow(document: str) -> str:
       <div class="article-follow__actions">
         <a class="btn btn--grad" href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Join Telegram</a>
         <a class="btn btn--quiet" href="https://x.com/PresenceWeb3" target="_blank" rel="noopener noreferrer">Follow on X</a>
-        <a class="btn btn--quiet" href="/feed.xml">Follow RSS</a>
+        <details class="rss-help">
+          <summary class="btn btn--quiet">Read via RSS</summary>
+          <p>RSS brings new articles to your feed reader. Copy the <a href="/feed.xml">RSS feed link</a> and add it to your reader to follow Presence.</p>
+        </details>
       </div>
     </aside>
     <!-- PRESENCE FOLLOW:END -->
@@ -163,8 +169,8 @@ def add_article_follow(document: str) -> str:
     return document.replace("\n  </article>", f"{follow}\n  </article>", 1)
 
 
-def update_republication(document: str, story: dict | None) -> str:
-    if not story or not story.get("republishedDate"):
+def update_article_date(document: str, story: dict | None) -> str:
+    if not story:
         return document
     byline = f"{escape(story['author'])} · " if story.get("author") else ""
     meta = f'<p class="article__meta">{byline}{publication_time(story)} · {escape(story["readingTime"])}</p>'
@@ -197,7 +203,7 @@ def update_document(path: Path, story: dict | None = None) -> None:
     document = add_search_link(document, path)
     if is_article(path):
         document = add_article_follow(document)
-        document = update_republication(document, story)
+        document = update_article_date(document, story)
         document = add_article_disclaimer(document)
 
     canonical = canonical_for(path)
@@ -269,25 +275,41 @@ def write_sitemap(paths: list[Path]) -> None:
 
 def update_feed() -> None:
     path = ROOT / "feed.xml"
-    document = path.read_text(encoding="utf-8")
-    document = document.replace(
-        '<rss version="2.0">',
-        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
-        1,
-    )
-    document = document.replace(
-        "    <link>./index.html</link>",
-        f"    <link>{BASE_URL}/</link>\n"
-        f'    <atom:link href="{BASE_URL}/feed.xml" rel="self" type="application/rss+xml" />',
-        1,
-    )
-    document = document.replace("<link>./articles/", f"<link>{BASE_URL}/articles/")
-    document = re.sub(
-        rf"(<link>{re.escape(BASE_URL)}/articles/[^<]+)\.html(</link>)",
-        r"\1/\2",
-        document,
-    )
-    path.write_text(document, encoding="utf-8", newline="\n")
+    existing = {item.findtext("link"): item for item in ET.parse(path).findall("channel/item")}
+    ET.register_namespace("atom", "http://www.w3.org/2005/Atom")
+    rss = ET.Element("rss", {"version": "2.0"})
+    channel = ET.SubElement(rss, "channel")
+    ET.SubElement(channel, "title").text = "PRESENCE"
+    ET.SubElement(channel, "link").text = BASE_URL + "/"
+    ET.SubElement(channel, "{http://www.w3.org/2005/Atom}link", {
+        "href": BASE_URL + "/feed.xml", "rel": "self", "type": "application/rss+xml",
+    })
+    ET.SubElement(channel, "description").text = "Technology, crypto, science, and the companies shaping what comes next."
+    ET.SubElement(channel, "language").text = "en-us"
+    last_build = ET.SubElement(channel, "lastBuildDate")
+    stories = sorted(load_stories(), key=lambda story: (-date.fromisoformat(listing_date(story)).toordinal(), story["url"]))
+    published_dates = []
+    for story in stories:
+        link = BASE_URL + story["url"]
+        previous = existing.get(link)
+        displayed = date.fromisoformat(listing_date(story))
+        published = datetime.combine(displayed, datetime.min.time(), tzinfo=timezone.utc)
+        guid = "presence:" + story["url"].strip("/")
+        if previous is not None:
+            guid = previous.findtext("guid") or guid
+            previous_date = previous.findtext("pubDate")
+            if previous_date:
+                published = parsedate_to_datetime(previous_date).replace(year=displayed.year, month=displayed.month, day=displayed.day)
+        item = ET.SubElement(channel, "item")
+        ET.SubElement(item, "title").text = story["title"]
+        ET.SubElement(item, "link").text = link
+        ET.SubElement(item, "guid", {"isPermaLink": "false"}).text = guid
+        ET.SubElement(item, "pubDate").text = format_datetime(published, usegmt=True)
+        ET.SubElement(item, "description").text = story["summary"]
+        published_dates.append(published)
+    last_build.text = format_datetime(max(published_dates), usegmt=True)
+    ET.indent(rss, space="  ")
+    path.write_text('<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n", encoding="utf-8", newline="\n")
 
 
 def write_redirects(paths: list[Path]) -> list[Path]:

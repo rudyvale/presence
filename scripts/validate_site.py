@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from datetime import date
+from email.utils import parsedate_to_datetime
 from html import unescape
 from html.parser import HTMLParser
 import json
@@ -20,6 +21,8 @@ from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article
 
 def local_target(reference: str, page: Path = ROOT / "index.html") -> Path:
     clean = unquote(urlsplit(reference).path)
+    if not clean:
+        return page
     target = (ROOT / clean.lstrip("/") if clean.startswith("/") else page.parent / clean).resolve()
     return target / "index.html" if target.is_dir() else target
 
@@ -31,10 +34,13 @@ class ReferenceParser(HTMLParser):
         self.metadata: dict[str, list[str]] = {}
         self.rss_links: list[dict[str, str | None]] = []
         self.article_images: list[str] = []
+        self.ids: set[str] = set()
         self.article_image_tag: str | None = None
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = dict(attrs)
+        if attributes.get("id"):
+            self.ids.add(attributes["id"])
         if tag == "meta":
             key = attributes.get("property") or attributes.get("name")
             if key:
@@ -113,7 +119,7 @@ def validate_catalog() -> list[str]:
         document = target.read_text(encoding="utf-8")
         meta = re.search(r'<p class="article__meta">(.*?)</p>', document, re.DOTALL)
         rendered_time = re.search(r'<time\b[^>]*datetime="([^"]+)"', meta[1]) if meta else None
-        if not meta or (rendered_time and rendered_time[1] != displayed_date):
+        if not rendered_time or rendered_time[1] != displayed_date:
             errors.append(f"{story['url']}: article byline date does not match the catalog")
         parser = ReferenceParser()
         parser.feed(document)
@@ -162,6 +168,8 @@ def validate_catalog() -> list[str]:
                     errors.append(f"{story['url']}: structured image has no representative article image")
                 if republished and (item.get("datePublished") != story["date"] or item.get("dateModified") != republished):
                     errors.append(f"{story['url']}: original and republication metadata do not match the catalog")
+                if not republished and item.get("datePublished") != story["date"]:
+                    errors.append(f"{story['url']}: structured publication date does not match the catalog")
     for filename, slot, expected in (
         ("index.html", "FEATURED-CARDS", featured),
         ("index.html", "LATEST-CARDS", latest),
@@ -186,9 +194,19 @@ def validate_catalog() -> list[str]:
         if any(label.startswith("Republished ") for label in labels):
             errors.append(f"{filename}: {slot} dates still contain republication labels")
     feed = ET.parse(ROOT / "feed.xml")
+    news = (ROOT / "news/index.html").read_text(encoding="utf-8")
+    for category, count in re.findall(r'data-news-count="([a-z]+)">(\d+)', news):
+        expected = len(stories) if category == "all" else sum(story["category"] == category for story in stories)
+        if int(count) != expected:
+            errors.append(f"News count for {category} does not match the catalog")
     feed_links = [node.text for node in feed.findall("channel/item/link")]
-    if set(feed_links) != {BASE_URL + story["url"] for story in stories} or len(feed_links) != len(stories):
-        errors.append("RSS links do not match the clean catalog routes")
+    if feed_links != [BASE_URL + story["url"] for story in stories]:
+        errors.append("RSS links do not match catalog routes and publication order")
+    feed_dates = [parsedate_to_datetime(node.text).date().isoformat() for node in feed.findall("channel/item/pubDate")]
+    if feed_dates != [story.get("republishedDate") or story["date"] for story in stories]:
+        errors.append("RSS dates do not match displayed article dates")
+    if feed_dates and parsedate_to_datetime(feed.findtext("channel/lastBuildDate")).date().isoformat() != max(feed_dates):
+        errors.append("RSS build date does not match its latest article")
     return errors
 
 
@@ -206,6 +224,11 @@ def main() -> int:
         for page in pages
         if page.name != "404.html"
     }
+    page_ids = {}
+    for page in pages:
+        parser = ReferenceParser()
+        parser.feed(page.read_text(encoding="utf-8"))
+        page_ids[page] = parser.ids
 
     for page in pages:
         document = page.read_text(encoding="utf-8")
@@ -253,13 +276,9 @@ def main() -> int:
             errors.append(f"{relative}: missing, duplicate, or incorrect RSS discovery link")
         for reference in parser.references:
             parsed = urlsplit(reference)
-            if reference.startswith("#"):
-                continue
             if (parsed.scheme or parsed.netloc) and parsed.netloc != urlsplit(BASE_URL).netloc:
                 continue
             clean = parsed.path
-            if not clean:
-                continue
             target = local_target(reference, page)
             try:
                 target.relative_to(ROOT)
@@ -268,6 +287,9 @@ def main() -> int:
                 continue
             if not target.is_file():
                 errors.append(f"{relative}: missing reference: {reference}")
+            fragment = unquote(parsed.fragment)
+            if fragment and target in page_ids and fragment not in page_ids[target]:
+                errors.append(f"{relative}: missing anchor: {reference}")
             if target in redirects:
                 errors.append(f"{relative}: internal link uses an old article route: {reference}")
             if clean.endswith(".html") and clean != "/404.html":

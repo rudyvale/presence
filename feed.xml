@@ -1,12 +1,40 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>PRESENCE</title>
     <link>https://presence.news/</link>
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Aug 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 14:00:09 GMT</lastBuildDate>
+    <item>
+      <title>Vitalik Buterin on Building Systems People Can Trust as Fair</title>
+      <link>https://presence.news/articles/2026-09-09_credible-neutrality-guiding-principle/</link>
+      <guid isPermaLink="false">presence:2020-01-03_credible-neutrality-guiding-principle:2020-01-03</guid>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Vitalik Buterin argues that mechanisms governing high-stakes outcomes must be credibly neutral, then sets out practical rules for making them fair, legible, and effective.</description>
+    </item>
+    <item>
+      <title>Finding the Metric That Guides Your Business</title>
+      <link>https://presence.news/articles/2026-09-09_north-star-metrics/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_north-star-metrics:2021-06-15</guid>
+      <pubDate>Wed, 09 Sep 2026 00:02:07 GMT</pubDate>
+      <description>How to decide the guiding metrics for every type of business, based on a survey of employees at over 40 of today's most successful growth-stage companies.</description>
+    </item>
+    <item>
+      <title>Developing the Judgment Behind Products People Love</title>
+      <link>https://presence.news/articles/2026-09-09_product-thinking/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_product-thinking:2021-06-15</guid>
+      <pubDate>Wed, 09 Sep 2026 00:01:47 GMT</pubDate>
+      <description>Product thinking is the skill of knowing what makes a product useful — and loved — by people. As with all skills, it can be nurtured and developed.</description>
+    </item>
+    <item>
+      <title>How Growing Companies Can Stay Close to Their Users</title>
+      <link>https://presence.news/articles/2026-09-09_user-research-as-you-grow/</link>
+      <guid isPermaLink="false">presence:future:2022-09-01_user-research-as-you-grow:2022-09-01</guid>
+      <pubDate>Wed, 09 Sep 2026 14:00:09 GMT</pubDate>
+      <description>Sprig founder and CEO Ryan Glasgow explains why the key to building successful products is understanding your users and what they want.</description>
+    </item>
     <item>
       <title>CZ on Bitcoin’s Correction, 2027 Outlook and Corporate Adoption</title>
       <link>https://presence.news/articles/2026-08-19_changpeng-zhao-bitcoin-outlook-2027/</link>
@@ -48,13 +76,6 @@
       <guid isPermaLink="false">presence:future:2022-09-13_cities-broken-api:2022-09-13</guid>
       <pubDate>Tue, 13 Sep 2022 15:00:28 GMT</pubDate>
       <description>What if we viewed America’s cities as technological systems? Startups need to compete directly with legacy cities to offer better Land Use APIs.</description>
-    </item>
-    <item>
-      <title>How Growing Companies Can Stay Close to Their Users</title>
-      <link>https://presence.news/articles/2026-09-09_user-research-as-you-grow/</link>
-      <guid isPermaLink="false">presence:future:2022-09-01_user-research-as-you-grow:2022-09-01</guid>
-      <pubDate>Thu, 01 Sep 2022 14:00:09 GMT</pubDate>
-      <description>Sprig founder and CEO Ryan Glasgow explains why the key to building successful products is understanding your users and what they want.</description>
     </item>
     <item>
       <title>Using One Urgent Goal to Turn a Company Around</title>
@@ -215,7 +236,7 @@
       <link>https://presence.news/articles/2022-06-27_the-year-in-ai-so-far-massive-models-and-how-to-use-them/</link>
       <guid isPermaLink="false">presence:future:2022-06-27_the-year-in-ai-so-far-massive-models-and-how-to-use-them:2022-06-27</guid>
       <pubDate>Mon, 27 Jun 2022 14:00:19 GMT</pubDate>
-      <description>A recap of artificial intelligence and machine learning coverage in Future so far in 2022, as well as the biggest advances in AI/ML research.</description>
+      <description>A recap of artificial intelligence and machine learning coverage so far in 2022, as well as the biggest advances in AI/ML research.</description>
     </item>
     <item>
       <title>Recommendation Systems Need Experiments, Not Just Open Code</title>
@@ -680,6 +701,20 @@
       <description>When people talk about the recent past and envision the distant future of crypto, conversation always comes back to the cycle of wealth creation and redistribution. Consciously or unconsciously, there’s an…</description>
     </item>
     <item>
+      <title>Why Esports Needs Its Own Business Model</title>
+      <link>https://presence.news/articles/2021-09-08_esports-business-models/</link>
+      <guid isPermaLink="false">presence:future:2021-09-08_esports-business-models:2021-09-08</guid>
+      <pubDate>Wed, 08 Sep 2021 07:56:52 GMT</pubDate>
+      <description>Esports are pioneering the future of sports engagement. But to succeed, they need to stop chasing the NBA and NFL.</description>
+    </item>
+    <item>
+      <title>Building Developer Tools for Messy, Evolving Systems</title>
+      <link>https://presence.news/articles/2021-09-08_the-case-for-developer-experience/</link>
+      <guid isPermaLink="false">presence:future:2021-09-08_the-case-for-developer-experience:2021-09-08</guid>
+      <pubDate>Wed, 08 Sep 2021 07:57:54 GMT</pubDate>
+      <description>How are developers supposed to manage and coordinate fast-moving, heterogeneous systems including maintenance &amp; operations — and free themselves to build?</description>
+    </item>
+    <item>
       <title>What Virtual Therapy Changes About Connection and Care</title>
       <link>https://presence.news/articles/2021-09-08_virtual-therapy-distanced-intimacy/</link>
       <guid isPermaLink="false">presence:future:2021-09-08_virtual-therapy-distanced-intimacy:2021-09-08</guid>
@@ -694,46 +729,11 @@
       <description>“There is broad consensus in the scientific community that wildfire behavior is changing across the American West in general, and in California in particular. … All indicators shown—wildfire occurrence, total area…</description>
     </item>
     <item>
-      <title>Building Developer Tools for Messy, Evolving Systems</title>
-      <link>https://presence.news/articles/2021-09-08_the-case-for-developer-experience/</link>
-      <guid isPermaLink="false">presence:future:2021-09-08_the-case-for-developer-experience:2021-09-08</guid>
-      <pubDate>Wed, 08 Sep 2021 07:57:54 GMT</pubDate>
-      <description>How are developers supposed to manage and coordinate fast-moving, heterogeneous systems including maintenance &amp; operations — and free themselves to build?</description>
-    </item>
-    <item>
-      <title>Why Esports Needs Its Own Business Model</title>
-      <link>https://presence.news/articles/2021-09-08_esports-business-models/</link>
-      <guid isPermaLink="false">presence:future:2021-09-08_esports-business-models:2021-09-08</guid>
-      <pubDate>Wed, 08 Sep 2021 07:56:52 GMT</pubDate>
-      <description>Esports are pioneering the future of sports engagement. But to succeed, they need to stop chasing the NBA and NFL.</description>
-    </item>
-    <item>
-      <title>The Best of the a16z Podcast, Now on Future</title>
-      <link>https://presence.news/articles/2021-07-29_the-best-of-the-a16z-podcast-now-on-future/</link>
-      <guid isPermaLink="false">presence:future:2021-07-29_the-best-of-the-a16z-podcast-now-on-future:2021-07-29</guid>
-      <pubDate>Thu, 29 Jul 2021 10:00:34 GMT</pubDate>
-      <description>Today, we’re releasing transcripts from some of our most popular episodes of the a16z Podcast here on Future.com, our new media site exploring the technologies driving the future, as told by the people building it.</description>
-    </item>
-    <item>
-      <title>Future – What’s Next?</title>
-      <link>https://presence.news/articles/2021-06-25_future-com-welcome-what-now-next/</link>
-      <guid isPermaLink="false">presence:future:2021-06-25_future-com-welcome-what-now-next:2021-06-25</guid>
-      <pubDate>Fri, 25 Jun 2021 16:00:25 GMT</pubDate>
-      <description>Welcome to Future, a place to make sense of, well, the future as technology changes the way we work, live, and play.</description>
-    </item>
-    <item>
       <title>What the Ever Given Exposed About Global Shipping</title>
       <link>https://presence.news/articles/2021-06-24_global-shipping-infrastructure-and-ever-given/</link>
       <guid isPermaLink="false">presence:future:2021-06-24_global-shipping-infrastructure-and-ever-given:2021-06-24</guid>
       <pubDate>Thu, 24 Jun 2021 00:00:09 GMT</pubDate>
       <description>The Ever Given container ship blocked the Suez Canal in March 2021 and cost the world time and money. This is not a one-off disaster. It’s an omen of a global problem.</description>
-    </item>
-    <item>
-      <title>The Difficult Choices Behind Making Hybrid Work Succeed</title>
-      <link>https://presence.news/articles/2021-06-16_hybrid-anxiety-optimism-future-of-work/</link>
-      <guid isPermaLink="false">presence:future:2021-06-16_hybrid-anxiety-optimism-future-of-work:2021-06-16</guid>
-      <pubDate>Wed, 16 Jun 2021 07:01:05 GMT</pubDate>
-      <description>We will inevitably blend distributed work with in-person, but the details are much harder than they appear.</description>
     </item>
     <item>
       <title>What Extinct Life Can Teach Us About Solving New Problems</title>
@@ -743,18 +743,25 @@
       <description>It's easy to think extinction equals failure, but in fact, past life may encode the solutions to our most pressing future problems.</description>
     </item>
     <item>
-      <title>Measuring Productivity by Outcomes Instead of Activity</title>
-      <link>https://presence.news/articles/2021-06-15_on-workplace-productivity/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_on-workplace-productivity:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:07:32 GMT</pubDate>
-      <description>What does it mean to be productive? At the beginning of the pandemic, when many workers went remote, some managers were tempted to start counting things — whether hours, objects, or other things. But they’re about…</description>
+      <title>The Difficult Choices Behind Making Hybrid Work Succeed</title>
+      <link>https://presence.news/articles/2021-06-16_hybrid-anxiety-optimism-future-of-work/</link>
+      <guid isPermaLink="false">presence:future:2021-06-16_hybrid-anxiety-optimism-future-of-work:2021-06-16</guid>
+      <pubDate>Wed, 16 Jun 2021 07:01:05 GMT</pubDate>
+      <description>We will inevitably blend distributed work with in-person, but the details are much harder than they appear.</description>
     </item>
     <item>
-      <title>A Plan to Close the Global COVID-19 Vaccine Gap</title>
-      <link>https://presence.news/articles/2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:06:51 GMT</pubDate>
-      <description>While COVID-19 vaccinations in the U.S. are continuing apace, calls are growing for a more ambitious strategy to rapidly vaccinate the entire world, and especially in developing nations. Legal proceedings around this…</description>
+      <title>Rebuilding the Web Around Personal Data Privacy</title>
+      <link>https://presence.news/articles/2021-06-15_a-privacy-layer-for-the-web-can-change-everything/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_a-privacy-layer-for-the-web-can-change-everything:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:12 GMT</pubDate>
+      <description>Our private lives have become a public commodity. Today, the business model of the web is to provide free services in exchange for personal data. Web services then sell this data. The user is not given a choice and…</description>
+    </item>
+    <item>
+      <title>The Different Roles Tokens Play in Digital Economies</title>
+      <link>https://presence.news/articles/2021-06-15_a-taxonomy-of-tokens-distinctions-with-a-difference/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_a-taxonomy-of-tokens-distinctions-with-a-difference:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:45 GMT</pubDate>
+      <description>One of the big, frequently discussed ideas of crypto is that it enables creators and communities to build their own internet-native economies. A key component of these economies is tokens, which got a bad rap during…</description>
     </item>
     <item>
       <title>Why Learning Together Gives Online Courses an Edge</title>
@@ -764,25 +771,11 @@
       <description>Consumers pay for what’s scarce. And within the crowded, cheap, content-rich world of online education, what's scarce is community.</description>
     </item>
     <item>
-      <title>Understanding the Building Blocks of Decentralized Finance</title>
-      <link>https://presence.news/articles/2021-06-15_what-is-decentralized-finance/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_what-is-decentralized-finance:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:04:13 GMT</pubDate>
-      <description>There’s been a lot of hype, buzz, skepticism, confusion, and excitement around decentralized finance aka “DeFi,” the ecosystem of blockchain-enabled products and services that replace traditional financial…</description>
-    </item>
-    <item>
-      <title>How Software Could Reshape Legal Systems</title>
-      <link>https://presence.news/articles/2021-06-15_law-as-code/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_law-as-code:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:03:58 GMT</pubDate>
-      <description>With software we can improve transparency, automate tedious processes, and in some cases, even avoid the need for costly lawyers altogether.</description>
-    </item>
-    <item>
-      <title>Finding the Metric That Guides Your Business</title>
-      <link>https://presence.news/articles/2026-09-09_north-star-metrics/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_north-star-metrics:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:02:07 GMT</pubDate>
-      <description>How to decide the guiding metrics for every type of business, based on a survey of employees at over 40 of today's most successful growth-stage companies.</description>
+      <title>Why Building a Community Requires More Than Marketing</title>
+      <link>https://presence.news/articles/2021-06-15_community-e2-89-a0-marketing-why-we-need-go-to-community-not-just-go-to-market/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_community-e2-89-a0-marketing-why-we-need-go-to-community-not-just-go-to-market:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:44 GMT</pubDate>
+      <description>Community is the “new” moat (or so some have said), and it’s true: Having a community helps protect against competitor companies or products entering your territory. Whether that community is a group of power users…</description>
     </item>
     <item>
       <title>How Creator Tokens Could Pave the Way for Community Tokens</title>
@@ -799,60 +792,11 @@
       <description>Every day we consume popular entertainment centered on characters. A collection of successful characters can become the foundation for a franchise — e.g. Star Wars, Marvel, Harry Potter — that can span decades, and…</description>
     </item>
     <item>
-      <title>Channeling Speculation Toward Productive Investment</title>
-      <link>https://presence.news/articles/2021-06-15_speculation-is-necessary-governments-can-help/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_speculation-is-necessary-governments-can-help:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:51 GMT</pubDate>
-      <description>Instead of trying to eradicate speculative manias, we should channel investors’ innate affinity for speculation into productive ventures.</description>
-    </item>
-    <item>
-      <title>Developing the Judgment Behind Products People Love</title>
-      <link>https://presence.news/articles/2026-09-09_product-thinking/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_product-thinking:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:47 GMT</pubDate>
-      <description>Product thinking is the skill of knowing what makes a product useful — and loved — by people. As with all skills, it can be nurtured and developed.</description>
-    </item>
-    <item>
-      <title>The Different Roles Tokens Play in Digital Economies</title>
-      <link>https://presence.news/articles/2021-06-15_a-taxonomy-of-tokens-distinctions-with-a-difference/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_a-taxonomy-of-tokens-distinctions-with-a-difference:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:45 GMT</pubDate>
-      <description>One of the big, frequently discussed ideas of crypto is that it enables creators and communities to build their own internet-native economies. A key component of these economies is tokens, which got a bad rap during…</description>
-    </item>
-    <item>
-      <title>Why Building a Community Requires More Than Marketing</title>
-      <link>https://presence.news/articles/2021-06-15_community-e2-89-a0-marketing-why-we-need-go-to-community-not-just-go-to-market/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_community-e2-89-a0-marketing-why-we-need-go-to-community-not-just-go-to-market:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:44 GMT</pubDate>
-      <description>Community is the “new” moat (or so some have said), and it’s true: Having a community helps protect against competitor companies or products entering your territory. Whether that community is a group of power users…</description>
-    </item>
-    <item>
-      <title>Fast Grants and the Case for More Flexible Science Funding</title>
-      <link>https://presence.news/articles/2021-06-15_what-we-learned-doing-fast-grants/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_what-we-learned-doing-fast-grants:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:43 GMT</pubDate>
-      <description>We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.</description>
-    </item>
-    <item>
-      <title>How Technology Changes the Rules of Global Competition</title>
-      <link>https://presence.news/articles/2021-06-15_the-world-game/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_the-world-game:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:28 GMT</pubDate>
-      <description>Technology is the set of rules that now governs global shifts. The task for builders and technologists is to discover all possibilities contained therein.</description>
-    </item>
-    <item>
       <title>How Fans Help Build Enduring Entertainment Franchises</title>
       <link>https://presence.news/articles/2021-06-15_fans-drive-hit-ips/</link>
       <guid isPermaLink="false">presence:future:2021-06-15_fans-drive-hit-ips:2021-06-15</guid>
       <pubDate>Tue, 15 Jun 2021 00:01:27 GMT</pubDate>
       <description>The franchises of the future need to be designed to ensure quality and canon even when we hand over ownership to the fans.</description>
-    </item>
-    <item>
-      <title>Using Technical Indicators to Read Shifts in Market Momentum</title>
-      <link>https://presence.news/articles/2021-06-15_the-new-market-momentum-reading-the-technical-indicators/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_the-new-market-momentum-reading-the-technical-indicators:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:22 GMT</pubDate>
-      <description>Given the emergence of new forms of unpredictability, mathematical indicators that can isolate breakouts and trend shifts are crucial.</description>
     </item>
     <item>
       <title>How Composable Software Creates Room for New Ideas</title>
@@ -862,18 +806,25 @@
       <description>While many in tech and beyond have heard of bitcoin, cryptocurrency, and the concept of a blockchain, less well-known are smart contracts, the major innovation of Ethereum. They’re programs that anyone can write and…</description>
     </item>
     <item>
-      <title>Rebuilding the Web Around Personal Data Privacy</title>
-      <link>https://presence.news/articles/2021-06-15_a-privacy-layer-for-the-web-can-change-everything/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_a-privacy-layer-for-the-web-can-change-everything:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:12 GMT</pubDate>
-      <description>Our private lives have become a public commodity. Today, the business model of the web is to provide free services in exchange for personal data. Web services then sell this data. The user is not given a choice and…</description>
+      <title>How Software Could Reshape Legal Systems</title>
+      <link>https://presence.news/articles/2021-06-15_law-as-code/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_law-as-code:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:03:58 GMT</pubDate>
+      <description>With software we can improve transparency, automate tedious processes, and in some cases, even avoid the need for costly lawyers altogether.</description>
     </item>
     <item>
-      <title>When Speculative Bubbles Help Coordinate Innovation</title>
-      <link>https://presence.news/articles/2021-06-15_well-behaved-bubbles-history-innovation/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_well-behaved-bubbles-history-innovation:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:11 GMT</pubDate>
-      <description>The right kind of bubble brings together the right group of people at the right time — it's a coordinating mechanism that can do a surprising amount of good.</description>
+      <title>A Plan to Close the Global COVID-19 Vaccine Gap</title>
+      <link>https://presence.news/articles/2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:06:51 GMT</pubDate>
+      <description>While COVID-19 vaccinations in the U.S. are continuing apace, calls are growing for a more ambitious strategy to rapidly vaccinate the entire world, and especially in developing nations. Legal proceedings around this…</description>
+    </item>
+    <item>
+      <title>Measuring Productivity by Outcomes Instead of Activity</title>
+      <link>https://presence.news/articles/2021-06-15_on-workplace-productivity/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_on-workplace-productivity:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:07:32 GMT</pubDate>
+      <description>What does it mean to be productive? At the beginning of the pandemic, when many workers went remote, some managers were tempted to start counting things — whether hours, objects, or other things. But they’re about…</description>
     </item>
     <item>
       <title>Using Large-Scale Literature Analysis to Tackle the Replication Crisis</title>
@@ -881,6 +832,27 @@
       <guid isPermaLink="false">presence:future:2021-06-15_publomics-replication-crisis:2021-06-15</guid>
       <pubDate>Tue, 15 Jun 2021 00:01:10 GMT</pubDate>
       <description>One possible solution to the replication crisis is to apply big data, "omics"-like approaches to the scientific literature: aka Publomics.</description>
+    </item>
+    <item>
+      <title>Channeling Speculation Toward Productive Investment</title>
+      <link>https://presence.news/articles/2021-06-15_speculation-is-necessary-governments-can-help/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_speculation-is-necessary-governments-can-help:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:51 GMT</pubDate>
+      <description>Instead of trying to eradicate speculative manias, we should channel investors’ innate affinity for speculation into productive ventures.</description>
+    </item>
+    <item>
+      <title>How Players Are Becoming Creators and Earning Through Games</title>
+      <link>https://presence.news/articles/2021-06-15_the-creator-economy-for-gaming/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_the-creator-economy-for-gaming:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:01 GMT</pubDate>
+      <description>Players are finding new ways to monetize, whether by building original game worlds, selling in-game goods, or engaging with fans using new streamer tools.</description>
+    </item>
+    <item>
+      <title>Using Technical Indicators to Read Shifts in Market Momentum</title>
+      <link>https://presence.news/articles/2021-06-15_the-new-market-momentum-reading-the-technical-indicators/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_the-new-market-momentum-reading-the-technical-indicators:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:22 GMT</pubDate>
+      <description>Given the emergence of new forms of unpredictability, mathematical indicators that can isolate breakouts and trend shifts are crucial.</description>
     </item>
     <item>
       <title>Why Progress in the Physical World Still Matters to Tech</title>
@@ -897,11 +869,32 @@
       <description>To harness the untapped power of subtraction in the future, we need to understand why we haven’t embraced it in the past.</description>
     </item>
     <item>
-      <title>How Players Are Becoming Creators and Earning Through Games</title>
-      <link>https://presence.news/articles/2021-06-15_the-creator-economy-for-gaming/</link>
-      <guid isPermaLink="false">presence:future:2021-06-15_the-creator-economy-for-gaming:2021-06-15</guid>
-      <pubDate>Tue, 15 Jun 2021 00:01:01 GMT</pubDate>
-      <description>Players are finding new ways to monetize, whether by building original game worlds, selling in-game goods, or engaging with fans using new streamer tools.</description>
+      <title>How Technology Changes the Rules of Global Competition</title>
+      <link>https://presence.news/articles/2021-06-15_the-world-game/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_the-world-game:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:28 GMT</pubDate>
+      <description>Technology is the set of rules that now governs global shifts. The task for builders and technologists is to discover all possibilities contained therein.</description>
+    </item>
+    <item>
+      <title>When Speculative Bubbles Help Coordinate Innovation</title>
+      <link>https://presence.news/articles/2021-06-15_well-behaved-bubbles-history-innovation/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_well-behaved-bubbles-history-innovation:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:11 GMT</pubDate>
+      <description>The right kind of bubble brings together the right group of people at the right time — it's a coordinating mechanism that can do a surprising amount of good.</description>
+    </item>
+    <item>
+      <title>Understanding the Building Blocks of Decentralized Finance</title>
+      <link>https://presence.news/articles/2021-06-15_what-is-decentralized-finance/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_what-is-decentralized-finance:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:04:13 GMT</pubDate>
+      <description>There’s been a lot of hype, buzz, skepticism, confusion, and excitement around decentralized finance aka “DeFi,” the ecosystem of blockchain-enabled products and services that replace traditional financial…</description>
+    </item>
+    <item>
+      <title>Fast Grants and the Case for More Flexible Science Funding</title>
+      <link>https://presence.news/articles/2021-06-15_what-we-learned-doing-fast-grants/</link>
+      <guid isPermaLink="false">presence:future:2021-06-15_what-we-learned-doing-fast-grants:2021-06-15</guid>
+      <pubDate>Tue, 15 Jun 2021 00:01:43 GMT</pubDate>
+      <description>We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.</description>
     </item>
     <item>
       <title>A Curated Guide to Understanding and Building With NFTs</title>
@@ -937,13 +930,6 @@
       <guid isPermaLink="false">presence:future:2020-04-08_crypto-business-model:2020-04-08</guid>
       <pubDate>Wed, 08 Apr 2020 09:39:42 GMT</pubDate>
       <description>Many entrepreneurs and investors think that crypto projects can’t capture value because they are based on open source code. The thinking goes that if you develop open source code, someone will come along and copy it…</description>
-    </item>
-    <item>
-      <title>Vitalik Buterin on Building Systems People Can Trust as Fair</title>
-      <link>https://presence.news/articles/2026-09-09_credible-neutrality-guiding-principle/</link>
-      <guid isPermaLink="false">presence:2020-01-03_credible-neutrality-guiding-principle:2020-01-03</guid>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 GMT</pubDate>
-      <description>Vitalik Buterin argues that mechanisms governing high-stakes outcomes must be credibly neutral, then sets out practical rules for making them fair, legible, and effective.</description>
     </item>
     <item>
       <title>Understanding Network Effects, Platforms, and Marketplaces</title>
