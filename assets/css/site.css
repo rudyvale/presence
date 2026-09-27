@@ -980,42 +980,6 @@ textarea:focus-visible {
   gap: 10px;
 }
 
-.rss-help[open] {
-  flex: 1 1 100%;
-}
-
-.rss-help summary {
-  cursor: pointer;
-  list-style: none;
-}
-
-.rss-help summary::-webkit-details-marker {
-  display: none;
-}
-
-.rss-help summary::after {
-  content: "+";
-  margin-left: 8px;
-}
-
-.rss-help[open] summary::after {
-  content: "−";
-}
-
-.rss-help p {
-  max-width: 44ch;
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-.rss-help p a {
-  color: var(--cyan);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .btn--quiet {
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: var(--text);
