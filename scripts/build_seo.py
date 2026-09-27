@@ -338,6 +338,7 @@ def write_redirects(paths: list[Path]) -> list[Path]:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; script-src 'self'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
 <title>{title}</title>
 <link rel="canonical" href="{canonical}">
 {preview}

@@ -36,12 +36,37 @@ class ReferenceParser(HTMLParser):
         self.article_images: list[str] = []
         self.ids: set[str] = set()
         self.article_image_tag: str | None = None
+        self.security_errors: list[str] = []
+        self.content_policies: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = dict(attrs)
+        if any(name.startswith("on") for name in attributes):
+            self.security_errors.append("inline event handler is not allowed")
+        if tag in {"base", "iframe", "object", "embed"}:
+            self.security_errors.append(f"unexpected active element: {tag}")
+        for name in ("href", "src", "action", "formaction"):
+            value = attributes.get(name) or ""
+            parsed = urlsplit(value)
+            if parsed.scheme and parsed.scheme.lower() != "https":
+                self.security_errors.append(f"unsafe or insecure {name} scheme: {parsed.scheme}")
+            if value.startswith("//") or "\\" in value:
+                self.security_errors.append(f"ambiguous {name} URL")
+        if tag == "script":
+            source = attributes.get("src")
+            if source:
+                allowed = {f"/assets/js/{name}.js" for name in ("site", "news", "news-data", "contact", "redirect")}
+                if urlsplit(source).path not in allowed or urlsplit(source).netloc:
+                    self.security_errors.append("unexpected executable script source")
+            elif attributes.get("type") != "application/ld+json":
+                self.security_errors.append("executable inline script is not allowed")
+        if tag == "a" and attributes.get("target") == "_blank" and "noopener" not in (attributes.get("rel") or "").split():
+            self.security_errors.append("new-window link lacks noopener")
         if attributes.get("id"):
             self.ids.add(attributes["id"])
         if tag == "meta":
+            if (attributes.get("http-equiv") or "").lower() == "content-security-policy":
+                self.content_policies.append(attributes.get("content") or "")
             key = attributes.get("property") or attributes.get("name")
             if key:
                 self.metadata.setdefault(key, []).append(attributes.get("content") or "")
@@ -234,6 +259,24 @@ def main() -> int:
         if page.name != "404.html"
     }
     page_ids = {}
+    for page in sorted(all_pages):
+        parser = ReferenceParser()
+        parser.feed(page.read_text(encoding="utf-8"))
+        relative = page.relative_to(ROOT).as_posix()
+        errors.extend(f"{relative}: {issue}" for issue in parser.security_errors)
+        if len(parser.content_policies) != 1:
+            errors.append(f"{relative}: expected one Content Security Policy")
+        else:
+            directives = {}
+            for part in parser.content_policies[0].split(";"):
+                tokens = part.split()
+                if tokens:
+                    directives[tokens[0]] = tokens[1:]
+            for name, expected in (("default-src", ["'none'"]), ("base-uri", ["'none'"]), ("object-src", ["'none'"]), ("script-src", ["'self'"])):
+                if directives.get(name) != expected:
+                    errors.append(f"{relative}: unsafe or missing CSP {name}")
+        if parser.metadata.get("referrer") != ["no-referrer"]:
+            errors.append(f"{relative}: expected no-referrer policy")
     for page in pages:
         parser = ReferenceParser()
         parser.feed(page.read_text(encoding="utf-8"))

@@ -503,11 +503,15 @@
 
     ticker.replaceChildren(makeSequence(), makeSequence(true));
     tickerRegion?.classList.add("is-ready");
-    if (tickerControl) tickerControl.hidden = false;
+    if (tickerControl) {
+      tickerControl.hidden = false;
+      tickerControl.setAttribute("aria-label", "Pause ticker");
+    }
 
     tickerControl?.addEventListener("click", () => {
       const paused = tickerRegion.classList.toggle("is-paused");
       tickerControl.textContent = paused ? "Play ticker" : "Pause ticker";
+      tickerControl.setAttribute("aria-label", tickerControl.textContent);
     });
   }
 
@@ -535,15 +539,34 @@
   window.addEventListener("hashchange", normalizeArchiveHash);
   normalizeArchiveHash();
 
-  try {
-    if (archiveSearch && window.location && typeof window.location.search === "string") {
-      const requestedAuthor = new URLSearchParams(window.location.search).get("author");
-      const cleanAuthor = cleanText(requestedAuthor, 300);
-      if (cleanAuthor) archiveSearch.value = cleanAuthor;
-    }
-  } catch (_error) {
-    if (archiveSearch) archiveSearch.value = "";
-  }
+  const archiveCategories = new Set(["all", "crypto", "technology", "companies"]);
+
+  const restoreArchiveLocation = () => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q") ?? params.get("author") ?? "";
+    if (archiveSearch) archiveSearch.value = cleanText(query.trim(), 300) || "";
+    const category = params.get("topic") || "all";
+    if (archiveCategory) archiveCategory.value = archiveCategories.has(category) ? category : "all";
+    const visible = Number(params.get("count"));
+    archiveState.visible = Number.isSafeInteger(visible) && visible >= 24
+      ? Math.min(visible, Math.max(24, archiveState.items.length))
+      : 24;
+  };
+
+  const saveArchiveLocation = () => {
+    const url = new URL(window.location.href);
+    const query = archiveSearch?.value.trim() || "";
+    const category = archiveCategory?.value || "all";
+    url.searchParams.delete("author");
+    if (query) url.searchParams.set("q", query);
+    else url.searchParams.delete("q");
+    if (category !== "all") url.searchParams.set("topic", category);
+    else url.searchParams.delete("topic");
+    if (archiveState.visible > 24) url.searchParams.set("count", String(archiveState.visible));
+    else url.searchParams.delete("count");
+    url.hash = "search";
+    window.history.replaceState(null, "", url);
+  };
 
   const normalize = (value) => String(value || "").trim().toLocaleLowerCase("en");
   const categoryLabel = (category) => ({
@@ -610,6 +633,7 @@
 
   const resetAndRenderArchive = () => {
     archiveState.visible = 24;
+    saveArchiveLocation();
     renderArchive();
   };
 
@@ -617,7 +641,12 @@
   archiveCategory?.addEventListener("change", resetAndRenderArchive);
   archiveMore?.addEventListener("click", (event) => {
     archiveState.visible += 24;
+    saveArchiveLocation();
     renderArchive({ append: true, focusNew: event.detail === 0 });
+  });
+  window.addEventListener("popstate", () => {
+    restoreArchiveLocation();
+    renderArchive();
   });
 
   const localArchiveItems = publishedStories.map((story) => Object.freeze({
@@ -642,7 +671,8 @@
     ));
     archiveCount.textContent = String(archiveState.items.length);
     archiveControls.hidden = archiveState.items.length === 0;
-    resetAndRenderArchive();
+    restoreArchiveLocation();
+    renderArchive();
   };
 
   updateArchive();
