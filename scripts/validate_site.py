@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from datetime import date
+from email.utils import parsedate_to_datetime
 from html import unescape
 from html.parser import HTMLParser
 import json
@@ -31,6 +32,7 @@ class ReferenceParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.references: list[str] = []
         self.metadata: dict[str, list[str]] = {}
+        self.rss_links: list[dict[str, str | None]] = []
         self.article_images: list[str] = []
         self.ids: set[str] = set()
         self.article_image_tag: str | None = None
@@ -43,6 +45,8 @@ class ReferenceParser(HTMLParser):
             key = attributes.get("property") or attributes.get("name")
             if key:
                 self.metadata.setdefault(key, []).append(attributes.get("content") or "")
+        if tag == "link" and attributes.get("type") == "application/rss+xml":
+            self.rss_links.append(attributes)
         if tag in {"p", "figure"} and "article__image" in (attributes.get("class") or "").split():
             self.article_image_tag = tag
         if tag == "img" and self.article_image_tag and attributes.get("src"):
@@ -189,11 +193,29 @@ def validate_catalog() -> list[str]:
         labels = re.findall(r'<time\b[^>]*>(.*?)</time>', fragments[0])
         if any(label.startswith("Republished ") for label in labels):
             errors.append(f"{filename}: {slot} dates still contain republication labels")
+    feed = ET.parse(ROOT / "feed.xml")
     news = (ROOT / "news/index.html").read_text(encoding="utf-8")
     for category, count in re.findall(r'data-news-count="([a-z]+)">(\d+)', news):
         expected = len(stories) if category == "all" else sum(story["category"] == category for story in stories)
         if int(count) != expected:
             errors.append(f"News count for {category} does not match the catalog")
+    feed_links = [node.text for node in feed.findall("channel/item/link")]
+    if feed_links != [BASE_URL + story["url"] for story in stories]:
+        errors.append("RSS links do not match catalog routes and publication order")
+    for field, key in (("title", "title"), ("description", "summary")):
+        if [item.findtext(field) for item in feed.findall("channel/item")] != [story[key] for story in stories]:
+            errors.append(f"RSS {field} values do not match the catalog")
+    guids = [item.findtext("guid") for item in feed.findall("channel/item")]
+    if not all(guids) or len(set(guids)) != len(guids):
+        errors.append("RSS item identifiers must be present and unique")
+    self_link = feed.find("channel/{http://www.w3.org/2005/Atom}link")
+    if self_link is None or self_link.get("href") != BASE_URL + "/feed.xml" or self_link.get("rel") != "self":
+        errors.append("RSS self link is missing or incorrect")
+    feed_dates = [parsedate_to_datetime(node.text).date().isoformat() for node in feed.findall("channel/item/pubDate")]
+    if feed_dates != [story.get("republishedDate") or story["date"] for story in stories]:
+        errors.append("RSS dates do not match displayed article dates")
+    if feed_dates and parsedate_to_datetime(feed.findtext("channel/lastBuildDate")).date().isoformat() != max(feed_dates):
+        errors.append("RSS build date does not match its latest article")
     return errors
 
 
@@ -259,6 +281,8 @@ def main() -> int:
         expected_robots = "noindex,follow" if page.name == "404.html" else "max-image-preview:large"
         if parser.metadata.get("robots") != [expected_robots]:
             errors.append(f"{relative}: incorrect indexing or image preview directives")
+        if len(parser.rss_links) != 1 or parser.rss_links[0].get("href") != BASE_URL + "/feed.xml" or "alternate" not in (parser.rss_links[0].get("rel") or "").split():
+            errors.append(f"{relative}: missing, duplicate, or incorrect RSS discovery link")
         for reference in parser.references:
             parsed = urlsplit(reference)
             if (parsed.scheme or parsed.netloc) and parsed.netloc != urlsplit(BASE_URL).netloc:
@@ -314,6 +338,7 @@ def main() -> int:
             f"sitemap mismatch: expected {len(expected_sitemap)}, found {len(actual_sitemap)}"
         )
 
+    ET.parse(ROOT / "feed.xml")
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
     if f"Sitemap: {BASE_URL}/sitemap.xml" not in robots:
         errors.append("robots.txt does not advertise the sitemap")
