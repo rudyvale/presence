@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static acceptance checks for the PRESENCE GitHub Pages build."""
+
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 import xml.etree.ElementTree as ET
 
 from PIL import Image
-from build_seo import SOCIAL_IMAGE, SOCIAL_IMAGE_ALT
+from build_seo import FOLLOW_MARKER, SOCIAL_IMAGE, SOCIAL_IMAGE_ALT
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, redirect_pages, route_for
 
 
@@ -305,7 +305,7 @@ def main() -> int:
             errors.append(f"{relative}: search navigation must point to /#search")
         if re.search(r'(?:#future-archive|data-future-|(?:id|class|aria-labelledby)="[^"]*future-)', document):
             errors.append(f"{relative}: legacy archive branding remains in navigation or controls")
-        if is_article(page) and document.count("PRESENCE FOLLOW:START") != 1:
+        if is_article(page) and document.count(FOLLOW_MARKER) != 1:
             errors.append(f"{relative}: article follow block count is not 1")
         if is_article(page):
             disclaimers = list(re.finditer(r'<aside class="article-disclaimer"[^>]*>(.*?)</aside>', document, re.DOTALL))
@@ -315,7 +315,7 @@ def main() -> int:
                 paragraphs = [unescape(text) for text in re.findall(r'<p>(.*?)</p>', disclaimers[0][1], re.DOTALL)]
                 if paragraphs != disclaimer_paragraphs:
                     errors.append(f"{relative}: disclaimer differs from the supplied copy")
-                if not document.find('class="article__body"') < disclaimers[0].start() < document.find("PRESENCE FOLLOW:START"):
+                if not document.find('class="article__body"') < disclaimers[0].start() < document.find(FOLLOW_MARKER):
                     errors.append(f"{relative}: disclaimer must follow the article and precede the follow block")
 
         parser = ReferenceParser()

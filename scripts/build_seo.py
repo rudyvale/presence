@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build repeatable SEO metadata and discovery files for the static site."""
+
 
 from __future__ import annotations
 
@@ -17,9 +17,10 @@ from build_catalog import build_catalog, listing_date, load_stories, publication
 from site_routes import BASE_URL, ROOT, canonical_for, content_pages, is_article, redirect_pages, route_for
 
 
-SEO_START = "<!-- PRESENCE SEO:START -->"
-SEO_END = "<!-- PRESENCE SEO:END -->"
-FOLLOW_MARKER = "<!-- PRESENCE FOLLOW:START -->"
+SEO_START = '<template data-presence-slot="SEO:START"></template>'
+SEO_END = '<template data-presence-slot="SEO:END"></template>'
+FOLLOW_MARKER = '<template data-presence-slot="FOLLOW:START"></template>'
+FOLLOW_END = '<template data-presence-slot="FOLLOW:END"></template>'
 SOCIAL_IMAGE = f"{BASE_URL}/assets/img/presence-banner-82e5cd328f.png"
 SOCIAL_IMAGE_ALT = "Presence — crypto, technology, and the people behind it."
 
@@ -153,11 +154,11 @@ def add_article_follow(document: str) -> str:
         </details>
       </div>
     </aside>
-    <!-- PRESENCE FOLLOW:END -->
+    {FOLLOW_END}
 '''
     if FOLLOW_MARKER in document:
         return re.sub(
-            rf'\n\s*{re.escape(FOLLOW_MARKER)}.*?<!-- PRESENCE FOLLOW:END -->\n?',
+            rf'\n\s*{re.escape(FOLLOW_MARKER)}.*?{re.escape(FOLLOW_END)}\n?',
             lambda match: follow,
             document,
             count=1,

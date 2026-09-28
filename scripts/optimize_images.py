@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create efficient WebP variants and switch rendered images to them."""
+
 
 from __future__ import annotations
 
