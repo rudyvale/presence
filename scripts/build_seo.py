@@ -58,6 +58,27 @@ def article_image(document: str, canonical: str, story: dict | None = None) -> s
     return image if parsed.scheme in {"http", "https"} and parsed.netloc else ""
 
 
+def update_article_cover(document: str) -> str:
+    body = re.search(r'<div\b[^>]*class="[^\"]*\barticle__body\b[^\"]*"[^>]*>', document)
+    if not body:
+        raise ValueError("Missing article body for cover placement")
+    content = document[body.end():]
+    previous = re.match(
+        r'\s*<(p|figure)\b[^>]*class="[^\"]*\barticle__image\b[^\"]*"[^>]*>.*?</\1>',
+        content,
+        re.DOTALL,
+    )
+    if previous:
+        content = content[previous.end():]
+    source = urlsplit(SOCIAL_IMAGE).path
+    cover = (
+        '<p class="article__image article__cover">'
+        f'<img src="{source}" alt="{escape(SOCIAL_IMAGE_ALT, quote=True)}" '
+        'width="1500" height="500" loading="eager" fetchpriority="high" decoding="async"></p>'
+    )
+    return document[:body.end()] + "\n      " + cover + "\n      " + content.lstrip()
+
+
 def page_schema(path: Path, document: str, canonical: str, story: dict | None = None) -> dict:
     title = capture(r"<title>(.*?)</title>", document, "PRESENCE")
     description = capture(
@@ -203,6 +224,7 @@ def update_document(path: Path, story: dict | None = None) -> None:
     )
     document = add_search_link(document, path)
     if is_article(path):
+        document = update_article_cover(document)
         document = add_article_follow(document)
         document = update_article_date(document, story)
         document = add_article_disclaimer(document)
