@@ -148,15 +148,13 @@ def validate_catalog() -> list[str]:
             errors.append(f"{story['url']}: article byline date does not match the catalog")
         parser = ReferenceParser()
         parser.feed(document)
+        if any(
+            urlsplit(urljoin(BASE_URL + story["url"], source)).path == urlsplit(SOCIAL_IMAGE).path
+            for source in parser.article_images
+        ):
+            errors.append(f"{story['url']}: the social preview banner must not replace article content")
         image_source = next(iter(parser.article_images), story.get("image", ""))
         expected_image = urljoin(BASE_URL + story["url"], image_source) if image_source else ""
-        if expected_image != SOCIAL_IMAGE:
-            errors.append(f"{story['url']}: article cover must use the Presence banner")
-        cover = re.search(r'<div class="article__body">\s*<p class="article__image article__cover">(<img\b[^>]*>)</p>', document)
-        if not cover or document.count('class="article__image article__cover"') != 1:
-            errors.append(f"{story['url']}: expected one banner at the start of the article")
-        elif any(attribute not in cover[1] for attribute in ('width="1500"', 'height="500"', 'loading="eager"', 'fetchpriority="high"')):
-            errors.append(f"{story['url']}: article banner sizing or loading attributes are incorrect")
         republished = story.get("republishedDate")
         if republished:
             try:
