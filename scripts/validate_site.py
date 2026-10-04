@@ -72,7 +72,7 @@ class ReferenceParser(HTMLParser):
                 self.metadata.setdefault(key, []).append(attributes.get("content") or "")
         if tag == "link" and attributes.get("type") == "application/rss+xml":
             self.rss_links.append(attributes)
-        if tag in {"p", "figure"} and "article__image" in (attributes.get("class") or "").split():
+        if tag in {"p", "figure"} and {"article__image", "article__hero-media"}.intersection((attributes.get("class") or "").split()):
             self.article_image_tag = tag
         if tag == "img" and self.article_image_tag and attributes.get("src"):
             self.article_images.append(attributes["src"])
@@ -148,6 +148,9 @@ def validate_catalog() -> list[str]:
             errors.append(f"{story['url']}: article byline date does not match the catalog")
         parser = ReferenceParser()
         parser.feed(document)
+        for key in ("description", "og:description", "twitter:description"):
+            if parser.metadata.get(key) != [story["summary"]]:
+                errors.append(f"{story['url']}: {key} does not match the catalog summary")
         if any(
             urlsplit(urljoin(BASE_URL + story["url"], source)).path == urlsplit(SOCIAL_IMAGE).path
             for source in parser.article_images
@@ -181,6 +184,8 @@ def validate_catalog() -> list[str]:
             if len(articles) != 1:
                 errors.append(f"{story['url']}: expected one structured Article")
             for item in articles:
+                if item.get("description") != story["summary"]:
+                    errors.append(f"{story['url']}: structured description does not match the catalog summary")
                 authors = item.get("author", [])
                 authors = [authors] if isinstance(authors, dict) else authors
                 if not isinstance(authors, list) or any(not isinstance(author, dict) for author in authors):

@@ -202,6 +202,13 @@ def update_document(path: Path, story: dict | None = None) -> None:
         flags=re.DOTALL,
     )
     document = add_search_link(document, path)
+    if story:
+        for attribute in ('name="description"', 'property="og:description"', 'name="twitter:description"'):
+            document = re.sub(
+                rf'(<meta\s+{re.escape(attribute)}\s+content=")[^"]*("\s*/?>)',
+                lambda match: match[1] + escape(story["summary"], quote=True) + match[2],
+                document,
+            )
     if is_article(path):
         document = add_article_follow(document)
         document = update_article_date(document, story)
