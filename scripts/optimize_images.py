@@ -18,7 +18,7 @@ MAX_EDGE = 1920
 
 
 def write_document(path: Path, value: str) -> None:
-    temporary = path.with_name(f"{path.name}.codex-tmp")
+    temporary = path.with_name(f"{path.name}.tmp")
     for attempt in range(5):
         try:
             temporary.write_text(value, encoding="utf-8", newline="\n")
