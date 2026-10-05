@@ -670,8 +670,8 @@ window.PRESENCE_NEWS = [
   {
     "category": "technology",
     "type": "ARTICLE",
-    "title": "Putting GPT-3 and Codex Into Human Workflows: Part Two",
-    "summary": "To truly augment human intelligence, we need to design new workflows for machine learning models such as GPT-3 and Codex.",
+    "title": "Putting GPT-3 Into Human Workflows: Part Two",
+    "summary": "To truly augment human intelligence, we need to design new workflows for machine learning models such as GPT-3 and AI code-generation models.",
     "author": "Niko Grupen",
     "date": "2022-03-08",
     "readingTime": "9 min read",
