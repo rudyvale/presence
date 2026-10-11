@@ -1,6 +1,18 @@
 window.PRESENCE_NEWS = [
   {
     "category": "crypto",
+    "type": "INTERVIEW",
+    "title": "Joe Lubin on decentralization, AI and the next phase of Web3",
+    "summary": "Ethereum co-founder and Consensys CEO Joe Lubin on decentralization, regulation, and why blockchain and artificial intelligence need each other.",
+    "author": "Joe Lubin",
+    "date": "2026-10-11",
+    "readingTime": "10 min read",
+    "url": "/articles/2026-10-11_joe-lubin-decentralization-ai-web3/",
+    "promotable": true,
+    "featuredRank": 1
+  },
+  {
+    "category": "crypto",
     "type": "ARTICLE",
     "title": "CZ on Bitcoin’s Correction, 2027 Outlook and Corporate Adoption",
     "summary": "Binance co-founder Changpeng Zhao explains why bitcoin corrections are normal, what institutional adoption could mean for 2027, and how exchanges scale through record volumes.",
@@ -9,7 +21,7 @@ window.PRESENCE_NEWS = [
     "readingTime": "7 min read",
     "url": "/articles/2026-08-19_changpeng-zhao-bitcoin-outlook-2027/",
     "promotable": true,
-    "featuredRank": 2
+    "featuredRank": 3
   },
   {
     "category": "crypto",
@@ -21,7 +33,7 @@ window.PRESENCE_NEWS = [
     "readingTime": "9 min read",
     "url": "/articles/2023-09-20_nansen-alex-svanevik-ai-asia-onchain-intelligence/",
     "promotable": true,
-    "featuredRank": 3
+    "featuredRank": 4
   },
   {
     "category": "crypto",
@@ -33,7 +45,7 @@ window.PRESENCE_NEWS = [
     "readingTime": "15 min read",
     "url": "/articles/2023-09-20_yat-siu-ownership-economy-will-be-worth-trillions/",
     "promotable": true,
-    "featuredRank": 4
+    "featuredRank": 5
   },
   {
     "category": "companies",
@@ -1462,7 +1474,7 @@ window.PRESENCE_NEWS = [
     "imageAlt": "Vitalik Buterin speaking on stage",
     "url": "/articles/2026-09-09_credible-neutrality-guiding-principle/",
     "promotable": true,
-    "featuredRank": 1,
+    "featuredRank": 2,
     "republishedDate": "2026-09-09"
   },
   {

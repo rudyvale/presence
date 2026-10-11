@@ -444,6 +444,10 @@
     "Zoran Basich": {
       "bio": "Zoran Basich is an editor and podcast host who covered crypto and web3 at Andreessen Horowitz.",
       "source": "https://a16z.com/podcast/crypto-an-oral-essay/"
+    },
+    "Joe Lubin": {
+      "bio": "Joe Lubin is co-founder of Ethereum and CEO of Consensys, a blockchain technology company building applications and infrastructure around Ethereum.",
+      "source": "https://consensys.io/about"
     }
   }
 }

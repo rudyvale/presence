@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Sep 2026 14:00:09 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Joe Lubin on decentralization, AI and the next phase of Web3</title>
+      <link>https://presence.news/articles/2026-10-11_joe-lubin-decentralization-ai-web3/</link>
+      <guid isPermaLink="false">presence:articles/2026-10-11_joe-lubin-decentralization-ai-web3</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Ethereum co-founder and Consensys CEO Joe Lubin on decentralization, regulation, and why blockchain and artificial intelligence need each other.</description>
+    </item>
     <item>
       <title>Vitalik Buterin on Building Systems People Can Trust as Fair</title>
       <link>https://presence.news/articles/2026-09-09_credible-neutrality-guiding-principle/</link>
