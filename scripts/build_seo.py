@@ -79,14 +79,14 @@ def page_schema(path: Path, document: str, canonical: str, story: dict | None = 
     if relative.startswith("articles/"):
         headline = capture(r'<h1[^>]*class="article__title"[^>]*>(.*?)</h1>', document, title.removesuffix(" — PRESENCE"))
         author = story.get("author", "") if story is not None else capture(r'<p[^>]*class="article__meta"[^>]*>(.*?)\s*·', document)
-        authors = [{"@type": "Person", "name": name.strip()} for name in author.split(" & ") if name.strip()]
+        authors = [{"@type": "Organization" if name.strip() == "Presence Editorial" else "Person", "name": name.strip()} for name in author.split(" & ") if name.strip()]
         image = article_image(document, canonical, story)
         published = capture(r'<time[^>]*datetime="([^"]+)"', document)
         if story and story.get("republishedDate"):
             published = story["date"]
         section = capture(r'<span[^>]*class="article__cat"[^>]*>(.*?)</span>', document)
         article = {
-            "@type": "Article",
+            "@type": "NewsArticle" if story and story.get("type") == "NEWS" else "Article",
             "@id": f"{canonical}#article",
             "headline": headline,
             "description": description,
@@ -105,6 +105,9 @@ def page_schema(path: Path, document: str, canonical: str, story: dict | None = 
 
     page_type = {
         "news/index.html": "CollectionPage",
+        "crypto/index.html": "CollectionPage",
+        "technology/index.html": "CollectionPage",
+        "companies/index.html": "CollectionPage",
         "about/index.html": "AboutPage",
         "contact/index.html": "ContactPage",
     }.get(relative, "WebPage")
@@ -202,6 +205,7 @@ def update_document(path: Path, story: dict | None = None) -> None:
         flags=re.DOTALL,
     )
     document = add_search_link(document, path)
+    document = re.sub(r'href="(?:/news/)?#(crypto|technology|companies)"', lambda match: f'href="/{match[1]}/"', document)
     if story:
         for attribute in ('name="description"', 'property="og:description"', 'name="twitter:description"'):
             document = re.sub(
@@ -230,6 +234,18 @@ def update_document(path: Path, story: dict | None = None) -> None:
         document,
         "Technology, power, and the ideas shaping what comes next.",
     )
+    social_title = story["title"] if story else title
+    for attribute, value in (
+        ('property="og:title"', social_title),
+        ('name="twitter:title"', social_title),
+        ('property="og:description"', description),
+        ('name="twitter:description"', description),
+    ):
+        document = re.sub(
+            rf'(<meta\s+{re.escape(attribute)}\s+content=")[^"]*("\s*/?>)',
+            lambda match: match[1] + escape(value, quote=True) + match[2],
+            document,
+        )
     additions = [
         f'<link rel="canonical" href="{escape(canonical, quote=True)}">',
         f'<link rel="alternate" type="application/rss+xml" title="PRESENCE RSS" href="{BASE_URL}/feed.xml">',
@@ -244,11 +260,11 @@ def update_document(path: Path, story: dict | None = None) -> None:
     if 'property="og:site_name"' not in document:
         additions.append('<meta property="og:site_name" content="PRESENCE">')
     if 'property="og:title"' not in document:
-        additions.append(f'<meta property="og:title" content="{escape(title, quote=True)}">')
+        additions.append(f'<meta property="og:title" content="{escape(social_title, quote=True)}">')
     if 'property="og:description"' not in document:
         additions.append(f'<meta property="og:description" content="{escape(description, quote=True)}">')
     if 'name="twitter:title"' not in document:
-        additions.append(f'<meta name="twitter:title" content="{escape(title, quote=True)}">')
+        additions.append(f'<meta name="twitter:title" content="{escape(social_title, quote=True)}">')
     if 'name="twitter:description"' not in document:
         additions.append(f'<meta name="twitter:description" content="{escape(description, quote=True)}">')
     if 'name="twitter:site"' not in document:

@@ -120,6 +120,8 @@ def validate_catalog() -> list[str]:
     )
     stories.sort(key=lambda story: story.get("republishedDate") or story["date"], reverse=True)
     latest = [story for story in stories if story.get("promotable") is not False][:4]
+    news_stories = [story for story in stories if story.get("type") == "NEWS"]
+    article_stories = [story for story in stories if story.get("type") != "NEWS"]
     editorial = [story for story in stories if story.get("promotable") is not False]
     pinned = sorted(
         [story for story in editorial if isinstance(story.get("featuredRank"), int) and 1 <= story["featuredRank"] <= 100],
@@ -148,6 +150,9 @@ def validate_catalog() -> list[str]:
             errors.append(f"{story['url']}: article byline date does not match the catalog")
         parser = ReferenceParser()
         parser.feed(document)
+        for key in ("og:title", "twitter:title"):
+            if parser.metadata.get(key) != [story["title"]]:
+                errors.append(f"{story['url']}: {key} does not match the catalog title")
         for key in ("description", "og:description", "twitter:description"):
             if parser.metadata.get(key) != [story["summary"]]:
                 errors.append(f"{story['url']}: {key} does not match the catalog summary")
@@ -180,17 +185,20 @@ def validate_catalog() -> list[str]:
                 graph = json.loads(schema_text).get("@graph", [])
             except json.JSONDecodeError:
                 continue
-            articles = [item for item in graph if item.get("@type") == "Article"]
+            expected_type = "NewsArticle" if story.get("type") == "NEWS" else "Article"
+            articles = [item for item in graph if item.get("@type") in {"Article", "NewsArticle"}]
             if len(articles) != 1:
                 errors.append(f"{story['url']}: expected one structured Article")
             for item in articles:
+                if item.get("@type") != expected_type:
+                    errors.append(f"{story['url']}: structured article type does not match the catalog")
                 if item.get("description") != story["summary"]:
                     errors.append(f"{story['url']}: structured description does not match the catalog summary")
                 authors = item.get("author", [])
                 authors = [authors] if isinstance(authors, dict) else authors
                 if not isinstance(authors, list) or any(not isinstance(author, dict) for author in authors):
                     errors.append(f"{story['url']}: invalid structured authors")
-                elif [author.get("name") for author in authors] != expected_authors or any(author.get("@type") != "Person" for author in authors):
+                elif [author.get("name") for author in authors] != expected_authors or any(author.get("@type") != ("Organization" if author.get("name") == "Presence Editorial" else "Person") for author in authors):
                     errors.append(f"{story['url']}: structured author does not match the catalog")
                 if not expected_authors and "author" in item:
                     errors.append(f"{story['url']}: an unsigned article must not invent an author")
@@ -208,7 +216,8 @@ def validate_catalog() -> list[str]:
     for filename, slot, expected in (
         ("index.html", "FEATURED-CARDS", featured),
         ("index.html", "LATEST-CARDS", latest),
-        ("news/index.html", "NEWS-CARDS", stories),
+        ("news/index.html", "NEWS-CARDS", news_stories),
+        *((f"{category}/index.html", "NEWS-CARDS", [story for story in article_stories if story["category"] == category]) for category in ("crypto", "technology", "companies")),
     ):
         document = (ROOT / filename).read_text(encoding="utf-8")
         fragments = re.findall(
@@ -229,11 +238,17 @@ def validate_catalog() -> list[str]:
         if any(label.startswith("Republished ") for label in labels):
             errors.append(f"{filename}: {slot} dates still contain republication labels")
     feed = ET.parse(ROOT / "feed.xml")
-    news = (ROOT / "news/index.html").read_text(encoding="utf-8")
-    for category, count in re.findall(r'data-news-count="([a-z]+)">(\d+)', news):
-        expected = len(stories) if category == "all" else sum(story["category"] == category for story in stories)
-        if int(count) != expected:
-            errors.append(f"News count for {category} does not match the catalog")
+    for section in ("news", "crypto", "technology", "companies"):
+        listing = (ROOT / section / "index.html").read_text(encoding="utf-8")
+        pool = news_stories if section == "news" else article_stories
+        if f'data-listing="{"news" if section == "news" else "articles"}"' not in listing:
+            errors.append(f"{section}: listing mode does not match its content")
+        if section != "news" and f'data-category="{section}"' not in listing:
+            errors.append(f"{section}: listing category does not match its route")
+        for category, count in re.findall(r'data-news-count="([a-z]+)">(\d+)', listing):
+            expected = len(pool) if category == "all" else sum(story["category"] == category for story in pool)
+            if int(count) != expected:
+                errors.append(f"{section}: count for {category} does not match its catalog subset")
     feed_links = [node.text for node in feed.findall("channel/item/link")]
     if feed_links != [BASE_URL + story["url"] for story in stories]:
         errors.append("RSS links do not match catalog routes and publication order")
@@ -315,6 +330,8 @@ def main() -> int:
             errors.append(f"{relative}: search navigation must point to /#search")
         if re.search(r'(?:#future-archive|data-future-|(?:id|class|aria-labelledby)="[^"]*future-)', document):
             errors.append(f"{relative}: legacy archive branding remains in navigation or controls")
+        if re.search(r'href="(?:/news/)?#(?:crypto|technology|companies)"', document):
+            errors.append(f"{relative}: category navigation still uses legacy hash routes")
         if is_article(page) and document.count(FOLLOW_MARKER) != 1:
             errors.append(f"{relative}: article follow block count is not 1")
         if is_article(page):

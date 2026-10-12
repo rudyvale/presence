@@ -25,3 +25,25 @@ We focus on stories that need context and room for a full argument, with attenti
 ## This repository
 
 Source files for the Presence website, built with HTML, CSS and JavaScript and published through GitHub Pages. The `scripts/` directory contains the catalog generator, metadata builder and site validation tools.
+
+## Development and publishing
+
+Run from the repository root with Python 3 and Pillow installed:
+
+```sh
+python3 scripts/build_seo.py
+python3 scripts/validate_site.py
+python3 -m unittest discover -s tests
+python3 -m http.server 8000
+```
+
+The catalog in `assets/js/news-data.js` uses `type: "NEWS"` for news reports. `/news/` lists only these reports. `/crypto/`, `/technology/` and `/companies/` list articles and interviews in each topic. The homepage archive and RSS include the complete collection. Old `/news/#crypto` links redirect to the corresponding topic page; news-topic filters use query parameters.
+
+To add an editorial news manuscript:
+
+```sh
+python3 scripts/import_news.py --source /path/to/manuscript.txt --date YYYY-MM-DD --slug lowercase-slug --summary "Short catalog summary"
+python3 scripts/validate_site.py
+```
+
+The importer keeps the manuscript's title, introduction and body, attributes the report to Presence Editorial, and rebuilds listings, RSS, sitemap, social metadata and legacy redirects. It refuses to overwrite existing articles. A trailing `Sources for editorial verification:` section is saved under `docs/editorial/` as editor notes, rather than published as article copy. Commit the generated output together with the catalog change; GitHub Pages serves these static files without running the Python scripts.

@@ -1,13 +1,32 @@
 (() => {
-  const stories = Array.isArray(window.PRESENCE_NEWS) ? window.PRESENCE_NEWS : null;
+  const categories = new Set(["all", "crypto", "technology", "companies"]);
+  const listing = document.querySelector("[data-listing]");
+  const articleCategory = listing?.dataset.category;
+  const newsPage = listing?.dataset.listing === "news";
+
+  const redirectLegacyCategory = () => {
+    const category = window.location.hash.slice(1).toLowerCase();
+    if (newsPage && category !== "all" && categories.has(category)) {
+      const url = new URL(window.location.href);
+      url.pathname = `/${category}/`;
+      url.hash = "";
+      url.searchParams.delete("category");
+      window.location.replace(url);
+      return true;
+    }
+    return false;
+  };
+  if (redirectLegacyCategory()) return;
+
+  const stories = Array.isArray(window.PRESENCE_NEWS)
+    ? window.PRESENCE_NEWS.filter((story) => (story.type === "NEWS") === newsPage)
+    : null;
   const grid = document.getElementById("news-grid");
   const empty = document.getElementById("news-empty");
   const filters = Array.from(document.querySelectorAll("[data-news-filter]"));
   const search = document.querySelector("[data-news-search]");
   const results = document.querySelector("[data-news-results]");
-  const categories = new Set(["all", "crypto", "technology", "companies"]);
-
-  if (!stories || !stories.length || !grid || !empty || !filters.length || !(search instanceof HTMLInputElement)) return;
+  if (!listing || !stories || !grid || !empty || !(search instanceof HTMLInputElement)) return;
 
   const categoryLabel = (category) => ({
     crypto: "Crypto",
@@ -129,7 +148,9 @@
   const normalizeSearch = (value) => value.trim().toLocaleLowerCase();
 
   const render = (requestedCategory) => {
-    const category = categories.has(requestedCategory) ? requestedCategory : "all";
+    const category = !newsPage && categories.has(articleCategory)
+      ? articleCategory
+      : categories.has(requestedCategory) ? requestedCategory : "all";
     const categoryStories = category === "all"
       ? orderedStories
       : orderedStories.filter((story) => story.category === category);
@@ -143,7 +164,7 @@
     empty.hidden = visibleStories.length > 0;
     empty.textContent = query
       ? "No stories match this search."
-      : "No stories in this section yet.";
+      : newsPage ? "No news in this section yet." : "No articles in this section yet.";
     if (results) {
       results.textContent = `${visibleStories.length} ${visibleStories.length === 1 ? "story" : "stories"}`;
     }
@@ -155,33 +176,41 @@
     });
   };
 
-  const categoryFromHash = () => window.location.hash.slice(1).toLowerCase() || "all";
+  const categoryFromLocation = () => new URLSearchParams(window.location.search).get("category") || "all";
   const restoreLocation = () => {
+    if (redirectLegacyCategory()) return;
     search.value = new URLSearchParams(window.location.search).get("q") || "";
-    render(categoryFromHash());
+    render(categoryFromLocation());
   };
 
   filters.forEach((button) => {
     button.addEventListener("click", () => {
       const category = button.dataset.newsFilter;
-      if (category !== categoryFromHash()) {
+      if (category !== categoryFromLocation()) {
         const url = new URL(window.location.href);
-        url.hash = category;
+        url.hash = "";
+        if (category === "all") url.searchParams.delete("category");
+        else url.searchParams.set("category", category);
         window.history.pushState(null, "", url);
       }
       render(category);
     });
   });
 
-  window.addEventListener("hashchange", () => render(categoryFromHash()));
+  window.addEventListener("hashchange", restoreLocation);
   window.addEventListener("popstate", restoreLocation);
   search.addEventListener("input", () => {
     const url = new URL(window.location.href);
     if (search.value.trim()) url.searchParams.set("q", search.value.trim());
     else url.searchParams.delete("q");
     window.history.replaceState(null, "", url);
-    render(categoryFromHash());
+    render(categoryFromLocation());
   });
+  if (newsPage && window.location.hash === "#all") {
+    const url = new URL(window.location.href);
+    url.hash = "";
+    window.history.replaceState(null, "", url);
+  }
   updateCounts();
   restoreLocation();
 })();

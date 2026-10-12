@@ -7,6 +7,7 @@ import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CATEGORIES = ("crypto", "technology", "companies")
 MONTHS = (
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
@@ -15,6 +16,18 @@ MONTHS = (
 
 def listing_date(story: dict) -> str:
     return story.get("republishedDate") or story["date"]
+
+
+def is_news(story: dict) -> bool:
+    return story.get("type") == "NEWS"
+
+
+def listing_stories(stories: list[dict], section: str) -> list[dict]:
+    if section == "news":
+        return [story for story in stories if is_news(story)]
+    if section not in CATEGORIES:
+        raise ValueError(f"Unknown section: {section}")
+    return [story for story in stories if not is_news(story) and story["category"] == section]
 
 
 def publication_time(story: dict, class_name: str = "") -> str:
@@ -98,6 +111,32 @@ def load_stories() -> list[dict]:
     return json.loads(match[1])
 
 
+def build_listing(stories: list[dict], section: str) -> None:
+    path = ROOT / section / "index.html"
+    selected = listing_stories(stories, section)
+    pool = [story for story in stories if is_news(story) == (section == "news")]
+    counts = {category: sum(story["category"] == category for story in pool) for category in CATEGORIES}
+    counts["all"] = len(pool)
+    replace_slot(path, "NEWS-CARDS", "\n\n".join(map(news_card, selected)), "        ")
+    if section == "news":
+        filters = [
+            f'        <button class="news-filter" id="{category}" type="button" data-news-filter="{category}" aria-pressed="{str(category == "all").lower()}">{category.capitalize()} <span data-news-count="{category}">{counts[category]}</span></button>'
+            for category in ("all", *CATEGORIES)
+        ]
+    else:
+        filters = []
+        for category in CATEGORIES:
+            active_class = " is-active" if category == section else ""
+            current = ' aria-current="page"' if category == section else ""
+            filters.append(f'        <a class="news-filter{active_class}" href="/{category}/"{current}>{category.capitalize()} <span data-news-count="{category}">{counts[category]}</span></a>')
+    replace_slot(path, "NEWS-FILTERS", "\n".join(filters), "        ")
+    document = path.read_text(encoding="utf-8")
+    document = re.sub(r'(data-news-count="([a-z]+)">)\d+', lambda match: match[1] + str(counts[match[2]]), document)
+    document = re.sub(r'placeholder="Search \d+ (?:stories|articles|news stories)"', f'placeholder="Search {len(selected)} {"news stories" if section == "news" else "articles"}"', document)
+    document = re.sub(r'(<p class="news-empty" id="news-empty")(?: hidden)?(>)', lambda match: match[1] + (" hidden" if selected else "") + match[2], document)
+    path.write_text(document, encoding="utf-8", newline="\n")
+
+
 def build_catalog() -> None:
     stories = sorted(load_stories(), key=lambda story: (-date.fromisoformat(listing_date(story)).toordinal(), story["url"]))
     for story in stories:
@@ -112,15 +151,9 @@ def build_catalog() -> None:
     featured = (pinned + [story for story in editorial if story not in pinned])[:3]
     replace_slot(ROOT / "index.html", "FEATURED-CARDS", "\n".join(map(featured_card, featured)), "            ")
     replace_slot(ROOT / "index.html", "LATEST-CARDS", "\n".join(map(latest_card, latest)), "            ")
-    replace_slot(ROOT / "news/index.html", "NEWS-CARDS", "\n\n".join(map(news_card, stories)), "        ")
-    news_path = ROOT / "news/index.html"
-    document = news_path.read_text(encoding="utf-8")
-    counts = {category: sum(story["category"] == category for story in stories) for category in {story["category"] for story in stories}}
-    counts["all"] = len(stories)
-    document = re.sub(r'(data-news-count="([a-z]+)">)\d+', lambda match: match[1] + str(counts[match[2]]), document)
-    document = re.sub(r'placeholder="Search \d+ stories"', f'placeholder="Search {len(stories)} stories"', document)
-    news_path.write_text(document, encoding="utf-8", newline="\n")
-    print(f"Catalog listings updated: {len(featured)} featured, {len(latest)} latest, {len(stories)} news stories")
+    for section in ("news", *CATEGORIES):
+        build_listing(stories, section)
+    print(f"Catalog listings updated: {len(featured)} featured, {len(latest)} latest, {sum(map(is_news, stories))} news stories, {sum(not is_news(story) for story in stories)} articles")
 
 
 if __name__ == "__main__":

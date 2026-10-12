@@ -1,6 +1,28 @@
 window.PRESENCE_NEWS = [
   {
     "category": "crypto",
+    "type": "NEWS",
+    "title": "Orca and Loopscale Merge Into Formation, Betting on a New Model for Onchain Capital Markets",
+    "summary": "Orca and Loopscale combine as Formation, bringing Solana trading, credit and investment vault infrastructure under one organization.",
+    "author": "Presence Editorial",
+    "date": "2026-10-08",
+    "readingTime": "11 min read",
+    "url": "/articles/2026-10-08_orca-loopscale-formation/",
+    "promotable": true
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
+    "title": "Ethereum’s Layer 2 Shakeout Begins as Pudgy Penguins’ Abstract and Blast Shut Down",
+    "summary": "Abstract and Blast are winding down, exposing the economic pressures facing independent Ethereum Layer 2 networks.",
+    "author": "Presence Editorial",
+    "date": "2026-10-06",
+    "readingTime": "11 min read",
+    "url": "/articles/2026-10-06_ethereum-layer-2-shakeout/",
+    "promotable": true
+  },
+  {
+    "category": "crypto",
     "type": "INTERVIEW",
     "title": "Joe Lubin on decentralization, AI and the next phase of Web3",
     "summary": "Ethereum co-founder and Consensys CEO Joe Lubin on decentralization, regulation, and why blockchain and artificial intelligence need each other.",

@@ -403,15 +403,30 @@
     <loc>https://presence.news/articles/2026-09-09_user-research-as-you-grow/</loc>
   </url>
   <url>
+    <loc>https://presence.news/articles/2026-10-06_ethereum-layer-2-shakeout/</loc>
+  </url>
+  <url>
+    <loc>https://presence.news/articles/2026-10-08_orca-loopscale-formation/</loc>
+  </url>
+  <url>
     <loc>https://presence.news/articles/2026-10-11_joe-lubin-decentralization-ai-web3/</loc>
   </url>
   <url>
+    <loc>https://presence.news/companies/</loc>
+  </url>
+  <url>
     <loc>https://presence.news/contact/</loc>
+  </url>
+  <url>
+    <loc>https://presence.news/crypto/</loc>
   </url>
   <url>
     <loc>https://presence.news/</loc>
   </url>
   <url>
     <loc>https://presence.news/news/</loc>
+  </url>
+  <url>
+    <loc>https://presence.news/technology/</loc>
   </url>
 </urlset>
