@@ -2,13 +2,28 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Ripple Adds Fourth South Korean Institutional Partner, but XRP’s Role Remains Unclear",
+    "summary": "Ripple adds Meritz Securities to its South Korean institutional partners, while XRP’s role in the custody and tokenization plans remains unconfirmed.",
+    "author": "Presence Editorial",
+    "date": "2026-10-14",
+    "readingTime": "8 min read",
+    "url": "/articles/2026-10-14_ripple-meritz-korea-xrp/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-14_ripple-meritz-korea-xrp/presence-ripple-meritz.jpg",
+    "imageAlt": "Illustration of a handshake representing an institutional partnership."
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Orca and Loopscale Merge Into Formation, Betting on a New Model for Onchain Capital Markets",
     "summary": "Orca and Loopscale combine as Formation, bringing Solana trading, credit and investment vault infrastructure under one organization.",
     "author": "Presence Editorial",
     "date": "2026-10-08",
     "readingTime": "11 min read",
     "url": "/articles/2026-10-08_orca-loopscale-formation/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-08_orca-loopscale-formation/presence-formation.jpg",
+    "imageAlt": "Illustration of three figures climbing toward a classical financial institution, with the Orca mark."
   },
   {
     "category": "crypto",
@@ -19,7 +34,9 @@ window.PRESENCE_NEWS = [
     "date": "2026-10-06",
     "readingTime": "11 min read",
     "url": "/articles/2026-10-06_ethereum-layer-2-shakeout/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-06_ethereum-layer-2-shakeout/presence-abstract.jpg",
+    "imageAlt": "Penguin in front of the Abstract wordmark."
   },
   {
     "category": "crypto",

@@ -1,0 +1,89 @@
+name: Daily news
+
+on:
+  schedule:
+    - cron: '0 7,15 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/daily-news.yml'
+      - 'scripts/auto_news.py'
+      - 'tests/test_auto_news.py'
+
+concurrency:
+  group: presence-daily-news
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      deploy: ${{ steps.export.outputs.ready }}
+    env:
+      NEWS_AI_TOKEN: ${{ secrets.NEWS_AI_TOKEN }}
+      NEWS_AI_ENDPOINT: ${{ vars.NEWS_AI_ENDPOINT || 'https://api.openai.com/v1/chat/completions' }}
+      NEWS_AI_MODEL: ${{ vars.NEWS_AI_MODEL || 'gpt-4.1-mini' }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install image validator
+        run: python -m pip install 'Pillow==12.3.0'
+      - name: Test editorial workflow
+        run: python -m unittest discover -s tests
+      - name: Verify news feed
+        run: python scripts/auto_news.py --check-feed
+      - name: Prepare news brief
+        if: env.NEWS_AI_TOKEN != ''
+        run: python scripts/auto_news.py
+      - name: AI credential status
+        if: env.NEWS_AI_TOKEN == ''
+        run: |
+          echo 'AI publishing is not active: add NEWS_AI_TOKEN in repository Actions secrets. Feed and offline checks still run; no placeholder article is published.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Validate site
+        run: python scripts/validate_site.py
+      - name: Publish validated changes
+        id: publish
+        if: env.NEWS_AI_TOKEN != ''
+        run: |
+          git add assets/js/news-data.js articles docs/editorial feed.xml sitemap.xml index.html news/index.html crypto/index.html technology/index.html companies/index.html
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'Presence Editorial'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Publish daily Presence news brief'
+          git push origin HEAD:main
+          echo 'updated=true' >> "$GITHUB_OUTPUT"
+      - name: Export public site
+        id: export
+        if: steps.publish.outputs.updated == 'true' || github.event_name == 'push'
+        run: |
+          python scripts/export_site.py "$RUNNER_TEMP/presence-pages"
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.export.outputs.ready == 'true'
+        with:
+          path: ${{ runner.temp }}/presence-pages
+
+  deploy:
+    needs: news
+    if: needs.news.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

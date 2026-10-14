@@ -109,7 +109,7 @@
       </div>
       <dl class="newsroom-stats" aria-label="Newsroom sections">
         <template data-presence-slot="NEWS-STATS:START"></template>
-        <div><dt>Crypto</dt><dd data-news-count="crypto">2</dd></div>
+        <div><dt>Crypto</dt><dd data-news-count="crypto">3</dd></div>
         <div><dt>Technology</dt><dd data-news-count="technology">0</dd></div>
         <div><dt>Companies</dt><dd data-news-count="companies">0</dd></div>
         <template data-presence-slot="NEWS-STATS:END"></template>
@@ -126,8 +126,8 @@
 
       <div class="news-filters" aria-label="Filter news by topic">
         <template data-presence-slot="NEWS-FILTERS:START"></template>
-        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">2</span></button>
-        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">2</span></button>
+        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">3</span></button>
+        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">3</span></button>
         <button class="news-filter" id="technology" type="button" data-news-filter="technology" aria-pressed="false">Technology <span data-news-count="technology">0</span></button>
         <button class="news-filter" id="companies" type="button" data-news-filter="companies" aria-pressed="false">Companies <span data-news-count="companies">0</span></button>
         <template data-presence-slot="NEWS-FILTERS:END"></template>
@@ -135,13 +135,33 @@
 
       <div class="news-search">
         <label for="news-search">Search headlines and authors</label>
-        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 2 news stories">
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 3 news stories">
         <span data-news-results aria-live="polite"></span>
       </div>
 
       <div class="news-grid" id="news-grid">
         <template data-presence-slot="NEWS-CARDS:START"></template>
-        <article class="news-card news-card--crypto">
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-14_ripple-meritz-korea-xrp/" aria-label="Read Ripple Adds Fourth South Korean Institutional Partner, but XRP’s Role Remains Unclear">
+            <img src="/assets/img/articles/2026-10-14_ripple-meritz-korea-xrp/presence-ripple-meritz.jpg" alt="Illustration of a handshake representing an institutional partnership." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-14">October 14, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-14_ripple-meritz-korea-xrp/">Ripple Adds Fourth South Korean Institutional Partner, but XRP’s Role Remains Unclear</a></h2>
+          <p class="news-card__summary">Ripple adds Meritz Securities to its South Korean institutional partners, while XRP’s role in the custody and tokenization plans remains unconfirmed.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>8 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-08_orca-loopscale-formation/" aria-label="Read Orca and Loopscale Merge Into Formation, Betting on a New Model for Onchain Capital Markets">
+            <img src="/assets/img/articles/2026-10-08_orca-loopscale-formation/presence-formation.jpg" alt="Illustration of three figures climbing toward a classical financial institution, with the Orca mark." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
           <div class="news-card__meta">
             <span class="news-card__category">Crypto</span>
             <span class="news-card__type">NEWS</span>
@@ -155,7 +175,10 @@
           </div>
         </article>
 
-        <article class="news-card news-card--crypto">
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-06_ethereum-layer-2-shakeout/" aria-label="Read Ethereum’s Layer 2 Shakeout Begins as Pudgy Penguins’ Abstract and Blast Shut Down">
+            <img src="/assets/img/articles/2026-10-06_ethereum-layer-2-shakeout/presence-abstract.jpg" alt="Penguin in front of the Abstract wordmark." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
           <div class="news-card__meta">
             <span class="news-card__category">Crypto</span>
             <span class="news-card__type">NEWS</span>
@@ -211,7 +234,7 @@
 </footer>
 
 <script src="/assets/js/site.js?v=19727de4e1f992dd"></script>
-<script src="/assets/js/news-data.js?v=8a1f63f0ef9c46f9"></script>
+<script src="/assets/js/news-data.js?v=104212f435b81ab5"></script>
 <script src="/assets/js/news.js?v=78d46693dcdcf2e6"></script>
 </body>
 </html>

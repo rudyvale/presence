@@ -79,6 +79,11 @@ class NewsWorkflowTests(unittest.TestCase):
         self.assertEqual(build_catalog.load_stories(), [])
         self.assertFalse((self.root / "articles").exists())
 
+    def test_uppercase_editor_notes_and_dateline_are_not_body_copy(self):
+        title, body, notes = import_news.parse_manuscript("A report\n\nIntroduction.\n\nOctober 14, 2026\n\nThe report body.\n\nSOURCES FOR EDITORIAL VERIFICATION\n\nAn editor note.")
+        self.assertEqual(body, ["Introduction.", "The report body."])
+        self.assertIn("An editor note.", notes)
+
     def test_sections_separate_reports_and_interviews(self):
         stories = [
             {"type": "NEWS", "category": "crypto", "title": "Protocol announcement"},

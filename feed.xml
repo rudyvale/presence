@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Ripple Adds Fourth South Korean Institutional Partner, but XRP’s Role Remains Unclear</title>
+      <link>https://presence.news/articles/2026-10-14_ripple-meritz-korea-xrp/</link>
+      <guid isPermaLink="false">presence:articles/2026-10-14_ripple-meritz-korea-xrp</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Ripple adds Meritz Securities to its South Korean institutional partners, while XRP’s role in the custody and tokenization plans remains unconfirmed.</description>
+    </item>
     <item>
       <title>Joe Lubin on decentralization, AI and the next phase of Web3</title>
       <link>https://presence.news/articles/2026-10-11_joe-lubin-decentralization-ai-web3/</link>

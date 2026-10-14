@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import argparse
-from datetime import date
+from datetime import date, datetime
 from html import escape
 import json
 import math
@@ -15,14 +15,37 @@ from build_catalog import CATEGORIES, MONTHS, ROOT, load_stories
 
 
 def parse_manuscript(text: str) -> tuple[str, list[str], str]:
-    article, separator, notes = text.partition("Sources for editorial verification:")
+    sections = re.split(r"(?im)^Sources for editorial verification:?\s*$", text, maxsplit=1)
+    article = sections[0]
+    notes = sections[1].strip() if len(sections) == 2 else ""
     paragraphs = [part.strip() for part in re.split(r"\n\s*\n", article.strip()) if part.strip()]
     if len(paragraphs) < 3:
         raise ValueError("A manuscript needs a title, introduction and article body")
     title = paragraphs[0].removeprefix("# ").strip()
     if "\n" in title or len(title) > 300:
         raise ValueError("The title must be a single line of at most 300 characters")
-    return title, paragraphs[1:], (separator + "\n" + notes.strip()) if separator else ""
+    if len(paragraphs) > 2:
+        try:
+            datetime.strptime(paragraphs[2], "%B %d, %Y")
+        except ValueError:
+            pass
+        else:
+            paragraphs.pop(2)
+    if len(paragraphs) < 3:
+        raise ValueError("The dateline cannot replace the article body")
+    return title, paragraphs[1:], ("Sources for editorial verification:\n" + notes) if notes else ""
+
+
+def hero_markup(image: str, image_alt: str) -> str:
+    from PIL import Image
+    if not re.fullmatch(r"/assets/img/articles/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.(?:png|jpe?g|webp)", image):
+        raise ValueError("Use a local article image under /assets/img/articles/")
+    with Image.open(ROOT / image.lstrip("/")) as asset:
+        width, height = asset.size
+        asset.verify()
+    return f'''    <figure class="article__hero-media">
+      <img src="{escape(image, quote=True)}" alt="{escape(image_alt, quote=True)}" width="{width}" height="{height}" decoding="async" fetchpriority="high">
+    </figure>'''
 
 
 def inline_markdown(text: str) -> str:
@@ -46,7 +69,7 @@ def render_body(paragraphs: list[str]) -> str:
     return "\n".join(blocks)
 
 
-def import_news(source: Path, published: date, slug: str, summary: str, category: str = "crypto") -> dict:
+def import_news(source: Path, published: date, slug: str, summary: str, category: str = "crypto", image: str | None = None, image_alt: str = "") -> dict:
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
         raise ValueError("Use a lowercase, hyphenated slug")
     if category not in CATEGORIES:
@@ -64,6 +87,9 @@ def import_news(source: Path, published: date, slug: str, summary: str, category
     story = dict(category=category, type="NEWS", title=title, summary=summary,
                  author="Presence Editorial", date=published.isoformat(),
                  readingTime=reading_time, url=route, promotable=True)
+    hero = hero_markup(image, image_alt or title) if image else ""
+    if image:
+        story.update(image=image, imageAlt=image_alt or title)
     biography = json.loads((ROOT / "assets/data/author-bios.json").read_text(encoding="utf-8"))["authors"]["Presence Editorial"]["bio"]
     author = "Presence Editorial"
     biography_html = f"<strong>{author}</strong>" + escape(biography.removeprefix(author))
@@ -71,7 +97,7 @@ def import_news(source: Path, published: date, slug: str, summary: str, category
         "TITLE": escape(title), "SUMMARY": escape(summary, quote=True),
         "CATEGORY": category.capitalize(), "DATE": published.isoformat(),
         "DATE_LABEL": f"{MONTHS[published.month - 1]} {published.day}, {published.year}",
-        "READING_TIME": reading_time, "BODY": render_body(paragraphs), "BIO": biography_html,
+        "READING_TIME": reading_time, "BODY": render_body(paragraphs), "BIO": biography_html, "HERO": hero,
     }
     template = (ROOT / "scripts/templates/news-article.html.tmpl").read_text(encoding="utf-8")
     document = re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: substitutions[match[1]], template)
@@ -95,8 +121,10 @@ def main() -> None:
     parser.add_argument("--slug", required=True)
     parser.add_argument("--summary", required=True)
     parser.add_argument("--category", choices=CATEGORIES, default="crypto")
+    parser.add_argument("--image", help="Local site image URL under /assets/img/articles/")
+    parser.add_argument("--image-alt", default="")
     args = parser.parse_args()
-    story = import_news(args.source, args.date, args.slug, args.summary, args.category)
+    story = import_news(args.source, args.date, args.slug, args.summary, args.category, args.image, args.image_alt)
     from build_seo import main as build_site
     build_site()
     print(f"News imported: {story['url']}")
