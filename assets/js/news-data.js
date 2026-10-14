@@ -2,6 +2,17 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Perpetuals Plans Tokenized US Stocks Under SEC Innovation Exemption",
+    "summary": "Perpetuals.com plans to tokenize U.S. stocks via the SEC's five-year innovation exemption. Launch subject to a 30-day notice period and compliance with framework conditions.",
+    "author": "Presence Editorial",
+    "date": "2026-10-14",
+    "readingTime": "1 min read",
+    "url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
+    "promotable": true
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Ripple Adds Fourth South Korean Institutional Partner, but XRP’s Role Remains Unclear",
     "summary": "Ripple adds Meritz Securities to its South Korean institutional partners, while XRP’s role in the custody and tokenization plans remains unconfirmed.",
     "author": "Presence Editorial",
