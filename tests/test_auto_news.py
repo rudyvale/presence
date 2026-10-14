@@ -62,6 +62,13 @@ class AutomatedNewsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "source phrase"):
             auto_news.validate_brief(brief, self.item)
 
+    def test_unsourced_tickers_and_general_market_claims_are_rejected(self):
+        for text in ("The company trades under PPLC.", "Bitcoin is a safe-haven asset.", "The company is at the forefront of financial innovation."):
+            with self.subTest(text=text):
+                brief = {**self.brief, "paragraphs": [self.brief["paragraphs"][0], self.brief["paragraphs"][1] + " " + text]}
+                with self.assertRaisesRegex(ValueError, "unsupported"):
+                    auto_news.validate_brief(brief, self.item)
+
     def test_missing_key_stops_before_network_inference(self):
         with patch.dict("os.environ", {"NEWS_AI_TOKEN": "", "NEWS_AI_BACKEND": "api"}):
             with self.assertRaisesRegex(ValueError, "NEWS_AI_TOKEN"):

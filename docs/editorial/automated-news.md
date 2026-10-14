@@ -1,6 +1,6 @@
 # Automated news briefs
 
-The `Daily news` workflow selects one recent item per run from the RSS feed and runs Qwen 2.5 3B locally on the GitHub Actions runner. It writes an original English brief from the headline and limited factual summary. No AI API key, paid AI subscription or external inference service is required. GitHub runner and cache usage follows the repository's Actions allowance.
+The `Daily news` workflow selects one recent item per run from the RSS feed and runs Qwen 2.5 3B locally on the GitHub Actions runner. It targets a short, original English brief of 45–90 words from the headline and limited factual summary, without adding background to fill space. No AI API key, paid AI subscription or external inference service is required. GitHub runner and cache usage follows the repository's Actions allowance.
 
 It does not download or republish full source articles or third-party photographs. Sources stay in editorial records; article copy has no source-publication branding or links. GregMeta can supply images for individual reports afterward.
 
@@ -21,6 +21,8 @@ Ollama **0.11.10** is downloaded from its official GitHub release and checked ag
 The model is started only when a source is eligible and the daily publication limit permits another brief. Invalid output is discarded. The Actions run reports whether a real brief was prepared; model startup alone does not establish successful publication.
 
 After drafting, a second local model call checks whether the supplied headline and summary support every concrete claim. Unconfirmed drafts are discarded. The source snapshot is retained in the editorial ledger for review. This automated check can still miss errors and does not replace editorial judgment.
+
+Deterministic checks also reject uppercase acronyms or tickers absent from the source and selected unsupported promotional or general market claims. Briefs outside the accepted 45–180-word range are discarded.
 
 ## Site files and source visibility
 
