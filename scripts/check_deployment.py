@@ -1,10 +1,11 @@
 import os
+import json
 import time
 from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from site_routes import BASE_URL
+from site_routes import BASE_URL, ROOT
 
 
 def check_route(route: str, expected_status: int) -> None:
@@ -21,6 +22,12 @@ def check_route(route: str, expected_status: int) -> None:
 
 def main() -> None:
     article = os.environ.get("EXPECTED_ARTICLE", "")
+    if not article:
+        history_path = ROOT / "docs/editorial/auto-news-history.json"
+        if history_path.exists():
+            history = json.loads(history_path.read_text())
+            if history["items"]:
+                article = history["items"][-1]["article_url"]
     public_routes = ["/", "/news/"]
     if article:
         if not article.startswith("/articles/") or not article.endswith("/") or any(character in article for character in "?#"):
