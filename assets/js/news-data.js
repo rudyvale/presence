@@ -2,6 +2,17 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin risks another leverage shakeout if US CPI runs hot, analysts warn",
+    "summary": "Bitcoin faces a potential inflation-driven selloff, with analysts warning after an $811 million crypto liquidation wave. Open interest remains at $140.9 billion despite market-wide reduction of only about 2%.",
+    "author": "Presence Editorial",
+    "date": "2026-10-14",
+    "readingTime": "1 min read",
+    "url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
+    "promotable": true
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Perpetuals Plans Tokenized US Stocks Under SEC Innovation Exemption",
     "summary": "Perpetuals.com plans to tokenize U.S. stocks via the SEC's five-year innovation exemption. Launch subject to a 30-day notice period and compliance with framework conditions.",
     "author": "Presence Editorial",
