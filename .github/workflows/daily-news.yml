@@ -24,7 +24,6 @@ jobs:
       NEWS_AI_BACKEND: local
       NEWS_LOCAL_MODEL: qwen2.5:3b
       OLLAMA_HOST: '127.0.0.1:11434'
-      OLLAMA_MODELS: ${{ runner.temp }}/presence-models
       OLLAMA_NUM_PARALLEL: '1'
       OLLAMA_MAX_LOADED_MODELS: '1'
     steps:
@@ -52,6 +51,7 @@ jobs:
       - name: Install local AI
         if: steps.feed.outputs.available == 'true'
         run: |
+          echo "OLLAMA_MODELS=$RUNNER_TEMP/presence-models" >> "$GITHUB_ENV"
           if [ ! -x "$RUNNER_TEMP/presence-ollama/bin/ollama" ]; then
             curl --fail --location --retry 3 --output "$RUNNER_TEMP/ollama.tgz" 'https://github.com/ollama/ollama/releases/download/v0.11.10/ollama-linux-amd64.tgz'
             echo 'da2be71e972752e3099ef1d1226050d2b3d1ce79a4fec3bdb6edc70a7601e060  ollama.tgz' > "$RUNNER_TEMP/ollama.sha256"
