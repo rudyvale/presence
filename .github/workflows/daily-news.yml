@@ -43,10 +43,13 @@ jobs:
         run: python scripts/auto_news.py --check-feed
       - name: Prepare news brief
         if: env.NEWS_AI_TOKEN != ''
-        run: python scripts/auto_news.py
+        run: |
+          echo '::notice title=AI credential status::NEWS_AI_TOKEN is configured; API inference is tested when a new eligible source is available.'
+          python scripts/auto_news.py
       - name: AI credential status
         if: env.NEWS_AI_TOKEN == ''
         run: |
+          echo '::notice title=AI publishing::AI publishing is inactive: NEWS_AI_TOKEN is not configured in repository Actions secrets.'
           echo 'AI publishing is not active: add NEWS_AI_TOKEN in repository Actions secrets. Feed and offline checks still run; no placeholder article is published.' >> "$GITHUB_STEP_SUMMARY"
       - name: Validate site
         run: python scripts/validate_site.py

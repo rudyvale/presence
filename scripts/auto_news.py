@@ -221,6 +221,8 @@ def main() -> None:
     now = datetime.now(timezone.utc)
     items = fetch_feed(now)
     summary(f"RSS access verified: {len(items)} recent, non-sponsored candidates.")
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print(f"::notice title=News feed readiness::RSS access verified: {len(items)} recent, non-sponsored candidates.")
     if args.check_feed:
         return
     article = publish_one(items, now)
