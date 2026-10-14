@@ -63,8 +63,32 @@ class AutomatedNewsTests(unittest.TestCase):
             auto_news.validate_brief(brief, self.item)
 
     def test_missing_key_stops_before_network_inference(self):
-        with patch.dict("os.environ", {"NEWS_AI_TOKEN": ""}):
+        with patch.dict("os.environ", {"NEWS_AI_TOKEN": "", "NEWS_AI_BACKEND": "api"}):
             with self.assertRaisesRegex(ValueError, "NEWS_AI_TOKEN"):
+                auto_news.generate_brief(self.item)
+
+    def test_default_backend_uses_local_model_without_api_key(self):
+        with patch.dict("os.environ", {}, clear=True), patch.object(auto_news, "generate_local_brief", return_value=self.brief) as local, patch.object(auto_news, "generate_api_brief") as api:
+            self.assertEqual(auto_news.generate_brief(self.item), self.brief)
+            local.assert_called_once_with(self.item)
+            api.assert_not_called()
+
+    def test_local_request_uses_fixed_loopback_and_never_sends_credentials(self):
+        from unittest.mock import MagicMock
+        response = MagicMock()
+        response.read.return_value = json.dumps({"message": {"content": json.dumps(self.brief)}}).encode()
+        response.__enter__.return_value = response
+        with patch.dict("os.environ", {"NEWS_AI_TOKEN": "test-only", "NEWS_AI_ENDPOINT": "https://example.com"}), patch.object(auto_news, "build_opener") as opener:
+            opener.return_value.open.return_value = response
+            self.assertEqual(auto_news.generate_local_brief(self.item), self.brief)
+            request = opener.return_value.open.call_args.args[0]
+            self.assertEqual(request.full_url, "http://127.0.0.1:11434/api/chat")
+            self.assertNotIn("Authorization", request.headers)
+            self.assertFalse(json.loads(request.data)["stream"])
+
+    def test_unknown_backend_stops_before_inference(self):
+        with patch.dict("os.environ", {"NEWS_AI_BACKEND": "unknown"}):
+            with self.assertRaisesRegex(ValueError, "NEWS_AI_BACKEND"):
                 auto_news.generate_brief(self.item)
 
     def test_pipeline_publishes_once_and_records_source(self):

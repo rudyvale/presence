@@ -6,10 +6,6 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/daily-news.yml'
-      - 'scripts/auto_news.py'
-      - 'tests/test_auto_news.py'
 
 concurrency:
   group: presence-daily-news
@@ -21,13 +17,16 @@ permissions:
 jobs:
   news:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     outputs:
       deploy: ${{ steps.export.outputs.ready }}
     env:
-      NEWS_AI_TOKEN: ${{ secrets.NEWS_AI_TOKEN }}
-      NEWS_AI_ENDPOINT: ${{ vars.NEWS_AI_ENDPOINT || 'https://api.openai.com/v1/chat/completions' }}
-      NEWS_AI_MODEL: ${{ vars.NEWS_AI_MODEL || 'gpt-4.1-mini' }}
+      NEWS_AI_BACKEND: local
+      NEWS_LOCAL_MODEL: qwen2.5:3b
+      OLLAMA_HOST: '127.0.0.1:11434'
+      OLLAMA_MODELS: ${{ runner.temp }}/presence-models
+      OLLAMA_NUM_PARALLEL: '1'
+      OLLAMA_MAX_LOADED_MODELS: '1'
     steps:
       - uses: actions/checkout@v6
         with:
@@ -40,22 +39,56 @@ jobs:
       - name: Test editorial workflow
         run: python -m unittest discover -s tests
       - name: Verify news feed
+        id: feed
         run: python scripts/auto_news.py --check-feed
+      - name: Restore local AI
+        if: steps.feed.outputs.available == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.temp }}/presence-ollama
+            ${{ runner.temp }}/presence-models
+          key: presence-linux-ollama-0.11.10-qwen2.5-3b-v1
+      - name: Install local AI
+        if: steps.feed.outputs.available == 'true'
+        run: |
+          if [ ! -x "$RUNNER_TEMP/presence-ollama/bin/ollama" ]; then
+            curl --fail --location --retry 3 --output "$RUNNER_TEMP/ollama.tgz" 'https://github.com/ollama/ollama/releases/download/v0.11.10/ollama-linux-amd64.tgz'
+            echo 'da2be71e972752e3099ef1d1226050d2b3d1ce79a4fec3bdb6edc70a7601e060  ollama.tgz' > "$RUNNER_TEMP/ollama.sha256"
+            (cd "$RUNNER_TEMP" && sha256sum --check ollama.sha256)
+            mkdir -p "$RUNNER_TEMP/presence-ollama"
+            tar --extract --gzip --file "$RUNNER_TEMP/ollama.tgz" --directory "$RUNNER_TEMP/presence-ollama" --exclude='cuda*' --exclude='rocm*'
+            rm "$RUNNER_TEMP/ollama.tgz"
+          fi
+          echo "$RUNNER_TEMP/presence-ollama/bin" >> "$GITHUB_PATH"
+      - name: Start local AI
+        if: steps.feed.outputs.available == 'true'
+        run: |
+          ollama serve > "$RUNNER_TEMP/presence-ai.log" 2>&1 &
+          python - <<'PY'
+          import json
+          import time
+          from urllib.request import ProxyHandler, build_opener
+          opener = build_opener(ProxyHandler({}))
+          for attempt in range(60):
+              try:
+                  with opener.open('http://127.0.0.1:11434/api/version', timeout=2) as response:
+                      json.load(response)
+                  break
+              except OSError:
+                  time.sleep(1)
+          else:
+              raise SystemExit('Local AI did not start')
+          PY
+          ollama pull "$NEWS_LOCAL_MODEL"
+          echo '::notice title=AI backend::Local Qwen model is ready on the GitHub runner; no AI API key is required.'
       - name: Prepare news brief
-        if: env.NEWS_AI_TOKEN != ''
-        run: |
-          echo '::notice title=AI credential status::NEWS_AI_TOKEN is configured; API inference is tested when a new eligible source is available.'
-          python scripts/auto_news.py
-      - name: AI credential status
-        if: env.NEWS_AI_TOKEN == ''
-        run: |
-          echo '::notice title=AI publishing::AI publishing is inactive: NEWS_AI_TOKEN is not configured in repository Actions secrets.'
-          echo 'AI publishing is not active: add NEWS_AI_TOKEN in repository Actions secrets. Feed and offline checks still run; no placeholder article is published.' >> "$GITHUB_STEP_SUMMARY"
+        if: steps.feed.outputs.available == 'true'
+        run: python scripts/auto_news.py
       - name: Validate site
         run: python scripts/validate_site.py
       - name: Publish validated changes
         id: publish
-        if: env.NEWS_AI_TOKEN != ''
         run: |
           git add assets/js/news-data.js articles docs/editorial feed.xml sitemap.xml index.html news/index.html crypto/index.html technology/index.html companies/index.html
           if git diff --cached --quiet; then
@@ -76,6 +109,12 @@ jobs:
         if: steps.export.outputs.ready == 'true'
         with:
           path: ${{ runner.temp }}/presence-pages
+      - name: Stop local AI
+        if: always() && steps.feed.outputs.available == 'true'
+        run: |
+          if command -v ollama > /dev/null; then
+            ollama stop "$NEWS_LOCAL_MODEL" || true
+          fi
 
   deploy:
     needs: news

@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-"""Publish at most two original, AI-written news briefs per Moscow calendar day."""
-
 from __future__ import annotations
 
 import argparse
@@ -16,7 +13,7 @@ import re
 import tempfile
 from urllib.error import HTTPError
 from urllib.parse import urlsplit, urlunsplit
-from urllib.request import HTTPRedirectHandler, Request, build_opener, urlopen
+from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener, urlopen
 import xml.etree.ElementTree as ET
 from zoneinfo import ZoneInfo
 
@@ -99,7 +96,29 @@ class NoModelRedirects(HTTPRedirectHandler):
         raise ValueError("AI endpoint redirected; refusing to forward authentication")
 
 
-def generate_brief(item: dict) -> dict:
+def model_messages(item: dict) -> list[dict]:
+    return [{"role": "system", "content": PROMPT}, {"role": "user", "content": json.dumps({"headline": item["title"], "facts": item["description"]}, ensure_ascii=False)}]
+
+
+def generate_local_brief(item: dict) -> dict:
+    payload = {
+        "model": os.environ.get("NEWS_LOCAL_MODEL", "qwen2.5:3b"),
+        "messages": model_messages(item),
+        "stream": False,
+        "format": "json",
+        "options": {"temperature": 0.2, "num_ctx": 4096, "num_predict": 900, "num_gpu": 0},
+        "keep_alive": "10m",
+    }
+    request = Request("http://127.0.0.1:11434/api/chat", data=json.dumps(payload).encode(), headers={"Content-Type": "application/json"}, method="POST")
+    try:
+        with build_opener(ProxyHandler({}), NoModelRedirects()).open(request, timeout=300) as response:
+            result = json.load(response)
+    except HTTPError as error:
+        raise RuntimeError(f"Local AI returned HTTP {error.code}") from None
+    return json.loads(result["message"]["content"])
+
+
+def generate_api_brief(item: dict) -> dict:
     token = os.environ.get("NEWS_AI_TOKEN", "")
     if not token:
         raise ValueError("NEWS_AI_TOKEN is missing; add it to the repository's Actions secrets")
@@ -109,7 +128,7 @@ def generate_brief(item: dict) -> dict:
         raise ValueError("Configure an HTTPS AI endpoint without embedded credentials")
     payload = {
         "model": os.environ.get("NEWS_AI_MODEL", "gpt-4.1-mini"),
-        "messages": [{"role": "system", "content": PROMPT}, {"role": "user", "content": json.dumps({"headline": item["title"], "facts": item["description"]}, ensure_ascii=False)}],
+        "messages": model_messages(item),
         "response_format": {"type": "json_object"},
         "temperature": 0.3,
         "max_tokens": 900,
@@ -119,9 +138,17 @@ def generate_brief(item: dict) -> dict:
         with build_opener(NoModelRedirects()).open(request, timeout=90) as response:
             result = json.load(response)
     except HTTPError as error:
-        # Never print credentials or arbitrary provider response bodies.
         raise RuntimeError(f"AI provider returned HTTP {error.code}") from None
     return json.loads(result["choices"][0]["message"]["content"])
+
+
+def generate_brief(item: dict) -> dict:
+    backend = os.environ.get("NEWS_AI_BACKEND", "local")
+    if backend == "local":
+        return generate_local_brief(item)
+    if backend == "api":
+        return generate_api_brief(item)
+    raise ValueError("NEWS_AI_BACKEND must be local or api")
 
 
 def validate_brief(brief: dict, item: dict) -> None:
@@ -178,10 +205,10 @@ def eligible_items(items: list[dict], history: dict, now: datetime) -> list[dict
 def publish_one(items: list[dict], now: datetime) -> str | None:
     history = load_history()
     for item in eligible_items(items, history, now)[:3]:
-        brief = generate_brief(item)
-        if isinstance(brief, dict) and brief.get("skip") is True:
-            continue
         try:
+            brief = generate_brief(item)
+            if isinstance(brief, dict) and brief.get("skip") is True:
+                continue
             validate_brief(brief, item)
         except ValueError as error:
             print(f"Candidate rejected: {error}")
@@ -195,7 +222,6 @@ def publish_one(items: list[dict], now: datetime) -> str | None:
         with tempfile.TemporaryDirectory(prefix="presence-news-") as directory:
             source = Path(directory) / "brief.txt"
             source.write_text(manuscript, encoding="utf-8")
-            # The first paragraph is the introduction; all paragraphs appear once.
             story = import_news(source, today, slug, brief["summary"])
         history["items"].append({"source_url": item["url"], "date": today.isoformat(), "article_url": story["url"]})
         HISTORY.parent.mkdir(parents=True, exist_ok=True)
@@ -215,7 +241,7 @@ def summary(message: str) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Publish up to two original news briefs per Moscow day")
     parser.add_argument("--check-feed", action="store_true", help="Validate feed access without AI calls or publishing")
     args = parser.parse_args()
     now = datetime.now(timezone.utc)
@@ -224,9 +250,17 @@ def main() -> None:
     if os.environ.get("GITHUB_ACTIONS") == "true":
         print(f"::notice title=News feed readiness::RSS access verified: {len(items)} recent, non-sponsored candidates.")
     if args.check_feed:
+        output = os.environ.get("GITHUB_OUTPUT")
+        if output:
+            with open(output, "a", encoding="utf-8") as destination:
+                destination.write(f"available={'true' if eligible_items(items, load_history(), now) else 'false'}\n")
         return
+    backend = os.environ.get("NEWS_AI_BACKEND", "local")
+    summary(f"AI backend: {backend}.")
     article = publish_one(items, now)
     summary(f"New news brief prepared: {article}" if article else "No new publication: daily limit reached, no unseen stories, or insufficient validated facts.")
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print(f"::notice title=News publication::{article}" if article else "::notice title=News publication::No new brief passed the publication checks.")
 
 
 if __name__ == "__main__":

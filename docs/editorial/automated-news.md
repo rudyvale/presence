@@ -1,40 +1,42 @@
 # Automated news briefs
 
-The `Daily news` workflow selects one recent item per run from the configured RSS feed and asks an AI API to write a short, original 80–180-word brief from its headline and limited factual summary. It does not download or republish full source articles or third-party photographs. Sources stay in editorial records; article copy has no source-publication branding or links. GregMeta can supply images for individual reports afterward.
+The `Daily news` workflow selects one recent item per run from the RSS feed and runs Qwen 2.5 3B locally on the GitHub Actions runner. It writes an original English brief from the headline and limited factual summary. No AI API key, paid AI subscription or external inference service is required. GitHub runner and cache usage follows the repository's Actions allowance.
+
+It does not download or republish full source articles or third-party photographs. Sources stay in editorial records; article copy has no source-publication branding or links. GregMeta can supply images for individual reports afterward.
 
 ## Schedule and limits
 
-- Runs at **10:00 and 18:00 Europe/Moscow** (`07:00` and `15:00` UTC). GitHub may delay scheduled starts.
+- Runs at **10:00 and 18:00 Europe/Moscow** (`07:00` and `15:00` UTC), on pushes to `main`, and through **Run workflow**. GitHub may delay scheduled starts.
 - At most one publication per run and two automated publications per Moscow calendar day.
 - Canonical source URLs are recorded to prevent duplicate publication.
 - Items older than 48 hours and sponsored/press-release content are skipped.
 - Insufficient facts, unsupported numeric claims, links/source branding and extended repeated source phrases cause rejection, not a placeholder article.
-- The workflow validates all site output before committing to `main`.
-- The workflow explicitly uploads/deploys the public Pages artifact after its bot commit: pushes with `GITHUB_TOKEN` do not trigger a separate Pages build.
+- All site output is validated before committing to `main`.
+- The workflow uploads/deploys the public Pages artifact after its bot commit: pushes with `GITHUB_TOKEN` do not trigger a separate Pages build.
 
-## Required AI setup
+## Execution
 
-Add an API key as the repository Actions secret **`NEWS_AI_TOKEN`**:
+Ollama **0.11.10** is downloaded from its official GitHub release and checked against the release's SHA-256 checksum. GPU libraries are excluded. The **`qwen2.5:3b`** quantized model runs on CPU, through the fixed loopback address `127.0.0.1:11434`. Binary and model downloads are cached between runs. Ollama verifies downloaded model blobs. Neither source content nor credentials are sent to an AI provider.
 
-`https://github.com/rudyvale/presence/settings/secrets/actions`
+The model is started only when a source is eligible and the daily publication limit permits another brief. Invalid output is discarded. The Actions run reports whether a real brief was prepared; model startup alone does not establish successful publication.
 
-Do not send the key in chat, commit it or place it in public site files.
+## Site files and source visibility
 
-Defaults are OpenAI's `https://api.openai.com/v1/chat/completions` endpoint and `gpt-4.1-mini`. For another OpenAI-compatible provider, set repository Actions variables **`NEWS_AI_ENDPOINT`** and **`NEWS_AI_MODEL`**. OpenRouter uses `https://openrouter.ai/api/v1/chat/completions` and the desired supported model identifier.
+`scripts/export_site.py` exports only public pages and assets. Python code, workflow files, tests and editorial records are excluded. `_config.yml` also excludes these files from the legacy GitHub Pages Jekyll build. The root does not contain `.nojekyll`, because it would bypass those exclusions; the curated deployment artifact creates its own `.nojekyll`.
 
-GitHub Models is unavailable: GitHub's current documentation states that it was retired on July 30, 2026. A repository `GITHUB_TOKEN` cannot replace an AI-provider API key. ChatGPT subscriptions and API billing are separate.
-
-Without `NEWS_AI_TOKEN`, the workflow checks feed access and the site but reports AI publishing as inactive. Once the secret is added, the next scheduled or manually dispatched run can publish. Actual AI inference and publication must be verified with a credential-backed run; offline tests are not evidence of API readiness.
+These exclusions prevent serving automation code through the website. They do not hide source in a public GitHub repository or remove it from Git history. Full source privacy requires a private repository and a supported Pages plan or a separate private automation repository. No obfuscation or client-side secret storage is used.
 
 ## Local checks
 
 ```sh
 python3 -m unittest discover -s tests
 python3 scripts/auto_news.py --check-feed
+ollama serve
+ollama pull qwen2.5:3b
 python3 scripts/auto_news.py
 python3 scripts/validate_site.py
 ```
 
-The final two commands require a usable AI binding/network route for the provider and RSS source. No TLS verification is disabled. API errors stop publishing, credentials and provider response bodies are not logged, and credentials are not forwarded to redirected model endpoints.
+Run `ollama serve` in a separate terminal before inference. RSS access and the initial model download require network access. TLS verification stays enabled. Only the fixed local model service is accessed without the external HTTP proxy.
 
-Publication rights and content review remain editorial responsibilities. The workflow produces concise independent briefs rather than close rewrites of full third-party articles.
+The optional API adapter is still available for local use with `NEWS_AI_BACKEND=api`, `NEWS_AI_TOKEN`, and optional `NEWS_AI_ENDPOINT` and `NEWS_AI_MODEL`. The scheduled GitHub workflow uses the local backend and does not read that secret.

@@ -50,4 +50,4 @@ The importer keeps the manuscript's title, introduction and body, attributes the
 
 Use `--image /assets/img/articles/YYYY-MM-DD_slug/image.jpg --image-alt "Description"` to include a supplied local image in both the news card and the article. Standalone manuscript date lines appear in the byline rather than being repeated in the body; editor-source headings are recognized case-insensitively.
 
-The [automated news workflow](docs/editorial/automated-news.md) runs twice daily and requires the `NEWS_AI_TOKEN` repository Actions secret for AI inference. It remains inactive for publishing until a usable key is configured. The public Pages export excludes editorial notes, tests, tooling and Git metadata.
+The [automated news workflow](docs/editorial/automated-news.md) runs twice daily with a local Qwen model on the GitHub runner. No AI API key is required. The public Pages export and the legacy Jekyll build exclude editorial notes, tests, tooling and Git metadata. Repository source remains visible on GitHub while the repository is public.
