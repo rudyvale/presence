@@ -91,6 +91,15 @@ class AutomatedNewsTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "NEWS_AI_BACKEND"):
                 auto_news.generate_brief(self.item)
 
+    def test_grounding_requires_explicit_confirmation(self):
+        for response in ({"supported": False}, {"supported": "true"}, {}, {"supported": True}):
+            with self.subTest(response=response), patch.dict("os.environ", {"NEWS_AI_BACKEND": "local"}), patch.object(auto_news, "generate_local_response", return_value=response):
+                if response.get("supported") is True:
+                    auto_news.validate_grounding(self.brief, self.item)
+                else:
+                    with self.assertRaisesRegex(ValueError, "Grounding review"):
+                        auto_news.validate_grounding(self.brief, self.item)
+
     def test_pipeline_publishes_once_and_records_source(self):
         import build_catalog
         import import_news
@@ -102,11 +111,12 @@ class AutomatedNewsTests(unittest.TestCase):
             (root / "assets/js/news-data.js").write_text("window.PRESENCE_NEWS = [];\n")
             (root / "assets/data/author-bios.json").write_text(json.dumps({"authors": {"Presence Editorial": {"bio": "Presence Editorial is the editorial team."}}}))
             (root / "scripts/templates/news-article.html.tmpl").write_text(template)
-            with patch.object(import_news, "ROOT", root), patch.object(build_catalog, "ROOT", root), patch.object(auto_news, "HISTORY", root / "docs/editorial/history.json"), patch.object(auto_news, "generate_brief", return_value=self.brief), patch("build_seo.main") as build:
+            with patch.object(import_news, "ROOT", root), patch.object(build_catalog, "ROOT", root), patch.object(auto_news, "HISTORY", root / "docs/editorial/history.json"), patch.object(auto_news, "generate_brief", return_value=self.brief), patch.object(auto_news, "validate_grounding"), patch("build_seo.main") as build:
                 route = auto_news.publish_one([self.item], self.now)
                 self.assertTrue(route.startswith("/articles/2026-10-14_"))
                 self.assertTrue((root / route.lstrip("/") / "index.html").exists())
                 self.assertEqual(auto_news.load_history()["items"][0]["source_url"], self.item["url"])
+                self.assertEqual(auto_news.load_history()["items"][0]["source_snapshot"]["facts"], self.item["description"])
                 self.assertIsNone(auto_news.publish_one([self.item], self.now))
                 self.assertEqual(len(build_catalog.load_stories()), 1)
                 build.assert_called_once()

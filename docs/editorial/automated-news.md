@@ -20,9 +20,13 @@ Ollama **0.11.10** is downloaded from its official GitHub release and checked ag
 
 The model is started only when a source is eligible and the daily publication limit permits another brief. Invalid output is discarded. The Actions run reports whether a real brief was prepared; model startup alone does not establish successful publication.
 
+After drafting, a second local model call checks whether the supplied headline and summary support every concrete claim. Unconfirmed drafts are discarded. The source snapshot is retained in the editorial ledger for review. This automated check can still miss errors and does not replace editorial judgment.
+
 ## Site files and source visibility
 
 `scripts/export_site.py` exports only public pages and assets. Python code, workflow files, tests and editorial records are excluded. `_config.yml` also excludes these files from the legacy GitHub Pages Jekyll build. The root does not contain `.nojekyll`, because it would bypass those exclusions; the curated deployment artifact creates its own `.nojekyll`.
+
+After deployment, `scripts/check_deployment.py` checks the homepage, news listing and new article on the public domain and requires HTTP 404 for automation code, tests, editorial documentation and repository README paths.
 
 These exclusions prevent serving automation code through the website. They do not hide source in a public GitHub repository or remove it from Git history. Full source privacy requires a private repository and a supported Pages plan or a separate private automation repository. No obfuscation or client-side secret storage is used.
 
