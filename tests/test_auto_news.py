@@ -218,6 +218,12 @@ class AutomatedNewsTests(unittest.TestCase):
         report, _ = auto_news.unpack_brief(draft)
         self.assertEqual(report, self.report)
 
+    def test_runtime_probe_rejects_a_model_that_ignores_the_word_count_grammar(self):
+        with patch.object(auto_news, "request_model", return_value={"text": "All systems ready."}), self.assertRaisesRegex(RuntimeError, "did not enforce"):
+            auto_news.check_generation_schema()
+        with patch.object(auto_news, "request_model", return_value={"text": " ".join(["word"] * 35) + "."}), patch.object(auto_news, "notice"):
+            auto_news.check_generation_schema()
+
     def test_truncated_model_response_is_never_published(self):
         response = MagicMock()
         response.read.return_value = json.dumps({"message": {"content": json.dumps(self.report)}, "done_reason": "length"}).encode()

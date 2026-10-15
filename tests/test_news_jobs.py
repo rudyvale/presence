@@ -25,7 +25,7 @@ class NewsJobTests(unittest.TestCase):
         return {"key": "news-0", "kind": "new", "record_route": "", "date": "2026-10-14", "sources": [news_jobs.source_input(self.item)]}
 
     def receipt(self):
-        with tempfile.TemporaryDirectory() as directory, patch.dict("os.environ", {"NEWS_JOB_JSON": json.dumps(self.job())}), patch.object(auto_news, "PROCESSING_DEADLINE", None), patch.object(auto_news, "prepare_report", return_value=(self.report, self.researched)), patch.object(auto_news, "notice"):
+        with tempfile.TemporaryDirectory() as directory, patch.dict("os.environ", {"NEWS_JOB_JSON": json.dumps(self.job())}), patch.object(auto_news, "PROCESSING_DEADLINE", None), patch.object(auto_news, "check_generation_schema"), patch.object(auto_news, "prepare_report", return_value=(self.report, self.researched)), patch.object(auto_news, "notice"):
             news_jobs.worker(Path(directory))
             return json.loads((Path(directory) / "report.json").read_text())
 

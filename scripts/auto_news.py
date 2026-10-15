@@ -172,6 +172,16 @@ def request_model(messages: list[dict], max_tokens: int = 2000, schema: dict | N
     raise ValueError("NEWS_AI_BACKEND must be local or api")
 
 
+def check_generation_schema() -> None:
+    field = report_schema(1)["properties"]["paragraphs"]["items"]["properties"]["text"]
+    schema = object_schema({"text": field})
+    result = request_model([{"role": "user", "content": 'This is a schema compatibility test. Return JSON with "text" containing exactly three words.'}], 150, schema)
+    text = result.get("text") if isinstance(result, dict) else None
+    if not isinstance(text, str) or re.fullmatch(field["pattern"], text) is None:
+        raise RuntimeError("The installed model runtime did not enforce the paragraph word-count grammar")
+    notice("Structured generation", "The installed model runtime enforces the article paragraph grammar")
+
+
 def research_item(item: dict) -> dict:
     source = fetch_article(item["url"])
     notice("Research source", f"{item['url']} | full body: {source['word_count']} words | extractor: {source['extractor']}")

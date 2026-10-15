@@ -60,6 +60,7 @@ def worker(destination: Path) -> None:
     if not re.fullmatch(r"(?:repair|news)-\d+", job["key"]) or job["kind"] not in {"repair", "new"}:
         raise ValueError("Invalid editorial job")
     auto_news.PROCESSING_DEADLINE = time.monotonic() + 22 * 60
+    auto_news.check_generation_schema()
     failures = []
     for source in job["sources"]:
         try:
