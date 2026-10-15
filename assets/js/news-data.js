@@ -16,13 +16,16 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "AI Agents Make Billions of Crypto Payments",
-    "summary": "More than 138 million x402 payments were recorded in a study by Chainalysis. The typical payment is small; some software purchases data and AI models.",
+    "title": "AI Agents Logged 138 Million x402 Payments on Base",
+    "summary": "Chainalysis recorded more than 138 million x402 payments on Base. The payment count does not represent a dollar value.",
     "author": "Presence Editorial",
     "date": "2026-10-15",
     "readingTime": "1 min read",
     "url": "/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/illustration-agents.webp",
+    "imageAlt": "Original Presence illustration of software agents connected through a digital payment network.",
+    "imageCredit": "Illustration: Presence"
   },
   {
     "category": "crypto",
