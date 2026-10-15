@@ -22,7 +22,7 @@ Every paragraph identifies its private evidence indices. Its quantities must occ
 
 All three model stages use JSON schemas passed to the generator. The writer schema requires eight paragraph objects, two headings and evidence indices inside each paragraph. The software separates private evidence indices from the final article copy before importing it.
 
-Repeated headlines, copied prose and source-branding errors receive a targeted edit of only the affected fields. The complete report then goes through the same numeric, evidence, originality and grounding checks again. Each hosted worker also probes actual grammar enforcement before researching a source.
+Repeated headlines, copied prose and source-branding errors receive a targeted edit of only the affected fields. The complete report then goes through the same numeric, evidence, originality and grounding checks again. Each hosted worker warms up the model with a short structured readiness response before researching a source; article format and content are checked on the actual report.
 
 ## Schedule and recovery
 

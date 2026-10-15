@@ -174,13 +174,11 @@ def request_model(messages: list[dict], max_tokens: int = 2000, schema: dict | N
 
 
 def check_generation_schema() -> None:
-    field = report_schema(1)["properties"]["paragraphs"]["items"]["properties"]["text"]
-    schema = object_schema({"text": field})
-    result = request_model([{"role": "user", "content": 'This is a schema compatibility test. Return JSON with "text" containing exactly three words.'}], 150, schema)
-    text = result.get("text") if isinstance(result, dict) else None
-    if not isinstance(text, str) or re.fullmatch(field["pattern"], text) is None:
-        raise RuntimeError("The installed model runtime did not enforce the paragraph word-count grammar")
-    notice("Structured generation", "The installed model runtime enforces the article paragraph grammar")
+    schema = object_schema({"ready": {"type": "boolean", "const": True}})
+    result = request_model([{"role": "user", "content": 'Return only {"ready": true} to confirm structured generation is ready.'}], 64, schema)
+    if not isinstance(result, dict) or set(result) != {"ready"} or result["ready"] is not True:
+        raise RuntimeError("The model runtime did not return a complete structured readiness response")
+    notice("Structured generation", "The local model is loaded and returned a complete structured readiness response")
 
 
 def research_item(item: dict) -> dict:
