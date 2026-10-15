@@ -94,23 +94,24 @@
       "source_url": "https://crypto.news/bitcoin-risk-another-leverage-shakeout-us-cpi-runs-hot/",
       "date": "2026-10-14",
       "article_url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
-      "format_version": 2,
+      "format_version": 3,
       "source_snapshot": {
         "headline": "Bitcoin risks another leverage shakeout if US CPI runs hot, analysts warn",
         "published": "2026-10-14T18:20:55+00:00",
         "word_count": 904,
         "sha256": "9236e911b5560af15259e8244996add2bebbff87565c8d9241b50929387c4850",
         "extractor": ".post-detail__content",
-        "fact_count": 8,
+        "fact_count": 9,
         "fact_hashes": [
-          "c70e1cea87ab984a43bf3b70e67acc0d3221448332ba22044e78778102e502f0",
-          "7e35a060b6949ddddfeaa21a8776615c892a3866b62897abdc428b5d50058f3d",
-          "29782faf8eacb21e7b586a9a2ca594dc11380789a5e11f0a8fbf22da890045ee",
-          "be18cc91ff44634b9655b960b2f9bd35dd4e1ab9f92777b49b2040cb2c6bd140",
-          "d30dbd994fc95812933ae6cbbab4744ad0bf18a045a75126d2126fc09e12825e",
-          "0f481b6fee0b6c34985545e43cf9a47410f885ee06eb1c4eaf3ceecf52e3c389",
-          "d80a25c8469f05e54bcf9318f9e79ac8817f2735b2be43c84d4dedc048d09e87",
-          "0641a03ecdd83958f1767e8330eadc18ca7dd6f8f69fc8de59da88cc94a5648e"
+          "3784905b7dc487ac139d63477741c7a5475f5488d73b90f7fdb0bbaa1916d90b",
+          "905e80a0b518c6f2f23f96beb45952f3718bfa09c1a78f655fdb6fc97efb98c4",
+          "914d049badb6c85059c462ee4645503d7ca8891e73a2dd2c9c4ac9003c02c392",
+          "d1c2dd0e24e7532c6bbb56e757e0c189fa0fc4ee7c4a98f840db2440382c080e",
+          "75ca725eff120a578d54ad18527f9db76cecd0217993b90c05ebb41f4d0eff51",
+          "9c16279be85658f3ac259c57fa372241ae5f654e7c3d3b81581c59fe70420a2d",
+          "75ac10dadd75150516327fecb36ae0ee0c856318a9f721070efcfa9cab0f0633",
+          "5ed575e5f33efbe65c284e5cf55aaa8635e549486d85fa7d262b7d516a4ed20a",
+          "25adddccb9bbd9c5f5d409186340a1f58522b7f64ed1fef394ea93231d9566fc"
         ],
         "source_quantities": [
           [
@@ -299,9 +300,9 @@
           "https://tradingeconomics.com/united-states/government-bond-yield"
         ]
       },
-      "word_count": 269,
-      "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-3ddebddf.webp",
-      "body_sha256": "8f45f58be8827bea2382b3bab1e8e4ddbde2a4551b8082e3a51c81661af34923"
+      "word_count": 304,
+      "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-95e1eb23.webp",
+      "body_sha256": "d7dfcb7da52243f6fa888108dce9c3cf811755c5e7f8342dcfa0e0864557ec38"
     },
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
@@ -462,23 +463,26 @@
       "source_url": "https://crypto.news/curve-finance-loans-climb-68-in-q3-as-defi-lending/",
       "date": "2026-10-15",
       "article_url": "/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/",
-      "format_version": 2,
+      "format_version": 3,
       "source_snapshot": {
         "headline": "Curve Finance loans climb 68% in Q3 as DeFi lending recovery lags",
         "published": "2026-10-15T16:17:56+00:00",
         "word_count": 924,
         "sha256": "66c172f146ee753280cc9632548a18ca5ff06e530e23300ddb8eb2388d36c5d6",
         "extractor": ".post-detail__content",
-        "fact_count": 8,
+        "fact_count": 11,
         "fact_hashes": [
-          "3eef5e0d3e9eed6b8a7a275b58d55de7538a5a9775207b725221caf40032d0ec",
-          "8af878f956dae8542b82f8b632a1316b05340e96e54f00d6ec6550203e501a97",
+          "66c1ef2239e63d04d888617598b39b4a0c0f3ba0d33d6135996d05cc3368a97b",
+          "4b3e9a39c35af5702a04a69d37d9cb56ac56acfe9337ff06156263a183f4a3c1",
           "62160e463f5881f364e3474cb448c7956e65e646bc93c921de9a779ddc7beeaf",
-          "292965d646c6e6c1f32808142ab09d1bbbd590989be39b65626cb0647f9ab250",
-          "f633471732408d5431f165f8e284adcb4d9972d72028452b1219c52289e292ed",
           "a2ee6e91eab35fa709155e579873834063ffeb45b176484c35ba58eea2c649b1",
-          "538b76b110a53bf4ecf2e2925f714f1354a44156ea7f90b1b9048d325bcdef0a",
-          "71b73a82321f212cfac93c91430e226227cb6556b6f54ba02708007f5794eb3f"
+          "b4f7214a32dcd027a04a86fc49651bb2abc14ec8f866120dacb05c264639b6b7",
+          "130e0b81dc603aca2732b7dfc4a5043f8c191f1f76178a94bccfac01d984e61b",
+          "6990f999d3a43e414eedfa19f1b9c23d9b18d5050f0bb5f6da376dea9b606eaf",
+          "f4037c659c055ccd3de66b3faaff0d23f7f14f6b8051eec8da95bd6ed3c9bd96",
+          "682777b490457249017d1eb63923ef7bc5ded3879209aae03457e7d9d6b2b89e",
+          "daf96f7700c06ada78b3726c4bb46bc4199ecb157570c52a469f25d50e65c6ba",
+          "34981921cb7d3eb47e6bfe0e7fb737d85f32fe1155df0e5cca1754913e467594"
         ],
         "source_quantities": [
           [
@@ -567,10 +571,9 @@
           "https://www.irs.gov/filing/digital-assets"
         ]
       },
-      "word_count": 248,
-      "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-1adbd8bf.webp",
-      "body_sha256": "e23545f402be867c44a956aee0d648ba4b9e54f7d6a1a5f05353689080e6d73c",
-      "editorial_revision": "Removed unrelated tax coverage and promotional conclusions; clarified quarterly versus year-end comparisons. Full-source reprocessing remains pending."
+      "word_count": 306,
+      "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-b9cf85c6.webp",
+      "body_sha256": "54a6556aee9e564b0e136509360a7c6f28dbd82e9b6dd4acc45ca7ff9c045f9d"
     }
   ]
 }
