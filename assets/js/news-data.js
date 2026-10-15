@@ -44,14 +44,14 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Perpetuals to Tokenize U.S. Stocks Under SEC Innovation Exemption",
-    "summary": "Perpetuals.com plans to tokenize over $300 million in U.S. stocks under the SEC's five-year Innovation Exemption, subject to regulatory compliance.",
+    "title": "Perpetuals Aims to Offer Tokenized U.S. Stocks via SEC Innovation Exemption",
+    "summary": "Perpetuals.com aims to offer tokenized U.S. equities through the SEC’s temporary exemption, subject to compliance and market conditions.",
     "author": "Presence Editorial",
     "date": "2026-10-14",
     "readingTime": "2 min read",
     "url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
     "promotable": true,
-    "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-86c7c0e1.webp",
+    "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-4053201d.webp",
     "imageAlt": "Original Presence illustration of equity certificates connected to digital tokens.",
     "imageCredit": "Illustration: Presence"
   },

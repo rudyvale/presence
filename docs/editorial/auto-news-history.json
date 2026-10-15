@@ -5,7 +5,7 @@
       "source_url": "https://crypto.news/perpetuals-plans-tokenized-us-stocks-sec-exemption/",
       "date": "2026-10-14",
       "article_url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
-      "format_version": 2,
+      "format_version": 3,
       "source_snapshot": {
         "headline": "Perpetuals plans tokenized US stocks under SEC innovation exemption",
         "published": "2026-10-14T18:42:01+00:00",
@@ -14,14 +14,14 @@
         "extractor": ".post-detail__content",
         "fact_count": 8,
         "fact_hashes": [
-          "e31bd2cd821fb0a5a18135b4db8b81643dc1cd6dd13288d64449e4a35fdf7080",
-          "d745359b239d76a2a94ce280841272d7b148621e7b9cf5995f709b9657fa88bd",
-          "96dfea53ce9f5eea7f0bb38affe98e429e26d226464442a35613f2dc4feaaa0b",
-          "68da18d64744fdcbf91eb55190e06b61a326e6ef87f689601fe9540dac9daa75",
-          "e1a525825a329e93c16218beb8656d632c000e2297a483fab1e429cb8d45798d",
-          "7b832cdc9baef080fb2f70da2afbb587834ba66babde725be3c1bd2c5e791c18",
-          "053e61ef16dfb2cc1935a2e78b98426d07ed90bb121907923caaa3eae9371328",
-          "260bf1ed9f2523d420840dab3a9a3d3ffa7c34f52f30269680e3a8805fc89b95"
+          "40e3babd5de3c120ae3b2f021b0be85b057eade818f6dd18ef89c77a9c2d5f0d",
+          "915810912cfb6124c5a8d35382ef3825a9217341b0ea9c76bc490ab70de35cfa",
+          "e36285e5ec7880326682d0f47ed1d0f26749260452478f9b30cec88e23c0e6bf",
+          "e4b0c4593941dd33080e8e1db5855250c1b74955efd4868a4838a7402a5f68b8",
+          "4e2912dc34238a49f5bfdf19d89177faad225746325e625497d818ec734a18a5",
+          "23ee01bfe913d0c0f54c1efe585becf24b341bd35ab2b6a45a84f6724ada8e1e",
+          "39ce8eec46ffa92b1cd41382658f46c670e4ad48470c46849e497bc0dc3edcd7",
+          "37024139a990aed93ca092528be5ec51309560552c1c2e287eaac2ceb8da5ec7"
         ],
         "source_quantities": [
           [
@@ -85,9 +85,9 @@
           "https://www.perpetuals.com/perpetuals-reports-4-5-billion-in-upsideonly-volume-and-signs-exchange-agreement-with-datavault-ai-for-tokenized-commodities.html"
         ]
       },
-      "word_count": 262,
-      "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-86c7c0e1.webp",
-      "body_sha256": "e7c88900cebaa8e59a2787d257a07d684eae8244ac929d1467a5674fc206802f"
+      "word_count": 330,
+      "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-4053201d.webp",
+      "body_sha256": "f2b6cc840cae79fcb5ffb9e7ece755f77b7d64a169d431ad3cb3594c164dd110"
     },
     {
       "source_url": "https://crypto.news/bitcoin-risk-another-leverage-shakeout-us-cpi-runs-hot/",
