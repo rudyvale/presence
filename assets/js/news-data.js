@@ -2,6 +2,17 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "AI Agents Make Billions of Crypto Payments",
+    "summary": "More than 138 million x402 payments were recorded in a study by Chainalysis. The typical payment is small; some software purchases data and AI models.",
+    "author": "Presence Editorial",
+    "date": "2026-10-15",
+    "readingTime": "1 min read",
+    "url": "/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/",
+    "promotable": true
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Bitcoin risks another leverage shakeout if US CPI runs hot, analysts warn",
     "summary": "Bitcoin faces a potential inflation-driven selloff, with analysts warning after an $811 million crypto liquidation wave. Open interest remains at $140.9 billion despite market-wide reduction of only about 2%.",
     "author": "Presence Editorial",
