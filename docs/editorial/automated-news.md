@@ -2,7 +2,7 @@
 
 The Daily news workflow uses the RSS feed only to discover recent stories. It fetches the full source page, extracts the article body while excluding navigation, advertising and related stories, and rejects pages that only provide a teaser.
 
-A local **Qwen 2.5 7B** model selects 8–12 private evidence excerpts, then writes an independent English report from that evidence. Each excerpt must match complete sentences in its cited source passage verbatim; a model paraphrase cannot pass as source evidence. The published article uses original prose and no direct quotations. Source bodies and intermediate evidence remain in runner memory. Editorial records retain source URLs, extraction metrics, numerical data, source fingerprints and fact hashes rather than republishing research-note prose. Originality checks apply to the final article.
+A local **Qwen 2.5 7B** model selects 8–12 private evidence passage IDs, then writes an independent English report from that evidence. The software retrieves the exact passage text from those IDs; the model cannot transcribe or paraphrase the source evidence. The published article uses original prose and no direct quotations. Source bodies and intermediate evidence remain in runner memory. Editorial records retain source URLs, extraction metrics, numerical data, source fingerprints and fact hashes rather than republishing research-note prose. Originality checks apply to the final article.
 
 Long sources use a bounded selection of complete passages, up to 1,200 words, including the opening and relevant passages from each quarter of the original article. This prevents CPU inference timeouts without cutting sentences or using an RSS excerpt. Numerical and originality checks still use the entire extracted source. This selection does not guarantee coverage of every detail in a long source.
 
@@ -23,6 +23,8 @@ Every paragraph identifies its private evidence indices. Its quantities must occ
 Runs start at **10:05 and 18:05 Europe/Moscow**, with catch-up attempts at **10:35 and 18:35**. Starts avoid the busiest minute at the top of the hour. GitHub may still delay them, and research takes additional time. The target is one new report during the morning slot and two total during the evening slot, with a hard maximum of two new automated publications per Moscow calendar day. Repeated runs cannot consume the evening slot in the morning.
 
 Each due report and legacy repair has an independent worker, with up to four workers running in parallel. A worker has a 15-minute editorial budget and saves an integrity-checked report artifact immediately after validation. The publisher merges completed artifacts, rechecks publication limits and commits the result. A failed worker cannot discard another worker's finished report. Incomplete jobs produce a red workflow result and remain eligible for retry. Installed models are cached even when editorial validation fails.
+
+Workers check out the same editorial code revision as the planner. Artifacts identify their validation version, and the publisher rejects artifacts from an incompatible version.
 
 Canonical source URLs prevent duplicate publication. Sources older than 48 hours and sponsored/press-release entries are excluded. Repairs to legacy teaser reports preserve their publication dates and URLs and do not consume new-publication slots.
 

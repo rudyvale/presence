@@ -22,10 +22,14 @@ jobs:
       jobs: ${{ steps.plan.outputs.jobs }}
       plan: ${{ steps.plan.outputs.plan }}
       ready: ${{ steps.plan.outputs.ready }}
+      commit: ${{ steps.revision.outputs.commit }}
     steps:
       - uses: actions/checkout@v6
         with:
           ref: main
+      - name: Pin editorial code revision
+        id: revision
+        run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -56,6 +60,8 @@ jobs:
       OLLAMA_MAX_LOADED_MODELS: '1'
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.plan.outputs.commit }}
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'

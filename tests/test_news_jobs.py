@@ -70,6 +70,21 @@ class NewsJobTests(unittest.TestCase):
                 news_jobs.apply_reports(Path(directory))
             publish.assert_not_called()
 
+    def test_incompatible_artifact_does_not_discard_a_valid_independent_report(self):
+        good = self.receipt()
+        bad = {**good, "job_key": "news-1", "editorial_version": 0}
+        bad["sha256"] = news_jobs.digest({key: value for key, value in bad.items() if key != "sha256"})
+        plan = {"created": self.now.isoformat(), "jobs": [self.job(), {**self.job(), "key": "news-1"}]}
+        with tempfile.TemporaryDirectory() as directory:
+            for name, receipt in (("good", good), ("bad", bad)):
+                folder = Path(directory) / name
+                folder.mkdir()
+                (folder / "report.json").write_text(json.dumps(receipt))
+            with patch.dict("os.environ", {"NEWS_PLAN_JSON": json.dumps(plan)}), patch.object(auto_news, "load_history", return_value={"items": []}), patch.object(auto_news, "publish_report", return_value={"url": "/articles/accepted/"}) as publish, patch.object(auto_news, "notice"):
+                with self.assertRaisesRegex(RuntimeError, "different validation version"):
+                    news_jobs.apply_reports(Path(directory))
+                publish.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()

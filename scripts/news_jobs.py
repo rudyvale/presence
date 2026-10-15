@@ -69,6 +69,7 @@ def worker(destination: Path) -> None:
             evidence = researched["title"] + " " + researched["source"]["text"]
             receipt = {
                 "version": 2, "job_key": job["key"], "kind": job["kind"], "record_route": job["record_route"], "date": job["date"], "report": report,
+                "editorial_version": auto_news.FORMAT_VERSION,
                 "item": {
                     "url": item["url"], "title": item["title"], "published": item["published"].isoformat(),
                     "fact_count": len(facts), "fact_hashes": [sha256(fact.encode()).hexdigest() for fact in facts],
@@ -92,6 +93,8 @@ def validate_receipt(receipt: dict, job: dict) -> None:
     content = {key: value for key, value in receipt.items() if key != "sha256"}
     if saved != digest(content) or receipt.get("version") != 2:
         raise ValueError("Editorial artifact integrity check failed")
+    if receipt.get("editorial_version") != auto_news.FORMAT_VERSION:
+        raise ValueError("Editorial artifact was produced by a different validation version")
     if any(receipt.get(key) != job[key] for key in ("kind", "record_route", "date")) or receipt.get("job_key") != job["key"]:
         raise ValueError("Editorial artifact differs from its approved plan")
     item = receipt["item"]
@@ -113,17 +116,24 @@ def apply_reports(directory: Path) -> None:
     jobs = {job["key"]: job for job in plan_data["jobs"]}
     receipts = {}
     failures = []
+    rejected = set()
     for path in directory.glob("**/report.json"):
         receipt = json.loads(path.read_text())
         key = receipt.get("job_key")
         if key not in jobs or key in receipts:
             raise ValueError("Unexpected or duplicate editorial artifact")
-        validate_receipt(receipt, jobs[key])
+        try:
+            validate_receipt(receipt, jobs[key])
+        except (ValueError, KeyError, TypeError) as error:
+            failures.append(f"{key}: {error}")
+            rejected.add(key)
+            continue
         receipts[key] = receipt
     changed = []
     for key, job in jobs.items():
         if key not in receipts:
-            failures.append(key + ": no complete report artifact")
+            if key not in rejected:
+                failures.append(key + ": no complete report artifact")
             continue
         receipt = receipts[key]
         history = auto_news.load_history()

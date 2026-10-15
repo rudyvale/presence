@@ -136,13 +136,12 @@ class AutomatedNewsTests(unittest.TestCase):
         self.assertGreaterEqual(max(passage["id"] for passage in passages), 37)
         self.assertTrue(all(passage["text"].endswith(".") for passage in passages))
 
-    def test_research_facts_must_be_verbatim_in_the_cited_passage(self):
+    def test_research_selects_exact_source_text_without_model_transcription(self):
         passages = [{"id": index, "text": fact} for index, fact in enumerate(self.facts)]
-        cards = [{"paragraph": index, "quote": fact} for index, fact in enumerate(self.facts)]
-        self.assertEqual(news_quality.validate_fact_quotes(cards, passages), self.facts)
-        cards[1] = {"paragraph": 1, "quote": self.facts[1].replace("40", "400")}
-        with self.assertRaisesRegex(ValueError, "not verbatim"):
-            news_quality.validate_fact_quotes(cards, passages)
+        self.assertEqual(news_quality.validate_fact_selection(list(range(8)), passages), self.facts)
+        for indices in ([0, 1, 2, 3, 4, 5, 6, 99], [0, 1, 2, 3, 4, 5, 6, 6], [False, 1, 2, 3, 4, 5, 6, 7], ["0", 1, 2, 3, 4, 5, 6, 7]):
+            with self.subTest(indices=indices), self.assertRaisesRegex(ValueError, "passage IDs"):
+                news_quality.validate_fact_selection(indices, passages)
 
     def test_paragraph_quantity_must_come_from_its_own_cited_evidence(self):
         citations = [[0], [1], [2], [3], [4], [5, 6], [7]]

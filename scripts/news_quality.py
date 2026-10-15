@@ -51,25 +51,15 @@ def validate_facts(facts, source: str) -> None:
     validate_numbers(" ".join(facts), source, require_explicit_magnitudes=False)
 
 
-def validate_fact_quotes(cards, passages: list[dict]) -> list[str]:
-    if not isinstance(cards, list) or not 8 <= len(cards) <= 12:
-        raise ValueError("Select 8 to 12 evidence quotations")
-    normalize = lambda value: " ".join(value.replace("’", "'").replace("“", '"').replace("”", '"').split())
+def validate_fact_selection(indices, passages: list[dict]) -> list[str]:
+    if not isinstance(indices, list) or not 8 <= len(indices) <= 12:
+        raise ValueError("Select 8 to 12 evidence passage IDs")
     lookup = {passage["id"]: passage["text"] for passage in passages}
-    facts = []
-    for card in cards:
-        if not isinstance(card, dict) or set(card) != {"paragraph", "quote"} or type(card["paragraph"]) is not int or card["paragraph"] not in lookup:
-            raise ValueError("Each evidence quotation needs a valid paragraph ID")
-        quote = card["quote"]
-        if not isinstance(quote, str) or not 10 <= len(quote.split()) <= 100 or not re.search(r'[.!?][”’\"]?$', quote):
-            raise ValueError("Evidence must contain complete sentences of 10 to 100 words")
-        if normalize(quote) not in normalize(lookup[card["paragraph"]]):
-            raise ValueError("Evidence quotation is not verbatim in its cited paragraph")
-        if normalize(quote) in {normalize(fact) for fact in facts}:
-            raise ValueError("Evidence quotations must be distinct")
-        facts.append(quote)
-    if len(" ".join(facts).split()) < 160:
-        raise ValueError("Not enough source evidence for a complete report")
+    if any(type(index) is not int or index not in lookup for index in indices) or len(set(indices)) != len(indices):
+        raise ValueError("Evidence passage IDs must be distinct valid integers")
+    facts = [lookup[index] for index in indices]
+    if any(len(fact.split()) < 10 for fact in facts) or not 160 <= len(" ".join(facts).split()) <= 700:
+        raise ValueError("Select 160 to 700 words of substantive source evidence")
     return facts
 
 
