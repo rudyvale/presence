@@ -3,10 +3,12 @@ import re
 
 SCALES = {"thousand": 10**3, "million": 10**6, "billion": 10**9, "trillion": 10**12, "k": 10**3, "m": 10**6, "b": 10**9, "bn": 10**9, "tn": 10**12}
 SMALL = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15, "sixteen": 16, "seventeen": 17, "eighteen": 18, "nineteen": 19, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90}
-QUANTITY = re.compile(r"(?<![\w.])(?P<currency>[$€£])?\s*(?P<number>\d[\d,]*(?:\.\d+)?|" + "|".join(SMALL) + r")\s*(?P<scale>thousand|million|billion|trillion|bn|tn|[kmb])?\b(?:(?P<percent>\s*(?:%|percent\b))|(?P<points>\s*percentage\s+points?\b))?", re.I)
+QUANTITY = re.compile(r"(?<![\w.])(?P<currency>[$€£])?\s*(?P<number>\d[\d,]*(?:\.\d+)?|" + "|".join(SMALL) + r")\s*(?P<scale>thousand|million|billion|trillion|bn|tn|[kmb])?\b(?:(?P<percent>\s*(?:%|percent\b|per\s+cent\b|pct\b))|(?P<points>\s*percentage\s+points?\b))?", re.I)
 
 
 def quantities(text: str) -> set[tuple]:
+    text = re.sub(r"\b(US|UK|DE|JP|FR)(\d{1,3})Y\b", r"\1 \2 years", text, flags=re.I)
+    text = re.sub(r"(?<![\w.])(\d{1,3})\s*-?(?:yrs?|y)\b", r"\1 years", text, flags=re.I)
     found = set()
     for match in QUANTITY.finditer(text):
         value = match["number"].lower()
@@ -81,7 +83,8 @@ def validate_report_structure(report: dict) -> str:
     for index, value in enumerate(paragraphs):
         if not text_field(value, 1400):
             if isinstance(value, str):
-                reason = "source publisher or URL" if re.search(r"https?://|www\.|crypto[.\s-]+news", value, re.I) else "HTML or control characters" if re.search(r"[\x00-\x1f<>]", value) else f"length {len(value)} or whitespace"
+                marker = re.search(r"https?://|www\.|crypto[.\s-]+news", value, re.I)
+                reason = f"source publisher or URL marker {marker.group(0)!r}" if marker else "HTML or control characters" if re.search(r"[\x00-\x1f<>]", value) else f"length {len(value)} or whitespace"
             else:
                 reason = type(value).__name__
             raise ValueError(f"Paragraph {index} contains invalid text: {reason}")

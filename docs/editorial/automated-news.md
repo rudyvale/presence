@@ -24,6 +24,8 @@ All three model stages use JSON schemas passed to the generator. The writer sche
 
 Repeated headlines, copied prose and source-branding errors receive a targeted edit of only the affected fields. The complete report then goes through the same numeric, evidence, originality and grounding checks again. Each hosted worker warms up the model with a short structured readiness response before researching a source; article format and content are checked on the actual report.
 
+Facts have explicit numeric IDs. A paragraph with an unsupported figure receives a focused correction of its text and citations before validation resumes. Numeric checks normalize conventional bond-maturity labels such as US10Y and percentage abbreviations. Formatting cleanup retains attribution as “the source publication” and removes optional URL-only parentheses; other URLs remain validation errors.
+
 ## Schedule and recovery
 
 Runs start at **10:05 and 18:05 Europe/Moscow**, with catch-up attempts at **10:35 and 18:35**. Starts avoid the busiest minute at the top of the hour. GitHub may still delay them, and research takes additional time. The target is one new report during the morning slot and two total during the evening slot, with a hard maximum of two new automated publications per Moscow calendar day. Repeated runs cannot consume the evening slot in the morning.

@@ -101,6 +101,21 @@ class AutomatedNewsTests(unittest.TestCase):
             with self.subTest(output=output), self.assertRaisesRegex(ValueError, "magnitude"):
                 news_quality.validate_numbers(output, "138 million payments and $811 million")
 
+    def test_financial_maturity_and_percent_abbreviations_preserve_their_values(self):
+        for source in ("US10Y yield is 5.2 pct", "10yr yield is 5.2 per cent", "10Y yield is 5.2%"):
+            with self.subTest(source=source):
+                news_quality.validate_numbers("The 10-year yield is 5.2 percent", source)
+        with self.assertRaisesRegex(ValueError, "Unsupported number"):
+            news_quality.validate_numbers("10-year yield is 5.2%", "30yr yield is 5.2 pct")
+
+    def test_publisher_reference_cleanup_preserves_figures_and_claim_attribution(self):
+        original = 'Curve reported 68% growth, according to Crypto.news (https://crypto.news/example/).'
+        cleaned = auto_news.normalize_paragraph(original)
+        self.assertEqual(cleaned, 'Curve reported 68% growth, according to the source publication.')
+        self.assertEqual(news_quality.quantities(cleaned), news_quality.quantities(original))
+        self.assertTrue(news_quality.text_field(cleaned))
+        self.assertFalse(news_quality.text_field(auto_news.normalize_paragraph('Details at https://crypto.news/example/.')))
+
     def test_unquantified_billions_in_headline_are_rejected(self):
         with self.assertRaisesRegex(ValueError, "magnitude"):
             auto_news.validate_brief({**self.report, "title": "Billions of institutions enter custody program"}, self.researched)
@@ -248,6 +263,22 @@ class AutomatedNewsTests(unittest.TestCase):
             revised = auto_news.polish_originality(draft, self.researched, citations)
         with self.assertRaisesRegex(ValueError, "Unsupported number"):
             auto_news.validate_brief(revised, self.researched)
+
+    def test_targeted_evidence_repair_corrects_only_the_unsupported_paragraph(self):
+        citations = [[0], [1], [2], [3], [4], [5, 6], [7]]
+        draft = {**self.report, "paragraphs": [self.report["paragraphs"][0], self.report["paragraphs"][1].replace("40", "400"), *self.report["paragraphs"][2:]]}
+        replacement = {"paragraphs": {"1": {"text": self.report["paragraphs"][1], "facts": [1]}}}
+        with patch.object(auto_news, "request_model", return_value=replacement), patch.object(auto_news, "notice"):
+            revised, evidence = auto_news.repair_paragraph_evidence(draft, self.researched, citations)
+        self.assertEqual(revised, self.report)
+        self.assertEqual(evidence, citations)
+        auto_news.validate_paragraph_evidence(revised, self.facts, evidence)
+        self.assertIn("400", draft["paragraphs"][1])
+        replacement["paragraphs"]["1"]["text"] = draft["paragraphs"][1]
+        with patch.object(auto_news, "request_model", return_value=replacement), patch.object(auto_news, "notice"):
+            revised, evidence = auto_news.repair_paragraph_evidence(draft, self.researched, citations)
+        with self.assertRaisesRegex(ValueError, "Unsupported number"):
+            auto_news.validate_paragraph_evidence(revised, self.facts, evidence)
 
     def test_truncated_model_response_is_never_published(self):
         response = MagicMock()
