@@ -26,6 +26,8 @@ Each due report and legacy repair has an independent worker, with up to four wor
 
 Workers check out the same editorial code revision as the planner. Artifacts identify their validation version, and the publisher rejects artifacts from an incompatible version.
 
+Normal runs wait for active editorial work. A manual workflow run can enable `restart`, or a maintainer can push a commit containing `[restart-news]`, to cancel an obsolete run after a processing fix. Reports not yet committed are researched again; only published records consume the daily quota.
+
 Canonical source URLs prevent duplicate publication. Sources older than 48 hours and sponsored/press-release entries are excluded. Repairs to legacy teaser reports preserve their publication dates and URLs and do not consume new-publication slots.
 
 If a due publication or repair cannot be completed, the workflow reports a failure with the reason. Independently validated work may still be committed and deployed, while rejected content is retained for a later repair attempt. A green run no longer means that only RSS access and HTML status codes were checked.

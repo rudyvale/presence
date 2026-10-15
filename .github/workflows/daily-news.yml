@@ -4,12 +4,17 @@ on:
   schedule:
     - cron: '5,35 7,15 * * *'
   workflow_dispatch:
+    inputs:
+      restart:
+        description: Cancel the active run and restart unfinished editorial work
+        type: boolean
+        default: false
   push:
     branches: [main]
 
 concurrency:
   group: presence-daily-news
-  cancel-in-progress: false
+  cancel-in-progress: ${{ inputs.restart == true || (github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-news]')) }}
 
 permissions:
   contents: read
