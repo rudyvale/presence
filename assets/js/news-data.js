@@ -16,7 +16,7 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "AI Agents Executed Over 138 Million Crypto Payments: What Did They Buy?",
+    "title": "Base Logs Over 138 Million x402 Payments as Agent Attribution Remains Unclear",
     "summary": "More than 138 million crypto payments by AI agents were recorded, with U.S. wallets making the majority of geolocated transactions for model inference.",
     "author": "Presence Editorial",
     "date": "2026-10-15",

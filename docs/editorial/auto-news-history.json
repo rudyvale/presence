@@ -454,7 +454,8 @@
       },
       "word_count": 301,
       "image": "/assets/img/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/illustration-f4a5fc8f.webp",
-      "body_sha256": "e388891311b7b71257a3beacfb244165cad633b5921702725f5fb20fe8225b6d"
+      "body_sha256": "e388891311b7b71257a3beacfb244165cad633b5921702725f5fb20fe8225b6d",
+      "editorial_revision": "Headline distinguishes observed x402 payments from unverified autonomous-agent attribution, as qualified in the report body."
     },
     {
       "source_url": "https://crypto.news/curve-finance-loans-climb-68-in-q3-as-defi-lending/",
