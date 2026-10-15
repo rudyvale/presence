@@ -224,6 +224,20 @@ class AutomatedNewsTests(unittest.TestCase):
         with patch.object(auto_news, "request_model", return_value={"text": " ".join(["word"] * 35) + "."}), patch.object(auto_news, "notice"):
             auto_news.check_generation_schema()
 
+    def test_targeted_copy_edit_preserves_other_paragraphs_and_rechecks_facts(self):
+        citations = [[0], [1], [2], [3], [4], [5, 6], [7]]
+        draft = {**self.report, "title": self.item["title"], "paragraphs": [self.facts[0], *self.report["paragraphs"][1:]]}
+        replacement = {"title": self.report["title"], "paragraphs": {"0": self.report["paragraphs"][0]}}
+        with patch.object(auto_news, "request_model", return_value=replacement), patch.object(auto_news, "notice"):
+            revised = auto_news.polish_originality(draft, self.researched, citations)
+        self.assertEqual(revised, self.report)
+        auto_news.validate_brief(revised, self.researched)
+        draft = {**self.report, "paragraphs": [self.report["paragraphs"][0], self.facts[1], *self.report["paragraphs"][2:]]}
+        with patch.object(auto_news, "request_model", return_value={"paragraphs": {"1": self.report["paragraphs"][1].replace("40", "400")}}), patch.object(auto_news, "notice"):
+            revised = auto_news.polish_originality(draft, self.researched, citations)
+        with self.assertRaisesRegex(ValueError, "Unsupported number"):
+            auto_news.validate_brief(revised, self.researched)
+
     def test_truncated_model_response_is_never_published(self):
         response = MagicMock()
         response.read.return_value = json.dumps({"message": {"content": json.dumps(self.report)}, "done_reason": "length"}).encode()

@@ -22,6 +22,8 @@ Every paragraph identifies its private evidence indices. Its quantities must occ
 
 All three model stages use JSON schemas passed to the generator. The writer schema requires eight paragraph objects, two headings and evidence indices inside each paragraph. The software separates private evidence indices from the final article copy before importing it.
 
+Repeated headlines, copied prose and source-branding errors receive a targeted edit of only the affected fields. The complete report then goes through the same numeric, evidence, originality and grounding checks again. Each hosted worker also probes actual grammar enforcement before researching a source.
+
 ## Schedule and recovery
 
 Runs start at **10:05 and 18:05 Europe/Moscow**, with catch-up attempts at **10:35 and 18:35**. Starts avoid the busiest minute at the top of the hour. GitHub may still delay them, and research takes additional time. The target is one new report during the morning slot and two total during the evening slot, with a hard maximum of two new automated publications per Moscow calendar day. Repeated runs cannot consume the evening slot in the morning.
