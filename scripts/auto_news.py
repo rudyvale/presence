@@ -303,7 +303,8 @@ Return JSON with "supported": true or false, "issues": a list of specific unsupp
     if not isinstance(covered, list) or any(type(index) is not int or not 0 <= index < len(item["facts"]) for index in covered):
         raise ValueError("Factual review returned invalid coverage")
     if len(set(covered)) < math.ceil(len(item["facts"]) * 0.75):
-        raise ValueError("Article omits too many important research facts")
+        missing = sorted(set(range(len(item["facts"]))) - set(covered))
+        raise ValueError(f"Article covers {len(set(covered))} of {len(item['facts'])} research facts; expand coverage using missing fact indices {missing}")
 
 
 def validate_paragraph_evidence(report: dict, facts: list[str], citations) -> None:
@@ -317,7 +318,8 @@ def validate_paragraph_evidence(report: dict, facts: list[str], citations) -> No
         validate_numbers(paragraph, evidence)
         used.update(indices)
     if len(used) < math.ceil(len(facts) * 0.75):
-        raise ValueError("Paragraphs omit too many research facts")
+        missing = sorted(set(range(len(facts))) - used)
+        raise ValueError(f"Paragraph evidence covers {len(used)} of {len(facts)} facts; include missing fact indices {missing}")
 
 
 def prepare_report(item: dict) -> tuple[dict, dict]:
