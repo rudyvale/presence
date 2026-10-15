@@ -1145,6 +1145,12 @@ textarea:focus-visible {
   letter-spacing: 0;
 }
 
+.article--news .article__body h2 {
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  line-height: 1.2;
+  margin: 1.5em 0 0.65em;
+}
+
 .article__callout {
   margin: 2em 0;
   padding: 22px 24px;

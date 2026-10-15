@@ -163,6 +163,7 @@
       let delay = 0;
       document.querySelectorAll(motionSelector).forEach((element) => {
         if (!element.classList || element.classList.contains("motion-target")) return;
+        if (element.closest?.(".article--news .article__body, .article--news .authors")) return;
         element.classList.add("motion-target", `motion-delay-${delay % 6}`);
         delay += 1;
         if (!motionObserver) {
