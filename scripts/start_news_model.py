@@ -1,4 +1,5 @@
 import json
+from hashlib import sha256
 import os
 from pathlib import Path
 import re
@@ -25,6 +26,25 @@ def safe_failure(path: Path) -> str:
     return "model download returned HTTP " + status[0] if status else "model startup or download did not complete"
 
 
+def verify_cached_blobs(directory: Path) -> bool:
+    blobs = list((directory / "blobs").glob("sha256-*"))
+    verified = 0
+    for blob in blobs:
+        if not re.fullmatch(r"sha256-[a-f0-9]{64}", blob.name):
+            continue
+        if blob.is_symlink() or not blob.is_file():
+            return False
+        fingerprint = sha256()
+        with blob.open("rb") as source:
+            for chunk in iter(lambda: source.read(1024 * 1024), b""):
+                fingerprint.update(chunk)
+        if fingerprint.hexdigest() != blob.name.removeprefix("sha256-"):
+            blob.unlink()
+            return False
+        verified += 1
+    return verified > 0
+
+
 def main() -> None:
     temporary = Path(os.environ["RUNNER_TEMP"])
     log = temporary / "presence-ai.log"
@@ -46,6 +66,11 @@ def main() -> None:
             time.sleep(1)
     else:
         raise RuntimeError(safe_failure(log))
+    with opener.open("http://127.0.0.1:11434/api/tags", timeout=5) as response:
+        installed = json.load(response).get("models", [])
+    if any(entry.get("name") == model for entry in installed) and verify_cached_blobs(Path(os.environ["OLLAMA_MODELS"])):
+        print("::notice title=Local AI ready::Cached model blobs verified locally; no external model download required.", flush=True)
+        return
     for attempt in range(3):
         with pull_log.open("wb") as output:
             try:
