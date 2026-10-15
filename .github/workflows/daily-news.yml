@@ -80,7 +80,7 @@ jobs:
         run: |
           echo "OLLAMA_MODELS=$RUNNER_TEMP/presence-models" >> "$GITHUB_ENV"
           if [ ! -x "$RUNNER_TEMP/presence-ollama/bin/ollama" ]; then
-            curl --fail --location --retry 3 --output "$RUNNER_TEMP/ollama.tgz" 'https://github.com/ollama/ollama/releases/download/v0.11.10/ollama-linux-amd64.tgz'
+            curl --fail --location --retry 3 --retry-all-errors --connect-timeout 30 --output "$RUNNER_TEMP/ollama.tgz" 'https://github.com/ollama/ollama/releases/download/v0.11.10/ollama-linux-amd64.tgz'
             echo 'da2be71e972752e3099ef1d1226050d2b3d1ce79a4fec3bdb6edc70a7601e060  ollama.tgz' > "$RUNNER_TEMP/ollama.sha256"
             (cd "$RUNNER_TEMP" && sha256sum --check ollama.sha256)
             mkdir -p "$RUNNER_TEMP/presence-ollama"
@@ -90,24 +90,7 @@ jobs:
           echo "$RUNNER_TEMP/presence-ollama/bin" >> "$GITHUB_PATH"
       - name: Start local AI
         id: model
-        run: |
-          ollama serve > "$RUNNER_TEMP/presence-ai.log" 2>&1 &
-          python - <<'PY'
-          import json
-          import time
-          from urllib.request import ProxyHandler, build_opener
-          opener = build_opener(ProxyHandler({}))
-          for attempt in range(60):
-              try:
-                  with opener.open('http://127.0.0.1:11434/api/version', timeout=2) as response:
-                      json.load(response)
-                  break
-              except OSError:
-                  time.sleep(1)
-          else:
-              raise SystemExit('Local AI did not start')
-          PY
-          ollama pull "$NEWS_LOCAL_MODEL"
+        run: python scripts/start_news_model.py
       - name: Research and validate one independent report
         run: python scripts/news_jobs.py worker --directory "$RUNNER_TEMP/presence-report"
       - name: Preserve validated report
