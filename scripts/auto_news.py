@@ -38,12 +38,28 @@ Write fresh prose and a distinct headline. Do not reproduce the source's sentenc
 Cover the important facts, figures, named participants, limitations and next steps that are actually in the research sheet. Do not pad the article with general background, advice or promotional language.
 The research facts are verbatim private evidence quotations. Rewrite them in your own words. Keep every amount with its original company, person, product, measurement period and claim. Historical examples involving another company must remain attributed to that company. A related market statistic is not the main company's planned offering.
 Distinguish payment counts from payment values, million from billion, percentages from percentage points, and total activity from typical activity. Keep numerical units and measurement periods.
-Return only JSON with title, summary, paragraphs, headings and paragraph_facts.
-Paragraph_facts: one list of zero-based research fact indices for each paragraph, naming only the evidence actually used there. Every paragraph needs evidence. Cover at least 75 percent of the supplied facts. Never introduce a claim absent from its cited facts.
+Return only JSON with title, summary, paragraphs and headings, following the supplied schema.
+Each paragraph is an object with "text" and "facts". Text: 35 to 50 words of original prose. Facts: zero-based research fact indices naming only the evidence actually used in that paragraph. Cover at least 75 percent of the supplied facts. Never introduce a claim absent from its cited facts.
 Title: a distinct, accurate headline of at most 110 characters. Summary: at most 280 characters.
-Paragraphs: 7 or 8 substantive paragraphs, 240 to 380 words in total. Each paragraph must advance the story with supported details.
+Paragraphs: exactly 8 substantive paragraph objects, 280 to 400 words in total. Each paragraph must advance the story with supported details.
 Headings: exactly two short section headings, inserted after the opening two paragraphs and before the closing two paragraphs.
-Do not include publication branding, URLs, HTML, Markdown, AI commentary or apologies. If the facts cannot support a complete report, return {"skip": true}."""
+Do not include publication branding, URLs, HTML, Markdown, AI commentary or apologies. Never add unsupported filler to reach the word target."""
+
+
+def object_schema(properties: dict) -> dict:
+    return {"type": "object", "properties": properties, "required": list(properties), "additionalProperties": False}
+
+
+def report_schema(fact_count: int) -> dict:
+    return object_schema({
+        "title": {"type": "string", "minLength": 10, "maxLength": 110},
+        "summary": {"type": "string", "minLength": 40, "maxLength": 280},
+        "headings": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string", "minLength": 5, "maxLength": 75}},
+        "paragraphs": {"type": "array", "minItems": 8, "maxItems": 8, "items": object_schema({
+            "text": {"type": "string", "minLength": 130, "maxLength": 1100},
+            "facts": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"type": "integer", "minimum": 0, "maximum": fact_count - 1}},
+        })},
+    })
 
 
 def plain_text(value: str) -> str:
@@ -104,12 +120,12 @@ def model_timeout(maximum: int) -> float:
     return min(maximum, remaining)
 
 
-def generate_local_response(messages: list[dict], max_tokens: int = 2000) -> dict:
+def generate_local_response(messages: list[dict], max_tokens: int = 2000, schema: dict | None = None) -> dict:
     payload = {
         "model": os.environ.get("NEWS_LOCAL_MODEL", "qwen2.5:7b"),
         "messages": messages,
         "stream": False,
-        "format": "json",
+        "format": schema or "json",
         "options": {"temperature": 0.1, "seed": 42, "num_ctx": 8192, "num_predict": max_tokens, "num_gpu": 0, "num_thread": 4},
         "keep_alive": "15m",
     }
@@ -124,7 +140,7 @@ def generate_local_response(messages: list[dict], max_tokens: int = 2000) -> dic
     return json.loads(result["message"]["content"])
 
 
-def generate_api_response(messages: list[dict], max_tokens: int = 2000) -> dict:
+def generate_api_response(messages: list[dict], max_tokens: int = 2000, schema: dict | None = None) -> dict:
     from urllib.parse import urlsplit
     token = os.environ.get("NEWS_AI_TOKEN", "")
     if not token:
@@ -134,6 +150,8 @@ def generate_api_response(messages: list[dict], max_tokens: int = 2000) -> dict:
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password or parsed.query or parsed.fragment:
         raise ValueError("Configure an HTTPS AI endpoint without embedded credentials")
     payload = {"model": os.environ.get("NEWS_AI_MODEL", "gpt-4.1-mini"), "messages": messages, "response_format": {"type": "json_object"}, "temperature": 0.1, "max_tokens": max_tokens}
+    if schema:
+        payload["response_format"] = {"type": "json_schema", "json_schema": {"name": "presence_news", "strict": True, "schema": schema}}
     request = Request(endpoint, data=json.dumps(payload).encode(), headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"}, method="POST")
     try:
         with build_opener(NoModelRedirects()).open(request, timeout=model_timeout(180)) as response:
@@ -145,12 +163,12 @@ def generate_api_response(messages: list[dict], max_tokens: int = 2000) -> dict:
     return json.loads(result["choices"][0]["message"]["content"])
 
 
-def request_model(messages: list[dict], max_tokens: int = 2000) -> dict:
+def request_model(messages: list[dict], max_tokens: int = 2000, schema: dict | None = None) -> dict:
     backend = os.environ.get("NEWS_AI_BACKEND", "local")
     if backend == "local":
-        return generate_local_response(messages, max_tokens)
+        return generate_local_response(messages, max_tokens, schema)
     if backend == "api":
-        return generate_api_response(messages, max_tokens)
+        return generate_api_response(messages, max_tokens, schema)
     raise ValueError("NEWS_AI_BACKEND must be local or api")
 
 
@@ -169,7 +187,8 @@ Exclude unrelated recommended stories, link headlines and short section headings
     last_error = None
     for attempt in range(2):
         try:
-            response = request_model(messages, 350)
+            schema = object_schema({"facts": {"type": "array", "minItems": 8, "maxItems": 12, "items": {"type": "integer", "enum": [passage["id"] for passage in passages]}}})
+            response = request_model(messages, 350, schema)
             indices = response.get("facts") if isinstance(response, dict) else None
             facts = validate_fact_selection(indices, passages)
             notice("Research evidence", f"{len(facts)} verbatim evidence excerpts verified against their source passages")
@@ -189,7 +208,15 @@ def model_messages(item: dict, feedback: str = "", previous: dict | None = None)
 
 
 def generate_brief(item: dict, feedback: str = "", previous: dict | None = None) -> dict:
-    return request_model(model_messages(item, feedback, previous), 2200)
+    return request_model(model_messages(item, feedback, previous), 2400, report_schema(len(item["facts"])))
+
+
+def unpack_brief(draft: dict) -> tuple[dict, list[list[int]]]:
+    if not isinstance(draft, dict) or set(draft) != {"title", "summary", "headings", "paragraphs"} or not isinstance(draft["paragraphs"], list):
+        raise ValueError("Draft does not match the required report schema")
+    if any(not isinstance(paragraph, dict) or set(paragraph) != {"text", "facts"} for paragraph in draft["paragraphs"]):
+        raise ValueError("Every draft paragraph needs text and fact indices")
+    return {**draft, "paragraphs": [paragraph["text"] for paragraph in draft["paragraphs"]]}, [paragraph["facts"] for paragraph in draft["paragraphs"]]
 
 
 def validate_brief(brief: dict, item: dict) -> None:
@@ -203,7 +230,12 @@ Check WHO owns each figure and claim. Never transfer another company's historica
 Check coverage of the numbered research facts. Only mark a fact as covered if the draft communicates its substance accurately. Do not approve an article that is just a headline summary.
 Return JSON with "supported": true or false, "issues": a list of specific unsupported claims or an empty list, and "covered_facts": a list of the zero-based fact indices accurately covered. Do not use outside knowledge."""
     messages = [{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps({"original_headline": item["title"], "verbatim_source_evidence": item["facts"], "draft": brief}, ensure_ascii=False)}]
-    review = request_model(messages, 700)
+    schema = object_schema({
+        "supported": {"type": "boolean"},
+        "issues": {"type": "array", "maxItems": 4, "items": {"type": "string", "maxLength": 300}},
+        "covered_facts": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": len(item["facts"]) - 1}},
+    })
+    review = request_model(messages, 700, schema)
     covered = review.get("covered_facts", []) if isinstance(review, dict) else []
     if not isinstance(review, dict) or review.get("supported") is not True or review.get("issues", []) != []:
         issues = review.get("issues", []) if isinstance(review, dict) else []
@@ -232,13 +264,11 @@ def prepare_report(item: dict) -> tuple[dict, dict]:
     model_timeout(600)
     researched = research_item(item)
     feedback = ""
-    report = None
+    previous = None
     for attempt in range(2):
         try:
-            report = generate_brief(researched, feedback, report)
-            if isinstance(report, dict) and report.get("skip") is True:
-                raise ValueError("Not enough facts for a complete report")
-            citations = report.pop("paragraph_facts", None) if isinstance(report, dict) else None
+            previous = generate_brief(researched, feedback, previous)
+            report, citations = unpack_brief(previous)
             validate_brief(report, researched)
             validate_paragraph_evidence(report, researched["facts"], citations)
             validate_grounding(report, researched)

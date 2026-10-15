@@ -188,6 +188,27 @@ class AutomatedNewsTests(unittest.TestCase):
             self.assertEqual(request.full_url, "http://127.0.0.1:11434/api/chat")
             self.assertNotIn("Authorization", request.headers)
 
+    def test_report_schema_is_enforced_by_the_local_generator(self):
+        schema = auto_news.report_schema(8)
+        response = MagicMock()
+        response.read.return_value = json.dumps({"message": {"content": json.dumps(self.report)}, "done_reason": "stop"}).encode()
+        response.__enter__.return_value = response
+        with patch.object(auto_news, "build_opener") as opener:
+            opener.return_value.open.return_value = response
+            auto_news.generate_local_response([], schema=schema)
+            payload = json.loads(opener.return_value.open.call_args.args[0].data)
+            self.assertEqual(payload["format"], schema)
+            self.assertEqual(schema["properties"]["paragraphs"]["minItems"], 8)
+            self.assertFalse(schema["additionalProperties"])
+
+    def test_structured_paragraph_evidence_is_removed_from_public_copy(self):
+        draft = {**self.report, "paragraphs": [{"text": paragraph, "facts": [index]} for index, paragraph in enumerate(self.report["paragraphs"])]}
+        report, citations = auto_news.unpack_brief(draft)
+        self.assertEqual(report, self.report)
+        self.assertEqual(citations, [[index] for index in range(7)])
+        with self.assertRaisesRegex(ValueError, "schema"):
+            auto_news.unpack_brief({**draft, "unexpected_field": True})
+
     def test_truncated_model_response_is_never_published(self):
         response = MagicMock()
         response.read.return_value = json.dumps({"message": {"content": json.dumps(self.report)}, "done_reason": "length"}).encode()

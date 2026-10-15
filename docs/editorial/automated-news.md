@@ -9,7 +9,7 @@ Long sources use a bounded selection of complete passages, up to 1,200 words, in
 ## Required output
 
 - A distinct, accurate headline and a concise summary.
-- Six to ten substantive paragraphs, accepted at 220–520 words; the writing target is 240–380 words.
+- Eight substantive paragraphs, accepted at 220–520 words; the writing target is 280–400 words.
 - Two relevant section headings.
 - An original 1600×900 Presence illustration used in the news card and article, with alternative text and an illustration credit.
 - Correct byline, original publication date, reading time, metadata, RSS and sitemap entries.
@@ -19,6 +19,8 @@ Numeric checks normalize amounts and units, including million versus billion, pa
 Originality checks compare source prose paragraphs individually. Table cells, chart labels and captions remain factual evidence but are not joined into artificial prose sentences for the copy check.
 
 Every paragraph identifies its private evidence indices. Its quantities must occur in that evidence, and the draft must cover at least three quarters of the selected excerpts. A separate model call checks the draft against those verbatim excerpts, including attribution of figures to the correct company and comparisons across different periods. The review rejects unrelated recommendations, promotional conclusions and unsupported advice. A rejected draft gets one correction attempt with the previous draft and specific review issues. A source that cannot support a complete, validated report is skipped in favor of another candidate. This automated review can still miss errors.
+
+All three model stages use JSON schemas passed to the generator. The writer schema requires eight paragraph objects, two headings and evidence indices inside each paragraph. The software separates private evidence indices from the final article copy before importing it.
 
 ## Schedule and recovery
 
