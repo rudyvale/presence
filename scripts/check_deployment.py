@@ -51,7 +51,7 @@ def verify_report(document: bytes, record: dict) -> str:
 def main() -> None:
     history_path = ROOT / "docs/editorial/auto-news-history.json"
     history = json.loads(history_path.read_text()) if history_path.exists() else {"items": []}
-    records = {record["article_url"]: record for record in history["items"] if record.get("format_version") == 2}
+    records = {record["article_url"]: record for record in history["items"] if record.get("format_version", 1) >= 2}
     if history["items"] and not records:
         raise RuntimeError("No complete automated report is available for publication verification")
     requested = json.loads(os.environ.get("EXPECTED_ARTICLES_JSON") or "[]")
@@ -67,10 +67,15 @@ def main() -> None:
         try:
             check_route("/", 200)
             news = check_route("/news/", 200).decode("utf-8")
+            listing = BeautifulSoup(news, "html.parser")
             for route in requested:
-                if route not in news:
+                card = next((card for card in listing.select(".news-card") if card.select_one(f'a[href="{route}"]')), None)
+                if card is None:
                     raise RuntimeError("A published report is missing from the news listing")
                 image = verify_report(check_route(route, 200), records[route])
+                preview = card.select_one(".news-card__media img")
+                if preview is None or preview.get("src") != image:
+                    raise RuntimeError("Published news card has a missing or mismatched illustration")
                 image_data = check_route(image, 200)
                 with Image.open(BytesIO(image_data)) as asset:
                     if asset.width < 1200 or asset.height < 675:

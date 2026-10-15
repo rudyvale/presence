@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 import sys
 import tempfile
 import unittest
@@ -11,6 +12,27 @@ import check_deployment
 
 
 class PublishingTests(unittest.TestCase):
+    def test_new_validation_versions_are_checked_on_the_public_site(self):
+        root = check_deployment.ROOT
+        history = json.loads((root / "docs/editorial/auto-news-history.json").read_text())
+        record = {**history["items"][0], "format_version": 3}
+        route = record["article_url"]
+        document = (root / route.lstrip("/") / "index.html").read_bytes()
+        image = (root / record["image"].lstrip("/")).read_bytes()
+        news = f'<article class="news-card"><a href="{route}">Story</a><div class="news-card__media"><img src="{record["image"]}"></div></article>'.encode()
+        responses = {route: document, record["image"]: image, "/news/": news}
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            ledger = temporary / "docs/editorial/auto-news-history.json"
+            ledger.parent.mkdir(parents=True)
+            ledger.write_text(json.dumps({"items": [record]}))
+            article = temporary / route.lstrip("/") / "index.html"
+            article.parent.mkdir(parents=True)
+            article.write_bytes(document)
+            with patch.object(check_deployment, "ROOT", temporary), patch.dict("os.environ", {"EXPECTED_ARTICLES_JSON": "[]"}), patch.object(check_deployment, "check_route", side_effect=lambda path, status: responses.get(path, b"")) as fetch, patch("builtins.print"):
+                check_deployment.main()
+                fetch.assert_any_call(route, 200)
+
     def test_accessible_private_source_fails_deployment_check(self):
         response = MagicMock()
         response.__enter__.return_value.status = 200
