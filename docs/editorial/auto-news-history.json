@@ -306,12 +306,155 @@
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
       "date": "2026-10-15",
       "article_url": "/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/",
+      "format_version": 3,
       "source_snapshot": {
         "headline": "AI agents made 138 million crypto payments. What did they buy?",
-        "facts": "More than 138 million x402 payments were recorded on Base in Chainalysis’s 2026 North America study. The count is large; the typical payment is tiny. Some software buys data, code checks and access to AI models, while earlier activity included…",
-        "published": "2026-10-15T11:55:37+00:00"
+        "published": "2026-10-15T11:55:37+00:00",
+        "word_count": 4014,
+        "sha256": "94caf3b80b1c8c06b1ad582d54d6d01230a5f5ab2e45990b17f3445d99092b0f",
+        "extractor": ".post-detail__content",
+        "fact_count": 10,
+        "fact_hashes": [
+          "dd4bb88a47a6a9aa3578e508f55ffbebc22235ca7d83d8ef6cdfb9c334ae1363",
+          "0f005591fe05dc682187ff0a6ebd5e97ae44ec2466c5fde11e0d267e380f65bc",
+          "37ca4975710f9c2ee8f2cd2961742bf1bc459912ab231b4d2c30646825ae95ff",
+          "368188afbd2d4c1d7ba4a1e67d54d27ee71618cc9843eccfda9d492c1110212a",
+          "ca097b5f79e98f07fa63a418b76accef5aecebd7e4fb93b12aac216e09df4c36",
+          "8b6669086f6746783482ce964220fc2afa4a42fdd49aa1b0ac37a8d9b11ea32a",
+          "e3e850c99ec76370efdbc5c243346945ee8ae08c5431211f0e0810dbfe4fcb12",
+          "d61ab0f03b06db2c91694af546bf556d4440001aeabf8c19adc14f8e9f900efc",
+          "bf93ede2fa6756551299f17d5083406534569be64bf509da5ef84d8e0433a554",
+          "c7a45f65ff2bfcda86454cc666d8b3a717ed43c744e93e4fd1f19ef219db7252"
+        ],
+        "source_quantities": [
+          [
+            "0.0001",
+            "$"
+          ],
+          [
+            "0.02",
+            "$"
+          ],
+          [
+            "0.1",
+            "$"
+          ],
+          [
+            "0.2",
+            "$"
+          ],
+          [
+            "1",
+            "number"
+          ],
+          [
+            "1.38E+8",
+            "number"
+          ],
+          [
+            "1.8E+2",
+            "$"
+          ],
+          [
+            "12",
+            "number"
+          ],
+          [
+            "14",
+            "number"
+          ],
+          [
+            "18",
+            "number"
+          ],
+          [
+            "1E+1",
+            "$"
+          ],
+          [
+            "1E+3",
+            "number"
+          ],
+          [
+            "1E+8",
+            "number"
+          ],
+          [
+            "2.8E+2",
+            "$"
+          ],
+          [
+            "2025",
+            "number"
+          ],
+          [
+            "2026",
+            "number"
+          ],
+          [
+            "2E+1",
+            "$"
+          ],
+          [
+            "3.6E+2",
+            "$"
+          ],
+          [
+            "3E+1",
+            "number"
+          ],
+          [
+            "3E+1",
+            "percent"
+          ],
+          [
+            "4",
+            "percent"
+          ],
+          [
+            "67",
+            "percent"
+          ],
+          [
+            "70.6",
+            "percent"
+          ],
+          [
+            "73",
+            "number"
+          ],
+          [
+            "87",
+            "percent"
+          ],
+          [
+            "88.1",
+            "percent"
+          ],
+          [
+            "89.3",
+            "percent"
+          ],
+          [
+            "9E+1",
+            "number"
+          ],
+          [
+            "9E+1",
+            "percent"
+          ]
+        ],
+        "reference_urls": [
+          "https://www.chainalysis.com/blog/north-america-crypto-adoption-2026/",
+          "https://t.co/51o879zq8x",
+          "https://www.chainalysis.com/blog/x402-agentic-payments-adoption/",
+          "https://t.co/atGZca46KU",
+          "https://t.co/qM3Snni57D"
+        ]
       },
-      "editorial_revision": "Corrected unsupported billions headline to the reported 138 million payment count and added an original illustration. Full-source repair remains pending."
+      "word_count": 301,
+      "image": "/assets/img/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/illustration-f4a5fc8f.webp",
+      "body_sha256": "e388891311b7b71257a3beacfb244165cad633b5921702725f5fb20fe8225b6d"
     },
     {
       "source_url": "https://crypto.news/curve-finance-loans-climb-68-in-q3-as-defi-lending/",

@@ -16,14 +16,14 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "AI Agents Logged 138 Million x402 Payments on Base",
-    "summary": "Chainalysis recorded more than 138 million x402 payments on Base. The payment count does not represent a dollar value.",
+    "title": "AI Agents Executed Over 138 Million Crypto Payments: What Did They Buy?",
+    "summary": "More than 138 million crypto payments by AI agents were recorded, with U.S. wallets making the majority of geolocated transactions for model inference.",
     "author": "Presence Editorial",
     "date": "2026-10-15",
-    "readingTime": "1 min read",
+    "readingTime": "2 min read",
     "url": "/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/",
     "promotable": true,
-    "image": "/assets/img/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/illustration-agents.webp",
+    "image": "/assets/img/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/illustration-f4a5fc8f.webp",
     "imageAlt": "Original Presence illustration of software agents connected through a digital payment network.",
     "imageCredit": "Illustration: Presence"
   },
