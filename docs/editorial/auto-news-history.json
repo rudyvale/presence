@@ -305,7 +305,7 @@
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
       "date": "2026-10-15",
-      "article_url": "/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/",
+      "article_url": "/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/",
       "format_version": 3,
       "source_snapshot": {
         "headline": "AI agents made 138 million crypto payments. What did they buy?",
@@ -453,9 +453,9 @@
         ]
       },
       "word_count": 301,
-      "image": "/assets/img/articles/2026-10-15_ai-agents-make-billions-of-crypto-payments-a1375a43f0/illustration-f4a5fc8f.webp",
+      "image": "/assets/img/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/illustration-f4a5fc8f.webp",
       "body_sha256": "e388891311b7b71257a3beacfb244165cad633b5921702725f5fb20fe8225b6d",
-      "editorial_revision": "Headline distinguishes observed x402 payments from unverified autonomous-agent attribution, as qualified in the report body."
+      "editorial_revision": "Headline and summary preserve the uncertainty about autonomous-agent attribution. Misleading legacy URL redirects to the corrected canonical URL."
     },
     {
       "source_url": "https://crypto.news/curve-finance-loans-climb-68-in-q3-as-defi-lending/",
