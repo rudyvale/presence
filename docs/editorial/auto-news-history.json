@@ -5,21 +5,302 @@
       "source_url": "https://crypto.news/perpetuals-plans-tokenized-us-stocks-sec-exemption/",
       "date": "2026-10-14",
       "article_url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
+      "format_version": 2,
       "source_snapshot": {
         "headline": "Perpetuals plans tokenized US stocks under SEC innovation exemption",
-        "facts": "Perpetuals.com has announced plans to offer tokenized U.S. stocks through the SEC’s five-year Innovation Exemption, with its proposed launch subject to a 30-day notice period and compliance with the framework’s conditions. Perpetuals.com Ltd, which trades on Nasdaq under the ticker…",
-        "published": "2026-10-14T18:42:01+00:00"
-      }
+        "published": "2026-10-14T18:42:01+00:00",
+        "word_count": 908,
+        "sha256": "9ba9cca5cb8622101ad3a8f5991f221c4216c8b615880b627e4fe6b8a0d93202",
+        "extractor": ".post-detail__content",
+        "fact_count": 8,
+        "fact_hashes": [
+          "e31bd2cd821fb0a5a18135b4db8b81643dc1cd6dd13288d64449e4a35fdf7080",
+          "d745359b239d76a2a94ce280841272d7b148621e7b9cf5995f709b9657fa88bd",
+          "96dfea53ce9f5eea7f0bb38affe98e429e26d226464442a35613f2dc4feaaa0b",
+          "68da18d64744fdcbf91eb55190e06b61a326e6ef87f689601fe9540dac9daa75",
+          "e1a525825a329e93c16218beb8656d632c000e2297a483fab1e429cb8d45798d",
+          "7b832cdc9baef080fb2f70da2afbb587834ba66babde725be3c1bd2c5e791c18",
+          "053e61ef16dfb2cc1935a2e78b98426d07ed90bb121907923caaa3eae9371328",
+          "260bf1ed9f2523d420840dab3a9a3d3ffa7c34f52f30269680e3a8805fc89b95"
+        ],
+        "source_quantities": [
+          [
+            "0.25",
+            "percent"
+          ],
+          [
+            "1",
+            "number"
+          ],
+          [
+            "14",
+            "number"
+          ],
+          [
+            "17",
+            "number"
+          ],
+          [
+            "1934",
+            "number"
+          ],
+          [
+            "2",
+            "number"
+          ],
+          [
+            "2.5",
+            "percent"
+          ],
+          [
+            "2.5E+2",
+            "number"
+          ],
+          [
+            "2021",
+            "number"
+          ],
+          [
+            "23",
+            "number"
+          ],
+          [
+            "3E+1",
+            "number"
+          ],
+          [
+            "3E+8",
+            "$"
+          ],
+          [
+            "5",
+            "number"
+          ],
+          [
+            "75",
+            "number"
+          ]
+        ],
+        "reference_urls": [
+          "https://www.perpetuals.com/perpetuals-reports-4-5-billion-in-upsideonly-volume-and-signs-exchange-agreement-with-datavault-ai-for-tokenized-commodities.html"
+        ]
+      },
+      "word_count": 262,
+      "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-86c7c0e1.webp",
+      "body_sha256": "e7c88900cebaa8e59a2787d257a07d684eae8244ac929d1467a5674fc206802f"
     },
     {
       "source_url": "https://crypto.news/bitcoin-risk-another-leverage-shakeout-us-cpi-runs-hot/",
       "date": "2026-10-14",
       "article_url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
+      "format_version": 2,
       "source_snapshot": {
         "headline": "Bitcoin risks another leverage shakeout if US CPI runs hot, analysts warn",
-        "facts": "Bitcoin has remained exposed to another inflation-driven selloff, analysts have warned, after an $811 million crypto liquidation wave left market-wide open interest down only about 2% at $140.9 billion in their pre-CPI assessment. Ryan Lee, chief analyst at Bitget Research,…",
-        "published": "2026-10-14T18:20:55+00:00"
-      }
+        "published": "2026-10-14T18:20:55+00:00",
+        "word_count": 904,
+        "sha256": "9236e911b5560af15259e8244996add2bebbff87565c8d9241b50929387c4850",
+        "extractor": ".post-detail__content",
+        "fact_count": 8,
+        "fact_hashes": [
+          "c70e1cea87ab984a43bf3b70e67acc0d3221448332ba22044e78778102e502f0",
+          "7e35a060b6949ddddfeaa21a8776615c892a3866b62897abdc428b5d50058f3d",
+          "29782faf8eacb21e7b586a9a2ca594dc11380789a5e11f0a8fbf22da890045ee",
+          "be18cc91ff44634b9655b960b2f9bd35dd4e1ab9f92777b49b2040cb2c6bd140",
+          "d30dbd994fc95812933ae6cbbab4744ad0bf18a045a75126d2126fc09e12825e",
+          "0f481b6fee0b6c34985545e43cf9a47410f885ee06eb1c4eaf3ceecf52e3c389",
+          "d80a25c8469f05e54bcf9318f9e79ac8817f2735b2be43c84d4dedc048d09e87",
+          "0641a03ecdd83958f1767e8330eadc18ca7dd6f8f69fc8de59da88cc94a5648e"
+        ],
+        "source_quantities": [
+          [
+            "0.2",
+            "percent"
+          ],
+          [
+            "0.28",
+            "percent"
+          ],
+          [
+            "0.5",
+            "percent"
+          ],
+          [
+            "0.6",
+            "percent"
+          ],
+          [
+            "1.017E+8",
+            "$"
+          ],
+          [
+            "1.051E+8",
+            "$"
+          ],
+          [
+            "1.409E+11",
+            "$"
+          ],
+          [
+            "1.4E+8",
+            "$"
+          ],
+          [
+            "1.757E+8",
+            "$"
+          ],
+          [
+            "12",
+            "number"
+          ],
+          [
+            "13",
+            "number"
+          ],
+          [
+            "1E+1",
+            "number"
+          ],
+          [
+            "2",
+            "percent"
+          ],
+          [
+            "2.077E+8",
+            "$"
+          ],
+          [
+            "2.2E+4",
+            "$"
+          ],
+          [
+            "2.4",
+            "percent"
+          ],
+          [
+            "2.5",
+            "percent"
+          ],
+          [
+            "2027",
+            "number"
+          ],
+          [
+            "24",
+            "number"
+          ],
+          [
+            "3.6",
+            "percent"
+          ],
+          [
+            "3.7",
+            "percent"
+          ],
+          [
+            "4.05",
+            "percent"
+          ],
+          [
+            "4.849E+8",
+            "$"
+          ],
+          [
+            "5",
+            "number"
+          ],
+          [
+            "5.2",
+            "percent"
+          ],
+          [
+            "5.55E+5",
+            "$"
+          ],
+          [
+            "6",
+            "number"
+          ],
+          [
+            "6.54E+7",
+            "$"
+          ],
+          [
+            "6.789E+8",
+            "$"
+          ],
+          [
+            "7",
+            "number"
+          ],
+          [
+            "77",
+            "percent"
+          ],
+          [
+            "8",
+            "number"
+          ],
+          [
+            "8.04E+4",
+            "$"
+          ],
+          [
+            "8.11E+8",
+            "$"
+          ],
+          [
+            "8.1E+4",
+            "$"
+          ],
+          [
+            "8.2E+4",
+            "$"
+          ],
+          [
+            "8.34E+4",
+            "$"
+          ],
+          [
+            "8.35E+4",
+            "$"
+          ],
+          [
+            "8.45E+4",
+            "$"
+          ],
+          [
+            "8.4E+4",
+            "$"
+          ],
+          [
+            "8.5E+4",
+            "$"
+          ],
+          [
+            "8.6E+4",
+            "$"
+          ],
+          [
+            "8.7E+4",
+            "$"
+          ],
+          [
+            "8E+4",
+            "$"
+          ],
+          [
+            "9",
+            "number"
+          ]
+        ],
+        "reference_urls": [
+          "https://www.coinglass.com/liquidations",
+          "https://tradingeconomics.com/united-states/government-bond-yield"
+        ]
+      },
+      "word_count": 269,
+      "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-3ddebddf.webp",
+      "body_sha256": "8f45f58be8827bea2382b3bab1e8e4ddbde2a4551b8082e3a51c81661af34923"
     },
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
@@ -30,6 +311,119 @@
         "facts": "More than 138 million x402 payments were recorded on Base in Chainalysis’s 2026 North America study. The count is large; the typical payment is tiny. Some software buys data, code checks and access to AI models, while earlier activity included…",
         "published": "2026-10-15T11:55:37+00:00"
       }
+    },
+    {
+      "source_url": "https://crypto.news/curve-finance-loans-climb-68-in-q3-as-defi-lending/",
+      "date": "2026-10-15",
+      "article_url": "/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/",
+      "format_version": 2,
+      "source_snapshot": {
+        "headline": "Curve Finance loans climb 68% in Q3 as DeFi lending recovery lags",
+        "published": "2026-10-15T16:17:56+00:00",
+        "word_count": 924,
+        "sha256": "66c172f146ee753280cc9632548a18ca5ff06e530e23300ddb8eb2388d36c5d6",
+        "extractor": ".post-detail__content",
+        "fact_count": 8,
+        "fact_hashes": [
+          "3eef5e0d3e9eed6b8a7a275b58d55de7538a5a9775207b725221caf40032d0ec",
+          "8af878f956dae8542b82f8b632a1316b05340e96e54f00d6ec6550203e501a97",
+          "62160e463f5881f364e3474cb448c7956e65e646bc93c921de9a779ddc7beeaf",
+          "292965d646c6e6c1f32808142ab09d1bbbd590989be39b65626cb0647f9ab250",
+          "f633471732408d5431f165f8e284adcb4d9972d72028452b1219c52289e292ed",
+          "a2ee6e91eab35fa709155e579873834063ffeb45b176484c35ba58eea2c649b1",
+          "538b76b110a53bf4ecf2e2925f714f1354a44156ea7f90b1b9048d325bcdef0a",
+          "71b73a82321f212cfac93c91430e226227cb6556b6f54ba02708007f5794eb3f"
+        ],
+        "source_quantities": [
+          [
+            "1",
+            "number"
+          ],
+          [
+            "1.25E+5",
+            "number"
+          ],
+          [
+            "1.84E+6",
+            "number"
+          ],
+          [
+            "12",
+            "number"
+          ],
+          [
+            "13",
+            "percent"
+          ],
+          [
+            "1E+1",
+            "number"
+          ],
+          [
+            "2",
+            "number"
+          ],
+          [
+            "2025",
+            "number"
+          ],
+          [
+            "2026",
+            "number"
+          ],
+          [
+            "3.28E+10",
+            "$"
+          ],
+          [
+            "3.75E+10",
+            "$"
+          ],
+          [
+            "3E+1",
+            "number"
+          ],
+          [
+            "4",
+            "number"
+          ],
+          [
+            "4.218E+7",
+            "$"
+          ],
+          [
+            "568181",
+            "number"
+          ],
+          [
+            "6.9E+7",
+            "$"
+          ],
+          [
+            "68",
+            "percent"
+          ],
+          [
+            "7.09E+7",
+            "$"
+          ],
+          [
+            "8",
+            "number"
+          ],
+          [
+            "84",
+            "percent"
+          ]
+        ],
+        "reference_urls": [
+          "https://defillama.com/protocol/active-loans/curve-finance",
+          "https://www.irs.gov/filing/digital-assets"
+        ]
+      },
+      "word_count": 276,
+      "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-1adbd8bf.webp",
+      "body_sha256": "bff8b835c3088b568b2d0bbcb3eca7df930a11f6d20ae0f75fd05a34e2cc676b"
     }
   ]
 }

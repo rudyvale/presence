@@ -1,4 +1,4 @@
-# Perpetuals Plans Tokenized US Stocks Under SEC Innovation Exemption
+# Perpetuals to Tokenize U.S. Stocks Under SEC Innovation Exemption
 
 Sources for editorial verification:
 https://crypto.news/perpetuals-plans-tokenized-us-stocks-sec-exemption/

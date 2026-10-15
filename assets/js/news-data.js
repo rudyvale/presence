@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Curve Finance Sees Significant Loan Growth Amidst Sectoral Recovery",
+    "summary": "Curve Finance reported a 68% increase in active loans to $70.9 million in Q3 2026, driven by LlamaLend v2's expansion.",
+    "author": "Presence Editorial",
+    "date": "2026-10-15",
+    "readingTime": "2 min read",
+    "url": "/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-1adbd8bf.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "AI Agents Make Billions of Crypto Payments",
     "summary": "More than 138 million x402 payments were recorded in a study by Chainalysis. The typical payment is small; some software purchases data and AI models.",
     "author": "Presence Editorial",
@@ -13,24 +27,30 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Bitcoin risks another leverage shakeout if US CPI runs hot, analysts warn",
-    "summary": "Bitcoin faces a potential inflation-driven selloff, with analysts warning after an $811 million crypto liquidation wave. Open interest remains at $140.9 billion despite market-wide reduction of only about 2%.",
+    "title": "Bitcoin Faces Leverage Shakeout Amid Rising Inflation Concerns",
+    "summary": "$811 million in crypto liquidations occurred, while Bitcoin ETF inflows reached $175.7 million after withdrawals.",
     "author": "Presence Editorial",
     "date": "2026-10-14",
-    "readingTime": "1 min read",
+    "readingTime": "2 min read",
     "url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-3ddebddf.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
   },
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Perpetuals Plans Tokenized US Stocks Under SEC Innovation Exemption",
-    "summary": "Perpetuals.com plans to tokenize U.S. stocks via the SEC's five-year innovation exemption. Launch subject to a 30-day notice period and compliance with framework conditions.",
+    "title": "Perpetuals to Tokenize U.S. Stocks Under SEC Innovation Exemption",
+    "summary": "Perpetuals.com plans to tokenize over $300 million in U.S. stocks under the SEC's five-year Innovation Exemption, subject to regulatory compliance.",
     "author": "Presence Editorial",
     "date": "2026-10-14",
-    "readingTime": "1 min read",
+    "readingTime": "2 min read",
     "url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
-    "promotable": true
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-86c7c0e1.webp",
+    "imageAlt": "Original Presence illustration of equity certificates connected to digital tokens.",
+    "imageCredit": "Illustration: Presence"
   },
   {
     "category": "crypto",
