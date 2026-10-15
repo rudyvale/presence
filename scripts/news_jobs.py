@@ -59,7 +59,7 @@ def worker(destination: Path) -> None:
     job = json.loads(os.environ["NEWS_JOB_JSON"])
     if not re.fullmatch(r"(?:repair|news)-\d+", job["key"]) or job["kind"] not in {"repair", "new"}:
         raise ValueError("Invalid editorial job")
-    auto_news.PROCESSING_DEADLINE = time.monotonic() + 15 * 60
+    auto_news.PROCESSING_DEADLINE = time.monotonic() + 22 * 60
     failures = []
     for source in job["sources"]:
         try:
