@@ -51,6 +51,7 @@ def extract_article(data: bytes, url: str) -> dict:
     for selector in selectors:
         for container in soup.select(selector):
             paragraphs = []
+            prose = []
             for node in container.select("p, h2, h3, li, figcaption, table"):
                 if node.find_parent("table") is not None:
                     continue
@@ -70,19 +71,21 @@ def extract_article(data: bytes, url: str) -> dict:
                     continue
                 if text not in paragraphs:
                     paragraphs.append(text)
+                if node.name == "p" and text not in prose:
+                    prose.append(text)
             text = "\n\n".join(paragraphs)
             if len(text.split()) >= 180:
-                candidates.append((selector, text))
+                candidates.append((selector, text, prose))
         if candidates:
             break
     if not candidates and structured:
         text = max(structured, key=len)
         text = BeautifulSoup(text, "html.parser").get_text(" ", strip=True)
         if len(text.split()) >= 180:
-            candidates.append(("json-ld", text))
+            candidates.append(("json-ld", text, [text]))
     if not candidates:
         raise ValueError("Full article body unavailable; an RSS excerpt cannot replace it")
-    selector, text = max(candidates, key=lambda candidate: len(candidate[1]))
+    selector, text, prose = max(candidates, key=lambda candidate: len(candidate[1]))
     if len(text) > 28000:
         raise ValueError("Source is too long for a single news report")
     links = []
@@ -93,7 +96,7 @@ def extract_article(data: bytes, url: str) -> dict:
             target = urlunsplit((parsed.scheme, parsed.netloc, parsed.path, "", ""))
             if target not in links:
                 links.append(target)
-    return {"text": text, "word_count": len(text.split()), "sha256": sha256(text.encode()).hexdigest(), "extractor": selector, "reference_urls": links[:12]}
+    return {"text": text, "prose_blocks": prose, "word_count": len(text.split()), "sha256": sha256(text.encode()).hexdigest(), "extractor": selector, "reference_urls": links[:12]}
 
 
 def research_passages(text: str, headline: str, limit: int = 1200) -> list[dict]:

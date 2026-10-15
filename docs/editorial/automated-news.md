@@ -16,6 +16,8 @@ Long sources use a bounded selection of complete passages, up to 1,200 words, in
 
 Numeric checks normalize amounts and units, including million versus billion, payment counts versus currency values, and percentages versus percentage points. The system rejects unsupported tickers, copied extended phrases, truncated model output, source branding, links, promotional claims and incomplete articles.
 
+Originality checks compare source prose paragraphs individually. Table cells, chart labels and captions remain factual evidence but are not joined into artificial prose sentences for the copy check.
+
 Every paragraph identifies its private evidence indices. Its quantities must occur in that evidence, and the draft must cover at least three quarters of the selected excerpts. A separate model call checks the draft against those verbatim excerpts, including attribution of figures to the correct company and comparisons across different periods. The review rejects unrelated recommendations, promotional conclusions and unsupported advice. A rejected draft gets one correction attempt with the previous draft and specific review issues. A source that cannot support a complete, validated report is skipped in favor of another candidate. This automated review can still miss errors.
 
 ## Schedule and recovery

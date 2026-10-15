@@ -108,6 +108,15 @@ class AutomatedNewsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "source phrase"):
             news_quality.validate_originality(self.researched["source"]["text"], self.researched["source"]["text"])
 
+    def test_table_labels_are_facts_and_do_not_become_an_artificial_copied_sentence(self):
+        paragraphs = "".join(f"<p>{fact}</p>" for fact in self.facts) + "<p>Partner banks provide operational information about access and reporting to participating institutions through the custody program.</p>"
+        labels = "AI model inference code analysis search and data feeds payments infrastructure agent tooling"
+        source = extract_article(f'<article><div class="entry-content">{paragraphs}<table><tr><td>{labels}</td></tr></table></div></article>'.encode(), self.item["url"])
+        self.assertIn(labels, source["text"])
+        news_quality.validate_originality(labels, source["prose_blocks"])
+        with self.assertRaisesRegex(ValueError, "source phrase"):
+            news_quality.validate_originality(self.facts[0], source["prose_blocks"])
+
     def test_full_article_extraction_excludes_navigation_and_related_content(self):
         paragraphs = "".join(f"<p>{fact}</p>" for fact in self.facts) + "<p>The operational update describes how participating institutions will continue working through their existing banking relationships as the reporting service becomes available.</p>"
         data = f'<html><nav><p>Navigation poison</p></nav><article><div class="post-detail__content">{paragraphs}<div class="related-posts"><p>Related poison</p></div></div></article></html>'.encode()

@@ -34,10 +34,14 @@ def text_field(value, limit: int = 5000) -> bool:
     return isinstance(value, str) and bool(value.strip()) and value == value.strip() and len(value) <= limit and not re.search(r"[\x00-\x1f<>]|https?://|www\.|crypto[.\s-]+news|\]\(", value, re.I)
 
 
-def validate_originality(body: str, evidence: str) -> None:
+def validate_originality(body: str, evidence: str | list[str]) -> None:
     words = lambda value: re.findall(r"\w+", value.lower())
-    source, output = words(evidence), words(body)
-    phrases = {tuple(source[index:index + 12]) for index in range(max(0, len(source) - 11))}
+    blocks = [evidence] if isinstance(evidence, str) else evidence
+    output = words(body)
+    phrases = set()
+    for block in blocks:
+        source = words(block)
+        phrases.update(tuple(source[index:index + 12]) for index in range(max(0, len(source) - 11)))
     for index in range(max(0, len(output) - 11)):
         if tuple(output[index:index + 12]) in phrases:
             raise ValueError("Report repeats an extended source phrase: " + " ".join(output[index:index + 12]))
@@ -98,4 +102,4 @@ def validate_report(report: dict, item: dict) -> None:
     for phrase in ("at the forefront", "game-changer", "revolutionary", "safe-haven asset", "all applicable laws", "resilience and adaptability", "significant step", "positioning itself as a leader", "significantly enhance", "investors should", "suggesting caution for investors"):
         if phrase in output.lower():
             raise ValueError("Unsupported promotional or background claim")
-    validate_originality(" ".join(report["paragraphs"]), evidence)
+    validate_originality(" ".join(report["paragraphs"]), item["source"].get("prose_blocks", [item["source"]["text"]]))
