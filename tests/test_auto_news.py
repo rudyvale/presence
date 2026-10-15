@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 import json
+import re
 from pathlib import Path
 import sys
 import tempfile
@@ -200,6 +201,11 @@ class AutomatedNewsTests(unittest.TestCase):
             self.assertEqual(payload["format"], schema)
             self.assertEqual(schema["properties"]["paragraphs"]["minItems"], 8)
             self.assertFalse(schema["additionalProperties"])
+            pattern = schema["properties"]["paragraphs"]["items"]["properties"]["text"]["pattern"]
+            for count in (35, 40, 50):
+                self.assertRegex(" ".join(["word"] * count) + ".", pattern)
+            for count in (20, 34, 51):
+                self.assertIsNone(re.fullmatch(pattern, " ".join(["word"] * count) + "."))
 
     def test_structured_paragraph_evidence_is_removed_from_public_copy(self):
         draft = {**self.report, "paragraphs": [{"text": paragraph, "facts": [index]} for index, paragraph in enumerate(self.report["paragraphs"])]}
@@ -208,6 +214,9 @@ class AutomatedNewsTests(unittest.TestCase):
         self.assertEqual(citations, [[index] for index in range(7)])
         with self.assertRaisesRegex(ValueError, "schema"):
             auto_news.unpack_brief({**draft, "unexpected_field": True})
+        draft["paragraphs"][0]["text"] = "  " + draft["paragraphs"][0]["text"].replace(". ", ".\n") + "  "
+        report, _ = auto_news.unpack_brief(draft)
+        self.assertEqual(report, self.report)
 
     def test_truncated_model_response_is_never_published(self):
         response = MagicMock()

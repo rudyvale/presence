@@ -56,7 +56,7 @@ def report_schema(fact_count: int) -> dict:
         "summary": {"type": "string", "minLength": 40, "maxLength": 280},
         "headings": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string", "minLength": 5, "maxLength": 75}},
         "paragraphs": {"type": "array", "minItems": 8, "maxItems": 8, "items": object_schema({
-            "text": {"type": "string", "minLength": 130, "maxLength": 1100},
+            "text": {"type": "string", "pattern": r'^[^ "\\\t\r\n]+( [^ "\\\t\r\n]+){34,49}[.!?]$', "maxLength": 1100},
             "facts": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"type": "integer", "minimum": 0, "maximum": fact_count - 1}},
         })},
     })
@@ -216,7 +216,11 @@ def unpack_brief(draft: dict) -> tuple[dict, list[list[int]]]:
         raise ValueError("Draft does not match the required report schema")
     if any(not isinstance(paragraph, dict) or set(paragraph) != {"text", "facts"} for paragraph in draft["paragraphs"]):
         raise ValueError("Every draft paragraph needs text and fact indices")
-    return {**draft, "paragraphs": [paragraph["text"] for paragraph in draft["paragraphs"]]}, [paragraph["facts"] for paragraph in draft["paragraphs"]]
+    normalize = lambda value: " ".join(value.split()) if isinstance(value, str) else value
+    report = {**draft, "title": normalize(draft["title"]), "summary": normalize(draft["summary"]), "paragraphs": [normalize(paragraph["text"]) for paragraph in draft["paragraphs"]]}
+    if isinstance(draft["headings"], list):
+        report["headings"] = [normalize(heading) for heading in draft["headings"]]
+    return report, [paragraph["facts"] for paragraph in draft["paragraphs"]]
 
 
 def validate_brief(brief: dict, item: dict) -> None:

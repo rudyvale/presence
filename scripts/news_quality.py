@@ -73,8 +73,15 @@ def validate_report_structure(report: dict) -> str:
     paragraphs, headings = report["paragraphs"], report["headings"]
     if not text_field(report["title"], 110) or not text_field(report["summary"], 280):
         raise ValueError("Invalid headline or summary")
-    if not isinstance(paragraphs, list) or not 6 <= len(paragraphs) <= 10 or any(not text_field(value, 1400) for value in paragraphs):
-        raise ValueError("Report needs 6 to 10 complete paragraphs")
+    if not isinstance(paragraphs, list) or not 6 <= len(paragraphs) <= 10:
+        raise ValueError(f"Report needs 6 to 10 paragraphs; received {len(paragraphs) if isinstance(paragraphs, list) else type(paragraphs).__name__}")
+    for index, value in enumerate(paragraphs):
+        if not text_field(value, 1400):
+            if isinstance(value, str):
+                reason = "source publisher or URL" if re.search(r"https?://|www\.|crypto[.\s-]+news", value, re.I) else "HTML or control characters" if re.search(r"[\x00-\x1f<>]", value) else f"length {len(value)} or whitespace"
+            else:
+                reason = type(value).__name__
+            raise ValueError(f"Paragraph {index} contains invalid text: {reason}")
     if not isinstance(headings, list) or len(headings) != 2 or any(not text_field(value, 75) for value in headings):
         raise ValueError("Report needs two short section headings")
     if any(paragraph.startswith(("#", "- ", "* ")) or not re.search(r'[.!?][”’\"]?$', paragraph) or paragraph.endswith("...") or "…" in paragraph for paragraph in paragraphs):
@@ -82,8 +89,11 @@ def validate_report_structure(report: dict) -> str:
     if any(heading.startswith("#") for heading in headings):
         raise ValueError("Headings must contain plain text")
     body = " ".join(paragraphs)
-    if not 220 <= len(body.split()) <= 520 or any(len(paragraph.split()) < 15 for paragraph in paragraphs):
-        raise ValueError("Report must contain 220 to 520 substantive words")
+    if not 220 <= len(body.split()) <= 520:
+        raise ValueError(f"Report must contain 220 to 520 substantive words; received {len(body.split())}")
+    short = [index for index, paragraph in enumerate(paragraphs) if len(paragraph.split()) < 15]
+    if short:
+        raise ValueError(f"Paragraphs {short} need at least 15 words each")
     output = " ".join([report["title"], report["summary"], *paragraphs, *headings])
     return output
 
