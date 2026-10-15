@@ -2,8 +2,8 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Curve Finance Lending Surges as DeFi Sector Remains Stagnant",
-    "summary": "Curve Finance saw a significant increase in active loans by 68% to $70.9 million in Q3 2026, while the broader DeFi lending market struggled.",
+    "title": "Curve Reports 68% Quarterly Loan Growth Led by LlamaLend v2",
+    "summary": "Curve reported $70.9 million in active loans and 68% quarterly growth. The separate sector comparison uses the end of 2025 as its baseline; further markets remain proposed.",
     "author": "Presence Editorial",
     "date": "2026-10-15",
     "readingTime": "2 min read",
@@ -30,8 +30,8 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Bitcoin Faces Inflation-Driven Selloff Risk",
-    "summary": "Analysts warn Bitcoin could face another leverage-driven decline if U.S. inflation data surprises markets.",
+    "title": "Analysts Flag Bitcoin Leverage Risk Ahead of U.S. CPI",
+    "summary": "Analysts warned of another Bitcoin selloff if inflation ran hot after $811 million in liquidations left market-wide open interest only about 2% lower, at $140.9 billion.",
     "author": "Presence Editorial",
     "date": "2026-10-14",
     "readingTime": "2 min read",

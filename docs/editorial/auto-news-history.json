@@ -300,9 +300,10 @@
           "https://tradingeconomics.com/united-states/government-bond-yield"
         ]
       },
-      "word_count": 304,
+      "word_count": 275,
       "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-95e1eb23.webp",
-      "body_sha256": "d7dfcb7da52243f6fa888108dce9c3cf811755c5e7f8342dcfa0e0864557ec38"
+      "body_sha256": "ec9652dbbcd0679be107763c25cf84164c9edca9a561f63780a0943b34ccd8c8",
+      "editorial_revision": "Removed trading advice and uncertain CPI/Fed forecast attributions; retained the reported liquidation, open-interest, price-level and ETF-flow evidence with conditional risk framing."
     },
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
@@ -571,9 +572,47 @@
           "https://www.irs.gov/filing/digital-assets"
         ]
       },
-      "word_count": 306,
+      "word_count": 264,
       "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-b9cf85c6.webp",
-      "body_sha256": "54a6556aee9e564b0e136509360a7c6f28dbd82e9b6dd4acc45ca7ff9c045f9d"
+      "body_sha256": "0a1eba33b8bed4e4471fd524b19ee5687c9b9166c784ed07fe44dba890d120a1",
+      "editorial_revision": "Corrected the September sector comparison against end-2025, separated quarterly versus year-end growth and clarified the 84% contribution to net debt growth. Removed promotional conclusions and retained the proposed-market vote condition."
     }
-  ]
+  ],
+  "browser_validation": {
+    "checked_at": "2026-10-15T19:25:56.248671+00:00",
+    "viewports": [
+      1440,
+      390
+    ],
+    "reports": [
+      {
+        "url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
+        "body_sha256": "358370a2382f6244b82bd82e9b700225d48311ef432c75ad180ea1ccc0014034",
+        "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-4053201d.webp"
+      },
+      {
+        "url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
+        "body_sha256": "ec9652dbbcd0679be107763c25cf84164c9edca9a561f63780a0943b34ccd8c8",
+        "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-95e1eb23.webp"
+      },
+      {
+        "url": "/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/",
+        "body_sha256": "21076a8907977445e686186f0e7cc6eeb44820f2af01eda817f8b05fb5958b00",
+        "image": "/assets/img/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/illustration-f4a5fc8f.webp"
+      },
+      {
+        "url": "/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/",
+        "body_sha256": "0a1eba33b8bed4e4471fd524b19ee5687c9b9166c784ed07fe44dba890d120a1",
+        "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-b9cf85c6.webp"
+      }
+    ],
+    "checks": [
+      "complete article bodies",
+      "visible section headings",
+      "decoded hero and card images",
+      "matching headline metadata",
+      "no horizontal overflow",
+      "no browser page errors"
+    ]
+  }
 }
