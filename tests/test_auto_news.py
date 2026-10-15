@@ -109,6 +109,10 @@ class AutomatedNewsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "source phrase"):
             news_quality.validate_originality(self.researched["source"]["text"], self.researched["source"]["text"])
 
+    def test_matching_price_ranges_are_not_mistaken_for_extended_copied_prose(self):
+        prices = "around $83,400–$83,500, with initial support at $81,000–$82,000"
+        news_quality.validate_originality("Bitcoin was trading " + prices + ".", "The analyst saw a market " + prices + ".")
+
     def test_table_labels_are_facts_and_do_not_become_an_artificial_copied_sentence(self):
         paragraphs = "".join(f"<p>{fact}</p>" for fact in self.facts) + "<p>Partner banks provide operational information about access and reporting to participating institutions through the custody program.</p>"
         labels = "AI model inference code analysis search and data feeds payments infrastructure agent tooling"

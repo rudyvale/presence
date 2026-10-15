@@ -41,7 +41,10 @@ def validate_originality(body: str, evidence: str | list[str]) -> None:
     phrases = set()
     for block in blocks:
         source = words(block)
-        phrases.update(tuple(source[index:index + 12]) for index in range(max(0, len(source) - 11)))
+        for index in range(max(0, len(source) - 11)):
+            phrase = source[index:index + 12]
+            if sum(any(character.isalpha() for character in word) for word in phrase) >= 10:
+                phrases.add(tuple(phrase))
     for index in range(max(0, len(output) - 11)):
         if tuple(output[index:index + 12]) in phrases:
             raise ValueError("Report repeats an extended source phrase: " + " ".join(output[index:index + 12]))
