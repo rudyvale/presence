@@ -102,7 +102,7 @@ def research_passages(text: str, headline: str, limit: int = 1200) -> list[dict]
         sentences = re.split(r"(?<=[.!?])\s+(?=[A-Z\d\"“])", paragraph.strip())
         current = []
         for sentence in sentences:
-            if current and len(" ".join([*current, sentence]).split()) > 160:
+            if current and len(" ".join([*current, sentence]).split()) > 80:
                 blocks.append(" ".join(current))
                 current = []
             current.append(sentence)
