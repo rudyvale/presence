@@ -19,9 +19,15 @@ def quantities(text: str) -> set[tuple]:
     return found
 
 
-def validate_numbers(output: str, evidence: str) -> None:
-    if quantities(output) - quantities(evidence):
-        raise ValueError("Unsupported number, currency, percentage or magnitude")
+def validate_numbers(output: str, evidence: str, require_explicit_magnitudes: bool = True) -> None:
+    if require_explicit_magnitudes:
+        spans = [(match.start(), match.end()) for match in QUANTITY.finditer(output) if match["scale"]]
+        for magnitude in re.finditer(r"\b(?:thousands?|millions?|billions?|trillions?)\b", output, re.I):
+            if not any(start <= magnitude.start() < end for start, end in spans):
+                raise ValueError("An unquantified magnitude cannot replace a supported numerical value")
+    unsupported = quantities(output) - quantities(evidence)
+    if unsupported:
+        raise ValueError("Unsupported number, currency, percentage or magnitude: " + str(sorted(unsupported)))
 
 
 def text_field(value, limit: int = 5000) -> bool:
@@ -32,8 +38,9 @@ def validate_originality(body: str, evidence: str) -> None:
     words = lambda value: re.findall(r"\w+", value.lower())
     source, output = words(evidence), words(body)
     phrases = {tuple(source[index:index + 12]) for index in range(max(0, len(source) - 11))}
-    if any(tuple(output[index:index + 12]) in phrases for index in range(max(0, len(output) - 11))):
-        raise ValueError("Report repeats an extended source phrase")
+    for index in range(max(0, len(output) - 11)):
+        if tuple(output[index:index + 12]) in phrases:
+            raise ValueError("Report repeats an extended source phrase: " + " ".join(output[index:index + 12]))
 
 
 def validate_facts(facts, source: str) -> None:
@@ -41,11 +48,10 @@ def validate_facts(facts, source: str) -> None:
         raise ValueError("Need 7 to 16 complete, plain-text source facts")
     if len(set(facts)) != len(facts) or len(" ".join(facts).split()) < 100:
         raise ValueError("Not enough distinct factual material for a report")
-    validate_numbers(" ".join(facts), source)
-    validate_originality(" ".join(facts), source)
+    validate_numbers(" ".join(facts), source, require_explicit_magnitudes=False)
 
 
-def validate_report(report: dict, item: dict) -> None:
+def validate_report_structure(report: dict) -> str:
     if not isinstance(report, dict) or set(report) != {"title", "summary", "paragraphs", "headings"}:
         raise ValueError("Report requires title, summary, paragraphs and headings")
     paragraphs, headings = report["paragraphs"], report["headings"]
@@ -55,20 +61,29 @@ def validate_report(report: dict, item: dict) -> None:
         raise ValueError("Report needs 6 to 10 complete paragraphs")
     if not isinstance(headings, list) or len(headings) != 2 or any(not text_field(value, 75) for value in headings):
         raise ValueError("Report needs two short section headings")
+    if any(paragraph.startswith(("#", "- ", "* ")) or not re.search(r'[.!?][”’\"]?$', paragraph) or paragraph.endswith("...") or "…" in paragraph for paragraph in paragraphs):
+        raise ValueError("Report paragraphs must be complete sentences, without excerpt truncation or Markdown")
+    if any(heading.startswith("#") for heading in headings):
+        raise ValueError("Headings must contain plain text")
     body = " ".join(paragraphs)
     if not 220 <= len(body.split()) <= 520 or any(len(paragraph.split()) < 15 for paragraph in paragraphs):
         raise ValueError("Report must contain 220 to 520 substantive words")
+    output = " ".join([report["title"], report["summary"], *paragraphs, *headings])
+    return output
+
+
+def validate_report(report: dict, item: dict) -> None:
+    output = validate_report_structure(report)
     if re.sub(r"\W+", "", report["title"]).lower() == re.sub(r"\W+", "", item["title"]).lower():
         raise ValueError("Write a distinct headline")
-    output = " ".join([report["title"], report["summary"], *paragraphs, *headings])
     evidence = item["title"] + " " + item["source"]["text"]
     validate_numbers(output, evidence)
     if re.search(r"\b(?:millions|billions|trillions)\b", report["title"], re.I):
         raise ValueError("Headline magnitudes need an explicit supported quantity")
     for acronym in re.findall(r"\b[A-Z]{2,6}\b", output):
         if not re.search(r"\b" + re.escape(acronym) + r"\b", evidence, re.I):
-            raise ValueError("Unsupported acronym or ticker")
+            raise ValueError("Unsupported acronym or ticker: " + acronym)
     for phrase in ("at the forefront", "game-changer", "revolutionary", "safe-haven asset", "all applicable laws"):
         if phrase in output.lower() and phrase not in evidence.lower():
             raise ValueError("Unsupported promotional or background claim")
-    validate_originality(body, evidence)
+    validate_originality(" ".join(report["paragraphs"]), evidence)

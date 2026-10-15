@@ -52,6 +52,8 @@ def main() -> None:
     history_path = ROOT / "docs/editorial/auto-news-history.json"
     history = json.loads(history_path.read_text()) if history_path.exists() else {"items": []}
     records = {record["article_url"]: record for record in history["items"] if record.get("format_version") == 2}
+    if history["items"] and not records:
+        raise RuntimeError("No complete automated report is available for publication verification")
     requested = json.loads(os.environ.get("EXPECTED_ARTICLES_JSON") or "[]")
     if not isinstance(requested, list) or any(not isinstance(route, str) for route in requested):
         raise ValueError("Invalid publication list")

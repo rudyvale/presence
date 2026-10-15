@@ -51,7 +51,9 @@ def extract_article(data: bytes, url: str) -> dict:
     for selector in selectors:
         for container in soup.select(selector):
             paragraphs = []
-            for node in container.select("p, h2, h3"):
+            for node in container.select("p, h2, h3, li, figcaption, table"):
+                if node.find_parent("table") is not None:
+                    continue
                 excluded = False
                 for parent in [node, *node.parents]:
                     if parent is container.parent:
@@ -61,7 +63,8 @@ def extract_article(data: bytes, url: str) -> dict:
                         excluded = True
                         break
                 text = clean_text(node.get_text(" ", strip=True))
-                if excluded or len(text.split()) < 5 or re.match(r"(?:read more|you might also|disclaimer|subscribe|follow us)\b", text, re.I):
+                minimum_words = 2 if node.name in {"li", "figcaption", "table"} else 5
+                if excluded or len(text.split()) < minimum_words or re.match(r"(?:read more|you might also|disclaimer|subscribe|follow us)\b", text, re.I):
                     continue
                 if text not in paragraphs:
                     paragraphs.append(text)

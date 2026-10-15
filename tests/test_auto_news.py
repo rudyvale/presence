@@ -73,10 +73,18 @@ class AutomatedNewsTests(unittest.TestCase):
     def test_complete_original_report_is_accepted(self):
         auto_news.validate_brief(self.report, self.researched)
 
+    def test_private_factual_notes_can_preserve_exact_technical_source_terms(self):
+        news_quality.validate_facts(self.facts, self.researched["source"]["text"])
+
     def test_excerpt_cannot_pass_as_a_complete_article(self):
         report = {**self.report, "paragraphs": self.report["paragraphs"][:2]}
         with self.assertRaises(ValueError):
             auto_news.validate_brief(report, self.researched)
+
+    def test_incomplete_last_sentence_is_rejected_even_when_json_is_complete(self):
+        paragraphs = [*self.report["paragraphs"][:-1], self.report["paragraphs"][-1].rstrip(".")]
+        with self.assertRaisesRegex(ValueError, "complete sentences"):
+            auto_news.validate_brief({**self.report, "paragraphs": paragraphs}, self.researched)
 
     def test_unsupported_figures_branding_and_tickers_are_rejected(self):
         for title in ("Custody access reaches 500 institutions", "Crypto.news publishes an update", "Read https://example.com", "Northstar PPLC custody program"):
@@ -88,12 +96,12 @@ class AutomatedNewsTests(unittest.TestCase):
         news_quality.validate_numbers("a 5-year program", "a five-year program")
         with self.assertRaises(ValueError):
             news_quality.validate_numbers("2 percentage points", "2 percent")
-        for output in ("138 billion payments", "$138 million", "811 payments", "2%"):
+        for output in ("138 billion payments", "$138 million", "811 payments", "2%", "billions of payments", "a billion payments"):
             with self.subTest(output=output), self.assertRaisesRegex(ValueError, "magnitude"):
                 news_quality.validate_numbers(output, "138 million payments and $811 million")
 
     def test_unquantified_billions_in_headline_are_rejected(self):
-        with self.assertRaisesRegex(ValueError, "magnitudes"):
+        with self.assertRaisesRegex(ValueError, "magnitude"):
             auto_news.validate_brief({**self.report, "title": "Billions of institutions enter custody program"}, self.researched)
 
     def test_extended_source_copy_is_rejected(self):
@@ -144,6 +152,12 @@ class AutomatedNewsTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "truncated"):
                 auto_news.generate_local_response([])
 
+    def test_expired_budget_defers_work_before_source_or_model_calls(self):
+        with patch.object(auto_news, "PROCESSING_DEADLINE", 1), patch.object(auto_news, "research_item") as research:
+            with self.assertRaises(auto_news.EditorialBudgetExceeded):
+                auto_news.prepare_report(self.item)
+            research.assert_not_called()
+
     def test_grounding_requires_support_and_substantive_coverage(self):
         for review in ({"supported": False, "covered_facts": list(range(8))}, {"supported": "true", "covered_facts": list(range(8))}, {"supported": True, "covered_facts": [0, 1]}, {"supported": True, "covered_facts": [99]}):
             with self.subTest(review=review), patch.object(auto_news, "request_model", return_value=review), self.assertRaises(ValueError):
@@ -162,7 +176,7 @@ class AutomatedNewsTests(unittest.TestCase):
             (root / "assets/js/news-data.js").write_text("window.PRESENCE_NEWS = [];\n")
             (root / "assets/data/author-bios.json").write_text(json.dumps({"authors": {"Presence Editorial": {"bio": "Presence Editorial is the editorial team."}}}))
             (root / "scripts/templates/news-article.html.tmpl").write_text(template)
-            with patch.object(import_news, "ROOT", root), patch.object(build_catalog, "ROOT", root), patch.object(auto_news, "ROOT", root), patch.object(auto_news, "HISTORY", root / "docs/editorial/history.json"), patch.object(auto_news, "prepare_report", return_value=(self.report, self.researched)):
+            with patch.object(import_news, "ROOT", root), patch.object(build_catalog, "ROOT", root), patch.object(auto_news, "ROOT", root), patch.object(auto_news, "HISTORY", root / "docs/editorial/history.json"), patch.object(auto_news, "prepare_report", return_value=(self.report, self.researched)), patch.object(auto_news, "notice"), patch("build_seo.main") as build:
                 route = auto_news.publish_one([self.item], self.now)
                 story = build_catalog.load_stories()[0]
                 document = (root / route.lstrip("/") / "index.html").read_text()
@@ -172,12 +186,14 @@ class AutomatedNewsTests(unittest.TestCase):
                 record = auto_news.load_history()["items"][0]
                 self.assertGreaterEqual(record["word_count"], 220)
                 self.assertEqual(record["format_version"], 2)
-                self.assertEqual(record["source_snapshot"]["facts"], self.facts)
+                self.assertEqual(record["source_snapshot"]["fact_count"], len(self.facts))
+                self.assertNotIn("facts", record["source_snapshot"])
                 import check_deployment
                 self.assertEqual(check_deployment.verify_report(document.encode(), record), story["image"])
                 with self.assertRaisesRegex(RuntimeError, "differs"):
                     check_deployment.verify_report(document.replace("Northstar Network", "A different company", 1).encode(), record)
                 self.assertNotIn("research facts", document)
+                build.assert_called_once()
                 self.assertIsNone(auto_news.publish_one([self.item], self.now))
                 auto_news.publish_report(self.researched, self.report, self.now, record)
                 self.assertEqual(len(build_catalog.load_stories()), 1)

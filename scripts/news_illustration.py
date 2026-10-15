@@ -2,6 +2,7 @@ from hashlib import sha256
 from math import cos, sin, pi
 from pathlib import Path
 import random
+import re
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
@@ -16,7 +17,8 @@ def font(size: int, bold: bool = False):
 
 def create_illustration(destination: Path, title: str, facts: list[str]) -> str:
     evidence = (title + " " + " ".join(facts)).lower()
-    theme = "bitcoin" if any(term in evidence for term in ("bitcoin", " btc ")) else "agents" if any(term in evidence for term in ("x402", "ai agent", "artificial intelligence")) else "equities" if any(term in evidence for term in ("tokeniz", "equities", "stocks")) else "network"
+    headline = title.lower()
+    theme = "agents" if re.search(r"\b(?:ai|x402|artificial intelligence)\b", headline) else "bitcoin" if re.search(r"\b(?:bitcoin|btc)\b", headline) else "equities" if any(term in headline for term in ("tokeniz", "equities", "stocks")) else "network"
     colors = {"bitcoin": (245, 159, 66), "agents": (121, 159, 255), "equities": (102, 215, 177), "network": (182, 146, 244)}
     accent = colors[theme]
     canvas = Image.new("RGB", (1600, 900))
@@ -42,7 +44,9 @@ def create_illustration(destination: Path, title: str, facts: list[str]) -> str:
         draw.ellipse((529, 164, 1071, 706), fill=(198, 113, 45), outline=(255, 209, 131), width=4)
         draw.ellipse((553, 188, 1047, 682), outline=(250, 184, 92), width=3)
         draw.ellipse((573, 208, 1027, 662), fill=(225, 145, 58), outline=(122, 68, 35), width=2)
-        draw.text((800, 408), "₿", font=font(340, True), fill=(255, 229, 177), anchor="mm", stroke_width=1)
+        for x in (716, 744):
+            draw.line((x, 286, x, 573), fill=(255, 229, 177), width=12)
+        draw.text((688, 312), "B", font=font(320, True), fill=(255, 229, 177), anchor="lt", stroke_width=1)
         labels = ("CPI" if "cpi" in evidence or "inflation" in evidence else "BITCOIN", "LEVERAGE" if "leverage" in evidence or "liquidation" in evidence else "MARKETS")
         for position, text in zip(((1150, 270), (298, 510)), labels):
             x, y = position
@@ -55,6 +59,7 @@ def create_illustration(destination: Path, title: str, facts: list[str]) -> str:
         for index, point in enumerate(nodes):
             draw.line((*center, *point), fill=(91, 126, 202), width=3)
             draw.line((*point, *nodes[(index + 1) % 6]), fill=(58, 78, 125), width=2)
+        for point in nodes:
             x, y = point
             draw.rounded_rectangle((x - 78, y - 54, x + 78, y + 54), radius=26, fill=(27, 39, 70), outline=(136, 168, 246), width=2)
             draw.rounded_rectangle((x - 22, y - 24, x + 22, y + 24), radius=10, fill=accent)
