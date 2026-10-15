@@ -59,12 +59,14 @@ def extract_article(data: bytes, url: str) -> dict:
                     if parent is container.parent:
                         break
                     labels = " ".join(parent.get("class", [])) + " " + (parent.get("id") or "")
-                    if re.search(r"related|newsletter|advert|social|share-|author-|disclaimer|recommend|subscription|read-more|comment", labels, re.I):
+                    if re.search(r"related|newsletter|advert|social|share-|author-|disclaimer|recommend|subscription|read-more|read-also|also-read|latest-post|comment", labels, re.I):
                         excluded = True
                         break
                 text = clean_text(node.get_text(" ", strip=True))
                 minimum_words = 2 if node.name in {"li", "figcaption", "table"} else 5
-                if excluded or len(text.split()) < minimum_words or re.match(r"(?:read more|you might also|disclaimer|subscribe|follow us)\b", text, re.I):
+                link_text = clean_text(" ".join(link.get_text(" ", strip=True) for link in node.select("a[href]")))
+                standalone_link = bool(link_text) and len(link_text) >= len(text) * 0.9
+                if excluded or standalone_link or len(text.split()) < minimum_words or re.match(r"(?:read more|read also|also read|related articles?|you might also|disclaimer|subscribe|follow us)\b", text, re.I):
                     continue
                 if text not in paragraphs:
                     paragraphs.append(text)
@@ -92,6 +94,44 @@ def extract_article(data: bytes, url: str) -> dict:
             if target not in links:
                 links.append(target)
     return {"text": text, "word_count": len(text.split()), "sha256": sha256(text.encode()).hexdigest(), "extractor": selector, "reference_urls": links[:12]}
+
+
+def research_passages(text: str, headline: str, limit: int = 1200) -> list[dict]:
+    blocks = []
+    for paragraph in text.split("\n\n"):
+        sentences = re.split(r"(?<=[.!?])\s+(?=[A-Z\d\"“])", paragraph.strip())
+        current = []
+        for sentence in sentences:
+            if current and len(" ".join([*current, sentence]).split()) > 160:
+                blocks.append(" ".join(current))
+                current = []
+            current.append(sentence)
+        if current:
+            blocks.append(" ".join(current))
+    if sum(len(block.split()) for block in blocks) <= limit:
+        return [{"id": index, "text": block} for index, block in enumerate(blocks)]
+    terms = set(re.findall(r"[a-z]{4,}|\d+", headline.lower())) - {"with", "from", "that", "this", "have", "into", "what", "more"}
+    chosen = set()
+    used = 0
+
+    def add(index):
+        nonlocal used
+        size = len(blocks[index].split())
+        if index not in chosen and size <= 200 and used + size <= limit:
+            chosen.add(index)
+            used += size
+
+    for index in range(min(4, len(blocks))):
+        add(index)
+    for section in range(4):
+        indices = range(section * len(blocks) // 4, (section + 1) * len(blocks) // 4)
+        ranked = sorted(indices, key=lambda index: (-len(terms & set(re.findall(r"[a-z]{4,}|\d+", blocks[index].lower()))), index))
+        for index in ranked[:2]:
+            add(index)
+    ranked = sorted(range(len(blocks)), key=lambda index: (-len(terms & set(re.findall(r"[a-z]{4,}|\d+", blocks[index].lower()))), index))
+    for index in ranked:
+        add(index)
+    return [{"id": index, "text": blocks[index]} for index in sorted(chosen)]
 
 
 def fetch_article(url: str) -> dict:

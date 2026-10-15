@@ -9,7 +9,7 @@ from unittest.mock import MagicMock, patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import auto_news
 import news_quality
-from news_source import extract_article
+from news_source import extract_article, research_passages
 
 
 class AutomatedNewsTests(unittest.TestCase):
@@ -121,6 +121,43 @@ class AutomatedNewsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "RSS excerpt"):
             extract_article(b'<article><p>A truncated news announcement.</p></article>', self.item["url"])
 
+    def test_standalone_recommendations_cannot_become_report_facts(self):
+        paragraphs = "".join(f"<p>{fact}</p>" for fact in self.facts) + "<p>Partner banks will communicate operational details directly to the institutions already participating in the custody access program.</p>"
+        recommendations = '<p><a href="/irs/">IRS issues new rules for reporting digital asset income</a></p><p>Also read: IRS issues new rules for reporting digital asset income</p><div class="read-also"><p>Tax guidance for digital asset holders and taxpayers worldwide.</p></div>'
+        source = extract_article(f'<article><div class="entry-content">{paragraphs}{recommendations}</div></article>'.encode(), self.item["url"])
+        self.assertNotIn("IRS", source["text"])
+        self.assertNotIn("Tax guidance", source["text"])
+
+    def test_long_source_selection_is_bounded_and_covers_the_end(self):
+        blocks = [f"Northstar custody phase {index}. " + "Institutional partners retain customer approval and reporting responsibilities. " * 12 for index in range(50)]
+        passages = research_passages("\n\n".join(blocks), "Northstar custody update")
+        self.assertLessEqual(sum(len(passage["text"].split()) for passage in passages), 1200)
+        self.assertIn("phase 0.", passages[0]["text"])
+        self.assertGreaterEqual(max(passage["id"] for passage in passages), 37)
+        self.assertTrue(all(passage["text"].endswith(".") for passage in passages))
+
+    def test_research_facts_must_be_verbatim_in_the_cited_passage(self):
+        passages = [{"id": index, "text": fact} for index, fact in enumerate(self.facts)]
+        cards = [{"paragraph": index, "quote": fact} for index, fact in enumerate(self.facts)]
+        self.assertEqual(news_quality.validate_fact_quotes(cards, passages), self.facts)
+        cards[1] = {"paragraph": 1, "quote": self.facts[1].replace("40", "400")}
+        with self.assertRaisesRegex(ValueError, "not verbatim"):
+            news_quality.validate_fact_quotes(cards, passages)
+
+    def test_paragraph_quantity_must_come_from_its_own_cited_evidence(self):
+        citations = [[0], [1], [2], [3], [4], [5, 6], [7]]
+        auto_news.validate_paragraph_evidence(self.report, self.facts, citations)
+        citations[1] = [0]
+        with self.assertRaisesRegex(ValueError, "Unsupported number"):
+            auto_news.validate_paragraph_evidence(self.report, self.facts, citations)
+
+    def test_grounding_review_does_not_send_the_long_article_again(self):
+        with patch.object(auto_news, "request_model", return_value={"supported": True, "issues": [], "covered_facts": list(range(8))}) as model:
+            auto_news.validate_grounding(self.report, self.researched)
+            payload = json.loads(model.call_args.args[0][1]["content"])
+            self.assertNotIn("original_article", payload)
+            self.assertEqual(payload["verbatim_source_evidence"], self.facts)
+
     def test_default_backend_needs_no_api_key(self):
         with patch.dict("os.environ", {}, clear=True), patch.object(auto_news, "generate_local_response", return_value=self.report) as local, patch.object(auto_news, "generate_api_response") as api:
             self.assertEqual(auto_news.request_model([]), self.report)
@@ -185,7 +222,7 @@ class AutomatedNewsTests(unittest.TestCase):
                 self.assertTrue((root / story["image"].lstrip("/")).exists())
                 record = auto_news.load_history()["items"][0]
                 self.assertGreaterEqual(record["word_count"], 220)
-                self.assertEqual(record["format_version"], 2)
+                self.assertEqual(record["format_version"], auto_news.FORMAT_VERSION)
                 self.assertEqual(record["source_snapshot"]["fact_count"], len(self.facts))
                 self.assertNotIn("facts", record["source_snapshot"])
                 import check_deployment

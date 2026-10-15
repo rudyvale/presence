@@ -51,6 +51,28 @@ def validate_facts(facts, source: str) -> None:
     validate_numbers(" ".join(facts), source, require_explicit_magnitudes=False)
 
 
+def validate_fact_quotes(cards, passages: list[dict]) -> list[str]:
+    if not isinstance(cards, list) or not 8 <= len(cards) <= 12:
+        raise ValueError("Select 8 to 12 evidence quotations")
+    normalize = lambda value: " ".join(value.replace("’", "'").replace("“", '"').replace("”", '"').split())
+    lookup = {passage["id"]: passage["text"] for passage in passages}
+    facts = []
+    for card in cards:
+        if not isinstance(card, dict) or set(card) != {"paragraph", "quote"} or type(card["paragraph"]) is not int or card["paragraph"] not in lookup:
+            raise ValueError("Each evidence quotation needs a valid paragraph ID")
+        quote = card["quote"]
+        if not isinstance(quote, str) or not 10 <= len(quote.split()) <= 100 or not re.search(r'[.!?][”’\"]?$', quote):
+            raise ValueError("Evidence must contain complete sentences of 10 to 100 words")
+        if normalize(quote) not in normalize(lookup[card["paragraph"]]):
+            raise ValueError("Evidence quotation is not verbatim in its cited paragraph")
+        if normalize(quote) in {normalize(fact) for fact in facts}:
+            raise ValueError("Evidence quotations must be distinct")
+        facts.append(quote)
+    if len(" ".join(facts).split()) < 160:
+        raise ValueError("Not enough source evidence for a complete report")
+    return facts
+
+
 def validate_report_structure(report: dict) -> str:
     if not isinstance(report, dict) or set(report) != {"title", "summary", "paragraphs", "headings"}:
         raise ValueError("Report requires title, summary, paragraphs and headings")
@@ -83,7 +105,7 @@ def validate_report(report: dict, item: dict) -> None:
     for acronym in re.findall(r"\b[A-Z]{2,6}\b", output):
         if not re.search(r"\b" + re.escape(acronym) + r"\b", evidence, re.I):
             raise ValueError("Unsupported acronym or ticker: " + acronym)
-    for phrase in ("at the forefront", "game-changer", "revolutionary", "safe-haven asset", "all applicable laws"):
-        if phrase in output.lower() and phrase not in evidence.lower():
+    for phrase in ("at the forefront", "game-changer", "revolutionary", "safe-haven asset", "all applicable laws", "resilience and adaptability", "significant step", "positioning itself as a leader", "significantly enhance", "investors should", "suggesting caution for investors"):
+        if phrase in output.lower():
             raise ValueError("Unsupported promotional or background claim")
     validate_originality(" ".join(report["paragraphs"]), evidence)

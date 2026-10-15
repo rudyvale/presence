@@ -2,7 +2,9 @@
 
 The Daily news workflow uses the RSS feed only to discover recent stories. It fetches the full source page, extracts the article body while excluding navigation, advertising and related stories, and rejects pages that only provide a teaser.
 
-A local **Qwen 2.5 7B** model creates a factual research sheet, then writes an independent English report from those facts. It does not reproduce the source article's prose, quotations or narrative structure. Source bodies and intermediate research notes remain in runner memory. Editorial records retain source URLs, extraction metrics, numerical data, source fingerprints and fact hashes rather than republishing research-note prose. Originality checks apply to the final article.
+A local **Qwen 2.5 7B** model selects 8–12 private evidence excerpts, then writes an independent English report from that evidence. Each excerpt must match complete sentences in its cited source passage verbatim; a model paraphrase cannot pass as source evidence. The published article uses original prose and no direct quotations. Source bodies and intermediate evidence remain in runner memory. Editorial records retain source URLs, extraction metrics, numerical data, source fingerprints and fact hashes rather than republishing research-note prose. Originality checks apply to the final article.
+
+Long sources use a bounded selection of complete passages, up to 1,200 words, including the opening and relevant passages from each quarter of the original article. This prevents CPU inference timeouts without cutting sentences or using an RSS excerpt. Numerical and originality checks still use the entire extracted source. This selection does not guarantee coverage of every detail in a long source.
 
 ## Required output
 
@@ -14,7 +16,7 @@ A local **Qwen 2.5 7B** model creates a factual research sheet, then writes an i
 
 Numeric checks normalize amounts and units, including million versus billion, payment counts versus currency values, and percentages versus percentage points. The system rejects unsupported tickers, copied extended phrases, truncated model output, source branding, links, promotional claims and incomplete articles.
 
-A separate model call checks the draft against the original article and requires coverage of at least three quarters of the research facts. A rejected draft gets one correction attempt. A source that cannot support a complete, validated report is skipped in favor of another candidate. This automated review can still miss errors.
+Every paragraph identifies its private evidence indices. Its quantities must occur in that evidence, and the draft must cover at least three quarters of the selected excerpts. A separate model call checks the draft against those verbatim excerpts, including attribution of figures to the correct company and comparisons across different periods. The review rejects unrelated recommendations, promotional conclusions and unsupported advice. A rejected draft gets one correction attempt with the previous draft and specific review issues. A source that cannot support a complete, validated report is skipped in favor of another candidate. This automated review can still miss errors.
 
 ## Schedule and recovery
 
