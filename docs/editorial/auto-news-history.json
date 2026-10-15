@@ -421,9 +421,10 @@
           "https://www.irs.gov/filing/digital-assets"
         ]
       },
-      "word_count": 276,
+      "word_count": 248,
       "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-1adbd8bf.webp",
-      "body_sha256": "bff8b835c3088b568b2d0bbcb3eca7df930a11f6d20ae0f75fd05a34e2cc676b"
+      "body_sha256": "e23545f402be867c44a956aee0d648ba4b9e54f7d6a1a5f05353689080e6d73c",
+      "editorial_revision": "Removed unrelated tax coverage and promotional conclusions; clarified quarterly versus year-end comparisons. Full-source reprocessing remains pending."
     }
   ]
 }

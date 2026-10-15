@@ -2,8 +2,8 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Curve Finance Sees Significant Loan Growth Amidst Sectoral Recovery",
-    "summary": "Curve Finance reported a 68% increase in active loans to $70.9 million in Q3 2026, driven by LlamaLend v2's expansion.",
+    "title": "Curve’s Q3 Loan Growth Led by LlamaLend v2",
+    "summary": "Curve reported a 68% quarterly increase in active loans to $70.9 million, with LlamaLend v2 accounting for most of the net lending-debt increase.",
     "author": "Presence Editorial",
     "date": "2026-10-15",
     "readingTime": "2 min read",
