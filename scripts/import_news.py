@@ -36,16 +36,17 @@ def parse_manuscript(text: str) -> tuple[str, list[str], str]:
     return title, paragraphs[1:], ("Sources for editorial verification:\n" + notes) if notes else ""
 
 
-def hero_markup(image: str, image_alt: str) -> str:
+def hero_markup(image: str, image_alt: str, credit: str = "") -> str:
     from PIL import Image
     if not re.fullmatch(r"/assets/img/articles/\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.(?:png|jpe?g|webp)", image):
         raise ValueError("Use a local article image under /assets/img/articles/")
     with Image.open(ROOT / image.lstrip("/")) as asset:
         width, height = asset.size
         asset.verify()
+    caption = f'\n      <figcaption>{escape(credit)}</figcaption>' if credit else ""
     return f'''    <figure class="article__hero-media">
       <img src="{escape(image, quote=True)}" alt="{escape(image_alt, quote=True)}" width="{width}" height="{height}" decoding="async" fetchpriority="high">
-    </figure>'''
+{caption}    </figure>'''
 
 
 def inline_markdown(text: str) -> str:
@@ -69,7 +70,7 @@ def render_body(paragraphs: list[str]) -> str:
     return "\n".join(blocks)
 
 
-def import_news(source: Path, published: date, slug: str, summary: str, category: str = "crypto", image: str | None = None, image_alt: str = "") -> dict:
+def import_news(source: Path, published: date, slug: str, summary: str, category: str = "crypto", image: str | None = None, image_alt: str = "", *, replace_existing: bool = False, image_credit: str = "") -> dict:
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
         raise ValueError("Use a lowercase, hyphenated slug")
     if category not in CATEGORIES:
@@ -80,16 +81,22 @@ def import_news(source: Path, published: date, slug: str, summary: str, category
     route = f"/articles/{published.isoformat()}_{slug}/"
     target = ROOT / route.lstrip("/") / "index.html"
     stories = load_stories()
-    if target.exists() or any(story["url"] == route for story in stories):
+    existing = next((story for story in stories if story["url"] == route), None)
+    if replace_existing:
+        if not target.is_file() or not existing or existing.get("type") != "NEWS" or existing.get("author") != "Presence Editorial":
+            raise ValueError("Only an existing Presence Editorial news report can be updated")
+    elif target.exists() or existing:
         raise ValueError(f"Refusing to overwrite an existing article: {route}")
 
     reading_time = f"{math.ceil(len(' '.join(paragraphs).split()) / 220)} min read"
     story = dict(category=category, type="NEWS", title=title, summary=summary,
                  author="Presence Editorial", date=published.isoformat(),
                  readingTime=reading_time, url=route, promotable=True)
-    hero = hero_markup(image, image_alt or title) if image else ""
+    hero = hero_markup(image, image_alt or title, image_credit) if image else ""
     if image:
         story.update(image=image, imageAlt=image_alt or title)
+    if image_credit:
+        story["imageCredit"] = image_credit
     biography = json.loads((ROOT / "assets/data/author-bios.json").read_text(encoding="utf-8"))["authors"]["Presence Editorial"]["bio"]
     author = "Presence Editorial"
     biography_html = f"<strong>{author}</strong>" + escape(biography.removeprefix(author))
@@ -105,7 +112,10 @@ def import_news(source: Path, published: date, slug: str, summary: str, category
         raise ValueError("An unresolved template field remains")
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(document, encoding="utf-8", newline="\n")
-    stories.insert(0, story)
+    if existing:
+        stories[stories.index(existing)] = story
+    else:
+        stories.insert(0, story)
     (ROOT / "assets/js/news-data.js").write_text("window.PRESENCE_NEWS = " + json.dumps(stories, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
     if notes:
         folder = ROOT / "docs/editorial"

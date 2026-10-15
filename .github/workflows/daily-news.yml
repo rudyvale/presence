@@ -2,7 +2,7 @@ name: Daily news
 
 on:
   schedule:
-    - cron: '0 7,15 * * *'
+    - cron: '0,30 7,15 * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -17,13 +17,15 @@ permissions:
 jobs:
   news:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
     outputs:
       deploy: ${{ steps.export.outputs.ready }}
       article: ${{ steps.publish.outputs.article }}
+      articles: ${{ steps.prepare.outputs.articles }}
+      commit: ${{ steps.export.outputs.commit }}
     env:
       NEWS_AI_BACKEND: local
-      NEWS_LOCAL_MODEL: qwen2.5:3b
+      NEWS_LOCAL_MODEL: qwen2.5:7b
       OLLAMA_HOST: '127.0.0.1:11434'
       OLLAMA_NUM_PARALLEL: '1'
       OLLAMA_MAX_LOADED_MODELS: '1'
@@ -34,8 +36,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - name: Install image validator
-        run: python -m pip install 'Pillow==12.3.0'
+      - name: Install editorial dependencies
+        run: python -m pip install -r scripts/requirements-news.txt
       - name: Test editorial workflow
         run: python -m unittest discover -s tests
       - name: Verify news feed
@@ -48,7 +50,7 @@ jobs:
           path: |
             ${{ runner.temp }}/presence-ollama
             ${{ runner.temp }}/presence-models
-          key: presence-linux-ollama-0.11.10-qwen2.5-3b-v1
+          key: presence-linux-ollama-0.11.10-qwen2.5-7b-reports-v2
       - name: Install local AI
         if: steps.feed.outputs.available == 'true'
         run: |
@@ -82,22 +84,24 @@ jobs:
               raise SystemExit('Local AI did not start')
           PY
           ollama pull "$NEWS_LOCAL_MODEL"
-          echo '::notice title=AI backend::Local Qwen model is ready on the GitHub runner; no AI API key is required.'
-      - name: Prepare news brief
+          echo '::notice title=AI backend::Local Qwen 7B is ready; full-page research and editorial review use no API key.'
+      - name: Research, repair and prepare full reports
+        id: prepare
         if: steps.feed.outputs.available == 'true'
-        run: python scripts/auto_news.py
+        continue-on-error: true
+        run: python scripts/auto_news.py --repair-existing
       - name: Validate site
         run: python scripts/validate_site.py
       - name: Publish validated changes
         id: publish
         run: |
-          git add assets/js/news-data.js articles docs/editorial feed.xml sitemap.xml index.html news/index.html crypto/index.html technology/index.html companies/index.html
+          git add assets/js/news-data.js assets/img/articles articles docs/editorial feed.xml sitemap.xml index.html news/index.html crypto/index.html technology/index.html companies/index.html
           if git diff --cached --quiet; then
             exit 0
           fi
           git config user.name 'Presence Editorial'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Publish daily Presence news brief'
+          git commit -m 'Publish researched Presence news reports'
           git push origin HEAD:main
           echo 'updated=true' >> "$GITHUB_OUTPUT"
           python - <<'PY'
@@ -114,6 +118,7 @@ jobs:
         run: |
           python scripts/export_site.py "$RUNNER_TEMP/presence-pages"
           echo 'ready=true' >> "$GITHUB_OUTPUT"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v4
         if: steps.export.outputs.ready == 'true'
         with:
@@ -124,10 +129,15 @@ jobs:
           if command -v ollama > /dev/null; then
             ollama stop "$NEWS_LOCAL_MODEL" || true
           fi
+      - name: Report incomplete editorial work
+        if: always() && steps.prepare.outcome == 'failure'
+        run: |
+          echo '::error title=Editorial work incomplete::Some due reports or repairs failed. Validated changes were retained; failed material was not published.'
+          exit 1
 
   deploy:
     needs: news
-    if: needs.news.outputs.deploy == 'true'
+    if: always() && needs.news.outputs.deploy == 'true'
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -139,10 +149,16 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: main
+          ref: ${{ needs.news.outputs.commit }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install publication checker
+        run: python -m pip install -r scripts/requirements-news.txt
       - uses: actions/deploy-pages@v4
         id: deployment
       - name: Verify public deployment
         env:
           EXPECTED_ARTICLE: ${{ needs.news.outputs.article }}
+          EXPECTED_ARTICLES_JSON: ${{ needs.news.outputs.articles }}
         run: python3 scripts/check_deployment.py

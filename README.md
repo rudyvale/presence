@@ -28,7 +28,15 @@ Source files for the Presence website, built with HTML, CSS and JavaScript and p
 
 ## Development and publishing
 
-Run from the repository root with Python 3 and Pillow installed:
+Create a Python environment from the repository root:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r scripts/requirements-news.txt
+```
+
+Then build, validate and serve:
 
 ```sh
 python3 scripts/build_seo.py
@@ -50,4 +58,4 @@ The importer keeps the manuscript's title, introduction and body, attributes the
 
 Use `--image /assets/img/articles/YYYY-MM-DD_slug/image.jpg --image-alt "Description"` to include a supplied local image in both the news card and the article. Standalone manuscript date lines appear in the byline rather than being repeated in the body; editor-source headings are recognized case-insensitively.
 
-The [automated news workflow](docs/editorial/automated-news.md) runs twice daily with a local Qwen model on the GitHub runner. No AI API key is required. The public Pages export and the legacy Jekyll build exclude editorial notes, tests, tooling and Git metadata. Repository source remains visible on GitHub while the repository is public.
+The [automated news workflow](docs/editorial/automated-news.md) researches complete source pages and produces original reports with sections and original illustrations using a local Qwen 7B model. No AI API key is required. Publication targets are one report by 10:00 and two by 18:00 Moscow, with retries at 10:30 and 18:30. Failed research or quality checks are reported as failures. The public Pages export and legacy Jekyll build exclude editorial records, tests and tooling; source remains visible in this public GitHub repository.

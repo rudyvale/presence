@@ -919,6 +919,20 @@ textarea:focus-visible {
 .article__hero-media img {
   width: 100%;
   height: auto;
+  display: block;
+}
+
+.article--news .article__title {
+  max-width: 23ch;
+  font-size: clamp(2.25rem, 4.6vw, 3.8rem);
+  line-height: 1.04;
+}
+
+.article__hero-media figcaption {
+  padding: 12px 18px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 
 .article-disclaimer {
