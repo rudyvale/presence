@@ -41,6 +41,7 @@ The research facts are verbatim private evidence quotations. Rewrite them in you
 Distinguish payment counts from payment values, million from billion, percentages from percentage points, and total activity from typical activity. Keep numerical units and measurement periods.
 Return only JSON with title, summary, paragraphs and headings, following the supplied schema.
 Each paragraph is an object with "text" and "facts". Text: 35 to 50 words of original prose. Facts: zero-based research fact indices naming only the evidence actually used in that paragraph. Cover at least 75 percent of the supplied facts. Never introduce a claim absent from its cited facts.
+Use the explicit id field supplied with each research fact for citations. When a previous draft and a required correction are supplied, keep accurate existing paragraphs and edit the affected parts rather than inventing a new narrative.
 Title: a distinct, accurate headline of at most 110 characters. Summary: at most 280 characters.
 Paragraphs: exactly 8 substantive paragraph objects, 280 to 400 words in total. Each paragraph must advance the story with supported details.
 Headings: exactly two short section headings, inserted after the opening two paragraphs and before the closing two paragraphs.
@@ -209,7 +210,7 @@ Exclude unrelated recommended stories, link headlines and short section headings
 
 
 def model_messages(item: dict, feedback: str = "", previous: dict | None = None) -> list[dict]:
-    data = {"source_headline": item["title"], "research_facts": item["facts"]}
+    data = {"source_headline": item["title"], "research_facts": [{"id": index, "text": fact} for index, fact in enumerate(item["facts"])]}
     if feedback:
         data["required_correction"] = feedback
         data["previous_draft"] = previous
@@ -289,7 +290,7 @@ Check WHO owns each figure and claim. Never transfer another company's historica
 Judge headline claims against the quoted evidence, even if the source headline overstates it. Wallet labels and protocol activity alone do not establish autonomous AI agency or payer identity.
 Check coverage of the numbered research facts. Only mark a fact as covered if the draft communicates its substance accurately. Do not approve an article that is just a headline summary.
 Return JSON with "supported": true or false, "issues": a list of specific unsupported claims or an empty list, and "covered_facts": a list of the zero-based fact indices accurately covered. Do not use outside knowledge."""
-    messages = [{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps({"original_headline": item["title"], "verbatim_source_evidence": item["facts"], "draft": brief}, ensure_ascii=False)}]
+    messages = [{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps({"original_headline": item["title"], "verbatim_source_evidence": [{"id": index, "text": fact} for index, fact in enumerate(item["facts"])], "draft": brief}, ensure_ascii=False)}]
     schema = object_schema({
         "supported": {"type": "boolean"},
         "issues": {"type": "array", "maxItems": 4, "items": {"type": "string", "maxLength": 300}},
@@ -315,7 +316,10 @@ def validate_paragraph_evidence(report: dict, facts: list[str], citations) -> No
         if not isinstance(indices, list) or not indices or any(type(value) is not int or not 0 <= value < len(facts) for value in indices):
             raise ValueError(f"Paragraph {index} has invalid evidence indices")
         evidence = " ".join(facts[value] for value in indices)
-        validate_numbers(paragraph, evidence)
+        try:
+            validate_numbers(paragraph, evidence)
+        except ValueError as error:
+            raise ValueError(f"Paragraph {index} cites fact IDs {indices}: {error}. Correct the paragraph and its evidence IDs using the numbered facts.") from None
         used.update(indices)
     if len(used) < math.ceil(len(facts) * 0.75):
         missing = sorted(set(range(len(facts))) - used)

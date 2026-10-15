@@ -169,7 +169,13 @@ class AutomatedNewsTests(unittest.TestCase):
             auto_news.validate_grounding(self.report, self.researched)
             payload = json.loads(model.call_args.args[0][1]["content"])
             self.assertNotIn("original_article", payload)
-            self.assertEqual(payload["verbatim_source_evidence"], self.facts)
+            self.assertEqual([fact["id"] for fact in payload["verbatim_source_evidence"]], list(range(len(self.facts))))
+            self.assertEqual([fact["text"] for fact in payload["verbatim_source_evidence"]], self.facts)
+
+    def test_writer_citations_use_explicit_fact_ids_instead_of_implicit_array_positions(self):
+        messages = auto_news.model_messages(self.researched)
+        facts = json.loads(messages[1]["content"])["research_facts"]
+        self.assertEqual(facts, [{"id": index, "text": fact} for index, fact in enumerate(self.facts)])
 
     def test_default_backend_needs_no_api_key(self):
         with patch.dict("os.environ", {}, clear=True), patch.object(auto_news, "generate_local_response", return_value=self.report) as local, patch.object(auto_news, "generate_api_response") as api:
