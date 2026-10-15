@@ -45,7 +45,7 @@ window.PRESENCE_NEWS = [
     "category": "crypto",
     "type": "NEWS",
     "title": "Perpetuals Aims to Offer Tokenized U.S. Stocks via SEC Innovation Exemption",
-    "summary": "Perpetuals.com aims to offer tokenized U.S. equities through the SEC’s temporary exemption, subject to compliance and market conditions.",
+    "summary": "Perpetuals outlined a conditional U.S. stock-token offering with shareholder rights, a 30-day venue notice period and exchange-halt requirements.",
     "author": "Presence Editorial",
     "date": "2026-10-14",
     "readingTime": "2 min read",

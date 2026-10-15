@@ -44,6 +44,8 @@ All site output is validated before committing. New illustrations are committed 
 
 The deployment job checks out the exact commit used to build the artifact. On the public domain it verifies changed reports, news listing entries, complete body hashes, section headings, matching headlines and downloadable full-size illustrations. Private website paths must return HTTP 404. These exclusions do not conceal source in a public GitHub repository or remove Git history.
 
+The separate Editorial source checks workflow re-fetches full source pages for the latest eight complete reports after editorial changes. It checks final headlines, quantities, prose originality and audit hashes, including manual edits. Older reports can be checked explicitly with `python scripts/check_news_sources.py --article /articles/DATE_SLUG/`. These checks complement the model's factual review.
+
 ## Runtime
 
 Ollama **0.11.10** is downloaded from its official GitHub release and checked against its SHA-256 checksum. GPU libraries are excluded. The quantized **qwen2.5:7b** model runs on the GitHub CPU runner through the fixed loopback address. Downloads are cached. No AI API key or paid AI subscription is required; GitHub Actions and cache usage follow the repository's allowance.
