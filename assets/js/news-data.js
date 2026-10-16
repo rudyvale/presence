@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Tesla Crypto Futures Drop After Roadster Presentation",
+    "summary": "Tesla-linked perpetual futures on Hyperliquid fell to $357 after climbing toward $380 following Elon Musk’s demonstration of a thruster-equipped Roadster.",
+    "author": "Presence Editorial",
+    "date": "2026-10-16",
+    "readingTime": "2 min read",
+    "url": "/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/illustration-f5255d9a.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Curve Reports 68% Quarterly Loan Growth Led by LlamaLend v2",
     "summary": "Curve reported $70.9 million in active loans and 68% quarterly growth. The separate sector comparison uses the end of 2025 as its baseline; further markets remain proposed.",
     "author": "Presence Editorial",
