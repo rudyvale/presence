@@ -55,6 +55,20 @@ class NewsJobTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "too compressed"):
             news_jobs.validate_receipt(receipt, self.job())
 
+    def test_expansion_cannot_overwrite_an_article_edited_after_planning(self):
+        route = "/articles/2026-10-14_example/"
+        job = {**self.job(), "key": "repair-0", "kind": "repair", "record_route": route, "previous_body_sha256": "a" * 64}
+        receipt = {**self.receipt(), "job_key": job["key"], "kind": "repair", "record_route": route}
+        receipt["sha256"] = news_jobs.digest({key: value for key, value in receipt.items() if key != "sha256"})
+        record = {"article_url": route, "format_version": auto_news.FORMAT_VERSION, "requested_length_policy": 1, "body_sha256": "b" * 64}
+        plan = {"created": self.now.isoformat(), "jobs": [job]}
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / "report.json").write_text(json.dumps(receipt))
+            with patch.dict("os.environ", {"NEWS_PLAN_JSON": json.dumps(plan)}), patch.object(auto_news, "load_history", return_value={"items": [record]}), patch.object(auto_news, "publish_report") as publish, patch.object(auto_news, "notice"):
+                with self.assertRaisesRegex(RuntimeError, "article changed"):
+                    news_jobs.apply_reports(Path(directory))
+                publish.assert_not_called()
+
     def test_missing_sources_remain_an_explicit_failed_job_instead_of_false_success(self):
         plan = news_jobs.make_plan([], {"items": []}, self.now)
         self.assertEqual(plan["new_due"], 2)
