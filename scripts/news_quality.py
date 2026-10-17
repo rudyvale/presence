@@ -117,7 +117,7 @@ def full_length_profile(source_words: int) -> dict:
         raise ValueError("Choose a news source of 180 to 1800 words; longer features must not be condensed into news")
     minimum = max(220, source_words)
     maximum = max(minimum + 40, ceil(source_words * 1.15))
-    paragraphs = max(6, ceil(minimum / 50))
+    paragraphs = max(6, ceil(source_words / 40))
     return {"minimum": minimum, "maximum": maximum, "paragraphs": paragraphs, "paragraph_minimum": ceil(minimum / paragraphs), "paragraph_maximum": maximum // paragraphs}
 
 

@@ -35,19 +35,19 @@ class FullNewsTests(unittest.TestCase):
     def test_word_limits_are_checked_without_an_excessive_generation_grammar(self):
         item = {**self.item, "source": {**self.item["source"], "word_count": 904}}
         self.assertNotIn("pattern", auto_news.paragraph_schema(item)["properties"]["text"])
-        for words in (48, 51, 54):
+        for words in (40, 42, 45):
             report = {"paragraphs": [" ".join(["word"] * words) + "."]}
             with patch.object(auto_news, "request_model") as model:
                 self.assertEqual(auto_news.repair_paragraph_lengths(report, item, [[0]]), report)
             model.assert_not_called()
-        for words in (35, 47, 55):
-            corrected = " ".join(["word"] * 51) + "."
+        for words in (35, 39, 46):
+            corrected = " ".join(["word"] * 42) + "."
             with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": corrected.split()}}) as model, patch.object(auto_news, "notice"):
                 result = auto_news.repair_paragraph_lengths({"paragraphs": [" ".join(["word"] * words) + "."]}, item, [[0]])
             self.assertEqual(result["paragraphs"], [corrected])
             self.assertEqual(model.call_count, 1)
             field = model.call_args.args[2]["properties"]["paragraphs"]["properties"]["0"]
-            self.assertEqual((field["minItems"], field["maxItems"]), (51, 51))
+            self.assertEqual((field["minItems"], field["maxItems"]), (42, 42))
 
     def test_a_length_editor_cannot_pass_a_still_short_paragraph(self):
         item = {**self.item, "source": {**self.item["source"], "word_count": 904}}
@@ -58,7 +58,7 @@ class FullNewsTests(unittest.TestCase):
 
     def test_word_arrays_cannot_hide_short_text_inside_multiword_items(self):
         item = {**self.item, "source": {**self.item["source"], "word_count": 904}}
-        tokens = ["one word"] * 51
+        tokens = ["one word"] * 42
         with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": tokens}}), self.assertRaisesRegex(ValueError, "exactly one word"):
             auto_news.repair_paragraph_lengths({"paragraphs": ["Short original text."]}, item, [[0]])
 
