@@ -84,6 +84,18 @@ class FullNewsTests(unittest.TestCase):
         with patch.object(auto_news, "request_model", return_value={"supported": True, "issues": [], "covered_facts": [0]}), self.assertRaisesRegex(ValueError, "omit factual evidence"):
             news_full_report.review_piece(piece, self.item, [[0], [1]])
 
+    def test_truncated_generation_retries_the_section_without_accepting_partial_text(self):
+        metadata = {key: self.report[key] for key in ("title", "summary", "headings")}
+        assignments = [{"facts": [index]} for index in range(4)]
+        good = {"paragraphs": [{"text": paragraph, "facts": [index]} for index, paragraph in enumerate(self.report["paragraphs"][:4])]}
+        with patch.object(auto_news, "request_model", side_effect=[ValueError("Model output was truncated"), good]) as model, patch.object(auto_news, "repair_paragraph_evidence", side_effect=lambda piece, item, ids: (piece, ids)), patch.object(auto_news, "polish_originality", side_effect=lambda piece, item, ids: piece), patch.object(news_full_report, "review_piece"), patch.object(auto_news, "notice"):
+            piece, ids = news_full_report.write_piece(self.item, metadata, assignments, "", self.profile)
+        self.assertEqual(piece["paragraphs"], self.report["paragraphs"][:4])
+        self.assertEqual(ids, [[0], [1], [2], [3]])
+        feedback = json.loads(model.call_args.args[0][-1]["content"])
+        self.assertIn("section generation", feedback["required_correction"])
+        self.assertIsNone(feedback["previous_draft"])
+
     def test_review_gets_combined_evidence_and_cannot_loop_over_repeated_ids(self):
         piece = {**self.report, "paragraphs": self.report["paragraphs"][:2]}
         with patch.object(auto_news, "request_model", return_value={"supported": True, "issues": [], "covered_facts": [0, 1, 1]}) as model, self.assertRaisesRegex(ValueError, "invalid evidence IDs"):
