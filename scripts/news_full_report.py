@@ -87,6 +87,9 @@ Do not add general background absent from evidence, trading advice, monitoring p
                     raise ValueError("Paragraph cites evidence outside its section")
             piece, citations = runtime.repair_paragraph_evidence(piece, item, citations)
             piece = runtime.polish_originality(piece, item, citations)
+            cited = {index for indices in citations for index in indices}
+            if len(cited & set(used)) < math.ceil(len(used) * 0.9):
+                raise ValueError(f"Section omitted assigned evidence IDs {sorted(set(used) - cited)}")
             pattern = runtime.paragraph_schema(item)["properties"]["text"]["pattern"]
             for paragraph, indices in zip(piece["paragraphs"], citations):
                 if not re.fullmatch(pattern, paragraph):

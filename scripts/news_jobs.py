@@ -36,14 +36,14 @@ def make_plan(items: list[dict], history: dict, now: datetime) -> dict:
         source = {"url": record["source_url"], "title": snapshot.get("headline", "News update"), "description": "", "published": snapshot.get("published", record["date"] + "T12:00:00+00:00")}
         if constraints := record.get("requested_editorial_instructions") or record.get("editorial_revision"):
             source["editorial_constraints"] = constraints
-        jobs.append({"key": f"repair-{index}", "kind": "repair", "record_route": record["article_url"], "date": record["date"], "previous_body_sha256": record.get("body_sha256"), "sources": [source]})
+        jobs.append({"key": f"repair-{index}", "kind": "repair", "record_route": record["article_url"], "date": record["date"], "length_policy": auto_news.LENGTH_POLICY, "previous_body_sha256": record.get("body_sha256"), "sources": [source]})
     today = now.astimezone(auto_news.MOSCOW).date().isoformat()
     count = sum(record["date"] == today for record in history["items"])
     deficit = max(0, min(auto_news.DAILY_LIMIT, auto_news.due_count(now)) - count)
     candidates = auto_news.eligible_items(items, history, now)
     for slot in range(deficit):
         bundle = candidates[slot * 3:(slot + 1) * 3]
-        jobs.append({"key": f"news-{slot}", "kind": "new", "record_route": "", "date": today, "sources": [source_input(item) for item in bundle]})
+        jobs.append({"key": f"news-{slot}", "kind": "new", "record_route": "", "date": today, "length_policy": auto_news.LENGTH_POLICY, "sources": [source_input(item) for item in bundle]})
     return {"version": 2, "created": now.isoformat(), "jobs": jobs, "new_due": deficit}
 
 
@@ -105,6 +105,8 @@ def validate_receipt(receipt: dict, job: dict) -> None:
     policy = item.get("length_policy", 0)
     if type(policy) is not int or policy not in {0, 1, 2}:
         raise ValueError("Unsupported report length policy")
+    if "length_policy" in job and policy != job["length_policy"]:
+        raise ValueError("Editorial artifact uses a different length policy than its approved plan")
     canonical_source_url(item["url"])
     if item["url"] not in {source["url"] for source in job["sources"]}:
         raise ValueError("Unexpected source in editorial artifact")

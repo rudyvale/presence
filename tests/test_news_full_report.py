@@ -90,6 +90,22 @@ class FullNewsTests(unittest.TestCase):
             self.assertEqual(news_full_report.review_metadata(metadata, self.item), metadata)
         self.assertNotIn("paragraphs", json.loads(model.call_args.args[0][1]["content"])["metadata"])
 
+    def test_full_pipeline_assembles_verified_groups_and_preserves_length(self):
+        plan = self.plan()
+        plan["paragraphs"] = [{"facts": [index]} for index in range(5)] + [{"facts": [5, 6, 7]}]
+        ending = "The introduction remains phased rather than open to everyone. Partner banks will contact their institutional customers about available services. No public date for general registration, adoption forecast or promise of different fees accompanies the update at this stage."
+        first = {"paragraphs": [{"text": paragraph, "facts": [index]} for index, paragraph in enumerate(self.report["paragraphs"][:4])]}
+        last = {"paragraphs": [{"text": self.report["paragraphs"][4], "facts": [4]}, {"text": ending, "facts": [5, 6, 7]}]}
+        responses = [plan, first, {"supported": True, "issues": [], "covered_facts": [0, 1, 2, 3]}, last, {"supported": True, "issues": [], "covered_facts": [4, 5, 6, 7]}, {"supported": True, "issues": []}]
+        with patch.object(auto_news, "request_model", side_effect=responses) as model, patch.object(auto_news, "notice"):
+            report = news_full_report.prepare_full_report(self.item)
+        self.assertEqual(len(report["paragraphs"]), 6)
+        self.assertEqual(report["paragraphs"][:5], self.report["paragraphs"][:5])
+        self.assertEqual(report["paragraphs"][-1], ending)
+        news_quality.validate_completeness(report, self.item["source"]["word_count"], 2)
+        self.assertEqual(model.call_count, 6)
+        self.assertEqual(set(report), {"title", "summary", "headings", "paragraphs"})
+
     def test_publisher_independently_rejects_a_shortened_current_policy_artifact(self):
         fixture = test_news_jobs.NewsJobTests()
         fixture.setUp()
@@ -99,6 +115,13 @@ class FullNewsTests(unittest.TestCase):
         receipt["sha256"] = news_jobs.digest({key: value for key, value in receipt.items() if key != "sha256"})
         with self.assertRaisesRegex(ValueError, "preserve source length"):
             news_jobs.validate_receipt(receipt, fixture.job())
+
+    def test_full_length_plan_cannot_be_downgraded_to_legacy_summary_rules(self):
+        fixture = test_news_jobs.NewsJobTests()
+        fixture.setUp()
+        receipt = fixture.receipt()
+        with self.assertRaisesRegex(ValueError, "different length policy"):
+            news_jobs.validate_receipt(receipt, {**fixture.job(), "length_policy": 2})
 
 
 if __name__ == "__main__":
