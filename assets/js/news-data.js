@@ -58,14 +58,14 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Analysts Flag Bitcoin Leverage Risk Ahead of U.S. CPI",
-    "summary": "Analysts warned of another Bitcoin selloff if inflation ran hot after $811 million in liquidations left market-wide open interest only about 2% lower, at $140.9 billion.",
+    "title": "Bitcoin Faces Inflation-Driven Risks as Open Interest Remains Elevated",
+    "summary": "Analysts warn Bitcoin could face another selloff if U.S. inflation runs hot, citing elevated open interest post-selloff and potential Fed policy adjustments.",
     "author": "Presence Editorial",
     "date": "2026-10-14",
-    "readingTime": "2 min read",
+    "readingTime": "3 min read",
     "url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
     "promotable": true,
-    "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-95e1eb23.webp",
+    "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-2814003e.webp",
     "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
     "imageCredit": "Illustration: Presence"
   },

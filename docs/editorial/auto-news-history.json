@@ -101,17 +101,20 @@
         "word_count": 904,
         "sha256": "9236e911b5560af15259e8244996add2bebbff87565c8d9241b50929387c4850",
         "extractor": ".post-detail__content",
-        "fact_count": 9,
+        "fact_count": 12,
         "fact_hashes": [
           "3784905b7dc487ac139d63477741c7a5475f5488d73b90f7fdb0bbaa1916d90b",
+          "b61464d1fc1b1aa02dd8537628d20955796575feb805672180e2c5e0f1917e37",
+          "8664253e12f32361dce693cbe32cd2d94edf79425479b7da1c08283117b23660",
+          "885aa6a13a4d5ec5133d90860ce0c73293f77a012311102f0a762a6c7220fd80",
           "905e80a0b518c6f2f23f96beb45952f3718bfa09c1a78f655fdb6fc97efb98c4",
+          "a1a9388d2011d8ac78e4caa26496cb98077948f976a86e84944d70d197b07a9a",
           "914d049badb6c85059c462ee4645503d7ca8891e73a2dd2c9c4ac9003c02c392",
-          "d1c2dd0e24e7532c6bbb56e757e0c189fa0fc4ee7c4a98f840db2440382c080e",
+          "61aacad492ceb4aacf0df9b4b40f5eee0f2639022baad59617236c10faf63112",
+          "10d66ea3aa812992ba01e12c1d89ff1074e15cfb5310e3158e342fbe83a03e92",
           "75ca725eff120a578d54ad18527f9db76cecd0217993b90c05ebb41f4d0eff51",
-          "9c16279be85658f3ac259c57fa372241ae5f654e7c3d3b81581c59fe70420a2d",
-          "75ac10dadd75150516327fecb36ae0ee0c856318a9f721070efcfa9cab0f0633",
-          "5ed575e5f33efbe65c284e5cf55aaa8635e549486d85fa7d262b7d516a4ed20a",
-          "25adddccb9bbd9c5f5d409186340a1f58522b7f64ed1fef394ea93231d9566fc"
+          "b404c569c475b9b01fa5ff1cf823b0f4a4ce9f2eb2b05c273a98916210d4be3b",
+          "3bd5ed5628006f1e19406aaf99a7e1716fe04b2509aad3247b5a837710177ac3"
         ],
         "source_quantities": [
           [
@@ -300,11 +303,11 @@
           "https://tradingeconomics.com/united-states/government-bond-yield"
         ]
       },
-      "word_count": 275,
-      "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-95e1eb23.webp",
-      "body_sha256": "ec9652dbbcd0679be107763c25cf84164c9edca9a561f63780a0943b34ccd8c8",
-      "editorial_revision": "Removed trading advice and uncertain CPI/Fed forecast attributions; retained the reported liquidation, open-interest, price-level and ETF-flow evidence with conditional risk framing.",
-      "requested_length_policy": 1
+      "word_count": 458,
+      "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-2814003e.webp",
+      "body_sha256": "1acea418ca86d5051338594a3e1ad91b6bad7c8a5d8b11df478434cc3b9c2016",
+      "length_policy": 1,
+      "editorial_revision": "Removed trading advice and uncertain CPI/Fed forecast attributions; retained the reported liquidation, open-interest, price-level and ETF-flow evidence with conditional risk framing."
     },
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
