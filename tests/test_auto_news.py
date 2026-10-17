@@ -85,6 +85,12 @@ class AutomatedNewsTests(unittest.TestCase):
             self.assertEqual(schema["properties"]["paragraphs"]["minItems"], 12)
             self.assertEqual(json.loads(messages[1]["content"])["word_target"], "420 to 600")
 
+    def test_repeated_paragraphs_cannot_satisfy_the_expanded_word_requirement(self):
+        report = {**self.report, "paragraphs": [*self.report["paragraphs"], *self.report["paragraphs"][:5]]}
+        self.assertGreaterEqual(len(" ".join(report["paragraphs"]).split()), 420)
+        with self.assertRaisesRegex(ValueError, "repeat a paragraph"):
+            auto_news.validate_brief(report, {**self.researched, "length_policy": 1})
+
     def test_private_factual_notes_can_preserve_exact_technical_source_terms(self):
         news_quality.validate_facts(self.facts, self.researched["source"]["text"])
 
@@ -274,6 +280,27 @@ class AutomatedNewsTests(unittest.TestCase):
             revised = auto_news.polish_originality(draft, self.researched, citations)
         with self.assertRaisesRegex(ValueError, "Unsupported number"):
             auto_news.validate_brief(revised, self.researched)
+
+    def test_trading_advice_and_promotion_receive_a_targeted_correction(self):
+        citations = [[0], [1], [2], [3], [4], [5, 6], [7]]
+        for addition in ("Investors should remain vigilant.", "Analysts recommend a cautious approach.", "This is a safe-haven asset."):
+            draft = {**self.report, "paragraphs": [self.report["paragraphs"][0] + " " + addition, *self.report["paragraphs"][1:]]}
+            item = {**self.researched, "length_policy": 1}
+            with self.subTest(addition=addition), patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": self.report["paragraphs"][0]}}) as model, patch.object(auto_news, "notice"):
+                revised = auto_news.polish_originality(draft, item, citations)
+                self.assertEqual(revised, self.report)
+                changes = json.loads(model.call_args.args[0][1]["content"])["paragraphs_to_rewrite"]
+                self.assertEqual(set(changes), {"0"})
+                self.assertTrue(changes["0"]["issues"])
+
+    def test_promotional_summary_is_fixed_without_rewriting_the_article(self):
+        draft = {**self.report, "summary": self.report["summary"] + " Investors should watch."}
+        with patch.object(auto_news, "request_model", return_value={"summary": self.report["summary"]}) as model, patch.object(auto_news, "notice"):
+            revised = auto_news.polish_originality(draft, self.researched, [[0], [1], [2], [3], [4], [5, 6], [7]])
+        self.assertEqual(revised, self.report)
+        data = json.loads(model.call_args.args[0][1]["content"])
+        self.assertEqual(data["paragraphs_to_rewrite"], {})
+        self.assertEqual(set(data["metadata_to_rewrite"]), {"summary"})
 
     def test_targeted_evidence_repair_corrects_only_the_unsupported_paragraph(self):
         citations = [[0], [1], [2], [3], [4], [5, 6], [7]]

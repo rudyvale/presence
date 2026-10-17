@@ -8,7 +8,7 @@ import re
 import time
 
 import auto_news
-from news_quality import quantities, validate_completeness, validate_numbers, validate_report_structure
+from news_quality import editorial_issues, quantities, validate_completeness, validate_numbers, validate_report_structure
 from news_source import canonical_source_url
 
 
@@ -113,6 +113,8 @@ def validate_receipt(receipt: dict, job: dict) -> None:
     policy = item.get("length_policy", 0)
     if type(policy) is not int or policy not in {0, auto_news.LENGTH_POLICY}:
         raise ValueError("Unsupported report length policy")
+    if issues := editorial_issues(text, policy == auto_news.LENGTH_POLICY):
+        raise ValueError("; ".join(issues))
     if policy == auto_news.LENGTH_POLICY:
         validate_completeness(receipt["report"], item["source"]["word_count"])
     validate_numbers(text, text)

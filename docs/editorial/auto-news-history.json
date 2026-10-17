@@ -303,11 +303,12 @@
           "https://tradingeconomics.com/united-states/government-bond-yield"
         ]
       },
-      "word_count": 458,
+      "word_count": 446,
       "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-2814003e.webp",
-      "body_sha256": "1acea418ca86d5051338594a3e1ad91b6bad7c8a5d8b11df478434cc3b9c2016",
+      "body_sha256": "b8f1a9c2a6ba2c2cdf1544902c1f9866a768cd51830cdbfe4583bf1889430796",
       "length_policy": 1,
-      "editorial_revision": "Removed trading advice and uncertain CPI/Fed forecast attributions; retained the reported liquidation, open-interest, price-level and ETF-flow evidence with conditional risk framing."
+      "editorial_revision": "Expanded the report with reported downside and recovery levels, ETF-flow context and explanations of the distinct positioning metrics. Removed repeated closing cautions, trading advice and uncertain macroeconomic/Fed forecast attributions after manual editorial review.",
+      "editorial_reviewed_at": "2026-10-17T18:25:07.527289+00:00"
     },
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
@@ -1144,40 +1145,51 @@
     }
   ],
   "browser_validation": {
-    "checked_at": "2026-10-15T19:25:56.248671+00:00",
+    "checked_at": "2026-10-17T18:26:10.270804+00:00",
     "viewports": [
       1440,
       390
     ],
     "reports": [
       {
-        "url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
+        "article_url": "/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/",
         "body_sha256": "358370a2382f6244b82bd82e9b700225d48311ef432c75ad180ea1ccc0014034",
         "image": "/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-4053201d.webp"
       },
       {
-        "url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
-        "body_sha256": "ec9652dbbcd0679be107763c25cf84164c9edca9a561f63780a0943b34ccd8c8",
-        "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-95e1eb23.webp"
+        "article_url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
+        "body_sha256": "b8f1a9c2a6ba2c2cdf1544902c1f9866a768cd51830cdbfe4583bf1889430796",
+        "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-2814003e.webp"
       },
       {
-        "url": "/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/",
+        "article_url": "/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/",
         "body_sha256": "21076a8907977445e686186f0e7cc6eeb44820f2af01eda817f8b05fb5958b00",
         "image": "/assets/img/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/illustration-f4a5fc8f.webp"
       },
       {
-        "url": "/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/",
+        "article_url": "/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/",
         "body_sha256": "0a1eba33b8bed4e4471fd524b19ee5687c9b9166c784ed07fe44dba890d120a1",
         "image": "/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-b9cf85c6.webp"
+      },
+      {
+        "article_url": "/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/",
+        "body_sha256": "8cb3cc76b939414a9a2c7f701c55ad570a1f9e02637306590b1e0b40cecc4006",
+        "image": "/assets/img/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/illustration-f5255d9a.webp"
+      },
+      {
+        "article_url": "/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/",
+        "body_sha256": "179045ca5248c53ac2d17d1e7c0dbb7106464c1fe5210f1e507c2eb6cc49de85",
+        "image": "/assets/img/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/illustration-9604a9d2.webp"
       }
     ],
     "checks": [
-      "complete article bodies",
-      "visible section headings",
-      "decoded hero and card images",
-      "matching headline metadata",
-      "no horizontal overflow",
-      "no browser page errors"
+      "Exact rendered body hashes and word counts",
+      "Source-dependent minimum for expanded copy",
+      "Visible section headings",
+      "Decoded full-size hero and card images",
+      "Matching metadata titles",
+      "No horizontal overflow or page script errors",
+      "Category counter panels absent from all four listing pages; search works"
     ]
   }
 }

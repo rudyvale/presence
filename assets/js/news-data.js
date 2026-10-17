@@ -58,15 +58,15 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Bitcoin Faces Inflation-Driven Risks as Open Interest Remains Elevated",
-    "summary": "Analysts warn Bitcoin could face another selloff if U.S. inflation runs hot, citing elevated open interest post-selloff and potential Fed policy adjustments.",
+    "title": "Bitcoin Leverage Remains in Focus Ahead of U.S. Inflation Data",
+    "summary": "Analysts assessed Bitcoin’s remaining leverage ahead of U.S. inflation data, comparing market-wide open interest, price levels and renewed ETF inflows.",
     "author": "Presence Editorial",
     "date": "2026-10-14",
     "readingTime": "3 min read",
     "url": "/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/",
     "promotable": true,
     "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-2814003e.webp",
-    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageAlt": "An original illustration of Bitcoin market prices and leveraged exposure",
     "imageCredit": "Illustration: Presence"
   },
   {

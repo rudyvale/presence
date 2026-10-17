@@ -88,6 +88,9 @@ def validate_report_structure(report: dict) -> str:
             else:
                 reason = type(value).__name__
             raise ValueError(f"Paragraph {index} contains invalid text: {reason}")
+    normalized = [re.sub(r"\W+", "", paragraph).casefold() for paragraph in paragraphs]
+    if len(set(normalized)) != len(normalized):
+        raise ValueError("Report must not repeat a paragraph to increase its word count")
     if not isinstance(headings, list) or len(headings) != 2 or any(not text_field(value, 75) for value in headings):
         raise ValueError("Report needs two short section headings")
     if any(paragraph.startswith(("#", "- ", "* ")) or not re.search(r'[.!?][”’\"]?$', paragraph) or paragraph.endswith("...") or "…" in paragraph for paragraph in paragraphs):
@@ -115,6 +118,15 @@ def validate_completeness(report: dict, source_words: int) -> None:
         raise ValueError(f"Report is too compressed for {source_words} source words: needs at least {minimum} supported words, received {words}")
 
 
+def editorial_issues(text: str, expanded: bool = False) -> list[str]:
+    phrases = ("at the forefront", "game-changer", "revolutionary", "safe-haven asset", "all applicable laws", "resilience and adaptability", "significant step", "positioning itself as a leader", "significantly enhance", "investors should", "suggesting caution for investors")
+    issues = [f"Unsupported promotional or background claim: {phrase}" for phrase in phrases if phrase in text.lower()]
+    if expanded:
+        patterns = (r"\banalysts (?:advise|recommend)\b", r"\bremain vigilant\b", r"\bcareful risk management\b", r"\bstrategic positioning\b", r"\b(?:traders|investors|market participants|analysts) will (?:closely monitor|continue to monitor|be closely watching)\b", r"\bresilience (?:is evident|will be tested)\b")
+        issues.extend(f"Replace trading advice or filler with reported details: {match.group(0)}" for pattern in patterns if (match := re.search(pattern, text, re.I)))
+    return issues
+
+
 def validate_report(report: dict, item: dict) -> None:
     output = validate_report_structure(report)
     if item.get("length_policy") == 1:
@@ -128,7 +140,7 @@ def validate_report(report: dict, item: dict) -> None:
     for acronym in re.findall(r"\b[A-Z]{2,6}\b", output):
         if not re.search(r"\b" + re.escape(acronym) + r"\b", evidence, re.I):
             raise ValueError("Unsupported acronym or ticker: " + acronym)
-    for phrase in ("at the forefront", "game-changer", "revolutionary", "safe-haven asset", "all applicable laws", "resilience and adaptability", "significant step", "positioning itself as a leader", "significantly enhance", "investors should", "suggesting caution for investors"):
-        if phrase in output.lower():
-            raise ValueError("Unsupported promotional or background claim")
+    for label, text in [("title", report["title"]), ("summary", report["summary"]), *[(f"paragraph {index}", paragraph) for index, paragraph in enumerate(report["paragraphs"])], *[(f"heading {index}", heading) for index, heading in enumerate(report["headings"])]]:
+        if issues := editorial_issues(text, item.get("length_policy") == 1):
+            raise ValueError(f"{label}: {'; '.join(issues)}")
     validate_originality(" ".join(report["paragraphs"]), item["source"].get("prose_blocks", [item["source"]["text"]]))

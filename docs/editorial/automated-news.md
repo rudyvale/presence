@@ -24,7 +24,7 @@ All three model stages use JSON schemas passed to the generator. The writer sche
 
 Repeated headlines, copied prose and source-branding errors receive a targeted edit of only the affected fields. The complete report then goes through the same numeric, evidence, originality and grounding checks again. Each hosted worker warms up the model with a short structured readiness response before researching a source; article format and content are checked on the actual report.
 
-Facts have explicit numeric IDs. A paragraph with an unsupported figure receives a focused correction of its text and citations before validation resumes. Numeric checks normalize conventional bond-maturity labels such as US10Y and percentage abbreviations. Formatting cleanup retains attribution as “the source publication” and removes optional URL-only parentheses; other URLs remain validation errors.
+Facts have explicit numeric IDs. A paragraph with an unsupported figure receives a focused correction of its text and citations before validation resumes. Numeric checks normalize conventional bond-maturity labels such as US10Y and percentage abbreviations. Promotion, trading advice and generic monitoring conclusions receive focused corrections, including in titles and summaries, with the exact offending text identified. The publisher independently rejects those phrases, repeated paragraphs and undersized expanded reports even if a worker approved them. Formatting cleanup retains attribution as “the source publication” and removes optional URL-only parentheses; other URLs remain validation errors.
 
 ## Schedule and recovery
 
@@ -46,7 +46,7 @@ All site output is validated before committing. New illustrations are committed 
 
 The deployment job checks out the exact commit used to build the artifact. On the public domain it verifies changed reports, news listing entries, complete body hashes, section headings, matching headlines and downloadable full-size illustrations. Private website paths must return HTTP 404. These exclusions do not conceal source in a public GitHub repository or remove Git history.
 
-The separate Editorial source checks workflow re-fetches full source pages for the latest eight complete reports after editorial changes. It checks final headlines, quantities, prose originality and audit hashes, including manual edits. Older reports can be checked explicitly with `python scripts/check_news_sources.py --article /articles/DATE_SLUG/`. These checks complement the model's factual review.
+The separate Editorial source checks workflow re-fetches full source pages for the latest eight complete reports after editorial changes. It checks final headlines, quantities, prose originality and audit hashes, including manual edits. Older reports can be checked explicitly with `python scripts/check_news_sources.py --article /articles/DATE_SLUG/`. These checks complement the model's factual review. The Hosting health workflow separately checks public DNS, the trusted TLS certificate and real page content every six hours. It also verifies all complete automated reports against their exact body hashes, illustrations and listing cards, checks that the separate category counter panels stay removed, and confirms private site paths return HTTP 404. This verification runs independently of unfinished model jobs.
 
 ## Runtime
 

@@ -55,6 +55,14 @@ class NewsJobTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "too compressed"):
             news_jobs.validate_receipt(receipt, self.job())
 
+    def test_publisher_rejects_trading_advice_even_when_worker_approved_it(self):
+        receipt = self.receipt()
+        receipt["item"]["length_policy"] = 1
+        receipt["report"]["paragraphs"][0] += " Analysts recommend a cautious approach."
+        receipt["sha256"] = news_jobs.digest({key: value for key, value in receipt.items() if key != "sha256"})
+        with self.assertRaisesRegex(ValueError, "trading advice"):
+            news_jobs.validate_receipt(receipt, self.job())
+
     def test_expansion_cannot_overwrite_an_article_edited_after_planning(self):
         route = "/articles/2026-10-14_example/"
         job = {**self.job(), "key": "repair-0", "kind": "repair", "record_route": route, "previous_body_sha256": "a" * 64}
