@@ -34,8 +34,8 @@ def make_plan(items: list[dict], history: dict, now: datetime) -> dict:
             continue
         snapshot = record.get("source_snapshot", {})
         source = {"url": record["source_url"], "title": snapshot.get("headline", "News update"), "description": "", "published": snapshot.get("published", record["date"] + "T12:00:00+00:00")}
-        if record.get("editorial_revision"):
-            source["editorial_constraints"] = record["editorial_revision"]
+        if constraints := record.get("requested_editorial_instructions") or record.get("editorial_revision"):
+            source["editorial_constraints"] = constraints
         jobs.append({"key": f"repair-{index}", "kind": "repair", "record_route": record["article_url"], "date": record["date"], "previous_body_sha256": record.get("body_sha256"), "sources": [source]})
     today = now.astimezone(auto_news.MOSCOW).date().isoformat()
     count = sum(record["date"] == today for record in history["items"])
@@ -61,7 +61,7 @@ def worker(destination: Path) -> None:
     job = json.loads(os.environ["NEWS_JOB_JSON"])
     if not re.fullmatch(r"(?:repair|news)-\d+", job["key"]) or job["kind"] not in {"repair", "new"}:
         raise ValueError("Invalid editorial job")
-    auto_news.PROCESSING_DEADLINE = time.monotonic() + 22 * 60
+    auto_news.PROCESSING_DEADLINE = time.monotonic() + 60 * 60
     auto_news.check_generation_schema()
     failures = []
     for source in job["sources"]:
@@ -102,21 +102,22 @@ def validate_receipt(receipt: dict, job: dict) -> None:
     if any(receipt.get(key) != job[key] for key in ("kind", "record_route", "date")) or receipt.get("job_key") != job["key"]:
         raise ValueError("Editorial artifact differs from its approved plan")
     item = receipt["item"]
+    policy = item.get("length_policy", 0)
+    if type(policy) is not int or policy not in {0, 1, 2}:
+        raise ValueError("Unsupported report length policy")
     canonical_source_url(item["url"])
     if item["url"] not in {source["url"] for source in job["sources"]}:
         raise ValueError("Unexpected source in editorial artifact")
-    if not 7 <= item["fact_count"] <= 16 or len(item["fact_hashes"]) != item["fact_count"]:
+    minimum_facts, maximum_facts = (4, 100) if policy >= 2 else (7, 16)
+    if not minimum_facts <= item["fact_count"] <= maximum_facts or len(item["fact_hashes"]) != item["fact_count"]:
         raise ValueError("Invalid research audit")
     if item["source"]["word_count"] < 180 or not re.fullmatch(r"[a-f0-9]{64}", item["source"]["sha256"]):
         raise ValueError("A full source page was not verified")
     text = validate_report_structure(receipt["report"])
-    policy = item.get("length_policy", 0)
-    if type(policy) is not int or policy not in {0, auto_news.LENGTH_POLICY}:
-        raise ValueError("Unsupported report length policy")
-    if issues := editorial_issues(text, policy == auto_news.LENGTH_POLICY):
+    if issues := editorial_issues(text, policy >= 1):
         raise ValueError("; ".join(issues))
-    if policy == auto_news.LENGTH_POLICY:
-        validate_completeness(receipt["report"], item["source"]["word_count"])
+    if policy >= 1:
+        validate_completeness(receipt["report"], item["source"]["word_count"], policy)
     validate_numbers(text, text)
     if quantities(text) - {tuple(value) for value in item["source"]["quantities"]}:
         raise ValueError("Report quantities differ from the verified source")

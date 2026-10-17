@@ -78,8 +78,8 @@ def validate_report_structure(report: dict) -> str:
     paragraphs, headings = report["paragraphs"], report["headings"]
     if not text_field(report["title"], 110) or not text_field(report["summary"], 280):
         raise ValueError("Invalid headline or summary")
-    if not isinstance(paragraphs, list) or not 6 <= len(paragraphs) <= 14:
-        raise ValueError(f"Report needs 6 to 14 paragraphs; received {len(paragraphs) if isinstance(paragraphs, list) else type(paragraphs).__name__}")
+    if not isinstance(paragraphs, list) or not 6 <= len(paragraphs) <= 48:
+        raise ValueError(f"Report needs 6 to 48 paragraphs; received {len(paragraphs) if isinstance(paragraphs, list) else type(paragraphs).__name__}")
     for index, value in enumerate(paragraphs):
         if not text_field(value, 1400):
             if isinstance(value, str):
@@ -98,8 +98,8 @@ def validate_report_structure(report: dict) -> str:
     if any(heading.startswith("#") for heading in headings):
         raise ValueError("Headings must contain plain text")
     body = " ".join(paragraphs)
-    if not 220 <= len(body.split()) <= 750:
-        raise ValueError(f"Report must contain 220 to 750 substantive words; received {len(body.split())}")
+    if not 220 <= len(body.split()) <= 2400:
+        raise ValueError(f"Report must contain 220 to 2400 substantive words; received {len(body.split())}")
     short = [index for index, paragraph in enumerate(paragraphs) if len(paragraph.split()) < 15]
     if short:
         raise ValueError(f"Paragraphs {short} need at least 15 words each")
@@ -111,7 +111,23 @@ def paragraph_target(source_words: int) -> int:
     return 12 if source_words >= 750 else 10 if source_words >= 450 else 8
 
 
-def validate_completeness(report: dict, source_words: int) -> None:
+def full_length_profile(source_words: int) -> dict:
+    from math import ceil
+    if type(source_words) is not int or not 180 <= source_words <= 1800:
+        raise ValueError("Choose a news source of 180 to 1800 words; longer features must not be condensed into news")
+    minimum = max(220, source_words)
+    maximum = max(minimum + 40, ceil(source_words * 1.15))
+    paragraphs = max(6, ceil(minimum / 50))
+    return {"minimum": minimum, "maximum": maximum, "paragraphs": paragraphs, "paragraph_minimum": ceil(minimum / paragraphs), "paragraph_maximum": maximum // paragraphs}
+
+
+def validate_completeness(report: dict, source_words: int, policy: int = 1) -> None:
+    if policy >= 2:
+        profile = full_length_profile(source_words)
+        words = len(" ".join(report["paragraphs"]).split())
+        if not profile["minimum"] <= words <= profile["maximum"]:
+            raise ValueError(f"Report must preserve source length: {profile['minimum']} to {profile['maximum']} words for {source_words} source words; received {words}")
+        return
     minimum = paragraph_target(source_words) * 35
     words = len(" ".join(report["paragraphs"]).split())
     if words < minimum:
@@ -129,8 +145,8 @@ def editorial_issues(text: str, expanded: bool = False) -> list[str]:
 
 def validate_report(report: dict, item: dict) -> None:
     output = validate_report_structure(report)
-    if item.get("length_policy") == 1:
-        validate_completeness(report, item["source"]["word_count"])
+    if item.get("length_policy", 0) >= 1:
+        validate_completeness(report, item["source"]["word_count"], item["length_policy"])
     if re.sub(r"\W+", "", report["title"]).lower() == re.sub(r"\W+", "", item["title"]).lower():
         raise ValueError("Write a distinct headline")
     evidence = item["title"] + " " + item["source"]["text"]
@@ -141,6 +157,6 @@ def validate_report(report: dict, item: dict) -> None:
         if not re.search(r"\b" + re.escape(acronym) + r"\b", evidence, re.I):
             raise ValueError("Unsupported acronym or ticker: " + acronym)
     for label, text in [("title", report["title"]), ("summary", report["summary"]), *[(f"paragraph {index}", paragraph) for index, paragraph in enumerate(report["paragraphs"])], *[(f"heading {index}", heading) for index, heading in enumerate(report["headings"])]]:
-        if issues := editorial_issues(text, item.get("length_policy") == 1):
+        if issues := editorial_issues(text, item.get("length_policy", 0) >= 1):
             raise ValueError(f"{label}: {'; '.join(issues)}")
     validate_originality(" ".join(report["paragraphs"]), item["source"].get("prose_blocks", [item["source"]["text"]]))

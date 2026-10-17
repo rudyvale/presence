@@ -308,7 +308,9 @@
       "body_sha256": "b8f1a9c2a6ba2c2cdf1544902c1f9866a768cd51830cdbfe4583bf1889430796",
       "length_policy": 1,
       "editorial_revision": "Expanded the report with reported downside and recovery levels, ETF-flow context and explanations of the distinct positioning metrics. Removed repeated closing cautions, trading advice and uncertain macroeconomic/Fed forecast attributions after manual editorial review.",
-      "editorial_reviewed_at": "2026-10-17T18:25:07.527289+00:00"
+      "editorial_reviewed_at": "2026-10-17T18:25:07.527289+00:00",
+      "requested_length_policy": 2,
+      "requested_editorial_instructions": "Preserve the complete source length and factual detail in an independently structured report. Include source-supported macroeconomic, analyst and ETF details with their exact actors, metrics, dates and conditions. Do not infer attribution, turn a Treasury yield into retail-sales growth, add trading advice or fill space with repeated cautions. The earlier shorter edition is not the coverage limit."
     },
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",
