@@ -1,12 +1,24 @@
 import argparse
 from hashlib import sha256
+import json
+import re
 
 from bs4 import BeautifulSoup
 
 from auto_news import body_text, load_history, notice
 from build_catalog import ROOT, load_stories
-from news_quality import validate_report
+from news_quality import quantities, validate_report
 from news_source import fetch_article
+
+
+def metric_contexts(source: dict) -> dict:
+    labels = {"open_interest": r"open interest", "liquidations": r"liquidations?", "treasury_yields": r"Treasury|US10Y|10.year.*yield", "retail_sales": r"retail sales", "etf_flows": r"ETF.*(?:inflows?|outflows?|flows?)|(?:inflows?|outflows?).*ETF"}
+    result = {}
+    for label, pattern in labels.items():
+        contexts = [sorted(quantities(block)) for block in source["text"].split("\n\n") if re.search(pattern, block, re.I)]
+        if contexts:
+            result[label] = contexts
+    return result
 
 
 def verify_source(record: dict, story: dict, document: str, source: dict) -> None:
@@ -30,6 +42,7 @@ def verify_source(record: dict, story: dict, document: str, source: dict) -> Non
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--article", action="append", default=[])
+    parser.add_argument("--metrics", action="store_true")
     args = parser.parse_args()
     records = [record for record in load_history()["items"] if record.get("format_version", 1) >= 3]
     if args.article:
@@ -46,6 +59,8 @@ def main() -> None:
         try:
             document = (ROOT / record["article_url"].lstrip("/") / "index.html").read_text()
             source = fetch_article(record["source_url"])
+            if args.metrics and "bitcoin-risk-another-leverage-shakeout" in record["source_url"]:
+                notice("Source metric context", json.dumps(metric_contexts(source), ensure_ascii=False))
             verify_source(record, stories[record["article_url"]], document, source)
             notice("Source verified", f"{record['article_url']}: {record['word_count']} words checked against {source['word_count']} source words; quantities, prose originality and audit hash match")
         except (ValueError, OSError, KeyError) as error:

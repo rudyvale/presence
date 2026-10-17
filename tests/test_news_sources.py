@@ -6,11 +6,18 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import auto_news
-from check_news_sources import verify_source
+from check_news_sources import metric_contexts, verify_source
 import test_auto_news
 
 
 class NewsSourceAuditTests(unittest.TestCase):
+    def test_metric_diagnostics_expose_numbers_without_source_prose(self):
+        contexts = metric_contexts({"text": "Open interest was $140.9 billion after a 2% decline.\n\nRetail sales rose 0.5%."})
+        self.assertIn(("1.409E+11", "$"), contexts["open_interest"][0])
+        self.assertIn(("2", "percent"), contexts["open_interest"][0])
+        self.assertIn(("0.5", "percent"), contexts["retail_sales"][0])
+        self.assertNotIn("decline", str(contexts))
+
     def setUp(self):
         fixture = test_auto_news.AutomatedNewsTests()
         fixture.setUp()

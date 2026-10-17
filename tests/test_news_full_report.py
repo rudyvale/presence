@@ -84,6 +84,15 @@ class FullNewsTests(unittest.TestCase):
         with patch.object(auto_news, "request_model", return_value={"supported": True, "issues": [], "covered_facts": [0]}), self.assertRaisesRegex(ValueError, "omit factual evidence"):
             news_full_report.review_piece(piece, self.item, [[0], [1]])
 
+    def test_review_gets_combined_evidence_and_cannot_loop_over_repeated_ids(self):
+        piece = {**self.report, "paragraphs": self.report["paragraphs"][:2]}
+        with patch.object(auto_news, "request_model", return_value={"supported": True, "issues": [], "covered_facts": [0, 1, 1]}) as model, self.assertRaisesRegex(ValueError, "invalid evidence IDs"):
+            news_full_report.review_piece(piece, self.item, [[0, 1], [1]])
+        data = json.loads(model.call_args.args[0][1]["content"])
+        self.assertEqual([entry["id"] for entry in data["paragraphs"][0]["combined_evidence"]], [0, 1])
+        schema = model.call_args.args[2]
+        self.assertEqual(schema["properties"]["covered_facts"]["maxItems"], 2)
+
     def test_metadata_review_does_not_require_another_complete_article(self):
         metadata = {key: self.report[key] for key in ("title", "summary", "headings")}
         with patch.object(auto_news, "request_model", return_value={"supported": True, "issues": []}) as model:

@@ -275,7 +275,7 @@ Each paragraph must contain 35 to 50 substantive words and complete sentences. U
     data = {"source_headline": item["title"], "draft_headline": report["title"], "paragraphs_to_rewrite": changes, "metadata_to_rewrite": metadata}
     if metadata:
         data["headline_evidence"] = item["facts"]
-    replacement = request_model([{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps(data, ensure_ascii=False)}], min(2400, 350 + 220 * len(changes)), object_schema(properties))
+    replacement = request_model([{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps(data, ensure_ascii=False)}], min(3200, 600 + 300 * len(changes)), object_schema(properties))
     if not isinstance(replacement, dict) or set(replacement) != set(properties):
         raise ValueError("Targeted originality edit returned unexpected fields")
     revised = {**report, "paragraphs": [*report["paragraphs"]]}
@@ -319,7 +319,7 @@ def repair_paragraph_evidence(report: dict, item: dict, citations) -> tuple[dict
 Each flagged paragraph contains a number or unit absent from its cited evidence. Use only the explicitly numbered source facts. Choose the facts that actually support the corrected text, preserving the original subject, period, unit, attribution and conditions. Do not transfer a figure between companies or between economic indicators.
 Remove an unsupported figure or maturity rather than guessing it. Do not keep an error merely because it appears in the old paragraph. Each replacement must contain 35 to 50 original words, complete sentences and the correct source fact IDs. No URLs, publication branding or invented context. Return only JSON following the schema."""
     data = {"paragraphs_to_correct": changes, "source_facts": [{"id": index, "text": fact} for index, fact in enumerate(facts)]}
-    response = request_model([{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps(data, ensure_ascii=False)}], min(2400, 250 + 220 * len(changes)), schema)
+    response = request_model([{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps(data, ensure_ascii=False)}], min(3200, 600 + 350 * len(changes)), schema)
     replacement = response.get("paragraphs") if isinstance(response, dict) else None
     if not isinstance(replacement, dict) or set(replacement) != {str(index) for index in changes}:
         raise ValueError("Evidence correction omitted a requested paragraph")
@@ -350,7 +350,7 @@ Return JSON with "supported": true or false, "issues": a list of specific unsupp
     schema = object_schema({
         "supported": {"type": "boolean"},
         "issues": {"type": "array", "maxItems": 4, "items": {"type": "string", "maxLength": 300}},
-        "covered_facts": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": len(item["facts"]) - 1}},
+        "covered_facts": {"type": "array", "maxItems": len(item["facts"]), "items": {"type": "integer", "minimum": 0, "maximum": len(item["facts"]) - 1}},
     })
     review = request_model(messages, 700, schema)
     covered = review.get("covered_facts", []) if isinstance(review, dict) else []
