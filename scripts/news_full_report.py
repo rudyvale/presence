@@ -77,7 +77,7 @@ Do not infer investor motives, rotations into other asset classes or qualitative
         data["prior_editorial_review"] = item["editorial_constraints"]
     messages = [{"role": "system", "content": prompt}, {"role": "user", "content": json.dumps(data, ensure_ascii=False)}]
     last_error = None
-    for attempt in range(2):
+    for attempt in range(3):
         stage = "section generation"
         response = None
         try:
@@ -92,12 +92,13 @@ Do not infer investor motives, rotations into other asset classes or qualitative
             piece, citations = runtime.repair_paragraph_evidence(piece, item, citations)
             stage = "originality and style correction"
             piece = runtime.polish_originality(piece, item, citations)
+            stage = "paragraph length correction"
+            piece = runtime.repair_paragraph_lengths(piece, item, citations)
             cited = {index for indices in citations for index in indices}
             if len(cited & set(used)) < math.ceil(len(used) * 0.9):
                 raise ValueError(f"Section omitted assigned evidence IDs {sorted(set(used) - cited)}")
-            pattern = runtime.paragraph_schema(item)["properties"]["text"]["pattern"]
             for paragraph, indices in zip(piece["paragraphs"], citations):
-                if not re.fullmatch(pattern, paragraph):
+                if not profile["paragraph_minimum"] <= len(paragraph.split()) <= profile["paragraph_maximum"] or not re.search(r'[.!?][”’\"]?$', paragraph):
                     raise ValueError("A corrected paragraph no longer meets its word range or sentence requirements")
                 fact_ids(indices, len(item["facts"]))
                 validate_numbers(paragraph, " ".join(item["facts"][index] for index in indices))
@@ -136,8 +137,8 @@ def prepare_full_report(item: dict) -> dict:
     plan = plan_article(item, profile)
     metadata = {key: plan[key] for key in ("title", "summary", "headings")}
     paragraphs, citations = [], []
-    for start in range(0, len(plan["paragraphs"]), 4):
-        piece, evidence = write_piece(item, metadata, plan["paragraphs"][start:start + 4], paragraphs[-1] if paragraphs else "", profile)
+    for start in range(0, len(plan["paragraphs"]), 2):
+        piece, evidence = write_piece(item, metadata, plan["paragraphs"][start:start + 2], paragraphs[-1] if paragraphs else "", profile)
         metadata = {key: piece[key] for key in metadata}
         paragraphs.extend(piece["paragraphs"])
         citations.extend(evidence)

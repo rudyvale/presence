@@ -32,13 +32,27 @@ class FullNewsTests(unittest.TestCase):
         for words in (904, 1000, 1040):
             news_quality.validate_completeness({"paragraphs": [" ".join(["word"] * words)]}, 904, 2)
 
-    def test_schema_cannot_generate_paragraphs_too_short_for_the_complete_article(self):
+    def test_word_limits_are_checked_without_an_excessive_generation_grammar(self):
         item = {**self.item, "source": {**self.item["source"], "word_count": 904}}
-        pattern = auto_news.paragraph_schema(item)["properties"]["text"]["pattern"]
+        self.assertNotIn("pattern", auto_news.paragraph_schema(item)["properties"]["text"])
         for words in (48, 51, 54):
-            self.assertIsNotNone(re.fullmatch(pattern, " ".join(["word"] * words) + "."))
+            report = {"paragraphs": [" ".join(["word"] * words) + "."]}
+            with patch.object(auto_news, "request_model") as model:
+                self.assertEqual(auto_news.repair_paragraph_lengths(report, item, [[0]]), report)
+            model.assert_not_called()
         for words in (35, 47, 55):
-            self.assertIsNone(re.fullmatch(pattern, " ".join(["word"] * words) + "."))
+            corrected = " ".join(["word"] * 51) + "."
+            with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": corrected}}) as model, patch.object(auto_news, "notice"):
+                result = auto_news.repair_paragraph_lengths({"paragraphs": [" ".join(["word"] * words) + "."]}, item, [[0]])
+            self.assertEqual(result["paragraphs"], [corrected])
+            self.assertEqual(model.call_count, 1)
+
+    def test_a_length_editor_cannot_pass_a_still_short_paragraph(self):
+        item = {**self.item, "source": {**self.item["source"], "word_count": 904}}
+        short = " ".join(["word"] * 35) + "."
+        with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": short}}) as model, patch.object(auto_news, "notice"), self.assertRaisesRegex(ValueError, "word counts remain"):
+            auto_news.repair_paragraph_lengths({"paragraphs": [short]}, item, [[0]])
+        self.assertEqual(model.call_count, 2)
 
     def test_long_features_are_skipped_instead_of_becoming_short_summaries(self):
         with self.assertRaisesRegex(ValueError, "must not be condensed"):
@@ -115,16 +129,17 @@ class FullNewsTests(unittest.TestCase):
         plan = self.plan()
         plan["paragraphs"] = [{"facts": [index]} for index in range(5)] + [{"facts": [5, 6, 7]}]
         ending = "The introduction remains phased rather than open to everyone. Partner banks will contact their institutional customers about available services. No public date for general registration, adoption forecast or promise of different fees accompanies the update at this stage."
-        first = {"paragraphs": [{"text": paragraph, "facts": [index]} for index, paragraph in enumerate(self.report["paragraphs"][:4])]}
+        first = {"paragraphs": [{"text": paragraph, "facts": [index]} for index, paragraph in enumerate(self.report["paragraphs"][:2])]}
+        middle = {"paragraphs": [{"text": paragraph, "facts": [index]} for index, paragraph in enumerate(self.report["paragraphs"][2:4], 2)]}
         last = {"paragraphs": [{"text": self.report["paragraphs"][4], "facts": [4]}, {"text": ending, "facts": [5, 6, 7]}]}
-        responses = [plan, first, {"supported": True, "issues": [], "covered_facts": [0, 1, 2, 3]}, last, {"supported": True, "issues": [], "covered_facts": [4, 5, 6, 7]}, {"supported": True, "issues": []}]
+        responses = [plan, first, {"supported": True, "issues": [], "covered_facts": [0, 1]}, middle, {"supported": True, "issues": [], "covered_facts": [2, 3]}, last, {"supported": True, "issues": [], "covered_facts": [4, 5, 6, 7]}, {"supported": True, "issues": []}]
         with patch.object(auto_news, "request_model", side_effect=responses) as model, patch.object(auto_news, "notice"):
             report = news_full_report.prepare_full_report(self.item)
         self.assertEqual(len(report["paragraphs"]), 6)
         self.assertEqual(report["paragraphs"][:5], self.report["paragraphs"][:5])
         self.assertEqual(report["paragraphs"][-1], ending)
         news_quality.validate_completeness(report, self.item["source"]["word_count"], 2)
-        self.assertEqual(model.call_count, 6)
+        self.assertEqual(model.call_count, 8)
         self.assertEqual(set(report), {"title", "summary", "headings", "paragraphs"})
 
     def test_publisher_independently_rejects_a_shortened_current_policy_artifact(self):

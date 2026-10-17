@@ -327,6 +327,16 @@ class AutomatedNewsTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "truncated"):
                 auto_news.generate_local_response([])
 
+    def test_incomplete_json_is_rejected_even_when_runtime_reports_a_normal_stop(self):
+        response = MagicMock()
+        response.read.return_value = json.dumps({"message": {"content": '{"paragraphs":[{"text":"unfinished'}, "done_reason": "stop", "eval_count": 53}).encode()
+        response.__enter__.return_value = response
+        with patch.object(auto_news, "build_opener") as opener:
+            opener.return_value.open.return_value = response
+            with self.assertRaisesRegex(ValueError, "incomplete JSON.*generated_tokens=53") as error:
+                auto_news.generate_local_response([])
+        self.assertNotIn("unfinished", str(error.exception))
+
     def test_expired_budget_defers_work_before_source_or_model_calls(self):
         with patch.object(auto_news, "PROCESSING_DEADLINE", 1), patch.object(auto_news, "research_item") as research:
             with self.assertRaises(auto_news.EditorialBudgetExceeded):
