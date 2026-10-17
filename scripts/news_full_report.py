@@ -138,7 +138,12 @@ def prepare_full_report(item: dict) -> dict:
     metadata = {key: plan[key] for key in ("title", "summary", "headings")}
     paragraphs, citations = [], []
     for start in range(0, len(plan["paragraphs"]), 2):
-        piece, evidence = write_piece(item, metadata, plan["paragraphs"][start:start + 2], paragraphs[-1] if paragraphs else "", profile)
+        assignments = plan["paragraphs"][start:start + 2]
+        try:
+            piece, evidence = write_piece(item, metadata, assignments, paragraphs[-1] if paragraphs else "", profile)
+        except (ValueError, OSError) as error:
+            assigned_words = [sum(len(item["facts"][fact].split()) for fact in assignment["facts"]) for assignment in assignments]
+            raise ValueError(f"{len(paragraphs)}/{profile['paragraphs']} paragraphs verified; failed section evidence sizes {assigned_words}: {error}") from None
         metadata = {key: piece[key] for key in metadata}
         paragraphs.extend(piece["paragraphs"])
         citations.extend(evidence)

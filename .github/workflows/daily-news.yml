@@ -102,6 +102,15 @@ jobs:
       - name: Start local AI
         id: model
         run: python scripts/start_news_model.py
+      - name: Verify bounded prose generation
+        timeout-minutes: 3
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, 'scripts')
+          from auto_news import check_word_arrays
+          check_word_arrays()
+          PY
       - name: Research and validate one independent report
         run: python scripts/news_jobs.py worker --directory "$RUNNER_TEMP/presence-report"
       - name: Preserve validated report

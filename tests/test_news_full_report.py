@@ -42,17 +42,25 @@ class FullNewsTests(unittest.TestCase):
             model.assert_not_called()
         for words in (35, 47, 55):
             corrected = " ".join(["word"] * 51) + "."
-            with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": corrected}}) as model, patch.object(auto_news, "notice"):
+            with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": corrected.split()}}) as model, patch.object(auto_news, "notice"):
                 result = auto_news.repair_paragraph_lengths({"paragraphs": [" ".join(["word"] * words) + "."]}, item, [[0]])
             self.assertEqual(result["paragraphs"], [corrected])
             self.assertEqual(model.call_count, 1)
+            field = model.call_args.args[2]["properties"]["paragraphs"]["properties"]["0"]
+            self.assertEqual((field["minItems"], field["maxItems"]), (51, 51))
 
     def test_a_length_editor_cannot_pass_a_still_short_paragraph(self):
         item = {**self.item, "source": {**self.item["source"], "word_count": 904}}
         short = " ".join(["word"] * 35) + "."
-        with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": short}}) as model, patch.object(auto_news, "notice"), self.assertRaisesRegex(ValueError, "word counts remain"):
+        with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": short.split()}}) as model, patch.object(auto_news, "notice"), self.assertRaisesRegex(ValueError, "exactly one word"):
             auto_news.repair_paragraph_lengths({"paragraphs": [short]}, item, [[0]])
-        self.assertEqual(model.call_count, 2)
+        self.assertEqual(model.call_count, 1)
+
+    def test_word_arrays_cannot_hide_short_text_inside_multiword_items(self):
+        item = {**self.item, "source": {**self.item["source"], "word_count": 904}}
+        tokens = ["one word"] * 51
+        with patch.object(auto_news, "request_model", return_value={"paragraphs": {"0": tokens}}), self.assertRaisesRegex(ValueError, "exactly one word"):
+            auto_news.repair_paragraph_lengths({"paragraphs": ["Short original text."]}, item, [[0]])
 
     def test_long_features_are_skipped_instead_of_becoming_short_summaries(self):
         with self.assertRaisesRegex(ValueError, "must not be condensed"):
