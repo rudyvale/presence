@@ -8,7 +8,7 @@ import re
 import time
 
 import auto_news
-from news_quality import quantities, validate_numbers, validate_report_structure
+from news_quality import quantities, validate_completeness, validate_numbers, validate_report_structure
 from news_source import canonical_source_url
 
 
@@ -30,11 +30,13 @@ def source_input(item: dict) -> dict:
 def make_plan(items: list[dict], history: dict, now: datetime) -> dict:
     jobs = []
     for index, record in enumerate(history["items"]):
-        if record.get("format_version", 1) >= auto_news.FORMAT_VERSION:
+        if not auto_news.needs_repair(record):
             continue
         snapshot = record.get("source_snapshot", {})
         source = {"url": record["source_url"], "title": snapshot.get("headline", "News update"), "description": "", "published": snapshot.get("published", record["date"] + "T12:00:00+00:00")}
-        jobs.append({"key": f"repair-{index}", "kind": "repair", "record_route": record["article_url"], "date": record["date"], "sources": [source]})
+        if record.get("editorial_revision"):
+            source["editorial_constraints"] = record["editorial_revision"]
+        jobs.append({"key": f"repair-{index}", "kind": "repair", "record_route": record["article_url"], "date": record["date"], "previous_body_sha256": record.get("body_sha256"), "sources": [source]})
     today = now.astimezone(auto_news.MOSCOW).date().isoformat()
     count = sum(record["date"] == today for record in history["items"])
     deficit = max(0, min(auto_news.DAILY_LIMIT, auto_news.due_count(now)) - count)
@@ -72,6 +74,7 @@ def worker(destination: Path) -> None:
                 "version": 2, "job_key": job["key"], "kind": job["kind"], "record_route": job["record_route"], "date": job["date"], "report": report,
                 "editorial_version": auto_news.FORMAT_VERSION,
                 "item": {
+                    "length_policy": researched.get("length_policy", 0),
                     "url": item["url"], "title": item["title"], "published": item["published"].isoformat(),
                     "fact_count": len(facts), "fact_hashes": [sha256(fact.encode()).hexdigest() for fact in facts],
                     "source": {key: researched["source"][key] for key in ("word_count", "sha256", "extractor", "reference_urls")},
@@ -107,6 +110,11 @@ def validate_receipt(receipt: dict, job: dict) -> None:
     if item["source"]["word_count"] < 180 or not re.fullmatch(r"[a-f0-9]{64}", item["source"]["sha256"]):
         raise ValueError("A full source page was not verified")
     text = validate_report_structure(receipt["report"])
+    policy = item.get("length_policy", 0)
+    if type(policy) is not int or policy not in {0, auto_news.LENGTH_POLICY}:
+        raise ValueError("Unsupported report length policy")
+    if policy == auto_news.LENGTH_POLICY:
+        validate_completeness(receipt["report"], item["source"]["word_count"])
     validate_numbers(text, text)
     if quantities(text) - {tuple(value) for value in item["source"]["quantities"]}:
         raise ValueError("Report quantities differ from the verified source")
@@ -145,7 +153,10 @@ def apply_reports(directory: Path) -> None:
             if record is None:
                 failures.append(key + ": original report no longer exists")
                 continue
-            if record.get("format_version", 1) >= auto_news.FORMAT_VERSION:
+            if not auto_news.needs_repair(record):
+                continue
+            if job.get("previous_body_sha256") != record.get("body_sha256"):
+                failures.append(key + ": article changed after the repair was planned")
                 continue
         else:
             count = sum(entry["date"] == job["date"] for entry in history["items"])

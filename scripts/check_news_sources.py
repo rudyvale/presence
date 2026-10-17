@@ -20,7 +20,7 @@ def verify_source(record: dict, story: dict, document: str, source: dict) -> Non
         "paragraphs": [node.get_text(" ", strip=True) for node in body.select(":scope > p")],
         "headings": [node.get_text(" ", strip=True) for node in body.select(":scope > h2")],
     }
-    validate_report(report, {"title": record["source_snapshot"]["headline"], "source": source})
+    validate_report(report, {"title": record["source_snapshot"]["headline"], "source": source, "length_policy": record.get("length_policy", 0)})
     if sha256(body_text(document).encode()).hexdigest() != record["body_sha256"]:
         raise ValueError("Published body differs from its editorial audit")
     if len(" ".join(report["paragraphs"]).split()) != record["word_count"]:

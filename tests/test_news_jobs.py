@@ -36,6 +36,25 @@ class NewsJobTests(unittest.TestCase):
         first, second = plan["jobs"]
         self.assertFalse({item["url"] for item in first["sources"]} & {item["url"] for item in second["sources"]})
 
+    def test_only_requested_expansion_is_planned_and_does_not_consume_daily_slots(self):
+        record = {"source_url": self.item["url"], "article_url": "/articles/2026-10-13_example/", "date": "2026-10-13", "format_version": auto_news.FORMAT_VERSION, "body_sha256": "a" * 64}
+        requested = {**record, "requested_length_policy": 1}
+        plan = news_jobs.make_plan([self.item], {"items": [requested, {**record, "article_url": "/articles/2026-10-13_other/"}]}, self.now)
+        repairs = [job for job in plan["jobs"] if job["kind"] == "repair"]
+        self.assertEqual(len(repairs), 1)
+        self.assertEqual(repairs[0]["record_route"], record["article_url"])
+        self.assertEqual(repairs[0]["previous_body_sha256"], record["body_sha256"])
+        self.assertEqual(plan["new_due"], 2)
+        self.assertFalse(auto_news.needs_repair({**requested, "length_policy": 1}))
+
+    def test_current_artifact_cannot_downgrade_to_short_copy_after_worker_validation(self):
+        receipt = self.receipt()
+        receipt["item"]["length_policy"] = 1
+        receipt["item"]["source"]["word_count"] = 904
+        receipt["sha256"] = news_jobs.digest({key: value for key, value in receipt.items() if key != "sha256"})
+        with self.assertRaisesRegex(ValueError, "too compressed"):
+            news_jobs.validate_receipt(receipt, self.job())
+
     def test_missing_sources_remain_an_explicit_failed_job_instead_of_false_success(self):
         plan = news_jobs.make_plan([], {"items": []}, self.now)
         self.assertEqual(plan["new_due"], 2)

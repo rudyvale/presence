@@ -549,41 +549,7 @@ textarea:focus-visible {
 }
 
 .newsroom-hero__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 70px;
-  align-items: end;
-}
-
-.newsroom-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--line);
-  gap: 1px;
-}
-
-.newsroom-stats div {
-  display: flex;
-  min-height: 116px;
-  flex-direction: column-reverse;
-  justify-content: space-between;
-  padding: 16px;
-  background: var(--bg-elev);
-}
-
-.newsroom-stats dt {
-  color: var(--muted);
-  font-size: 0.72rem;
-}
-
-.newsroom-stats dd {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1;
+  display: block;
 }
 
 .newsroom__updated {
@@ -1646,16 +1612,6 @@ textarea:focus-visible {
 
   .news-card {
     min-height: 240px;
-  }
-
-  .newsroom-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .newsroom-stats div {
-    min-height: 76px;
-    flex-direction: row;
-    align-items: center;
   }
 
   .news-filter {

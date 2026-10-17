@@ -74,6 +74,17 @@ class AutomatedNewsTests(unittest.TestCase):
     def test_complete_original_report_is_accepted(self):
         auto_news.validate_brief(self.report, self.researched)
 
+    def test_long_source_cannot_be_reduced_to_a_short_brief_under_current_policy(self):
+        item = {**self.researched, "source": {**self.researched["source"], "word_count": 904}, "length_policy": 1}
+        with self.assertRaisesRegex(ValueError, "too compressed"):
+            auto_news.validate_brief(self.report, item)
+        auto_news.validate_brief(self.report, self.researched)
+        with patch.object(auto_news, "request_model", return_value={}) as model:
+            auto_news.generate_brief(item)
+            messages, _, schema = model.call_args.args
+            self.assertEqual(schema["properties"]["paragraphs"]["minItems"], 12)
+            self.assertEqual(json.loads(messages[1]["content"])["word_target"], "420 to 600")
+
     def test_private_factual_notes_can_preserve_exact_technical_source_terms(self):
         news_quality.validate_facts(self.facts, self.researched["source"]["text"])
 

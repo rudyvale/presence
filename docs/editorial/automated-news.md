@@ -9,7 +9,7 @@ Long sources use a bounded selection of complete passages, up to 1,200 words, in
 ## Required output
 
 - A distinct, accurate headline and a concise summary.
-- Eight substantive paragraphs, accepted at 220–520 words; the writing target is 280–400 words.
+- Source-dependent length: 8 paragraphs (280–400 words) for sources under 450 words, 10 (350–500) for 450–749 words, and 12 (420–600) for sources of 750 words or more. New reports cannot fall below the corresponding minimum. Earlier reviewed copy retains its original policy until a specific expansion is requested.
 - Two relevant section headings.
 - An original 1600×900 Presence illustration used in the news card and article, with alternative text and an illustration credit.
 - Correct byline, original publication date, reading time, metadata, RSS and sitemap entries.
@@ -20,7 +20,7 @@ Originality checks compare source prose paragraphs individually. Table cells, ch
 
 Every paragraph identifies its private evidence indices. Its quantities must occur in that evidence, and the draft must cover at least three quarters of the selected excerpts. A separate model call checks the draft against those verbatim excerpts, including attribution of figures to the correct company and comparisons across different periods. The review rejects unrelated recommendations, promotional conclusions and unsupported advice. A rejected draft gets one correction attempt with the previous draft and specific review issues. A source that cannot support a complete, validated report is skipped in favor of another candidate. This automated review can still miss errors.
 
-All three model stages use JSON schemas passed to the generator. The writer schema requires eight paragraph objects, two headings and evidence indices inside each paragraph. The software separates private evidence indices from the final article copy before importing it.
+All three model stages use JSON schemas passed to the generator. The writer schema requires the source-dependent number of paragraph objects, two headings and evidence indices inside each paragraph. The software separates private evidence indices from the final article copy before importing it.
 
 Repeated headlines, copied prose and source-branding errors receive a targeted edit of only the affected fields. The complete report then goes through the same numeric, evidence, originality and grounding checks again. Each hosted worker warms up the model with a short structured readiness response before researching a source; article format and content are checked on the actual report.
 
@@ -36,7 +36,7 @@ Workers check out the same editorial code revision as the planner. Artifacts ide
 
 Normal runs wait for active editorial work. A manual workflow run can enable `restart`, or a maintainer can push a commit containing `[restart-news]`, to cancel an obsolete run after a processing fix. Reports not yet committed are researched again; only published records consume the daily quota.
 
-Canonical source URLs prevent duplicate publication. Sources older than 48 hours and sponsored/press-release entries are excluded. Repairs to legacy teaser reports preserve their publication dates and URLs and do not consume new-publication slots.
+Canonical source URLs prevent duplicate publication. Sources older than 48 hours and sponsored/press-release entries are excluded. Repairs and explicitly requested expansions preserve their publication dates and URLs and do not consume new-publication slots. Set requested_length_policy to 1 on a selected editorial record to request expansion; the publisher records the completed length_policy and skips a repair if the article changed after planning.
 
 If a due publication or repair cannot be completed, the workflow reports a failure with the reason. Independently validated work may still be committed and deployed, while rejected content is retained for a later repair attempt. A green run no longer means that only RSS access and HTML status codes were checked.
 

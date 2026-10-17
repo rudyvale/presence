@@ -303,7 +303,8 @@
       "word_count": 275,
       "image": "/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-95e1eb23.webp",
       "body_sha256": "ec9652dbbcd0679be107763c25cf84164c9edca9a561f63780a0943b34ccd8c8",
-      "editorial_revision": "Removed trading advice and uncertain CPI/Fed forecast attributions; retained the reported liquidation, open-interest, price-level and ETF-flow evidence with conditional risk framing."
+      "editorial_revision": "Removed trading advice and uncertain CPI/Fed forecast attributions; retained the reported liquidation, open-interest, price-level and ETF-flow evidence with conditional risk framing.",
+      "requested_length_policy": 1
     },
     {
       "source_url": "https://crypto.news/ai-agents-made-138-million-crypto-payments-what-did-they-buy/",

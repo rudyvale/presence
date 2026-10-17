@@ -68,6 +68,10 @@ def main() -> None:
             check_route("/", 200)
             news = check_route("/news/", 200).decode("utf-8")
             listing = BeautifulSoup(news, "html.parser")
+            for section in ("news", "crypto", "technology", "companies"):
+                document = listing if section == "news" else BeautifulSoup(check_route(f"/{section}/", 200), "html.parser")
+                if document.select_one(".newsroom-stats"):
+                    raise RuntimeError(f"/{section}/ still contains the removed category counter")
             for route in requested:
                 card = next((card for card in listing.select(".news-card") if card.select_one(f'a[href="{route}"]')), None)
                 if card is None:

@@ -1,0 +1,35 @@
+name: Hosting health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'CNAME'
+      - '_config.yml'
+      - 'scripts/check_hosting.py'
+      - '.github/workflows/hosting-health.yml'
+
+permissions:
+  contents: read
+  pages: read
+
+concurrency:
+  group: presence-hosting-health
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Check public DNS, trusted TLS and page content
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/check_hosting.py
