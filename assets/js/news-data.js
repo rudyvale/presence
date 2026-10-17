@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Dogecoin Price Drops Below Analyst’s Support Level Despite Whale Buys",
+    "summary": "Dogecoin's price fell below $0.081, despite whale purchases of 600 million DOGE, as analysts identify potential recovery signals.",
+    "author": "Presence Editorial",
+    "date": "2026-10-17",
+    "readingTime": "2 min read",
+    "url": "/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/illustration-9604a9d2.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Tesla Crypto Futures Drop After Roadster Presentation",
     "summary": "Tesla-linked perpetual futures on Hyperliquid fell to $357 after climbing toward $380 following Elon Musk’s demonstration of a thruster-equipped Roadster.",
     "author": "Presence Editorial",

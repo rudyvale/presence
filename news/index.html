@@ -109,7 +109,7 @@
       </div>
       <dl class="newsroom-stats" aria-label="Newsroom sections">
         <template data-presence-slot="NEWS-STATS:START"></template>
-        <div><dt>Crypto</dt><dd data-news-count="crypto">8</dd></div>
+        <div><dt>Crypto</dt><dd data-news-count="crypto">9</dd></div>
         <div><dt>Technology</dt><dd data-news-count="technology">0</dd></div>
         <div><dt>Companies</dt><dd data-news-count="companies">0</dd></div>
         <template data-presence-slot="NEWS-STATS:END"></template>
@@ -126,8 +126,8 @@
 
       <div class="news-filters" aria-label="Filter news by topic">
         <template data-presence-slot="NEWS-FILTERS:START"></template>
-        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">8</span></button>
-        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">8</span></button>
+        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">9</span></button>
+        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">9</span></button>
         <button class="news-filter" id="technology" type="button" data-news-filter="technology" aria-pressed="false">Technology <span data-news-count="technology">0</span></button>
         <button class="news-filter" id="companies" type="button" data-news-filter="companies" aria-pressed="false">Companies <span data-news-count="companies">0</span></button>
         <template data-presence-slot="NEWS-FILTERS:END"></template>
@@ -135,12 +135,29 @@
 
       <div class="news-search">
         <label for="news-search">Search headlines and authors</label>
-        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 8 news stories">
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 9 news stories">
         <span data-news-results aria-live="polite"></span>
       </div>
 
       <div class="news-grid" id="news-grid">
         <template data-presence-slot="NEWS-CARDS:START"></template>
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/" aria-label="Read Dogecoin Price Drops Below Analyst’s Support Level Despite Whale Buys">
+            <img src="/assets/img/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/illustration-9604a9d2.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-17">October 17, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/">Dogecoin Price Drops Below Analyst’s Support Level Despite Whale Buys</a></h2>
+          <p class="news-card__summary">Dogecoin&#x27;s price fell below $0.081, despite whale purchases of 600 million DOGE, as analysts identify potential recovery signals.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>2 min read</span>
+          </div>
+        </article>
+
         <article class="news-card news-card--crypto news-card--with-image">
           <a class="news-card__media" href="/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/" aria-label="Read Tesla Crypto Futures Drop After Roadster Presentation">
             <img src="/assets/img/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/illustration-f5255d9a.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
@@ -319,7 +336,7 @@
 </footer>
 
 <script src="/assets/js/site.js?v=9aed9a7cf00b0681"></script>
-<script src="/assets/js/news-data.js?v=3ede677dd7a3dea2"></script>
+<script src="/assets/js/news-data.js?v=3926db4945d6763d"></script>
 <script src="/assets/js/news.js?v=78d46693dcdcf2e6"></script>
 </body>
 </html>
