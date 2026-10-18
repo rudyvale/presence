@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Technology — PRESENCE</title>
+<meta name="description" content="Essays, interviews and analysis on AI, software, science and the systems changing how we live and work.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=6b18cb5c4169e6e4">
+<link rel="stylesheet" href="/assets/css/site.css?v=7ba47b82701096ad">
+<template data-presence-slot="SEO:START"></template>
+<link rel="canonical" href="https://presence.news/technology/">
+<link rel="alternate" type="application/rss+xml" title="PRESENCE RSS" href="https://presence.news/feed.xml">
+<meta name="robots" content="max-image-preview:large">
+<meta property="og:url" content="https://presence.news/technology/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="500">
+<meta property="og:image:alt" content="Presence — crypto, technology, and the people behind it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
+<meta name="twitter:image:alt" content="Presence — crypto, technology, and the people behind it.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="Technology — PRESENCE">
+<meta property="og:description" content="Essays, interviews and analysis on AI, software, science and the systems changing how we live and work.">
+<meta name="twitter:title" content="Technology — PRESENCE">
+<meta name="twitter:description" content="Essays, interviews and analysis on AI, software, science and the systems changing how we live and work.">
+<meta name="twitter:site" content="@PresenceWeb3">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-icon.png",
+      "sameAs": [
+        "https://t.me/presencemedia",
+        "https://x.com/PresenceWeb3"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://presence.news/#website",
+      "url": "https://presence.news/",
+      "name": "PRESENCE",
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://presence.news/technology/#webpage",
+      "url": "https://presence.news/technology/",
+      "name": "Technology — PRESENCE",
+      "description": "Essays, interviews and analysis on AI, software, science and the systems changing how we live and work.",
+      "isPartOf": {
+        "@id": "https://presence.news/#website"
+      },
+      "about": {
+        "@id": "https://presence.news/#organization"
+      }
+    }
+  ]
+}
+</script>
+<template data-presence-slot="SEO:END"></template>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/crypto/">Crypto</a>
+      <a href="/technology/">Technology</a>
+      <a href="/companies/">Companies</a>
+      <a class="nav-search-link" href="/#search">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" data-listing="articles" data-category="technology">
+  <section class="page-hero newsroom-hero">
+    <div class="wrap newsroom-hero__inner">
+      <div>
+        <span class="eyebrow">Essays and interviews</span>
+        <h1>Ideas shaping technology.</h1>
+        <p>Essays, interviews and analysis on AI, software, science and the systems changing how we live and work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section newsroom" aria-labelledby="news-heading">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 id="news-heading">Technology articles</h2>
+        <span class="newsroom__updated">Updated as stories publish</span>
+      </div>
+
+      <div class="news-filters" aria-label="Article sections">
+        <template data-presence-slot="NEWS-FILTERS:START"></template>
+        <a class="news-filter" href="/crypto/">Crypto <span data-news-count="crypto">43</span></a>
+        <a class="news-filter is-active" href="/technology/" aria-current="page">Technology <span data-news-count="technology">49</span></a>
+        <a class="news-filter" href="/companies/">Companies <span data-news-count="companies">42</span></a>
+        <template data-presence-slot="NEWS-FILTERS:END"></template>
+      </div>
+
+      <div class="news-search">
+        <label for="news-search">Search headlines and authors</label>
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 49 articles">
+        <span data-news-results aria-live="polite"></span>
+      </div>
+
+      <div class="news-grid" id="news-grid">
+        <template data-presence-slot="NEWS-CARDS:START"></template>
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2026-09-09">September 9, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-09-09_product-thinking/">Developing the Judgment Behind Products People Love</a></h2>
+          <p class="news-card__summary">Product thinking is the skill of knowing what makes a product useful — and loved — by people. As with all skills, it can be nurtured and developed.</p>
+          <div class="news-card__foot">
+            <span>Julie Zhuo</span>
+            <span>10 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-30">August 30, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-30_what-synthetic-embryos-can-do/">Synthetic Embryos: Scientific Promise and Practical Limits</a></h2>
+          <p class="news-card__summary">Caltech Professor Magda Zernicka-Goetz explains recent progress in building &#x27;synthetic&#x27; embryos from stem cells and their applications.</p>
+          <div class="news-card__foot">
+            <span>Magda Zernicka-Goetz</span>
+            <span>12 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-18">August 18, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-18_how-to-build-gpt-3-for-science/">What a GPT-3 for Scientific Research Would Require</a></h2>
+          <p class="news-card__summary">A GPT-3-like AI model for science would accelerate innovation and improve reproducibility. Creating it will require us to unlock research.</p>
+          <div class="news-card__foot">
+            <span>Josh Nicholson</span>
+            <span>11 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-17">August 17, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-17_cycle-of-tech-panics-build-for-tomorrow/">Why Technology Panics Repeat and How to Move Past Them</a></h2>
+          <p class="news-card__summary">Tech fears tend to follow a 4-step cycle fueled by politicians, scientists, and media, according to Jason Feifer&#x27;s new book, Build For Tomorrow.</p>
+          <div class="news-card__foot">
+            <span>Jason Feifer</span>
+            <span>6 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-11">August 11, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-11_headless-commerce-change-how-we-buy/">Commerce Beyond the Storefront: The Headless Approach</a></h2>
+          <p class="news-card__summary">Commercetools CEO Dirk Hoerig explains headless commerce and microservices, and why we&#x27;ll see innovation in AR, in-car, and B2B commerce.</p>
+          <div class="news-card__foot">
+            <span>Dirk Hoerig</span>
+            <span>13 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-09">August 9, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-09_developers-side-projects/">Small Bets, New Skills: The Appeal of Developer Side Projects</a></h2>
+          <p class="news-card__summary">From unleashing creativity to mitigating risk, Ben Stokes of Tiny Projects shares some of the main reasons why developers are building so many side projects.</p>
+          <div class="news-card__foot">
+            <span>Ben Stokes</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-04">August 4, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-04_applications-ai-models-of-the-brain-aka-neuroai/">Modeling the Brain to Predict What People See and Hear</a></h2>
+          <p class="news-card__summary">AI-created models of the brain will enhance art, advertising, and health by predicting how our minds will respond to images and sounds.</p>
+          <div class="news-card__foot">
+            <span>Patrick Mineault</span>
+            <span>18 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-03">August 3, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-03_will-gpt-3-ai-change-seo/">AI-Generated Copy and the Changing Work of SEO</a></h2>
+          <p class="news-card__summary">GPT-3 is a neural network machine learning model used to generate text. Chris Tweten explores how AI copywriters compare to humans and their potential to change SEO.</p>
+          <div class="news-card__foot">
+            <span>Chris Tweten</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-08-02">August 2, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-08-02_planetscale-cloud-prem-engineering-management/">Sam Lambert on Cloud-Prem Databases and Engineering Leadership</a></h2>
+          <p class="news-card__summary">Sam Lambert is CEO of PlanetScale, a MySQL-compatiable serverless database provider. Prior to joining PlanetScale (then as chief product officer), he was VP of engineering at GitHub. In this interview, Lambert…</p>
+          <div class="news-card__foot">
+            <span>Sam Lambert</span>
+            <span>15 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-07-21">July 21, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-07-21_the-rise-of-domain-experts-in-deep-learning/">How Deep Learning Became Accessible to Domain Specialists</a></h2>
+          <p class="news-card__summary">Jeremy Howard of fast.ai discusses the impacts of deep learning and AI now being accessible to people without PhDs in those spaces.</p>
+          <div class="news-card__foot">
+            <span>Jeremy Howard</span>
+            <span>17 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-06-27">June 27, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-06-27_the-year-in-ai-so-far-massive-models-and-how-to-use-them/">AI in Early 2022: Bigger Models and Practical Applications</a></h2>
+          <p class="news-card__summary">A recap of artificial intelligence and machine learning coverage so far in 2022, as well as the biggest advances in AI/ML research.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>3 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-06-24">June 24, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-06-24_forget-open-source-algorithms-focus-on-experiments-instead/">Recommendation Systems Need Experiments, Not Just Open Code</a></h2>
+          <p class="news-card__summary">What would meaningful transparency mean for social media platforms? The author of Instagram&#x27;s original ranking algorithm lays out a vision.</p>
+          <div class="news-card__foot">
+            <span>Thomas Dimson</span>
+            <span>14 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-06-22">June 22, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-06-22_koller-insitro-drug-discovery-ai-alphafold/">Daphne Koller on the Ingredients for Another AlphaFold Breakthrough</a></h2>
+          <p class="news-card__summary">AI expert Daphne Koller of insitro identifies what we&#x27;ll need for future AlphaFold-level successes and explains why some fail the academia-to-biotech transition.</p>
+          <div class="news-card__foot">
+            <span>Daphne Koller</span>
+            <span>14 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-06-09">June 9, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-06-09_securing-the-software-supply-chain/">Protecting the Dependencies Behind Modern Software</a></h2>
+          <p class="news-card__summary">Chainguard&#x27;s Kim Lewandowski explains why secure software supply chains are all the rage right now, and why open source is a double-edged security sword.</p>
+          <div class="news-card__foot">
+            <span>Kim Lewandowski</span>
+            <span>14 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-05-27">May 27, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-05-27_7-techniques-for-building-reliable-ai-models/">Seven Ways to Make AI Models Hold Up in Production</a></h2>
+          <p class="news-card__summary">As enterprises grow their AI footprints, they must pay attention to data quality and real-world conditions to ensure what works in the lab works in production.</p>
+          <div class="news-card__foot">
+            <span>Beena Ammanath</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-05-19">May 19, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-05-19_negative-engineering-and-the-art-of-failing-successfully/">The Engineering Work That Keeps Small Failures Small</a></h2>
+          <p class="news-card__summary">Negative engineering is the time-consuming and sometimes frustrating work that engineers do to ensure small bugs don&#x27;t take down systems.</p>
+          <div class="news-card__foot">
+            <span>Jeremiah Lowin</span>
+            <span>11 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-05-02">May 2, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-05-02_the-future-of-search-is-boutique/">Why Smaller, Curated Search Engines Deserve a Place</a></h2>
+          <p class="news-card__summary">The way to improve search is not to mimic Google, but instead to build boutique search engines that index, curate, and organize things in new ways.</p>
+          <div class="news-card__foot">
+            <span>Sari Azout</span>
+            <span>11 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-03-08">March 8, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-03-08_alphafold-gpt-3-and-how-to-augment-intelligence-with-ai-pt-2/">Putting GPT-3 Into Human Workflows: Part Two</a></h2>
+          <p class="news-card__summary">To truly augment human intelligence, we need to design new workflows for machine learning models such as GPT-3 and AI code-generation models.</p>
+          <div class="news-card__foot">
+            <span>Niko Grupen</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-03-07">March 7, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-03-07_alphafold-gpt-3-and-how-to-augment-intelligence-with-ai/">How AlphaFold and GPT-3 Can Extend Human Capabilities: Part One</a></h2>
+          <p class="news-card__summary">Thanks to a set of new AI models, we can reimagine common workflows, processes, and user experiences to augment human intelligence.</p>
+          <div class="news-card__foot">
+            <span>Niko Grupen</span>
+            <span>12 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-02-23">February 23, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-02-23_announcing-search-new-host-the-a16z-podcast/">The Future of the a16z Podcast</a></h2>
+          <p class="news-card__summary">The long-running a16z Podcast is looking for a new host to lead the flagship show of the a16z podcast network into its next phase of growth.</p>
+          <div class="news-card__foot">
+            <span>2 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-02-17">February 17, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-02-17_sql-needs-software-libraries/">The Case for Reusable Software Libraries in SQL</a></h2>
+          <p class="news-card__summary">Fivetran CEO George Fraser discusses the lack of software libraries for SQL, and how their emergence could change the nature of data analysis.</p>
+          <div class="news-card__foot">
+            <span>George Fraser</span>
+            <span>12 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-02-16">February 16, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-02-16_software-development-building-for-99-developers/">Developer Tools for the Teams Outside Big Tech</a></h2>
+          <p class="news-card__summary">Software development is not all clean code and automated processes -- and it never will be. Buyers and vendors both need to realize this.</p>
+          <div class="news-card__foot">
+            <span>Jean Yang</span>
+            <span>13 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-01-28">January 28, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-01-28_excel-in-tech-without-learning-to-code/">Building a Technology Career Without Becoming a Programmer</a></h2>
+          <p class="news-card__summary">Technical literacy is key to career success, even for non-engineers. Learn how to master the tools of your trade and build a solid tech foundation.</p>
+          <div class="news-card__foot">
+            <span>Justin Gage</span>
+            <span>16 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2022-01-11">January 11, 2022</time>
+          </div>
+          <h2><a href="/articles/2022-01-11_automated-design-apps-design-systems/">How Design Automation Changes the Designer’s Role</a></h2>
+          <p class="news-card__summary">Popular design software like Figma and Canva force experienced designers to adopt new roles: project manager, systems architect, and user advocate.</p>
+          <div class="news-card__foot">
+            <span>Carly Ayres</span>
+            <span>10 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-11-10">November 10, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-11-10_creator-economy-levels/">From Hobbyist to Mogul: What Creators Need at Every Stage</a></h2>
+          <p class="news-card__summary">Are creator platforms enabling the 99 percent to chase their childhood dreams? Or are they helping the 0.1 percent expand their wealth?</p>
+          <div class="news-card__foot">
+            <span>Dan Runcie</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-11-04">November 4, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-11-04_web-browser-for-kids/">Designing a Web Browser for Children Under Ten</a></h2>
+          <p class="news-card__summary">Our narrow view of “kidtech”—games and shows, ad infinitum—is a missed opportunity. There&#x27;s room for an audio-visual browser designed for kids.</p>
+          <div class="news-card__foot">
+            <span>Keith Schacht</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-10-19">October 19, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-10-19_strategy-behind-china-tech/">Why China’s Tech Companies Keep Reinventing Their Core Products</a></h2>
+          <p class="news-card__summary">Taking a page from China&#x27;s relentless willingness to experiment with core apps.</p>
+          <div class="news-card__foot">
+            <span>Rui Ma</span>
+            <span>8 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-10-08">October 8, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-10-08_software-style-over-branding/">Making Software People Can Recognize Themselves In</a></h2>
+          <p class="news-card__summary">Modern software’s uniformity has fueled a craving for more interesting, opinionated tools — turning inanimate pixels into something with soul.</p>
+          <div class="news-card__foot">
+            <span>Molly Mielke</span>
+            <span>10 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-09-22">September 22, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-09-22_latin-america-creator-economy/">Why Latin America’s Creators Struggle to Turn Reach Into Revenue</a></h2>
+          <p class="news-card__summary">Though LatAm leads the world in internet and digital media consumption, its creators still struggle to cash in on their influence.</p>
+          <div class="news-card__foot">
+            <span>Julio Vasconcellos</span>
+            <span>8 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-09-21">September 21, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-09-21_global-labs-pose-major-threat-heres-what-u-s-should-do/">Scott Gottlieb on Laboratory Risks and the U.S. Response</a></h2>
+          <p class="news-card__summary">Scott Gottlieb argues for stronger oversight of high-risk laboratories and closer cooperation between public health and intelligence agencies to prepare for future pandemics.</p>
+          <div class="news-card__foot">
+            <span>Scott Gottlieb</span>
+            <span>7 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-09-15">September 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-09-15_economic-case-for-curbing-aging/">The Economic Value of an Extra Year in Good Health</a></h2>
+          <p class="news-card__summary">New economic research supports a shift from the pursuit of longevity to a focus on healthspan: more healthy time over the duration of one’s life.</p>
+          <div class="news-card__foot">
+            <span>Andrew Scott</span>
+            <span>7 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-09-08">September 8, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-09-08_esports-business-models/">Why Esports Needs Its Own Business Model</a></h2>
+          <p class="news-card__summary">Esports are pioneering the future of sports engagement. But to succeed, they need to stop chasing the NBA and NFL.</p>
+          <div class="news-card__foot">
+            <span>Marty Strenczewilk</span>
+            <span>13 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-09-08">September 8, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-09-08_the-case-for-developer-experience/">Building Developer Tools for Messy, Evolving Systems</a></h2>
+          <p class="news-card__summary">How are developers supposed to manage and coordinate fast-moving, heterogeneous systems including maintenance &amp; operations — and free themselves to build?</p>
+          <div class="news-card__foot">
+            <span>Jean Yang</span>
+            <span>19 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-09-08">September 8, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-09-08_virtual-therapy-distanced-intimacy/">What Virtual Therapy Changes About Connection and Care</a></h2>
+          <p class="news-card__summary">As therapists and patients debate a return to the physical office, both must consider the newly discovered advantages of &quot;distanced intimacy.&quot;</p>
+          <div class="news-card__foot">
+            <span>Hannah Zeavin</span>
+            <span>10 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-09-08">September 8, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-09-08_why-california-burns-the-facts-behind-the-flames/">Understanding the Forces Behind California’s Wildfires</a></h2>
+          <p class="news-card__summary">“There is broad consensus in the scientific community that wildfire behavior is changing across the American West in general, and in California in particular. … All indicators shown—wildfire occurrence, total area…</p>
+          <div class="news-card__foot">
+            <span>José Luis Ricón</span>
+            <span>28 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-24">June 24, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-24_global-shipping-infrastructure-and-ever-given/">What the Ever Given Exposed About Global Shipping</a></h2>
+          <p class="news-card__summary">The Ever Given container ship blocked the Suez Canal in March 2021 and cost the world time and money. This is not a one-off disaster. It’s an omen of a global problem.</p>
+          <div class="news-card__foot">
+            <span>Ryan Petersen</span>
+            <span>10 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-16">June 16, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-16_extinction-mining-ancient-innovation-future-solutions/">What Extinct Life Can Teach Us About Solving New Problems</a></h2>
+          <p class="news-card__summary">It&#x27;s easy to think extinction equals failure, but in fact, past life may encode the solutions to our most pressing future problems.</p>
+          <div class="news-card__foot">
+            <span>Betül Kaçar</span>
+            <span>6 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_cohort-based-courses/">Why Learning Together Gives Online Courses an Edge</a></h2>
+          <p class="news-card__summary">Consumers pay for what’s scarce. And within the crowded, cheap, content-rich world of online education, what&#x27;s scarce is community.</p>
+          <div class="news-card__foot">
+            <span>Wes Kao</span>
+            <span>15 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_fans-drive-hit-ips/">How Fans Help Build Enduring Entertainment Franchises</a></h2>
+          <p class="news-card__summary">The franchises of the future need to be designed to ensure quality and canon even when we hand over ownership to the fans.</p>
+          <div class="news-card__foot">
+            <span>Jade Raymond</span>
+            <span>11 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_law-as-code/">How Software Could Reshape Legal Systems</a></h2>
+          <p class="news-card__summary">With software we can improve transparency, automate tedious processes, and in some cases, even avoid the need for costly lawyers altogether.</p>
+          <div class="news-card__foot">
+            <span>Joshua Browder</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_marshall-plan-to-solve-global-vaccine-shortfall/">A Plan to Close the Global COVID-19 Vaccine Gap</a></h2>
+          <p class="news-card__summary">While COVID-19 vaccinations in the U.S. are continuing apace, calls are growing for a more ambitious strategy to rapidly vaccinate the entire world, and especially in developing nations. Legal proceedings around this…</p>
+          <div class="news-card__foot">
+            <span>Caleb Watney</span>
+            <span>21 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_on-workplace-productivity/">Measuring Productivity by Outcomes Instead of Activity</a></h2>
+          <p class="news-card__summary">What does it mean to be productive? At the beginning of the pandemic, when many workers went remote, some managers were tempted to start counting things — whether hours, objects, or other things. But they’re about…</p>
+          <div class="news-card__foot">
+            <span>Nicole Forsgren</span>
+            <span>12 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_publomics-replication-crisis/">Using Large-Scale Literature Analysis to Tackle the Replication Crisis</a></h2>
+          <p class="news-card__summary">One possible solution to the replication crisis is to apply big data, &quot;omics&quot;-like approaches to the scientific literature: aka Publomics.</p>
+          <div class="news-card__foot">
+            <span>Malcolm MacLeod</span>
+            <span>12 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_the-creator-economy-for-gaming/">How Players Are Becoming Creators and Earning Through Games</a></h2>
+          <p class="news-card__summary">Players are finding new ways to monetize, whether by building original game worlds, selling in-game goods, or engaging with fans using new streamer tools.</p>
+          <div class="news-card__foot">
+            <span>Joost van Dreunen</span>
+            <span>9 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_the-silicon-in-silicon-valley-again/">Why Progress in the Physical World Still Matters to Tech</a></h2>
+          <p class="news-card__summary">From responding to a pandemic — with novel mRNA vaccines — to building the future — with SpaceX’s rockets and Apple’s new chips — we are seeing that the material world still has the power to thrill. But even though…</p>
+          <div class="news-card__foot">
+            <span>Dan Wang</span>
+            <span>7 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_the-untapped-potential-of-subtraction/">Solving Problems by Taking Things Away</a></h2>
+          <p class="news-card__summary">To harness the untapped power of subtraction in the future, we need to understand why we haven’t embraced it in the past.</p>
+          <div class="news-card__foot">
+            <span>Leidy Klotz</span>
+            <span>6 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_the-world-game/">How Technology Changes the Rules of Global Competition</a></h2>
+          <p class="news-card__summary">Technology is the set of rules that now governs global shifts. The task for builders and technologists is to discover all possibilities contained therein.</p>
+          <div class="news-card__foot">
+            <span>Bruno Macaes</span>
+            <span>10 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_well-behaved-bubbles-history-innovation/">When Speculative Bubbles Help Coordinate Innovation</a></h2>
+          <p class="news-card__summary">The right kind of bubble brings together the right group of people at the right time — it&#x27;s a coordinating mechanism that can do a surprising amount of good.</p>
+          <div class="news-card__foot">
+            <span>Byrne Hobart</span>
+            <span>10 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--technology">
+          <div class="news-card__meta">
+            <span class="news-card__category">Technology</span>
+            <span class="news-card__type">ARTICLE</span>
+            <time class="news-card__date" datetime="2021-06-15">June 15, 2021</time>
+          </div>
+          <h2><a href="/articles/2021-06-15_what-we-learned-doing-fast-grants/">Fast Grants and the Case for More Flexible Science Funding</a></h2>
+          <p class="news-card__summary">We launched an abnormally fast source of emergency science funding during COVID-19. The results revealed flaws in current science funding models.</p>
+          <div class="news-card__foot">
+            <span>Patrick Collison &amp; Tyler Cowen &amp; Patrick Hsu</span>
+            <span>18 min read</span>
+          </div>
+        </article>
+        <template data-presence-slot="NEWS-CARDS:END"></template>
+      </div>
+      <p class="news-empty" id="news-empty" hidden>No articles in this section yet.</p>
+      <noscript><p class="news-empty">All stories are shown below. Enable JavaScript to filter the archive.</p></noscript>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/crypto/">Crypto</a></li>
+        <li><a href="/technology/">Technology</a></li>
+        <li><a href="/companies/">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="https://x.com/PresenceWeb3" target="_blank" rel="noopener noreferrer">X</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=9aed9a7cf00b0681"></script>
+<script src="/assets/js/news-data.js?v=8e0cbf95066beba0"></script>
+<script src="/assets/js/news.js?v=78d46693dcdcf2e6"></script>
+</body>
+</html>

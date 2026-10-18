@@ -1,0 +1,14 @@
+exclude:
+  - scripts
+  - tests
+  - docs
+  - README.md
+  - design-qa.md
+  - LICENSE
+  - LICENSE.md
+  - requirements.txt
+  - requirements-dev.txt
+  - .github
+  - .git
+  - .gitignore
+  - __pycache__

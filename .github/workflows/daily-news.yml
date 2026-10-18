@@ -1,0 +1,229 @@
+name: Daily news
+
+on:
+  schedule:
+    - cron: '5,35 7,15 * * *'
+  workflow_dispatch:
+    inputs:
+      restart:
+        description: Cancel the active run and restart unfinished editorial work
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+
+concurrency:
+  group: presence-daily-news
+  cancel-in-progress: ${{ inputs.restart == true || (github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-news]')) }}
+
+permissions:
+  contents: read
+
+env:
+  PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      jobs: ${{ steps.plan.outputs.jobs }}
+      plan: ${{ steps.plan.outputs.plan }}
+      ready: ${{ steps.plan.outputs.ready }}
+      commit: ${{ steps.revision.outputs.commit }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - name: Pin editorial code revision
+        id: revision
+        run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        id: services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Test editorial workflow
+        run: python .github/site_services.py run test
+      - name: Plan due publications and legacy repairs
+        id: plan
+        run: python .github/site_services.py run plan
+
+  research:
+    needs: plan
+    if: needs.plan.outputs.ready == 'true'
+    name: Report ${{ matrix.job.key }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    permissions:
+      contents: read
+      statuses: write
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        job: ${{ fromJSON(needs.plan.outputs.jobs) }}
+    env:
+      NEWS_JOB_JSON: ${{ toJSON(matrix.job) }}
+      NEWS_PROGRESS_CONTEXT: presence-news/${{ matrix.job.key }}
+      NEWS_PROGRESS_SHA: ${{ needs.plan.outputs.commit }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.plan.outputs.commit }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        id: services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Restore publishing resources
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ${{ steps.services.outputs.runtime_path }}
+            ${{ steps.services.outputs.cache_path }}
+          key: ${{ steps.services.outputs.cache_key }}
+          restore-keys: ${{ steps.services.outputs.cache_seed }}
+      - name: Prepare publishing resources
+        run: python .github/site_services.py run prepare
+      - name: Start publishing resources
+        id: resources
+        run: python .github/site_services.py run start
+      - name: Research and validate one independent report
+        run: python .github/site_services.py run write --directory "$RUNNER_TEMP/presence-report"
+      - name: Preserve validated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: presence-report-${{ matrix.job.key }}
+          path: ${{ runner.temp }}/presence-report/report.json
+          if-no-files-found: error
+          retention-days: 3
+      - name: Cache publishing resources
+        if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ${{ steps.services.outputs.runtime_path }}
+            ${{ steps.services.outputs.cache_path }}
+          key: ${{ steps.services.outputs.cache_key }}
+      - name: Stop publishing resources
+        if: always() && steps.resources.outcome == 'success'
+        run: python .github/site_services.py run stop
+
+      - name: Retain private diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-diagnostics-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3
+
+  publish:
+    needs: [plan, research]
+    if: always() && needs.plan.result == 'success' && (needs.plan.outputs.ready == 'true' || github.event_name != 'schedule')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    outputs:
+      deploy: ${{ steps.export.outputs.ready }}
+      commit: ${{ steps.export.outputs.commit }}
+      articles: ${{ steps.apply.outputs.articles }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        id: services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Collect validated reports
+        if: needs.plan.outputs.ready == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          pattern: presence-report-*
+          path: ${{ runner.temp }}/presence-incoming
+      - name: Apply independently validated reports
+        id: apply
+        if: needs.plan.outputs.ready == 'true'
+        continue-on-error: true
+        env:
+          NEWS_PLAN_JSON: ${{ needs.plan.outputs.plan }}
+        run: python .github/site_services.py run apply --directory "$RUNNER_TEMP/presence-incoming"
+      - name: Validate site
+        run: python .github/site_services.py run validate
+      - name: Publish validated changes
+        id: publish
+        run: |
+          python .github/site_services.py seal
+          python .github/site_services.py run publish
+      - name: Export public site
+        id: export
+        if: steps.publish.outputs.updated == 'true' || github.event_name != 'schedule'
+        run: python .github/site_services.py run export "$RUNNER_TEMP/presence-pages"
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.export.outputs.ready == 'true'
+        with:
+          path: ${{ runner.temp }}/presence-pages
+      - name: Report incomplete work
+        if: always() && steps.apply.outcome == 'failure'
+        run: |
+          echo '::error title=Editorial work incomplete::Validated reports were retained; failed report jobs remain pending for a later retry.'
+          exit 1
+
+      - name: Retain private diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-diagnostics-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3
+
+  deploy:
+    needs: publish
+    if: always() && needs.publish.outputs.deploy == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.publish.outputs.commit }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        id: services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - uses: actions/deploy-pages@v4
+        id: deployment
+      - name: Verify complete public deployment
+        env:
+          EXPECTED_ARTICLES_JSON: ${{ needs.publish.outputs.articles }}
+        run: python .github/site_services.py run check

@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>News — PRESENCE</title>
+<meta name="description" content="News and reporting on the companies, protocols and markets shaping crypto and technology.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=6b18cb5c4169e6e4">
+<link rel="stylesheet" href="/assets/css/site.css?v=7ba47b82701096ad">
+<template data-presence-slot="SEO:START"></template>
+<link rel="canonical" href="https://presence.news/news/">
+<link rel="alternate" type="application/rss+xml" title="PRESENCE RSS" href="https://presence.news/feed.xml">
+<meta name="robots" content="max-image-preview:large">
+<meta property="og:url" content="https://presence.news/news/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="500">
+<meta property="og:image:alt" content="Presence — crypto, technology, and the people behind it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
+<meta name="twitter:image:alt" content="Presence — crypto, technology, and the people behind it.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="News — PRESENCE">
+<meta property="og:description" content="News and reporting on the companies, protocols and markets shaping crypto and technology.">
+<meta name="twitter:title" content="News — PRESENCE">
+<meta name="twitter:description" content="News and reporting on the companies, protocols and markets shaping crypto and technology.">
+<meta name="twitter:site" content="@PresenceWeb3">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://presence.news/#organization",
+      "name": "PRESENCE",
+      "url": "https://presence.news/",
+      "logo": "https://presence.news/assets/img/presence-icon.png",
+      "sameAs": [
+        "https://t.me/presencemedia",
+        "https://x.com/PresenceWeb3"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://presence.news/#website",
+      "url": "https://presence.news/",
+      "name": "PRESENCE",
+      "publisher": {
+        "@id": "https://presence.news/#organization"
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://presence.news/news/#webpage",
+      "url": "https://presence.news/news/",
+      "name": "News — PRESENCE",
+      "description": "News and reporting on the companies, protocols and markets shaping crypto and technology.",
+      "isPartOf": {
+        "@id": "https://presence.news/#website"
+      },
+      "about": {
+        "@id": "https://presence.news/#organization"
+      }
+    }
+  ]
+}
+</script>
+<template data-presence-slot="SEO:END"></template>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/" aria-current="page">News</a>
+      <a href="/crypto/">Crypto</a>
+      <a href="/technology/">Technology</a>
+      <a href="/companies/">Companies</a>
+      <a class="nav-search-link" href="/#search">Search</a>
+
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" data-listing="news">
+  <section class="page-hero newsroom-hero">
+    <div class="wrap newsroom-hero__inner">
+      <div>
+        <span class="eyebrow">Presence newsroom</span>
+        <h1>The latest in crypto and technology.</h1>
+        <p>News and reporting on the companies, protocols and markets shaping crypto and technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section newsroom" aria-labelledby="news-heading">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 id="news-heading">Latest news</h2>
+        <span class="newsroom__updated">Updated as stories publish</span>
+      </div>
+
+      <div class="news-filters" aria-label="Filter news by topic">
+        <template data-presence-slot="NEWS-FILTERS:START"></template>
+        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">9</span></button>
+        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">9</span></button>
+        <button class="news-filter" id="technology" type="button" data-news-filter="technology" aria-pressed="false">Technology <span data-news-count="technology">0</span></button>
+        <button class="news-filter" id="companies" type="button" data-news-filter="companies" aria-pressed="false">Companies <span data-news-count="companies">0</span></button>
+        <template data-presence-slot="NEWS-FILTERS:END"></template>
+      </div>
+
+      <div class="news-search">
+        <label for="news-search">Search headlines and authors</label>
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 9 news stories">
+        <span data-news-results aria-live="polite"></span>
+      </div>
+
+      <div class="news-grid" id="news-grid">
+        <template data-presence-slot="NEWS-CARDS:START"></template>
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/" aria-label="Read Dogecoin Price Drops Below Analyst’s Support Level Despite Whale Buys">
+            <img src="/assets/img/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/illustration-9604a9d2.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-17">October 17, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/">Dogecoin Price Drops Below Analyst’s Support Level Despite Whale Buys</a></h2>
+          <p class="news-card__summary">Dogecoin&#x27;s price fell below $0.081, despite whale purchases of 600 million DOGE, as analysts identify potential recovery signals.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>2 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/" aria-label="Read Tesla Crypto Futures Drop After Roadster Presentation">
+            <img src="/assets/img/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/illustration-f5255d9a.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-16">October 16, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-16_tesla-crypto-futures-drop-after-roadster-presentation-d6e2d8f9d4/">Tesla Crypto Futures Drop After Roadster Presentation</a></h2>
+          <p class="news-card__summary">Tesla-linked perpetual futures on Hyperliquid fell to $357 after climbing toward $380 following Elon Musk’s demonstration of a thruster-equipped Roadster.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>2 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/" aria-label="Read Base Logs Over 138 Million x402 Payments as Agent Attribution Remains Unclear">
+            <img src="/assets/img/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/illustration-f4a5fc8f.webp" alt="Original Presence illustration of software agents connected through a digital payment network." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-15">October 15, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-15_base-138-million-x402-payments-and-agent-attribution-a1375a43f0/">Base Logs Over 138 Million x402 Payments as Agent Attribution Remains Unclear</a></h2>
+          <p class="news-card__summary">Chainalysis tracked over 138 million x402 payments on Base. Recipients span different services, while wallet activity alone cannot establish autonomous-agent spending.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>2 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/" aria-label="Read Curve Reports 68% Quarterly Loan Growth Led by LlamaLend v2">
+            <img src="/assets/img/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/illustration-b9cf85c6.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-15">October 15, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-15_curve-finance-sees-significant-loan-growth-amidst-sectoral-recove-8cc2734309/">Curve Reports 68% Quarterly Loan Growth Led by LlamaLend v2</a></h2>
+          <p class="news-card__summary">Curve reported $70.9 million in active loans and 68% quarterly growth. The separate sector comparison uses the end of 2025 as its baseline; further markets remain proposed.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>2 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/" aria-label="Read Bitcoin Faces CPI With Heavy Leverage and Uneven Demand Signals">
+            <img src="/assets/img/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/illustration-7cd6cd4b.webp" alt="Original Presence illustration of Bitcoin, leverage and the inflation reading." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-14">October 14, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/">Bitcoin Faces CPI With Heavy Leverage and Uneven Demand Signals</a></h2>
+          <p class="news-card__summary">Analysts contrasted $140.9 billion in crypto open interest with renewed Bitcoin ETF inflows, mixed wallet activity and conditional inflation and rate scenarios.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>5 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/" aria-label="Read Perpetuals Aims to Offer Tokenized U.S. Stocks via SEC Innovation Exemption">
+            <img src="/assets/img/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/illustration-4053201d.webp" alt="Original Presence illustration of equity certificates connected to digital tokens." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-14">October 14, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-14_perpetuals-plans-tokenized-us-stocks-under-sec-innovation-exempti-4b583546d4/">Perpetuals Aims to Offer Tokenized U.S. Stocks via SEC Innovation Exemption</a></h2>
+          <p class="news-card__summary">Perpetuals outlined a conditional U.S. stock-token offering with shareholder rights, a 30-day venue notice period and exchange-halt requirements.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>2 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-14_ripple-meritz-korea-xrp/" aria-label="Read Ripple Adds Fourth South Korean Institutional Partner, but XRP’s Role Remains Unclear">
+            <img src="/assets/img/articles/2026-10-14_ripple-meritz-korea-xrp/presence-ripple-meritz.jpg" alt="Illustration of a handshake representing an institutional partnership." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-14">October 14, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-14_ripple-meritz-korea-xrp/">Ripple Adds Fourth South Korean Institutional Partner, but XRP’s Role Remains Unclear</a></h2>
+          <p class="news-card__summary">Ripple adds Meritz Securities to its South Korean institutional partners, while XRP’s role in the custody and tokenization plans remains unconfirmed.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>8 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-08_orca-loopscale-formation/" aria-label="Read Orca and Loopscale Merge Into Formation, Betting on a New Model for Onchain Capital Markets">
+            <img src="/assets/img/articles/2026-10-08_orca-loopscale-formation/presence-formation.jpg" alt="Illustration of three figures climbing toward a classical financial institution, with the Orca mark." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-08">October 8, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-08_orca-loopscale-formation/">Orca and Loopscale Merge Into Formation, Betting on a New Model for Onchain Capital Markets</a></h2>
+          <p class="news-card__summary">Orca and Loopscale combine as Formation, bringing Solana trading, credit and investment vault infrastructure under one organization.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>11 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-06_ethereum-layer-2-shakeout/" aria-label="Read Ethereum’s Layer 2 Shakeout Begins as Pudgy Penguins’ Abstract and Blast Shut Down">
+            <img src="/assets/img/articles/2026-10-06_ethereum-layer-2-shakeout/presence-abstract.jpg" alt="Penguin in front of the Abstract wordmark." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-06">October 6, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-06_ethereum-layer-2-shakeout/">Ethereum’s Layer 2 Shakeout Begins as Pudgy Penguins’ Abstract and Blast Shut Down</a></h2>
+          <p class="news-card__summary">Abstract and Blast are winding down, exposing the economic pressures facing independent Ethereum Layer 2 networks.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>11 min read</span>
+          </div>
+        </article>
+        <template data-presence-slot="NEWS-CARDS:END"></template>
+      </div>
+      <p class="news-empty" id="news-empty" hidden>No news in this section yet.</p>
+      <noscript><p class="news-empty">All stories are shown below. Enable JavaScript to filter the archive.</p></noscript>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/" aria-current="page">News</a></li>
+        <li><a href="/crypto/">Crypto</a></li>
+        <li><a href="/technology/">Technology</a></li>
+        <li><a href="/companies/">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="https://x.com/PresenceWeb3" target="_blank" rel="noopener noreferrer">X</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=9aed9a7cf00b0681"></script>
+<script src="/assets/js/news-data.js?v=8e0cbf95066beba0"></script>
+<script src="/assets/js/news.js?v=78d46693dcdcf2e6"></script>
+</body>
+</html>

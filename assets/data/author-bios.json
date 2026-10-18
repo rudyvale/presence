@@ -1,0 +1,453 @@
+{
+  "note": "Biographies are source-backed and describe roles at the time of the original publication unless stated otherwise.",
+  "authors": {
+    "Afton Vechery": {
+      "bio": "Afton Vechery is co-founder and CEO of the reproductive health company Modern Fertility.",
+      "source": "https://future.com/author/afton-vechery/"
+    },
+    "Alex Svanevik": {
+      "bio": "Alex Svanevik is the co-founder and CEO of Nansen, a blockchain analytics platform.",
+      "source": "https://www.nansen.ai/post/four-team-memebers-join-nansen"
+    },
+    "Amber Atherton": {
+      "bio": "Amber Atherton is a British entrepreneur and angel investor based in Silicon Valley. A community building expert and life-long founder, Amber is currently the head of strategic communities at Discord.",
+      "source": "https://future.com/author/amber-atherton/"
+    },
+    "Amjad Masad": {
+      "bio": "Amjad Masad is the cofounder and CEO of Replit, an online coding platform. Previously, he led JavaScript infrastructure engineering at Facebook and was the founding engineer at Codec.",
+      "source": "https://future.com/author/amjad-masad/"
+    },
+    "Andrej Safundzic": {
+      "bio": "Andrej Safundzic is the co-founder and CEO of Lumos, an identity startup. Previously, he co-founded DigitalService4Germany, the German Federal Government's central digital transformation unit.",
+      "source": "https://future.com/author/andrej-safundzic/"
+    },
+    "Andrew Scott": {
+      "bio": "Andrew Scott is a professor of economics at London Business School. He coauthored The 100 Year Life, cofounded The Longevity Forum, and is a member of the WEF council on Healthy Ageing and Longevity.",
+      "source": "https://future.com/author/andrew-scott/"
+    },
+    "Anu Hariharan": {
+      "bio": "Anu Hariharan is a partner at Y Combinator's Continuity Fund focused on growth stage investments. Prior, she was an investment partner at a16z and principal at BCG's Private Equity practice.",
+      "source": "https://future.com/author/anu-hariharan/"
+    },
+    "Austin Hurwitz": {
+      "bio": "Austin Hurwitz is the founder of Chasing Curiosity, an advisory for brands looking to leverage web3 to create meaningful communities. He also writes One Big Idea, a newsletter examining the web3 consumer landscape.",
+      "source": "https://future.com/author/austin-hurwitz/"
+    },
+    "Babak Siavoshy": {
+      "bio": "Babak Siavoshy is the general counsel at Anduril Industries.",
+      "source": "https://future.com/author/babak-siavoshy/"
+    },
+    "Beena Ammanath": {
+      "bio": "Beena Ammanath is executive director of the Global Deloitte AI Institute and leads Trustworthy & Ethical Technology at Deloitte.",
+      "source": "https://future.com/author/beena-ammanath/"
+    },
+    "Ben Stokes": {
+      "bio": "Ben Stokes is the founder of Tiny Projects, a blog about building and launching tiny internet businesses. He's also the co-founder and CTO of Penny, a UK fintech startup.",
+      "source": "https://future.com/author/ben-stokes/"
+    },
+    "Betül Kaçar": {
+      "bio": "Betül Kaçar is an astrobiologist and an assistant professor of bacteriology at the University of Wisconsin–Madison. Her research investigates the origins and early evolution of life.",
+      "source": "https://experts.news.wisc.edu/experts/betul-kacar"
+    },
+    "Brandon Barros": {
+      "bio": "Brandon Barros was an analyst at a16z focused on the creator economy, social platforms, and consumer technology. Previously, he worked at Facebook as a full-stack engineer and in investment banking at Citibank.",
+      "source": "https://future.com/author/brandon-barros/"
+    },
+    "Bruno Macaes": {
+      "bio": "Bruno Macaes is a senior fellow at the Hudson Institute and a former Europe minister of Portugal.",
+      "source": "https://future.com/author/bruno-macaes/"
+    },
+    "Byrne Hobart": {
+      "bio": "Byrne Hobart is a writer, investor, and consultant in New York. His newsletter, The Diff (diff.substack.com) covers inflection points in finance and technology.",
+      "source": "https://future.com/author/byrne-hobart/"
+    },
+    "Caleb Watney": {
+      "bio": "Caleb Watney is Director of Innovation Policy at PPI.",
+      "source": "https://future.com/author/caleb-watney/"
+    },
+    "Carly Ayres": {
+      "bio": "Carly Ayres is a content designer using language and interaction to engage people in new ways. As part of Google's Material Design team, she helps fortify the design system's evolution for designers & developers.",
+      "source": "https://future.com/author/carly-ayres/"
+    },
+    "Changpeng Zhao": {
+      "bio": "Changpeng Zhao, known as CZ, is the co-founder and former CEO of the cryptocurrency exchange Binance.",
+      "source": "https://www.binance.com/en-ZA/square/post/01-14-2026-cz-binance-square-ama-recap-bitcoin-200k-altcoin-season-meme-coins-and-advice-for-beginners-35074723315594"
+    },
+    "Chase Chapman": {
+      "bio": "Chase Chapman is a DAO contributor and researcher focused on exploring how DAOs will shape the way humans think about and engage in work. She is also an angel investor and host of the On the Other Side podcast.",
+      "source": "https://future.com/author/chase-chapman/"
+    },
+    "Chris Dixon": {
+      "bio": "Chris Dixon is a general partner at a16z, where he leads its crypto and web3 funds. He previously co-founded and led SiteAdvisor and Hunch.",
+      "source": "https://future.com/author/chris-dixon/"
+    },
+    "Chris Herd": {
+      "bio": "Chris Herd is the founder and CEO of Firstbase. Previously, Herd was the CEO of Nexves, a company he founded in 2018.",
+      "source": "https://future.com/author/chris-herd/"
+    },
+    "Chris Tweten": {
+      "bio": "Chris Tweten is the CMO at Spacebar Collective, a white hat SEO and content production agency based in Vancouver, Canada.",
+      "source": "https://future.com/author/chris-tweten/"
+    },
+    "Dan Runcie": {
+      "bio": "Dan Runcie is the founder of Trapital, a media company that breaks down the business of hip-hop. He also advises startups on growth and strategy.",
+      "source": "https://future.com/author/dan-runcie/"
+    },
+    "Dan Wang": {
+      "bio": "Dan Wang is the Shanghai-based technology analyst for Gavekal Dragonomics. He also writes at danwang.co.",
+      "source": "https://future.com/author/dan-wang/"
+    },
+    "Daniel Gross": {
+      "bio": "Daniel Gross is founder of startup accelerator Pioneer, and was previously a partner at Y Combinator and co-founder of Cue, which Apple acquired in 2013.",
+      "source": "https://future.com/author/daniel-gross/"
+    },
+    "Danny Ryan": {
+      "bio": "Danny Ryan is a researcher with the Ethereum Foundation, where he helps coordinate network upgrades.",
+      "source": "https://future.com/author/danny-ryan/"
+    },
+    "Daphne Koller": {
+      "bio": "Daphne Koller is CEO and Founder of insitro, a machine-learning enabled drug discovery company. She previously was a Stanford CS Professor before co-founding Coursera and Engageli.",
+      "source": "https://future.com/author/daphne-koller/"
+    },
+    "Dave Edwards": {
+      "bio": "Dave Edwards is the Head of Revenue at Audiomack. He has worked in the music industry for the past 20 years, first on the major label side, then producing electronic and pop music, and now at a music tech startup.",
+      "source": "https://future.com/author/dave-edwards/"
+    },
+    "Dirk Hoerig": {
+      "bio": "Dirk Hoerig is co-founder and CEO of commercetools. He is the creator of headless commerce and a pioneer of cloud software in the enterprise market.",
+      "source": "https://future.com/author/dirk-hoerig/"
+    },
+    "Elena Burger": {
+      "bio": "Elena Burger is a deal partner on the a16z crypto team, where she focuses on games, NFTs, web3 media, and infrastructure.",
+      "source": "https://future.com/author/elena-burger/"
+    },
+    "Elliot Turner": {
+      "bio": "Elliot Turner is CEO and cofounder of Hyperia, which provides conversational intelligence via AI. He previously founded startups AlchemyAPI and MimeStar. He advises ML, security and robotics startups.",
+      "source": "https://future.com/author/elliot-turner/"
+    },
+    "Frederic Kerrest": {
+      "bio": "Frederic Kerrest is co-founder, EVP, and COO of Okta.",
+      "source": "https://future.com/author/frederic-kerrest/"
+    },
+    "Frederic Lalonde": {
+      "bio": "Frederic Lalonde is the CEO and cofounder of the travel-booking app Hopper. He previously cofounded Newtrade Technologies, which was acquired by Expedia in 2002.",
+      "source": "https://future.com/author/frederic-lalonde/"
+    },
+    "Presence Editorial": {
+      "bio": "Presence Editorial is the editorial team behind Presence.",
+      "source": "https://presence.news/about/"
+    },
+    "Gary Hoberman": {
+      "bio": "Gary Hoberman is founder and CEO of Unqork. Prior to founding Unqork, Gary served as executive vice president and global CIO for MetLife, and was one of the youngest managing directors in Citi’s history.",
+      "source": "https://future.com/author/gary-hoberman/"
+    },
+    "George Fraser": {
+      "bio": "George Fraser is co-founder and CEO of Fivetran.",
+      "source": "https://future.com/author/george-fraser/"
+    },
+    "Hannah Zeavin": {
+      "bio": "Hannah Zeavin is the author of The Distance Cure: A History of Teletherapy (MIT Press 2021). She teaches in the departments of History and English at UC Berkeley. She is currently at work on her second book.",
+      "source": "https://future.com/author/hannah-zeavin/"
+    },
+    "Jacob Westphal": {
+      "bio": "Jacob Westphal is a partner on the consumer go-to-market team at a16z. Previously, he co-founded Hang, a community-based social planning app.",
+      "source": "https://future.com/author/jacob-westphal/"
+    },
+    "Jade Raymond": {
+      "bio": "Jade Raymond is the CEO and founder of Haven. She is best known for helping create the Assassin’s Creed and Watch Dogs franchises, and founding Ubisoft’s Toronto studio. Most recently, she was VP of Stadia Games.",
+      "source": "https://future.com/author/jade-raymond/"
+    },
+    "Jamie Catherwood": {
+      "bio": "Jamie Catherwood is an associate at O’Shaughnessy Asset Management and runs the Investor Amnesia website. His work has been featured in the Wall Street Journal, Financial Times, and Bloomberg TV.",
+      "source": "https://future.com/author/jamie-catherwood/"
+    },
+    "Jamie Sullivan": {
+      "bio": "Jamie Sullivan is a partner on the a16z Growth investing team, focused on late-stage companies in consumer, enterprise, and fintech. Prior to a16z, he worked at private equity firm Leonard Green & Partners.",
+      "source": "https://future.com/author/jamie-sullivan/"
+    },
+    "Jason Feifer": {
+      "bio": "Jason Feifer is the editor in chief of Entrepreneur magazine, a podcast host, keynote speaker, book author, and startup advisor. Most recently, he is the author of the book Build for Tomorrow.",
+      "source": "https://future.com/author/jason-feifer/"
+    },
+    "Jason Fried": {
+      "bio": "Jason Fried is the cofounder and CEO of 37signals, makers of Basecamp and HEY. He cowrote the books Getting Real, Rework, Remote: Office Not Required, and It Doesn't Have to Be Crazy at Work.",
+      "source": "https://future.com/author/jason-fried/"
+    },
+    "Jean Yang": {
+      "bio": "Jean Yang is the founder and CEO of Akita Software. Previously, she was a professor of Computer Science at Carnegie Mellon University.",
+      "source": "https://future.com/author/jean-yang/"
+    },
+    "Jeff Decker": {
+      "bio": "Jeff Decker, PhD, is program director of the Hacking for Defense Project at Stanford University’s Precourt Institute for Energy and co-instructor of its graduate-level Hacking for Defense course.",
+      "source": "https://future.com/author/jeff-decker/"
+    },
+    "Jennifer Li": {
+      "bio": "Jennifer Li is a partner at a16z, where she focuses on enterprise companies. Prior to joining the firm, she worked for AppDynamics and Solvvy as a product manager.",
+      "source": "https://future.com/author/jennifer-li/"
+    },
+    "Jenny Wang": {
+      "bio": "Jenny Wang has led AI and NFT collaborations with athletes, designer brands, and celebrities. She is currently building something new.",
+      "source": "https://future.com/author/jenny-wang/"
+    },
+    "Jeremiah Lowin": {
+      "bio": "Jeremiah Lowin is founder and CEO of Prefect. Lowin is also an active advisor to FabFitFun, Spotify, and Seraya Medical. He previously was a PMC member and committer to Apache Airflow.",
+      "source": "https://future.com/author/jeremiah-lowin/"
+    },
+    "Jeremy Howard": {
+      "bio": "Jeremy Howard is a research scientist and co-founder of fast.ai. He previously founded Enlitic and FastMail, among other companies and was president and chief scientist of Kaggle.",
+      "source": "https://future.com/author/jeremy-howard/"
+    },
+    "Jesse Walden": {
+      "bio": "Jesse Walden is the founder and managing partner of Variant Fund, investing in crypto networks and founders. Previously, he was a partner at a16z Crypto and cofounder of Mediachain (acquired by Spotify).",
+      "source": "https://future.com/author/jesse-walden/"
+    },
+    "Jimmy Lin": {
+      "bio": "Jimmy Lin is CSO at Freenome. Previously, he served as CSO for Oncology at Natera and led the intramural clinical genomics program at the National Cancer Institute at the National Institutes of Health.",
+      "source": "https://future.com/author/jimmy-lin/"
+    },
+    "Jocelynn Pearl": {
+      "bio": "Jocelynn Pearl is a biotech scientist, company builder, and podcaster. She hosts both UltraRare The Podcast (about decentralized science) and Lady Scientist Podcast.",
+      "source": "https://future.com/author/jocelynn-pearl/"
+    },
+    "John Koelliker": {
+      "bio": "John Koelliker is the CEO & cofounder of Leland, a marketplace startup that connects people with career coaches. Previously, John worked as a PM at Uber, LinkedIn, and Curated.",
+      "source": "https://future.com/author/john-koelliker/"
+    },
+    "John List": {
+      "bio": "John List is chief economist at Walmart and professor of economics at the University of Chicago.",
+      "source": "https://future.com/author/john-list/"
+    },
+    "Jon Radoff": {
+      "bio": "Jon Radoff is an entrepreneur who has built companies in online games, Web content creation, and ad networks. His games have been played by 20 million people, and his new startup Beamable is a GameTech company.",
+      "source": "https://future.com/author/jon-radoff/"
+    },
+    "Joost van Dreunen": {
+      "bio": "Joost van Dreunen teaches at the NYU Stern School of Business and is author of \"One Up: Creativity, Competition, and the Global Business of Video Games.\" Previously, he was the co-founder and CEO of SuperData Research.",
+      "source": "https://future.com/author/joost-van-dreunen/"
+    },
+    "Josh Nicholson": {
+      "bio": "Josh Nicholson is co-founder and CEO of scite. He holds a PhD in Cell Biology from Virginia Tech and has built and sold two companies aimed at improving how researchers collaborate and publish their work.",
+      "source": "https://future.com/author/josh-nicholson/"
+    },
+    "Joshua Browder": {
+      "bio": "Joshua Browder is the founder and CEO of DoNotPay, a legal-services automation company.",
+      "source": "https://future.com/author/joshua-browder/"
+    },
+    "José Luis Ricón": {
+      "bio": "José Luis Ricón is a researcher and writer who publishes Nintil, a blog about science, technology, longevity, and economic growth.",
+      "source": "https://worksinprogress.co/our-authors/jose-luis-ricon/"
+    },
+    "Julie Zhuo": {
+      "bio": "Julie Zhuo is the co-founder of Sundial. Previously, she was the VP, Product Design for the Facebook app for 14 years. She also wrote a best-selling book, \"The Making of a Manager\", a field guide to management.",
+      "source": "https://future.com/author/julie-zhuo/"
+    },
+    "Julio Vasconcellos": {
+      "bio": "Julio Vasconcellos is the managing partner of Atlantico, a venture capital fund focused on Latin America. He previously founded Canary and Peixe Urbano. He was Facebook’s first employee in Brazil.",
+      "source": "https://future.com/author/julio-vasconcellos/"
+    },
+    "Justin Gage": {
+      "bio": "Justin Gage writes Technically, a newsletter about software, data, and technology.",
+      "source": "https://future.com/author/justin-gage/"
+    },
+    "Justine Moore": {
+      "bio": "Justine Moore is a deal partner at a16z, focused on consumer software and e-commerce. Prior, she worked at CRV and Goldman Sachs. Justine also co-runs the largest tech & VC community for Gen Z, Accelerated.",
+      "source": "https://future.com/author/justine-moore/"
+    },
+    "Katie Stockton": {
+      "bio": "Katie Stockton is founder and managing partner of Fairlead Strategies. Previously she spent more than 20 years on Wall Street providing technical research and advice to institutional investors.",
+      "source": "https://future.com/author/katie-stockton/"
+    },
+    "Keith Schacht": {
+      "bio": "Keith Schacht is the CEO of The Explanation Company. He previously cofounded Mystery Science, which was acquired by Discovery Education.",
+      "source": "https://future.com/author/keith-schacht/"
+    },
+    "Kim Lewandowski": {
+      "bio": "Kim Lewandowski is co-founder and head of product at Chainguard.",
+      "source": "https://future.com/author/kim-lewandowski/"
+    },
+    "Leidy Klotz": {
+      "bio": "Leidy Klotz is the author of \"Subtract: the Untapped Science of Less\", a Professor at the University of Virginia, and director of the Convergent Behavioral Science Initiative.",
+      "source": "https://future.com/author/leidy-klotz/"
+    },
+    "Lenny Rachitsky": {
+      "bio": "Lenny Rachitsky writes the popular newsletter LennysNewsletter.com, angel invests, and advises startups on product and growth. Previously, he led initiatives in growth, quality, and community at Airbnb.",
+      "source": "https://future.com/author/lenny-rachitsky/"
+    },
+    "Magda Zernicka-Goetz": {
+      "bio": "Magda Zernicka-Goetz is the Bren Professor of Biology and Biological Engineering at Caltech, a Professor at the University of Cambridge, and a pioneer of technologies to study early human and mouse embryo development.",
+      "source": "https://future.com/author/magda-zernicka-goetz/"
+    },
+    "Mahesh Vellanki": {
+      "bio": "Mahesh Vellanki is the Managing Partner of SuperLayer, a crypto venture studio incubating new tokenized consumer products on the $RLY Protocol. He previously co-founded Rally and Forte & worked at Redpoint Ventures.",
+      "source": "https://future.com/author/mahesh-vellanki/"
+    },
+    "Malcolm MacLeod": {
+      "bio": "Malcolm MacLeod is a professor at the University of Edinburgh and co-founder of the Collaborative Approach to Meta-Analysis and Review of Animal Data from Experimental Studies (CAMARADES).",
+      "source": "https://future.com/author/malcolm-macleod/"
+    },
+    "Mark Porter": {
+      "bio": "Mark Porter is CTO of MongoDB. He has previously held leadership positions at Grab, Amazon Web Services, and Oracle, among other places.",
+      "source": "https://future.com/author/mark-porter/"
+    },
+    "Marty Strenczewilk": {
+      "bio": "Marty Strenczewilk was the cofounder and CEO of the esports team Splyce. Currently, he leads esports and creator initiatives for OneTeam Partners, a joint venture between the NFLPA, MLBPA, and RedBird Capital Partners.",
+      "source": "https://future.com/author/marty-strenczewilk/"
+    },
+    "Melissa Daimler": {
+      "bio": "Melissa Daimler is the Chief Learning Officer at Udemy, an online learning platform. She previously worked at Adobe, Twitter, and WeWork. She is also the author of \"ReCulturing\" on how to design company culture.",
+      "source": "https://future.com/author/melissa-daimler/"
+    },
+    "Michael Chiang": {
+      "bio": "Michael Chiang is an engineer and data scientist. He was formerly the community manager at Rumble Kong League, CTO of Frontier Talent, and senior data scientist at The Athletic and Twitch.",
+      "source": "https://future.com/author/michael-chiang/"
+    },
+    "Michael Mignano": {
+      "bio": "Michael Mignano is an angel investor and the cofounder of Anchor, the world’s largest podcasting platform. He previously ran the podcast, live, and video businesses for Spotify after it acquired Anchor in 2019.",
+      "source": "https://future.com/author/michael-mignano/"
+    },
+    "Michelle Kennedy": {
+      "bio": "Michelle Kennedy is founder and CEO of Peanut, a social networking app for women. She was previously deputy CEO of Badoo and an inaugural board member of Bumble.",
+      "source": "https://future.com/author/michelle-kennedy/"
+    },
+    "Molly Mielke": {
+      "bio": "Molly Mielke is a product designer at Figma and producer of Notion's Tools & Craft podcast. She writes about creativity and the history of computing.",
+      "source": "https://future.com/author/molly-mielke/"
+    },
+    "Nathan Baschez": {
+      "bio": "Nathan Baschez cofounded Every, a writer collective focused on business. Previously, he was the first employee at Substack, the Head of Product at Gimlet Media, and co-created the original version of Product Hunt.",
+      "source": "https://future.com/author/nathan-baschez/"
+    },
+    "Nicole Forsgren": {
+      "bio": "Nicole Forsgren is the VP, Research & Strategy at GitHub. Author of the award-winning book “Accelerate: The Science of Lean Software and DevOps”, she was also lead investigator on the largest DevOps studies to date.",
+      "source": "https://future.com/author/nicole-forsgren/"
+    },
+    "Niko Grupen": {
+      "bio": "Niko Grupen is a Ph.D. student at Cornell, where he thinks about how the ingredients of human intelligence can make AI more capable. Prior to Cornell, Niko was a Machine Learning Engineer at Apple.",
+      "source": "https://future.com/author/niko-grupen/"
+    },
+    "Niya Dragova": {
+      "bio": "Niya Dragova is the cofounder of Candor, a startup that helps tech employees manage their RSU pay. She previously worked in senior roles in finance and banking.",
+      "source": "https://future.com/author/niya-dragova/"
+    },
+    "Nusqe Spanton": {
+      "bio": "Nusqe Spanton is the founder and CEO of Provectus Algae and an expert in algae biotechnology and aquaculture.",
+      "source": "https://future.com/author/nusqe-spanton/"
+    },
+    "Nuzayra Haque-Shah": {
+      "bio": "Nuzayra Haque-Shah is an intellectual property attorney based in L.A. She counsels U.S. and international clients on trademarks and copyrights, branding strategies, IP portfolio management, and data protection.",
+      "source": "https://future.com/author/nuzayra-haque-shah/"
+    },
+    "Olivia Moore": {
+      "bio": "Olivia Moore is a deal partner at a16z, focused on marketplaces and consumer tech. Prior, she worked at CRV and Goldman Sachs. Olivia also co-runs the largest tech & VC community for Gen Z, Accelerated.",
+      "source": "https://future.com/author/olivia-moore/"
+    },
+    "Parag Khanna": {
+      "bio": "Parag Khanna is founder and managing partner of the strategic advisory firm FutureMap.",
+      "source": "https://future.com/author/parag-khanna/"
+    },
+    "Patrick Collison": {
+      "bio": "Patrick Collison is chief executive officer and co-founder of Stripe, a technology company that builds economic infrastructure for the internet.",
+      "source": "https://future.com/author/patrick-collison/"
+    },
+    "Patrick Hsu": {
+      "bio": "Patrick Hsu is an assistant professor of bioengineering at the University of California, Berkeley and a pioneer of CRISPR technologies for human genome editing.",
+      "source": "https://future.com/author/patrick-hsu/"
+    },
+    "Patrick Mineault": {
+      "bio": "Patrick Mineault is a neurotechnologist and founder of xcorr neuroAI consulting. He was previously a brain-computer interface engineer at Meta and a software engineer at Google.",
+      "source": "https://future.com/author/patrick-mineault/"
+    },
+    "Patrick Woods": {
+      "bio": "Patrick Woods is the CEO of Orbit.",
+      "source": "https://future.com/author/patrick-woods/"
+    },
+    "Peter Yang": {
+      "bio": "Peter Yang is a product lead at Reddit and founder of Odyssey, a learning DAO. He writes about web3 and creators at https://creatoreconomy.so/.",
+      "source": "https://future.com/author/peter-yang/"
+    },
+    "Rajiv Ayyangar": {
+      "bio": "Rajiv Ayyangar is cofounder and CEO of Tandem. He studied bioengineering at Princeton and subsequently worked at Fairchild and Yahoo.",
+      "source": "https://future.com/author/rajiv-ayyangar/"
+    },
+    "Richard Socher": {
+      "bio": "Richard Socher is founder and CEO of you.com.",
+      "source": "https://future.com/author/richard-socher/"
+    },
+    "Rui Ma": {
+      "bio": "Rui Ma has 16 years of experience in technology and finance, largely focused on China. She founded Tech Buzz China in 2018 to educate investors, funds, & entrepreneurs on Chinese tech products & strategies.",
+      "source": "https://future.com/author/rui-ma/"
+    },
+    "Ryan Glasgow": {
+      "bio": "Ryan Glasgow is founder and CEO of Sprig. He was an early team member at Weebly (acquired by Square) & Vurb (acquired by Snapchat).",
+      "source": "https://future.com/author/ryan-glasgow/"
+    },
+    "Ryan Petersen": {
+      "bio": "Ryan Petersen is founder and CEO of Flexport. Previously, Ryan helped run an e-commerce company and co-founded ImportGenius, one of the largest providers of business intelligence to the import-export industry.",
+      "source": "https://future.com/author/ryan-petersen/"
+    },
+    "Sam Lambert": {
+      "bio": "Sam Lambert is CEO of PlanetScale. He was previously VP of engineering at GitHub.",
+      "source": "https://future.com/author/sam-lambert/"
+    },
+    "Sarah Wang": {
+      "bio": "Sarah Wang is a general partner at a16z, where she focuses on growth stage investments. Prior to joining the firm, she worked for TA Associates, DCM Ventures, Eagle Cliff Partners, BCG, and Morgan Stanley.",
+      "source": "https://future.com/author/sarah-wang/"
+    },
+    "Sari Azout": {
+      "bio": "Sari Azout is a founder of startupy.world, a search engine for tech and culture insights. She was previously a partner at Level Ventures, and occasionally publishes her writing at sariazout.substack.com.",
+      "source": "https://future.com/author/sari-azout/"
+    },
+    "Scott Gottlieb": {
+      "bio": "Scott Gottlieb served as the 23rd Commissioner of the U.S. Food and Drug Administration (FDA) from 2017-2019; is a resident fellow at the American Enterprise Institute, partner at NEA, and serves on several boards.",
+      "source": "https://future.com/author/scott-gottlieb/"
+    },
+    "Sean Kim": {
+      "bio": "Sean Kim is the president and chief product officer at Kajabi, where he's responsible for business growth and increasing value to customers globally. Previously, Sean was head of product at TikTok U.S.",
+      "source": "https://future.com/author/sean-kim/"
+    },
+    "Sonal Chokshi": {
+      "bio": "Sonal Chokshi was a16z’s editor-in-chief and podcast network showrunner. Before joining the firm in 2014 to build its editorial operation, she was a senior editor at WIRED and worked in content at Xerox PARC.",
+      "source": "https://future.com/author/sonal-chokshi/"
+    },
+    "Thomas Dimson": {
+      "bio": "Thomas Dimson, whom Fast Company named one of the 10 most creative people in business, built Instagram's original ranking algorithm (among other IG products). He's currently working on a new gaming startup.",
+      "source": "https://future.com/author/thomas-dimson/"
+    },
+    "Thomas Graf": {
+      "bio": "Thomas Graf is co-founder and CTO of Isovalent, and creator of Cilium.",
+      "source": "https://future.com/author/thomas-graf/"
+    },
+    "Tyler Cowen": {
+      "bio": "Tyler Cowen is Professor of Economics at George Mason University, Faculty Director of the Mercatus Center, and Director of Fast Grants.",
+      "source": "https://future.com/author/tyler-cowen/"
+    },
+    "Vassilis Tziokas": {
+      "bio": "Vassilis Tziokas is the Sales Strategy & Enablement Lead of Microsoft, focusing on translating new technologies into successful commercial strategies. He is also a startup mentor for Endeavor and a DAO ambassador.",
+      "source": "https://future.com/author/vassilis-tziokas/"
+    },
+    "Vitalik Buterin": {
+      "bio": "Vitalik Buterin conceived and co-founded Ethereum and wrote its original white paper.",
+      "source": "https://ethereum.org/ethereum-history-founder-and-ownership/"
+    },
+    "Wes Kao": {
+      "bio": "Wes Kao is the co-founder of Maven, the first platform for cohort-based courses. She is also co-founder of the altMBA.",
+      "source": "https://future.com/author/wes-kao/"
+    },
+    "Yat Siu": {
+      "bio": "Yat Siu is the co-founder, executive chairman, and managing director of Animoca Brands.",
+      "source": "https://www.animocabrands.com/announcement/animoca-brands-announces-senior-leadership-appointments-for-yat-siu-evan-auyang-robby-yung"
+    },
+    "Zach Caceres": {
+      "bio": "Zach Caceres is a software engineer and writes at StartupCities.com. Previously, he was an entrepreneur and urbanism researcher focused on Latin America.",
+      "source": "https://future.com/author/zach-caceres/"
+    },
+    "Zoran Basich": {
+      "bio": "Zoran Basich is an editor and podcast host who covered crypto and web3 at Andreessen Horowitz.",
+      "source": "https://a16z.com/podcast/crypto-an-oral-essay/"
+    },
+    "Joe Lubin": {
+      "bio": "Joe Lubin is co-founder of Ethereum and CEO of Consensys, a blockchain technology company building applications and infrastructure around Ethereum.",
+      "source": "https://consensys.io/about"
+    }
+  }
+}

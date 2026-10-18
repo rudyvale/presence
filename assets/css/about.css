@@ -1,0 +1,151 @@
+.about-hero .page-hero__inner,
+.about-story {
+  max-width: 820px;
+}
+
+.about-hero p {
+  font-size: clamp(1.06rem, 1.5vw, 1.16rem);
+  line-height: 1.8;
+}
+
+.about-hero p + p {
+  margin-top: 20px;
+}
+
+.about-hero .about-hero__lead {
+  color: var(--text);
+  font-size: clamp(1.25rem, 2vw, 1.45rem);
+  line-height: 1.6;
+}
+
+.about-trust {
+  padding: 4px 0 36px;
+  background: #151619;
+}
+
+.about-trust__inner {
+  max-width: 820px;
+}
+
+.about-trust h2 {
+  margin: 0 0 12px;
+  color: #949494;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.about-trust__logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 705px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.about-trust__logo {
+  display: block;
+  height: 30px;
+  background-image: url("/assets/img/trusted-teams.png");
+  background-repeat: no-repeat;
+  background-size: 694.4px 232px;
+}
+
+.about-trust__logo--coinbase {
+  width: 114px;
+  background-position: -33px -97px;
+}
+
+.about-trust__logo--farcaster {
+  width: 139px;
+  background-position: -175px -97px;
+}
+
+.about-trust__logo--stable {
+  width: 91px;
+  background-position: -340px -97px;
+}
+
+.about-trust__logo--base {
+  width: 84px;
+  background-position: -460px -97px;
+}
+
+.about-trust__logo--nodle {
+  width: 92px;
+  background-position: -571px -97px;
+}
+
+@media (max-width: 660px) {
+  .about-trust {
+    padding: 20px 0 28px;
+  }
+
+  .about-trust h2 {
+    margin-bottom: 20px;
+  }
+
+  .about-trust__logos {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 30px;
+    max-width: 360px;
+  }
+}
+
+.about-story {
+  padding-top: 58px;
+  padding-bottom: 76px;
+}
+
+.about-story__section + .about-story__section {
+  margin-top: 52px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.about-story h2 {
+  margin: 0 0 26px;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  scroll-margin-top: calc(var(--nav-height) + 28px);
+}
+
+.about-story p {
+  color: var(--muted);
+  font-size: clamp(1.06rem, 1.5vw, 1.16rem);
+  line-height: 1.8;
+}
+
+.about-story p + p {
+  margin-top: 22px;
+}
+
+.about-story__section > p:first-of-type,
+.about-story__section:last-child > p:nth-last-child(-n + 2) {
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  .about-story {
+    padding-top: 38px;
+    padding-bottom: 48px;
+  }
+
+  .about-story__section + .about-story__section {
+    margin-top: 38px;
+    padding-top: 34px;
+  }
+
+  .about-story h2 {
+    margin-bottom: 22px;
+  }
+}

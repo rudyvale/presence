@@ -1,0 +1,53 @@
+name: Hosting health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'CNAME'
+      - '_config.yml'
+      - '.github/publishing.bin'
+      - '.github/site_services.py'
+      - '.github/workflows/hosting-health.yml'
+
+permissions:
+  contents: read
+  pages: read
+
+concurrency:
+  group: presence-hosting-health
+  cancel-in-progress: true
+
+env:
+  PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        id: services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Check public DNS, trusted TLS and published content
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python .github/site_services.py run health
+      - name: Retain private diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-diagnostics-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3

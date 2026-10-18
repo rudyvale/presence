@@ -1,0 +1,48 @@
+name: Source checks
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'articles/**'
+      - 'assets/js/news-data.js'
+      - '.github/publishing.bin'
+      - '.github/site_services.py'
+      - '.github/workflows/news-source-quality.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: presence-source-quality
+  cancel-in-progress: true
+
+env:
+  PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        id: services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Verify final editorial copy against full sources
+        run: python .github/site_services.py run sources
+      - name: Retain private diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-diagnostics-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3

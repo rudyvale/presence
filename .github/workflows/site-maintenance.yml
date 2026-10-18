@@ -1,0 +1,39 @@
+name: Site maintenance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: presence-site-maintenance
+  cancel-in-progress: false
+
+jobs:
+  maintain:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open site services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+      - name: Remove archived deployment records
+        run: python .github/site_services.py run history
+      - name: Retain private diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maintenance-diagnostics
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3
