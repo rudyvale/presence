@@ -2,14 +2,14 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Multicoin Capital Doubles Down on HYPE Amid Crypto Focus",
-    "summary": "Hyperliquid's HYPE has become Multicoin Capital’s largest hedge-fund position as the firm reaffirms its commitment to cryptocurrency investments over standalone artificial intelligence. The investment thesis centers around Hyperliquid's potential expansion into broader financials",
+    "title": "HYPE Leads Multicoin's Hedge Fund as Firm Maintains Crypto Focus",
+    "summary": "Multicoin identifies HYPE as its largest hedge-fund holding while retaining its crypto focus. Earlier forecasts and wallet transfers leave the position's size undisclosed.",
     "author": "Presence Editorial",
     "date": "2026-10-19",
     "readingTime": "4 min read",
     "url": "/articles/2026-10-19_multicoin-capital-doubles-down-on-hype-amid-crypto-focus-88b2bc6a29/",
     "promotable": true,
-    "image": "/assets/img/articles/2026-10-19_multicoin-capital-doubles-down-on-hype-amid-crypto-focus-88b2bc6a29/illustration-97fa0d93.webp",
+    "image": "/assets/img/articles/2026-10-19_multicoin-capital-doubles-down-on-hype-amid-crypto-focus-88b2bc6a29/illustration-bd2c31cb.webp",
     "imageAlt": "Original Presence illustration of connected digital asset networks.",
     "imageCredit": "Illustration: Presence"
   },
