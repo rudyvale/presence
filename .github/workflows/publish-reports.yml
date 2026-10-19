@@ -1,0 +1,105 @@
+name: Publish validated reports
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Daily news]
+    branches: [main]
+    types: [completed]
+
+concurrency:
+  group: presence-site-publication
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    outputs:
+      deploy: ${{ steps.export.outputs.ready }}
+      commit: ${{ steps.export.outputs.commit }}
+      articles: ${{ steps.collect.outputs.articles }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Collect independently validated reports
+        id: collect
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python .github/site_services.py run collect
+      - name: Validate public site
+        run: python .github/site_services.py run validate
+      - name: Publish ready changes
+        id: publish
+        run: |
+          python .github/site_services.py seal
+          python .github/site_services.py run publish
+      - name: Export public site
+        id: export
+        if: steps.publish.outputs.updated == 'true'
+        run: python .github/site_services.py run export "$RUNNER_TEMP/presence-pages"
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.export.outputs.ready == 'true'
+        with:
+          path: ${{ runner.temp }}/presence-pages
+      - name: Retain private diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-diagnostics
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3
+
+  deploy:
+    needs: publish
+    if: needs.publish.outputs.deploy == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.publish.outputs.commit }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - uses: actions/deploy-pages@v4
+        id: deployment
+      - name: Verify complete published reports
+        env:
+          EXPECTED_ARTICLES_JSON: ${{ needs.publish.outputs.articles }}
+        run: python .github/site_services.py run check
