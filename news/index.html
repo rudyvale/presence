@@ -119,8 +119,8 @@
 
       <div class="news-filters" aria-label="Filter news by topic">
         <template data-presence-slot="NEWS-FILTERS:START"></template>
-        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">9</span></button>
-        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">9</span></button>
+        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">10</span></button>
+        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">10</span></button>
         <button class="news-filter" id="technology" type="button" data-news-filter="technology" aria-pressed="false">Technology <span data-news-count="technology">0</span></button>
         <button class="news-filter" id="companies" type="button" data-news-filter="companies" aria-pressed="false">Companies <span data-news-count="companies">0</span></button>
         <template data-presence-slot="NEWS-FILTERS:END"></template>
@@ -128,12 +128,29 @@
 
       <div class="news-search">
         <label for="news-search">Search headlines and authors</label>
-        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 9 news stories">
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 10 news stories">
         <span data-news-results aria-live="polite"></span>
       </div>
 
       <div class="news-grid" id="news-grid">
         <template data-presence-slot="NEWS-CARDS:START"></template>
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-19_ripple-welcomes-new-xrp-account-on-x-with-a-nod-to-ledger-contrib-18e501f857/" aria-label="Read Ripple Welcomes New XRP Account on X With a Nod to Ledger Contributors">
+            <img src="/assets/img/articles/2026-10-19_ripple-welcomes-new-xrp-account-on-x-with-a-nod-to-ledger-contrib-18e501f857/illustration-33e49d41.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-19">October 19, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-19_ripple-welcomes-new-xrp-account-on-x-with-a-nod-to-ledger-contrib-18e501f857/">Ripple Welcomes New XRP Account on X With a Nod to Ledger Contributors</a></h2>
+          <p class="news-card__summary">Ripple and the XRP Ledger Foundation welcomed a new XRP account on X. The brief social introduction did not announce a product launch, token distribution or change to ledger rules.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>3 min read</span>
+          </div>
+        </article>
+
         <article class="news-card news-card--crypto news-card--with-image">
           <a class="news-card__media" href="/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/" aria-label="Read Dogecoin Price Drops Below Analyst’s Support Level Despite Whale Buys">
             <img src="/assets/img/articles/2026-10-17_dogecoin-price-drops-below-analyst-s-support-level-despite-whale-2fd0aaa8f0/illustration-9604a9d2.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
@@ -329,7 +346,7 @@
 </footer>
 
 <script src="/assets/js/site.js?v=9aed9a7cf00b0681"></script>
-<script src="/assets/js/news-data.js?v=8e0cbf95066beba0"></script>
+<script src="/assets/js/news-data.js?v=bed064c57b9f1be6"></script>
 <script src="/assets/js/news.js?v=78d46693dcdcf2e6"></script>
 </body>
 </html>

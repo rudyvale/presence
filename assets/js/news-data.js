@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Ripple Welcomes New XRP Account on X With a Nod to Ledger Contributors",
+    "summary": "Ripple and the XRP Ledger Foundation welcomed a new XRP account on X. The brief social introduction did not announce a product launch, token distribution or change to ledger rules.",
+    "author": "Presence Editorial",
+    "date": "2026-10-19",
+    "readingTime": "3 min read",
+    "url": "/articles/2026-10-19_ripple-welcomes-new-xrp-account-on-x-with-a-nod-to-ledger-contrib-18e501f857/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-19_ripple-welcomes-new-xrp-account-on-x-with-a-nod-to-ledger-contrib-18e501f857/illustration-33e49d41.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Dogecoin Price Drops Below Analyst’s Support Level Despite Whale Buys",
     "summary": "Dogecoin's price fell below $0.081, despite whale purchases of 600 million DOGE, as analysts identify potential recovery signals.",
     "author": "Presence Editorial",
