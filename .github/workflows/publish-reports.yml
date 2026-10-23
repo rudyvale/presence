@@ -78,9 +78,13 @@ jobs:
         run: |
           python .github/site_services.py seal
           python .github/site_services.py run publish
+      - name: Check unfinished delivery
+        id: delivery
+        if: steps.publish.outputs.updated != 'true'
+        run: python .github/site_services.py run delivery
       - name: Export public site
         id: export
-        if: steps.publish.outputs.updated == 'true'
+        if: steps.publish.outputs.updated == 'true' || steps.delivery.outputs.pending == 'true'
         run: python .github/site_services.py run export "$RUNNER_TEMP/presence-pages"
       - uses: actions/upload-pages-artifact@v4
         if: steps.export.outputs.ready == 'true'
