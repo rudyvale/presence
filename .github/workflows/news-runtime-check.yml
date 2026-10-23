@@ -15,6 +15,11 @@ on:
         description: Check one draft attempt without retries
         type: boolean
         default: false
+      profile:
+        description: Publishing resource profile to verify
+        type: choice
+        options: [standard, compact]
+        default: standard
   push:
     branches: [main]
     paths:
@@ -37,6 +42,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     env:
+      SERVICE_PROFILE: ${{ inputs.profile || 'standard' }}
       NEWS_PROGRESS_CONTEXT: presence-news/sample-0
       NEWS_PROGRESS_SHA: ${{ github.sha }}
       GH_TOKEN: ${{ github.token }}
