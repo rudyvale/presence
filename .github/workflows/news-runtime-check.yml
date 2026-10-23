@@ -18,8 +18,8 @@ on:
       profile:
         description: Publishing resource profile to verify
         type: choice
-        options: [standard, compact]
-        default: standard
+        options: [compact, standard]
+        default: compact
   push:
     branches: [main]
     paths:
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     env:
-      SERVICE_PROFILE: ${{ inputs.profile || 'standard' }}
+      SERVICE_PROFILE: ${{ inputs.profile || 'compact' }}
       NEWS_PROGRESS_CONTEXT: presence-news/sample-0
       NEWS_PROGRESS_SHA: ${{ github.sha }}
       GH_TOKEN: ${{ github.token }}
