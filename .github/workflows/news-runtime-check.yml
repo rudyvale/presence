@@ -18,7 +18,7 @@ on:
       profile:
         description: Publishing resource profile to verify
         type: choice
-        options: [compact, standard]
+        options: [compact, extended, standard]
         default: compact
   push:
     branches: [main]
@@ -31,7 +31,7 @@ permissions:
   statuses: write
 
 concurrency:
-  group: ${{ inputs.resources_only == true && 'presence-publishing-resources' || format('presence-editorial-runtime-check-{0}', github.ref_name) }}
+  group: ${{ inputs.resources_only == true && 'presence-publishing-resources' || format('presence-editorial-runtime-check-{0}-{1}', github.ref_name, inputs.profile || 'compact') }}
   cancel-in-progress: true
 
 env:
