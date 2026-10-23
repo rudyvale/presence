@@ -25,7 +25,12 @@ env:
 jobs:
   plan:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 8
+    permissions:
+      contents: read
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
     outputs:
       jobs: ${{ steps.plan.outputs.jobs }}
       plan: ${{ steps.plan.outputs.plan }}
@@ -35,6 +40,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: main
+          fetch-depth: 0
       - name: Pin editorial code revision
         id: revision
         run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
@@ -67,15 +73,14 @@ jobs:
     if: needs.plan.outputs.ready == 'true'
     name: Report ${{ matrix.job.key }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 140
     permissions:
       contents: read
       statuses: write
       actions: write
-      models: read
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 4
       matrix:
         job: ${{ fromJSON(needs.plan.outputs.jobs) }}
     env:
@@ -83,11 +88,11 @@ jobs:
       NEWS_PROGRESS_CONTEXT: presence-news/${{ matrix.job.key }}
       NEWS_PROGRESS_SHA: ${{ needs.plan.outputs.commit }}
       GH_TOKEN: ${{ github.token }}
-      SERVICE_MODE: managed
     steps:
       - uses: actions/checkout@v6
         with:
           ref: ${{ needs.plan.outputs.commit }}
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -97,11 +102,22 @@ jobs:
           python -m pip install --quiet cryptography==46.0.3
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
+      - name: Restore publishing resources
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ${{ steps.services.outputs.runtime_path }}
+            ${{ steps.services.outputs.cache_path }}
+          key: ${{ steps.services.outputs.cache_key }}
+          restore-keys: ${{ steps.services.outputs.cache_seed }}
       - name: Prepare publishing resources
         run: python .github/site_services.py run prepare
       - name: Start publishing resources
         id: resources
         run: python .github/site_services.py run start
+      - name: Restore unfinished editorial work
+        run: python .github/site_services.py run resume
       - name: Research and validate one independent report
         run: python .github/site_services.py run write --directory "$RUNNER_TEMP/presence-report"
       - name: Preserve validated report
@@ -113,6 +129,25 @@ jobs:
           retention-days: 3
       - name: Queue ready publication
         run: python .github/site_services.py run notify
+      - name: Preserve unfinished editorial work
+        if: always()
+        run: python .github/site_services.py run checkpoint
+      - name: Store editorial progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presence-work-${{ matrix.job.key }}
+          path: ${{ runner.temp }}/presence-work/progress.bin
+          if-no-files-found: ignore
+          retention-days: 3
+      - name: Cache publishing resources
+        if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ${{ steps.services.outputs.runtime_path }}
+            ${{ steps.services.outputs.cache_path }}
+          key: ${{ steps.services.outputs.cache_key }}
       - name: Stop publishing resources
         if: always() && steps.resources.outcome == 'success'
         run: python .github/site_services.py run stop
