@@ -24,6 +24,7 @@ on:
 permissions:
   contents: read
   statuses: write
+  models: read
 
 concurrency:
   group: ${{ inputs.resources_only == true && 'presence-publishing-resources' || format('presence-editorial-runtime-check-{0}', github.ref_name) }}
@@ -35,8 +36,9 @@ env:
 jobs:
   verify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: 10
     env:
+      SERVICE_MODE: managed
       NEWS_PROGRESS_CONTEXT: presence-news/sample-0
       NEWS_PROGRESS_SHA: ${{ github.sha }}
       GH_TOKEN: ${{ github.token }}
@@ -53,28 +55,12 @@ jobs:
           python -m pip install --quiet cryptography==46.0.3
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
-      - uses: actions/cache/restore@v4
-        id: cache
-        with:
-          path: |
-            ${{ steps.services.outputs.runtime_path }}
-            ${{ steps.services.outputs.cache_path }}
-          key: ${{ steps.services.outputs.cache_key }}
-          restore-keys: ${{ steps.services.outputs.cache_seed }}
       - name: Verify publishing resources
         id: resources
         run: python .github/site_services.py run resources
       - name: Verify publishing service without publication
         if: inputs.resources_only != true
         run: python .github/site_services.py run sample --article "$NEWS_SAMPLE_ARTICLE"
-      - name: Cache publishing resources
-        if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ${{ steps.services.outputs.runtime_path }}
-            ${{ steps.services.outputs.cache_path }}
-          key: ${{ steps.services.outputs.cache_key }}
       - name: Stop publishing resources
         if: always() && inputs.resources_only != true
         run: python .github/site_services.py run stop

@@ -2,7 +2,7 @@ name: Daily news
 
 on:
   schedule:
-    - cron: '5,35 7,15 * * *'
+    - cron: '7 * * * *'
   workflow_dispatch:
     inputs:
       restart:
@@ -67,14 +67,15 @@ jobs:
     if: needs.plan.outputs.ready == 'true'
     name: Report ${{ matrix.job.key }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 180
+    timeout-minutes: 45
     permissions:
       contents: read
       statuses: write
       actions: write
+      models: read
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 1
       matrix:
         job: ${{ fromJSON(needs.plan.outputs.jobs) }}
     env:
@@ -82,6 +83,7 @@ jobs:
       NEWS_PROGRESS_CONTEXT: presence-news/${{ matrix.job.key }}
       NEWS_PROGRESS_SHA: ${{ needs.plan.outputs.commit }}
       GH_TOKEN: ${{ github.token }}
+      SERVICE_MODE: managed
     steps:
       - uses: actions/checkout@v6
         with:
@@ -95,15 +97,6 @@ jobs:
           python -m pip install --quiet cryptography==46.0.3
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
-      - name: Restore publishing resources
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ${{ steps.services.outputs.runtime_path }}
-            ${{ steps.services.outputs.cache_path }}
-          key: ${{ steps.services.outputs.cache_key }}
-          restore-keys: ${{ steps.services.outputs.cache_seed }}
       - name: Prepare publishing resources
         run: python .github/site_services.py run prepare
       - name: Start publishing resources
@@ -120,14 +113,6 @@ jobs:
           retention-days: 3
       - name: Queue ready publication
         run: python .github/site_services.py run notify
-      - name: Cache publishing resources
-        if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ${{ steps.services.outputs.runtime_path }}
-            ${{ steps.services.outputs.cache_path }}
-          key: ${{ steps.services.outputs.cache_key }}
       - name: Stop publishing resources
         if: always() && steps.resources.outcome == 'success'
         run: python .github/site_services.py run stop
