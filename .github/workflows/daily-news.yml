@@ -84,6 +84,7 @@ jobs:
       matrix:
         job: ${{ fromJSON(needs.plan.outputs.jobs) }}
     env:
+      SERVICE_PROFILE: compact
       NEWS_JOB_JSON: ${{ toJSON(matrix.job) }}
       NEWS_PROGRESS_CONTEXT: presence-news/${{ matrix.job.key }}
       NEWS_PROGRESS_SHA: ${{ needs.plan.outputs.commit }}
