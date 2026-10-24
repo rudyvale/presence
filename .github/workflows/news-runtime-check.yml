@@ -15,6 +15,10 @@ on:
         description: Check one draft attempt without retries
         type: boolean
         default: false
+      review_cases:
+        description: Check full-report verification against private regression controls
+        type: boolean
+        default: false
       profile:
         description: Publishing resource profile to verify
         type: choice
@@ -48,6 +52,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       NEWS_SAMPLE_ARTICLE: ${{ inputs.article || '/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/' }}
       NEWS_SAMPLE_SINGLE_PASS: ${{ inputs.single_pass && 'true' || 'false' }}
+      NEWS_SAMPLE_REVIEW_CASES: ${{ inputs.review_cases && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
