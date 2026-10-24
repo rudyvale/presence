@@ -1,0 +1,72 @@
+name: Source review controls
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  statuses: write
+
+concurrency:
+  group: presence-source-review-controls
+  cancel-in-progress: true
+
+env:
+  PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+
+jobs:
+  verify:
+    name: Review control ${{ matrix.group }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        group: [0, 1, 2, 3, 4, 5, 6, 7]
+    env:
+      SERVICE_PROFILE: extended
+      NEWS_REVIEW_STYLE: standard
+      NEWS_SAMPLE_REVIEW_CASES: 'true'
+      NEWS_REVIEW_CASE_GROUP: ${{ matrix.group }}
+      NEWS_PROGRESS_CONTEXT: presence-news/sample-${{ matrix.group }}
+      NEWS_PROGRESS_SHA: ${{ github.sha }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        id: services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - uses: actions/cache/restore@v4
+        with:
+          path: |
+            ${{ steps.services.outputs.runtime_path }}
+            ${{ steps.services.outputs.cache_path }}
+          key: ${{ steps.services.outputs.cache_key }}
+          restore-keys: ${{ steps.services.outputs.cache_seed }}
+      - name: Prepare publishing resources
+        run: python .github/site_services.py run prepare
+        env:
+          NEWS_JOB_JSON: '{"sources":[{}]}'
+      - name: Start publishing resources
+        id: resources
+        run: python .github/site_services.py run start
+      - name: Verify source controls without publication
+        run: python .github/site_services.py run sample --article control
+      - name: Stop publishing resources
+        if: always() && steps.resources.outcome == 'success'
+        run: python .github/site_services.py run stop
+      - name: Retain private diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-control-${{ matrix.group }}
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3
