@@ -7,13 +7,18 @@ on:
         description: JSON array of source control groups to verify
         type: string
         default: '[0,1,2,3,4,5,6,7]'
+      profile:
+        description: Publishing resource profile to verify
+        type: choice
+        options: [extended, standard]
+        default: extended
 
 permissions:
   contents: read
   statuses: write
 
 concurrency:
-  group: presence-source-review-controls
+  group: presence-source-review-controls-${{ inputs.profile || 'extended' }}
   cancel-in-progress: true
 
 env:
@@ -30,7 +35,7 @@ jobs:
       matrix:
         group: ${{ fromJSON(inputs.groups || '[0,1,2,3,4,5,6,7]') }}
     env:
-      SERVICE_PROFILE: extended
+      SERVICE_PROFILE: ${{ inputs.profile || 'extended' }}
       NEWS_REVIEW_STYLE: standard
       NEWS_SAMPLE_REVIEW_CASES: 'true'
       NEWS_REVIEW_CASE_GROUP: ${{ matrix.group }}
