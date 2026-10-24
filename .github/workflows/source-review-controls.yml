@@ -57,6 +57,7 @@ jobs:
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
       - uses: actions/cache/restore@v4
+        if: env.PUBLISHING_TOKEN == ''
         with:
           path: |
             ${{ steps.services.outputs.runtime_path }}

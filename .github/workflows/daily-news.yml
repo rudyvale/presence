@@ -108,6 +108,7 @@ jobs:
           python .github/site_services.py run dependencies
       - name: Restore publishing resources
         id: cache
+        if: env.PUBLISHING_TOKEN == ''
         uses: actions/cache/restore@v4
         with:
           path: |
@@ -145,7 +146,7 @@ jobs:
           if-no-files-found: ignore
           retention-days: 3
       - name: Cache publishing resources
-        if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
+        if: always() && env.PUBLISHING_TOKEN == '' && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: |
