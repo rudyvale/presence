@@ -23,6 +23,9 @@ concurrency:
 
 env:
   PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+  PUBLISHING_TOKEN: ${{ secrets.PUBLISHING_TOKEN }}
+  PUBLISHING_ENDPOINT: ${{ vars.PUBLISHING_ENDPOINT }}
+  PUBLISHING_MODEL: ${{ vars.PUBLISHING_MODEL }}
 
 jobs:
   verify:
