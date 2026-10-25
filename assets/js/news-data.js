@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "CFTC Monitors Prediction Markets Ahead of 2026 Midterms",
+    "summary": "The CFTC is monitoring prediction markets for manipulation ahead of the 2026 U.S. midterms, per reporting on Chairman Michael Selig's interview; Dune research separately shows $250 million in combined open interest as of Oct. 18.",
+    "author": "Presence Editorial",
+    "date": "2026-10-24",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-10-24_cftc-monitors-prediction-markets-ahead-of-2026-midterms-56418a1a9a/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-24_cftc-monitors-prediction-markets-ahead-of-2026-midterms-56418a1a9a/illustration-a167e5a5.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Tether Secures 15 Partners for Open-Source Bitcoin Mining Automation",
     "summary": "Tether announced that 15 mining firms have committed to its open-source MDK framework, targeting a stable release by late 2026.",
     "author": "Presence Editorial",
