@@ -86,8 +86,12 @@ def seal():
     if output.tell() > LIMIT:
         raise ValueError("Publishing package is too large")
     plain = gzip.compress(output.getvalue(), mtime=0)
-    if BUNDLE.exists() and decrypt(BUNDLE.read_bytes()) == plain:
-        return
+    if BUNDLE.exists():
+        try:
+            if decrypt(BUNDLE.read_bytes()) == plain:
+                return
+        except Exception:
+            pass
     temporary = BUNDLE.with_suffix(".pending")
     temporary.write_bytes(encrypt(plain))
     temporary.replace(BUNDLE)

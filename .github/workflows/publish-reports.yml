@@ -102,6 +102,7 @@ jobs:
         if: steps.export.outputs.ready == 'true' && steps.mode.outputs.mode == 'workflow'
         with:
           path: ${{ runner.temp }}/presence-pages
+          retention-days: 1
       - name: Retain private diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
