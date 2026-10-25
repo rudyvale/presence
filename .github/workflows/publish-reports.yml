@@ -49,10 +49,12 @@ jobs:
     permissions:
       contents: write
       actions: read
+      pages: read
     outputs:
       deploy: ${{ steps.export.outputs.ready }}
       commit: ${{ steps.export.outputs.commit }}
       articles: ${{ steps.collect.outputs.articles }}
+      delivery: ${{ steps.mode.outputs.mode }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -71,6 +73,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python .github/site_services.py run collect
+      - name: Detect site delivery
+        id: mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python .github/site_services.py run mode
       - name: Validate public site
         run: python .github/site_services.py run validate
       - name: Publish ready changes
@@ -87,7 +94,7 @@ jobs:
         if: steps.publish.outputs.updated == 'true' || steps.delivery.outputs.pending == 'true'
         run: python .github/site_services.py run export "$RUNNER_TEMP/presence-pages"
       - uses: actions/upload-pages-artifact@v4
-        if: steps.export.outputs.ready == 'true'
+        if: steps.export.outputs.ready == 'true' && steps.mode.outputs.mode == 'workflow'
         with:
           path: ${{ runner.temp }}/presence-pages
       - name: Retain private diagnostics
@@ -124,6 +131,7 @@ jobs:
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
       - uses: actions/deploy-pages@v4
+        if: needs.publish.outputs.delivery == 'workflow'
         id: deployment
       - name: Verify complete published reports
         env:
