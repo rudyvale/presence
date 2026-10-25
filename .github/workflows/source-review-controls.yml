@@ -10,17 +10,16 @@ on:
       profile:
         description: Publishing resource profile to verify
         type: choice
-        options: [session, extended, standard]
-        default: session
+        options: [quality, reasoned, extended, standard]
+        default: quality
 
 permissions:
   contents: read
   statuses: write
-  actions: read
 
 concurrency:
-  group: presence-editorial-session
-  cancel-in-progress: false
+  group: presence-source-review-controls-${{ inputs.profile || 'quality' }}
+  cancel-in-progress: true
 
 env:
   PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
@@ -32,11 +31,11 @@ jobs:
     timeout-minutes: 40
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 4
       matrix:
         group: ${{ fromJSON(inputs.groups || '[0,1,2,3,4,5,6,7]') }}
     env:
-      SERVICE_PROFILE: ${{ inputs.profile || 'session' }}
+      SERVICE_PROFILE: ${{ inputs.profile || 'quality' }}
       NEWS_REVIEW_STYLE: standard
       NEWS_SAMPLE_REVIEW_CASES: 'true'
       NEWS_REVIEW_CASE_GROUP: ${{ matrix.group }}
@@ -45,8 +44,6 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -57,7 +54,7 @@ jobs:
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
       - uses: actions/cache/restore@v4
-        if: steps.services.outputs.resources_required == 'true'
+        id: cache
         with:
           path: |
             ${{ steps.services.outputs.runtime_path }}
@@ -73,17 +70,17 @@ jobs:
         run: python .github/site_services.py run start
       - name: Verify source controls without publication
         run: python .github/site_services.py run sample --article control
+      - name: Cache publishing resources
+        if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ${{ steps.services.outputs.runtime_path }}
+            ${{ steps.services.outputs.cache_path }}
+          key: ${{ steps.services.outputs.cache_key }}
       - name: Stop publishing resources
         if: always() && steps.resources.outcome == 'success'
         run: python .github/site_services.py run stop
-      - name: Store publishing session
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: presence-session-control-${{ matrix.group }}
-          path: ${{ runner.temp }}/presence-session/session.bin
-          if-no-files-found: ignore
-          retention-days: 3
       - name: Retain private diagnostics
         if: always()
         uses: actions/upload-artifact@v4

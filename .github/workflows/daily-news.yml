@@ -13,7 +13,7 @@ on:
     branches: [main]
 
 concurrency:
-  group: presence-editorial-session
+  group: presence-daily-news
   cancel-in-progress: ${{ inputs.restart == true || (github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-news]')) }}
 
 permissions:
@@ -80,11 +80,11 @@ jobs:
       actions: write
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 4
       matrix:
         job: ${{ fromJSON(needs.plan.outputs.jobs) }}
     env:
-      SERVICE_PROFILE: session
+      SERVICE_PROFILE: quality
       NEWS_JOB_JSON: ${{ toJSON(matrix.job) }}
       NEWS_PROGRESS_CONTEXT: presence-news/${{ matrix.job.key }}
       NEWS_PROGRESS_SHA: ${{ needs.plan.outputs.commit }}
@@ -105,7 +105,6 @@ jobs:
           python .github/site_services.py run dependencies
       - name: Restore publishing resources
         id: cache
-        if: steps.services.outputs.resources_required == 'true'
         uses: actions/cache/restore@v4
         with:
           path: |
@@ -142,16 +141,8 @@ jobs:
           path: ${{ runner.temp }}/presence-work/progress.bin
           if-no-files-found: ignore
           retention-days: 3
-      - name: Store publishing session
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: presence-session-${{ matrix.job.key }}
-          path: ${{ runner.temp }}/presence-session/session.bin
-          if-no-files-found: ignore
-          retention-days: 3
       - name: Cache publishing resources
-        if: always() && steps.services.outputs.resources_required == 'true' && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
+        if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: |
