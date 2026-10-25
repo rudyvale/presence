@@ -10,22 +10,20 @@ on:
       profile:
         description: Publishing resource profile to verify
         type: choice
-        options: [extended, standard]
-        default: extended
+        options: [session, extended, standard]
+        default: session
 
 permissions:
   contents: read
   statuses: write
+  actions: read
 
 concurrency:
-  group: presence-source-review-controls-${{ inputs.profile || 'extended' }}
-  cancel-in-progress: true
+  group: presence-editorial-session
+  cancel-in-progress: false
 
 env:
   PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
-  PUBLISHING_TOKEN: ${{ secrets.PUBLISHING_TOKEN }}
-  PUBLISHING_ENDPOINT: ${{ vars.PUBLISHING_ENDPOINT }}
-  PUBLISHING_VARIANT: ${{ vars.PUBLISHING_VARIANT }}
 
 jobs:
   verify:
@@ -34,11 +32,11 @@ jobs:
     timeout-minutes: 40
     strategy:
       fail-fast: false
-      max-parallel: 8
+      max-parallel: 1
       matrix:
         group: ${{ fromJSON(inputs.groups || '[0,1,2,3,4,5,6,7]') }}
     env:
-      SERVICE_PROFILE: ${{ inputs.profile || 'extended' }}
+      SERVICE_PROFILE: ${{ inputs.profile || 'session' }}
       NEWS_REVIEW_STYLE: standard
       NEWS_SAMPLE_REVIEW_CASES: 'true'
       NEWS_REVIEW_CASE_GROUP: ${{ matrix.group }}
@@ -47,6 +45,8 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -57,7 +57,7 @@ jobs:
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
       - uses: actions/cache/restore@v4
-        if: env.PUBLISHING_TOKEN == ''
+        if: steps.services.outputs.resources_required == 'true'
         with:
           path: |
             ${{ steps.services.outputs.runtime_path }}
@@ -76,6 +76,14 @@ jobs:
       - name: Stop publishing resources
         if: always() && steps.resources.outcome == 'success'
         run: python .github/site_services.py run stop
+      - name: Store publishing session
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presence-session-control-${{ matrix.group }}
+          path: ${{ runner.temp }}/presence-session/session.bin
+          if-no-files-found: ignore
+          retention-days: 3
       - name: Retain private diagnostics
         if: always()
         uses: actions/upload-artifact@v4

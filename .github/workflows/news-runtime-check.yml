@@ -22,34 +22,27 @@ on:
       profile:
         description: Publishing resource profile to verify
         type: choice
-        options: [compact, extended, standard]
-        default: compact
-  push:
-    branches: [main]
-    paths:
-      - '.github/site_services.py'
-      - '.github/workflows/news-runtime-check.yml'
+        options: [session, compact, extended, standard]
+        default: session
 
 permissions:
   contents: read
   statuses: write
+  actions: read
 
 concurrency:
-  group: ${{ inputs.resources_only == true && 'presence-publishing-resources' || format('presence-editorial-runtime-check-{0}-{1}', github.ref_name, inputs.profile || 'compact') }}
-  cancel-in-progress: true
+  group: presence-editorial-session
+  cancel-in-progress: false
 
 env:
   PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
-  PUBLISHING_TOKEN: ${{ secrets.PUBLISHING_TOKEN }}
-  PUBLISHING_ENDPOINT: ${{ vars.PUBLISHING_ENDPOINT }}
-  PUBLISHING_VARIANT: ${{ vars.PUBLISHING_VARIANT }}
 
 jobs:
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     env:
-      SERVICE_PROFILE: ${{ inputs.profile || 'compact' }}
+      SERVICE_PROFILE: ${{ inputs.profile || 'session' }}
       NEWS_PROGRESS_CONTEXT: presence-news/sample-0
       NEWS_PROGRESS_SHA: ${{ github.sha }}
       GH_TOKEN: ${{ github.token }}
@@ -58,6 +51,8 @@ jobs:
       NEWS_SAMPLE_REVIEW_CASES: ${{ inputs.review_cases && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -68,7 +63,7 @@ jobs:
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
       - uses: actions/cache/restore@v4
-        if: env.PUBLISHING_TOKEN == ''
+        if: steps.services.outputs.resources_required == 'true'
         id: cache
         with:
           path: |
@@ -83,7 +78,7 @@ jobs:
         if: inputs.resources_only != true
         run: python .github/site_services.py run sample --article "$NEWS_SAMPLE_ARTICLE"
       - name: Cache publishing resources
-        if: always() && env.PUBLISHING_TOKEN == '' && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
+        if: always() && steps.services.outputs.resources_required == 'true' && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: |
@@ -93,6 +88,14 @@ jobs:
       - name: Stop publishing resources
         if: always() && inputs.resources_only != true
         run: python .github/site_services.py run stop
+      - name: Store publishing session
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presence-session-sample
+          path: ${{ runner.temp }}/presence-session/session.bin
+          if-no-files-found: ignore
+          retention-days: 3
       - name: Retain private diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
