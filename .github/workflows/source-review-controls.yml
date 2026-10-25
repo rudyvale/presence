@@ -6,7 +6,7 @@ on:
       groups:
         description: JSON array of source control groups to verify
         type: string
-        default: '[0,1,2,3,4,5,6,7,8,9]'
+        default: '[0,1,2,3,4,5,6,7,8,9,10]'
       profile:
         description: Publishing resource profile to verify
         type: choice
@@ -33,7 +33,7 @@ jobs:
       fail-fast: false
       max-parallel: 4
       matrix:
-        group: ${{ fromJSON(inputs.groups || '[0,1,2,3,4,5,6,7,8,9]') }}
+        group: ${{ fromJSON(inputs.groups || '[0,1,2,3,4,5,6,7,8,9,10]') }}
     env:
       SERVICE_PROFILE: ${{ inputs.profile || 'extended' }}
       NEWS_REVIEW_STYLE: standard
