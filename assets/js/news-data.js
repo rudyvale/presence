@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitget Hacker Moves $19.48M in Bitcoin Amid Ongoing Recovery Efforts",
+    "summary": "Arkham reports a Bitget-linked hacker moved $19.48 million across 52 transfers, mostly Bitcoin, while the exchange cites a total loss of $387.5 million.",
+    "author": "Presence Editorial",
+    "date": "2026-10-24",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-10-24_bitget-hacker-moves-19-48m-in-bitcoin-amid-ongoing-recovery-effor-4b5dff4038/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-24_bitget-hacker-moves-19-48m-in-bitcoin-amid-ongoing-recovery-effor-4b5dff4038/illustration-848565cc.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Tether Secures 15 Partners for Open-Source Bitcoin Mining Automation",
     "summary": "Tether announced that 15 mining firms have committed to its open-source MDK framework, targeting a stable release by late 2026.",
     "author": "Presence Editorial",
