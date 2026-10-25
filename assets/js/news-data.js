@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Tether Secures 15 Partners for Open-Source Bitcoin Mining Automation",
+    "summary": "Tether announced that 15 mining firms have committed to its open-source MDK framework, targeting a stable release by late 2026.",
+    "author": "Presence Editorial",
+    "date": "2026-10-25",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-10-25_tether-secures-15-partners-for-open-source-bitcoin-mining-automat-4b28a8b559/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-25_tether-secures-15-partners-for-open-source-bitcoin-mining-automat-4b28a8b559/illustration-17c492c9.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "HYPE Leads Multicoin's Hedge Fund as Firm Maintains Crypto Focus",
     "summary": "Multicoin identifies HYPE as its largest hedge-fund holding while retaining its crypto focus. Earlier forecasts and wallet transfers leave the position's size undisclosed.",
     "author": "Presence Editorial",
