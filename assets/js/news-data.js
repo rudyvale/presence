@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Milei Attacks Five Journalists Following LIBRA Case Dismissal",
+    "summary": "Argentine President Javier Milei publicly accused five journalists of defamation after a judge dismissed the criminal case against him regarding the collapsed LIBRA token.",
+    "author": "Presence Editorial",
+    "date": "2026-10-24",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-10-24_milei-attacks-five-journalists-following-libra-case-dismissal-7592cdec82/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-24_milei-attacks-five-journalists-following-libra-case-dismissal-7592cdec82/illustration-b006b4d3.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "UK Banks Face Complaints on Crypto Payment Restrictions Amid Regulatory Uncertainty",
     "summary": "Stand With Crypto recorded 10,092 complaints from 9,803 people over 90 days regarding cryptocurrency payment restrictions at UK banks.",
     "author": "Presence Editorial",
