@@ -2,20 +2,6 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "UK Banks Face Surge in Crypto Payment Complaints Amid Regulatory Uncertainty",
-    "summary": "Stand With Crypto recorded 10,092 complaints from 9,803 people over 90 days regarding cryptocurrency payment restrictions at UK banks.",
-    "author": "Presence Editorial",
-    "date": "2026-10-25",
-    "readingTime": "4 min read",
-    "url": "/articles/2026-10-25_uk-banks-face-surge-in-crypto-payment-complaints-amid-regulatory-699534cac7/",
-    "promotable": true,
-    "image": "/assets/img/articles/2026-10-25_uk-banks-face-surge-in-crypto-payment-complaints-amid-regulatory-699534cac7/illustration-e84c3009.webp",
-    "imageAlt": "Original Presence illustration of connected digital asset networks.",
-    "imageCredit": "Illustration: Presence"
-  },
-  {
-    "category": "crypto",
-    "type": "NEWS",
     "title": "CFTC Monitors Prediction Markets Ahead of 2026 Midterms",
     "summary": "The CFTC is monitoring prediction markets for manipulation ahead of the 2026 U.S. midterms, per reporting on Chairman Michael Selig's interview; Dune research separately shows $250 million in combined open interest as of Oct. 18.",
     "author": "Presence Editorial",
