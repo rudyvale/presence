@@ -1,6 +1,11 @@
 name: Publish validated reports
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/publishing.bin'
+      - '.github/workflows/publish-reports.yml'
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
