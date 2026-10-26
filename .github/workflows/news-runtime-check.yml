@@ -23,6 +23,10 @@ on:
         description: Verify recovery from unchanged word-count edits without publishing
         type: boolean
         default: false
+      resume_run:
+        description: Resume an unpublished counted-edit candidate from an earlier service check
+        type: string
+        default: ''
       profile:
         description: Publishing resource profile to verify
         type: choice
@@ -31,6 +35,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   statuses: write
 
 concurrency:
@@ -53,8 +58,11 @@ jobs:
       NEWS_SAMPLE_SINGLE_PASS: ${{ inputs.single_pass && 'true' || 'false' }}
       NEWS_SAMPLE_REVIEW_CASES: ${{ inputs.review_cases && 'true' || 'false' }}
       NEWS_SAMPLE_COUNTED_EDIT: ${{ inputs.counted_edit && 'true' || 'false' }}
+      NEWS_SAMPLE_RESUME_RUN: ${{ inputs.resume_run || '' }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
