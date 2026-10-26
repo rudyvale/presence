@@ -9,6 +9,10 @@ on:
         description: Restart unfinished editorial report jobs
         type: boolean
         default: false
+      restart_job:
+        description: Restart only the named report job
+        type: string
+        default: ''
   push:
     branches: [main]
 
@@ -72,7 +76,7 @@ jobs:
     timeout-minutes: 140
     concurrency:
       group: presence-editorial-${{ matrix.job.key }}
-      cancel-in-progress: ${{ inputs.restart == true || (github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-news]')) }}
+      cancel-in-progress: ${{ inputs.restart == true || inputs.restart_job == matrix.job.key || (github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-news]')) }}
     permissions:
       contents: read
       statuses: write
