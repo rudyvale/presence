@@ -19,6 +19,10 @@ on:
         description: Check full-report verification against private regression controls
         type: boolean
         default: false
+      counted_edit:
+        description: Verify recovery from unchanged word-count edits without publishing
+        type: boolean
+        default: false
       profile:
         description: Publishing resource profile to verify
         type: choice
@@ -48,6 +52,7 @@ jobs:
       NEWS_SAMPLE_ARTICLE: ${{ inputs.article || '/articles/2026-10-14_bitcoin-risks-another-leverage-shakeout-if-us-cpi-runs-hot-analys-5c48598ca4/' }}
       NEWS_SAMPLE_SINGLE_PASS: ${{ inputs.single_pass && 'true' || 'false' }}
       NEWS_SAMPLE_REVIEW_CASES: ${{ inputs.review_cases && 'true' || 'false' }}
+      NEWS_SAMPLE_COUNTED_EDIT: ${{ inputs.counted_edit && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
