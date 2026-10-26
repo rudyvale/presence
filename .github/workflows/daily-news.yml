@@ -31,6 +31,7 @@ jobs:
       actions: read
     env:
       GH_TOKEN: ${{ github.token }}
+      NEWS_RESTART_JOB: ${{ inputs.restart_job || '' }}
     outputs:
       jobs: ${{ steps.plan.outputs.jobs }}
       plan: ${{ steps.plan.outputs.plan }}
