@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Strategy Halts Bitcoin Accumulation as STRC Repurchases Continue</title>
+      <link>https://presence.news/articles/2026-10-26_strategy-halts-bitcoin-accumulation-as-strc-repurchases-continue-336a69adfc/</link>
+      <guid isPermaLink="false">presence:articles/2026-10-26_strategy-halts-bitcoin-accumulation-as-strc-repurchases-continue-336a69adfc</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+      <description>MicroStrategy paused Bitcoin acquisitions while repurchasing nearly $205 million in preferred stock, leaving cash reserves significantly reduced.</description>
+    </item>
     <item>
       <title>Tether Secures 15 Partners for Open-Source Bitcoin Mining Automation</title>
       <link>https://presence.news/articles/2026-10-25_tether-secures-15-partners-for-open-source-bitcoin-mining-automat-4b28a8b559/</link>
