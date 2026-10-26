@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Strategy Halts Bitcoin Accumulation as STRC Repurchases Continue",
+    "summary": "Strategy paused Bitcoin acquisitions while repurchasing nearly $205 million in preferred stock, leaving its USD Cash balance significantly reduced.",
+    "author": "Presence Editorial",
+    "date": "2026-10-26",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-10-26_strategy-halts-bitcoin-accumulation-as-strc-repurchases-continue-336a69adfc/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-26_strategy-halts-bitcoin-accumulation-as-strc-repurchases-continue-336a69adfc/illustration-7b139a3a.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "UK Banks Face Complaints on Crypto Payment Restrictions Amid Regulatory Uncertainty",
     "summary": "Stand With Crypto recorded 10,092 complaints from 9,803 people over 90 days regarding cryptocurrency payment restrictions at UK banks.",
     "author": "Presence Editorial",
