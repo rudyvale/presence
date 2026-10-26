@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "MemeToro Unveils Transparent AI Agent for Memecoin Launches",
+    "summary": "MemeToro introduces an open-source AI agent on BNB Chain that publishes reasoning and uses transparent contracts to address accountability gaps in automated token creation.",
+    "author": "Presence Editorial",
+    "date": "2026-10-26",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-10-26_memetoro-unveils-transparent-ai-agent-for-memecoin-launches-db0178b89d/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-26_memetoro-unveils-transparent-ai-agent-for-memecoin-launches-db0178b89d/illustration-5aa2c362.webp",
+    "imageAlt": "Original Presence illustration of software agents connected through a digital payment network.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Strategy Halts Bitcoin Accumulation as STRC Repurchases Continue",
     "summary": "Strategy paused Bitcoin acquisitions while repurchasing nearly $205 million in preferred stock, leaving its USD Cash balance significantly reduced.",
     "author": "Presence Editorial",
