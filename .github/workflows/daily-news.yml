@@ -2,7 +2,7 @@ name: Daily news
 
 on:
   schedule:
-    - cron: '7 * * * *'
+    - cron: '17,47 * * * *'
   workflow_dispatch:
     inputs:
       restart:

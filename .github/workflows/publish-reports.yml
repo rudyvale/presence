@@ -7,7 +7,7 @@ on:
       - '.github/publishing.bin'
       - '.github/workflows/publish-reports.yml'
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '9,29,49 * * * *'
   workflow_dispatch:
   workflow_run:
     workflows: [Daily news]
