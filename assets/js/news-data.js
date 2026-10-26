@@ -2,20 +2,6 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Fhenix Deploys Encrypted Computation on Ethereum and Arbitrum",
-    "summary": "Fhenix launched its CoFHE coprocessor on Ethereum and Arbitrum mainnets, enabling smart contracts to process encrypted data for confidential finance.",
-    "author": "Presence Editorial",
-    "date": "2026-10-26",
-    "readingTime": "4 min read",
-    "url": "/articles/2026-10-26_fhenix-deploys-encrypted-computation-on-ethereum-and-arbitrum-9bdaafef7c/",
-    "promotable": true,
-    "image": "/assets/img/articles/2026-10-26_fhenix-deploys-encrypted-computation-on-ethereum-and-arbitrum-9bdaafef7c/illustration-b10e99ca.webp",
-    "imageAlt": "Original Presence illustration of connected digital asset networks.",
-    "imageCredit": "Illustration: Presence"
-  },
-  {
-    "category": "crypto",
-    "type": "NEWS",
     "title": "Strategy Halts Bitcoin Accumulation as STRC Repurchases Continue",
     "summary": "Strategy paused Bitcoin acquisitions while repurchasing nearly $205 million in preferred stock, leaving its USD Cash balance significantly reduced.",
     "author": "Presence Editorial",
