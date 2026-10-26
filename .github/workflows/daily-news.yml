@@ -6,15 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       restart:
-        description: Cancel the active run and restart unfinished editorial work
+        description: Restart unfinished editorial report jobs
         type: boolean
         default: false
   push:
     branches: [main]
-
-concurrency:
-  group: presence-daily-news
-  cancel-in-progress: ${{ inputs.restart == true || (github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-news]')) }}
 
 permissions:
   contents: read
@@ -74,6 +70,9 @@ jobs:
     name: Report ${{ matrix.job.key }}
     runs-on: ubuntu-24.04
     timeout-minutes: 140
+    concurrency:
+      group: presence-editorial-${{ matrix.job.key }}
+      cancel-in-progress: ${{ inputs.restart == true || (github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-news]')) }}
     permissions:
       contents: read
       statuses: write
