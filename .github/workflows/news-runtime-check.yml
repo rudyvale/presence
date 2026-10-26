@@ -43,7 +43,7 @@ env:
 jobs:
   verify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: ${{ inputs.counted_edit && 80 || 40 }}
     env:
       SERVICE_PROFILE: ${{ inputs.profile || 'quality' }}
       NEWS_PROGRESS_CONTEXT: presence-news/sample-0
