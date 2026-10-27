@@ -2,20 +2,6 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Zcash Marks Decade With Developer-Funded Privacy Upgrades",
-    "summary": "Grayscale credits Zcash's unique 20% developer funding model for enabling a decade of privacy upgrades and security fixes as the network approaches its tenth anniversary.",
-    "author": "Presence Editorial",
-    "date": "2026-10-27",
-    "readingTime": "4 min read",
-    "url": "/articles/2026-10-27_zcash-marks-decade-with-developer-funded-privacy-upgrades-d3695a2690/",
-    "promotable": true,
-    "image": "/assets/img/articles/2026-10-27_zcash-marks-decade-with-developer-funded-privacy-upgrades-d3695a2690/illustration-9665872c.webp",
-    "imageAlt": "Original Presence illustration of connected digital asset networks.",
-    "imageCredit": "Illustration: Presence"
-  },
-  {
-    "category": "crypto",
-    "type": "NEWS",
     "title": "Fhenix Deploys Encrypted Computation on Ethereum and Arbitrum",
     "summary": "Fhenix launched its CoFHE coprocessor on Ethereum and Arbitrum mainnets, enabling smart contracts to process encrypted data for confidential finance.",
     "author": "Presence Editorial",
