@@ -1,0 +1,54 @@
+name: Publication supervisor
+
+on:
+  workflow_dispatch:
+    inputs:
+      lease_minutes:
+        description: Service lease duration before automatic handoff
+        type: number
+        default: 300
+  schedule:
+    - cron: '7 * * * *'
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: presence-publication-supervisor
+  cancel-in-progress: false
+
+env:
+  PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  watch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    env:
+      SERVICE_LEASE_MINUTES: ${{ inputs.lease_minutes || 300 }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publication services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Maintain publication and delivery
+        run: python scripts/publication_supervisor.py watch --lease-minutes "$SERVICE_LEASE_MINUTES"
+      - name: Preserve service continuity
+        if: always()
+        run: python scripts/publication_supervisor.py renew
+      - name: Retain private diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-supervisor-diagnostics
+          path: ${{ runner.temp }}/presence-diagnostics/*.bin
+          if-no-files-found: ignore
+          retention-days: 3
