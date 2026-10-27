@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Ethereum Reverses Course to Fix Validator Deposit Flaw Amid Upgrade Delays</title>
+      <link>https://presence.news/articles/2026-10-27_ethereum-reverses-course-to-fix-validator-deposit-flaw-amid-upgra-b86700c818/</link>
+      <guid isPermaLink="false">presence:articles/2026-10-27_ethereum-reverses-course-to-fix-validator-deposit-flaw-amid-upgra-b86700c818</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Ethereum developers merged a fix for a deposit-handling flaw in the upcoming Glamsterdam upgrade after initial resistance, while also postponing the mainnet activation due to separate smart contract compatibility risks.</description>
+    </item>
     <item>
       <title>Fhenix Deploys Encrypted Computation on Ethereum and Arbitrum</title>
       <link>https://presence.news/articles/2026-10-26_fhenix-deploys-encrypted-computation-on-ethereum-and-arbitrum-9bdaafef7c/</link>
