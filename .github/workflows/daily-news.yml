@@ -88,7 +88,7 @@ jobs:
       matrix:
         job: ${{ fromJSON(needs.plan.outputs.jobs) }}
     env:
-      SERVICE_PROFILE: quality
+      SERVICE_PROFILE: extended
       NEWS_JOB_JSON: ${{ toJSON(matrix.job) }}
       NEWS_PROGRESS_CONTEXT: presence-news/${{ matrix.job.key }}
       NEWS_PROGRESS_SHA: ${{ needs.plan.outputs.commit }}
@@ -147,6 +147,7 @@ jobs:
           retention-days: 3
       - name: Cache publishing resources
         if: always() && steps.resources.outcome == 'success' && steps.cache.outputs.cache-hit != 'true'
+        continue-on-error: true
         uses: actions/cache/save@v4
         with:
           path: |
