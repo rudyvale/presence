@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Zcash Marks Decade With Developer-Funded Privacy Upgrades</title>
+      <link>https://presence.news/articles/2026-10-27_zcash-marks-decade-with-developer-funded-privacy-upgrades-d3695a2690/</link>
+      <guid isPermaLink="false">presence:articles/2026-10-27_zcash-marks-decade-with-developer-funded-privacy-upgrades-d3695a2690</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Grayscale credits Zcash's unique 20% developer funding model for enabling a decade of privacy upgrades and security fixes as the network approaches its tenth anniversary.</description>
+    </item>
     <item>
       <title>Fhenix Deploys Encrypted Computation on Ethereum and Arbitrum</title>
       <link>https://presence.news/articles/2026-10-26_fhenix-deploys-encrypted-computation-on-ethereum-and-arbitrum-9bdaafef7c/</link>
