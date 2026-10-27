@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Cyber Extortion Group Demands $15M Bitcoin from Gamdom Casino",
+    "summary": "Cyber extortion group WhiteArmor has demanded $15 million in Bitcoin from crypto gambling platform Gamdom, claiming to have accessed over 15.4 million user accounts.",
+    "author": "Presence Editorial",
+    "date": "2026-10-27",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-10-27_cyber-extortion-group-demands-15m-bitcoin-from-gamdom-casino-f0cd9978de/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-27_cyber-extortion-group-demands-15m-bitcoin-from-gamdom-casino-f0cd9978de/illustration-13ecc045.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Crypto Industry Unveils $176M Midterm Push via Fairshake",
     "summary": "The U.S. crypto industry spent roughly $176 million across over 100 races ahead of the November midterms to secure long-term digital asset legislation.",
     "author": "Presence Editorial",
