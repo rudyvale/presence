@@ -143,3 +143,11 @@ jobs:
           EXPECTED_ARTICLES_JSON: ${{ needs.publish.outputs.articles }}
           EXPECTED_DEPLOYMENT_SHA: ${{ needs.publish.outputs.commit }}
         run: python .github/site_services.py run check
+      - name: Preserve publication delivery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presence-delivery-${{ github.run_id }}
+          path: ${{ runner.temp }}/presence-delivery/delivery.bin
+          if-no-files-found: ignore
+          retention-days: 30

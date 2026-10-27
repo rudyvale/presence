@@ -107,8 +107,12 @@ jobs:
           python -m pip install --quiet cryptography==46.0.3
           python .github/site_services.py restore
           python .github/site_services.py run dependencies
+      - name: Check current publication reservation
+        id: reservation
+        run: python .github/site_services.py run needed
       - name: Restore publishing resources
         id: cache
+        if: steps.reservation.outputs.needed == 'true'
         uses: actions/cache/restore@v4
         with:
           path: |
@@ -117,15 +121,21 @@ jobs:
           key: ${{ steps.services.outputs.cache_key }}
           restore-keys: ${{ steps.services.outputs.cache_seed }}
       - name: Prepare publishing resources
+        if: steps.reservation.outputs.needed == 'true'
         run: python .github/site_services.py run prepare
       - name: Start publishing resources
         id: resources
+        if: steps.reservation.outputs.needed == 'true'
         run: python .github/site_services.py run start
       - name: Restore unfinished editorial work
+        if: steps.reservation.outputs.needed == 'true'
         run: python .github/site_services.py run resume
       - name: Research and validate one independent report
+        id: write
+        if: steps.reservation.outputs.needed == 'true'
         run: python .github/site_services.py run write --directory "$RUNNER_TEMP/presence-report"
       - name: Preserve validated report
+        if: steps.reservation.outputs.needed == 'true' && steps.write.outputs.skipped != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: presence-report-${{ matrix.job.key }}
@@ -133,6 +143,7 @@ jobs:
           if-no-files-found: error
           retention-days: 3
       - name: Queue ready publication
+        if: steps.reservation.outputs.needed == 'true' && steps.write.outputs.skipped != 'true'
         run: python .github/site_services.py run notify
       - name: Preserve unfinished editorial work
         if: always()
