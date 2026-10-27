@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Crypto Industry Unveils $176M Midterm Push via Fairshake",
+    "summary": "The U.S. crypto industry spent roughly $176 million across over 100 races ahead of the November midterms to secure long-term digital asset legislation.",
+    "author": "Presence Editorial",
+    "date": "2026-10-27",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-10-27_crypto-industry-unveils-176m-midterm-push-via-fairshake-515451c0df/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-27_crypto-industry-unveils-176m-midterm-push-via-fairshake-515451c0df/illustration-1ac23fcc.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Fhenix Deploys Encrypted Computation on Ethereum and Arbitrum",
     "summary": "Fhenix launched its CoFHE coprocessor on Ethereum and Arbitrum mainnets, enabling smart contracts to process encrypted data for confidential finance.",
     "author": "Presence Editorial",
