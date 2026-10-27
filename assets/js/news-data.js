@@ -2,20 +2,6 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
-    "title": "Ethereum Reverses Course to Fix Validator Deposit Flaw Amid Upgrade Delays",
-    "summary": "Ethereum developers merged a fix for a deposit-handling flaw in the upcoming Glamsterdam upgrade after initial resistance, while also postponing the mainnet activation due to separate smart contract compatibility risks.",
-    "author": "Presence Editorial",
-    "date": "2026-10-27",
-    "readingTime": "4 min read",
-    "url": "/articles/2026-10-27_ethereum-reverses-course-to-fix-validator-deposit-flaw-amid-upgra-b86700c818/",
-    "promotable": true,
-    "image": "/assets/img/articles/2026-10-27_ethereum-reverses-course-to-fix-validator-deposit-flaw-amid-upgra-b86700c818/illustration-385c66d8.webp",
-    "imageAlt": "Original Presence illustration of connected digital asset networks.",
-    "imageCredit": "Illustration: Presence"
-  },
-  {
-    "category": "crypto",
-    "type": "NEWS",
     "title": "Fhenix Deploys Encrypted Computation on Ethereum and Arbitrum",
     "summary": "Fhenix launched its CoFHE coprocessor on Ethereum and Arbitrum mainnets, enabling smart contracts to process encrypted data for confidential finance.",
     "author": "Presence Editorial",
