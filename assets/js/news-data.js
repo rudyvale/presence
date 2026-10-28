@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Securitize Adds Stellar as 17th Blockchain for Institutional Tokenization",
+    "summary": "Securitize announced plans to integrate the Stellar network as its 17th blockchain option for issuing regulated financial products, though no specific launch date or assets were confirmed.",
+    "author": "Presence Editorial",
+    "date": "2026-10-28",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-10-28_securitize-adds-stellar-as-17th-blockchain-for-institutional-toke-973e900214/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-28_securitize-adds-stellar-as-17th-blockchain-for-institutional-toke-973e900214/illustration-ca069458.webp",
+    "imageAlt": "Original Presence illustration of equity certificates connected to digital tokens.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "RedotPay Eyes Year-End US IPO Filing with $5B Valuation Talks",
     "summary": "Hong Kong-based RedotPay is considering a confidential U.S. IPO filing by year-end, with potential valuation talks reaching up to $5 billion, amid ongoing legal disputes.",
     "author": "Presence Editorial",
