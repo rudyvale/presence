@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Allium Security Breach Disrupts Services for Major Financial Clients",
+    "summary": "Blockchain data provider Allium confirmed an October 25 security breach affecting major financial clients, leading to API revocations, service interruptions, and ongoing data verification efforts.",
+    "author": "Presence Editorial",
+    "date": "2026-10-29",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-10-29_allium-security-breach-disrupts-services-for-major-financial-clie-75dbd2f393/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-29_allium-security-breach-disrupts-services-for-major-financial-clie-75dbd2f393/illustration-8cc950d0.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Bitcoin Braces for Potential Second Consecutive 'Downtober' Amid Weakening US Spot Demand",
     "summary": "Bitcoin faces a potential second losing October as weak U.S. spot demand offsets ETF inflows ahead of the Federal Reserve decision.",
     "author": "Presence Editorial",
