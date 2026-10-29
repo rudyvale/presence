@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin Braces for Potential Second Consecutive 'Downtober' Amid Weakening US Spot Demand",
+    "summary": "Bitcoin faces a potential second losing October as weak U.S. spot demand offsets ETF inflows ahead of the Federal Reserve decision.",
+    "author": "Presence Editorial",
+    "date": "2026-10-29",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-10-29_bitcoin-braces-for-potential-second-consecutive-downtober-amid-we-497b5e589a/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-29_bitcoin-braces-for-potential-second-consecutive-downtober-amid-we-497b5e589a/illustration-3fc3756b.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Securitize Adds Stellar as 17th Blockchain for Institutional Tokenization",
     "summary": "Securitize announced plans to integrate the Stellar network as its 17th blockchain option for issuing regulated financial products, though no specific launch date or assets were confirmed.",
     "author": "Presence Editorial",
