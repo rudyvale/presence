@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "CertiK Joins Arbitrum and Robinhood Crypto to Secure Web3 Startups",
+    "summary": "CertiK partners with Arbitrum and Robinhood Crypto to offer security tools and mentorship to early-stage Web3 startups via the Arbitrum Mentorship Program.",
+    "author": "Presence Editorial",
+    "date": "2026-10-30",
+    "readingTime": "2 min read",
+    "url": "/articles/2026-10-30_certik-joins-arbitrum-and-robinhood-crypto-to-secure-web3-startup-64ddda4c3c/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-30_certik-joins-arbitrum-and-robinhood-crypto-to-secure-web3-startup-64ddda4c3c/illustration-ceb22e4d.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Frontrun Offers $50k to Acquire Struggling Blast Blockchain",
     "summary": "Crypto platform Frontrun publicly proposed buying the financially strained Blast blockchain for an initial $50,000, though no final price or technical plan was disclosed.",
     "author": "Presence Editorial",

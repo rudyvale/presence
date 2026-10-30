@@ -126,8 +126,8 @@
 
       <div class="news-filters" aria-label="Filter news by topic">
         <template data-presence-slot="NEWS-FILTERS:START"></template>
-        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">23</span></button>
-        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">23</span></button>
+        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">24</span></button>
+        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">24</span></button>
         <button class="news-filter" id="technology" type="button" data-news-filter="technology" aria-pressed="false">Technology <span data-news-count="technology">0</span></button>
         <button class="news-filter" id="companies" type="button" data-news-filter="companies" aria-pressed="false">Companies <span data-news-count="companies">0</span></button>
         <template data-presence-slot="NEWS-FILTERS:END"></template>
@@ -135,12 +135,29 @@
 
       <div class="news-search">
         <label for="news-search">Search headlines and authors</label>
-        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 23 news stories">
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 24 news stories">
         <span data-news-results aria-live="polite"></span>
       </div>
 
       <div class="news-grid" id="news-grid">
         <template data-presence-slot="NEWS-CARDS:START"></template>
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-10-30_certik-joins-arbitrum-and-robinhood-crypto-to-secure-web3-startup-64ddda4c3c/" aria-label="Read CertiK Joins Arbitrum and Robinhood Crypto to Secure Web3 Startups">
+            <img src="/assets/img/articles/2026-10-30_certik-joins-arbitrum-and-robinhood-crypto-to-secure-web3-startup-64ddda4c3c/illustration-ceb22e4d.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-10-30">October 30, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-10-30_certik-joins-arbitrum-and-robinhood-crypto-to-secure-web3-startup-64ddda4c3c/">CertiK Joins Arbitrum and Robinhood Crypto to Secure Web3 Startups</a></h2>
+          <p class="news-card__summary">CertiK partners with Arbitrum and Robinhood Crypto to offer security tools and mentorship to early-stage Web3 startups via the Arbitrum Mentorship Program.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>2 min read</span>
+          </div>
+        </article>
+
         <article class="news-card news-card--crypto news-card--with-image">
           <a class="news-card__media" href="/articles/2026-10-30_frontrun-offers-50k-to-acquire-struggling-blast-blockchain-949fd09d0f/" aria-label="Read Frontrun Offers $50k to Acquire Struggling Blast Blockchain">
             <img src="/assets/img/articles/2026-10-30_frontrun-offers-50k-to-acquire-struggling-blast-blockchain-949fd09d0f/illustration-95003609.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
@@ -574,7 +591,7 @@
 </footer>
 
 <script src="/assets/js/site.js?v=9aed9a7cf00b0681"></script>
-<script src="/assets/js/news-data.js?v=cd51724bb2e81931"></script>
+<script src="/assets/js/news-data.js?v=6b58864a51fd4abe"></script>
 <script src="/assets/js/news.js?v=78d46693dcdcf2e6"></script>
 </body>
 </html>
