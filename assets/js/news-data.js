@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Frontrun Offers $50k to Acquire Struggling Blast Blockchain",
+    "summary": "Crypto platform Frontrun publicly proposed buying the financially strained Blast blockchain for an initial $50,000, though no final price or technical plan was disclosed.",
+    "author": "Presence Editorial",
+    "date": "2026-10-30",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-10-30_frontrun-offers-50k-to-acquire-struggling-blast-blockchain-949fd09d0f/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-30_frontrun-offers-50k-to-acquire-struggling-blast-blockchain-949fd09d0f/illustration-95003609.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Allium Security Breach Disrupts Services for Major Financial Clients",
     "summary": "Blockchain data provider Allium confirmed an October 25 security breach affecting major financial clients, leading to API revocations, service interruptions, and ongoing data verification efforts.",
     "author": "Presence Editorial",
