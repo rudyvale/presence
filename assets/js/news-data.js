@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin ETFs Face Largest Daily Outflow Since June",
+    "summary": "U.S. spot Bitcoin ETFs recorded $643.2 million in net outflows on Oct. 30, their largest daily withdrawal since June.",
+    "author": "Presence Editorial",
+    "date": "2026-10-31",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-10-31_bitcoin-etfs-face-largest-daily-outflow-since-june-66eb3059ba/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-31_bitcoin-etfs-face-largest-daily-outflow-since-june-66eb3059ba/illustration-f2bdc0b3.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Tether Q3 Profit Surges as Reserve Buffer Grows Nearly Twice",
     "summary": "Tether reported $1.5B third-quarter profit while rebuilding excess reserves to nearly $8B, driven by Treasury yields and stable token issuance.",
     "author": "Presence Editorial",
