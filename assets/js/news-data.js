@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Tether Q3 Profit Surges as Reserve Buffer Grows Nearly Twice",
+    "summary": "Tether reported $1.5B third-quarter profit while rebuilding excess reserves to nearly $8B, driven by Treasury yields and stable token issuance.",
+    "author": "Presence Editorial",
+    "date": "2026-10-31",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-10-31_tether-q3-profit-surges-as-reserve-buffer-grows-nearly-twice-5f16c747c6/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-10-31_tether-q3-profit-surges-as-reserve-buffer-grows-nearly-twice-5f16c747c6/illustration-15a1d82e.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "CertiK Joins Arbitrum and Robinhood Crypto to Secure Web3 Startups",
     "summary": "CertiK partners with Arbitrum and Robinhood Crypto to offer security tools and mentorship to early-stage Web3 startups via the Arbitrum Mentorship Program.",
     "author": "Presence Editorial",
