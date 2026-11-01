@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin Tumbles Toward $77k as Nasdaq Drops 2.9% and Gold Slides",
+    "summary": "Bitcoin fell toward $77,000 on Friday as U.S. tech stocks and gold declined, marking a potential second consecutive October loss for the cryptocurrency.",
+    "author": "Presence Editorial",
+    "date": "2026-11-01",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-01_bitcoin-tumbles-toward-77k-as-nasdaq-drops-2-9-and-gold-slides-b28c7fe68b/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-01_bitcoin-tumbles-toward-77k-as-nasdaq-drops-2-9-and-gold-slides-b28c7fe68b/illustration-10f42381.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Bitcoin ETFs Face Largest Daily Outflow Since June",
     "summary": "U.S. spot Bitcoin ETFs recorded $643.2 million in net outflows on Oct. 30, their largest daily withdrawal since June.",
     "author": "Presence Editorial",
