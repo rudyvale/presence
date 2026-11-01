@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin ETFs Net $440.8m Amid Binance Hack Fallout",
+    "summary": "U.S. spot Bitcoin ETFs recorded $440.8 million in net inflows through Oct. 29, led by BlackRock's IBIT, despite market volatility following a major Binance hack.",
+    "author": "Presence Editorial",
+    "date": "2026-11-01",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-11-01_bitcoin-etfs-net-440-8m-amid-binance-hack-fallout-1e42daf8e2/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-01_bitcoin-etfs-net-440-8m-amid-binance-hack-fallout-1e42daf8e2/illustration-2a53abee.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Bitcoin Tumbles Toward $77k as Nasdaq Drops 2.9% and Gold Slides",
     "summary": "Bitcoin fell toward $77,000 on Friday as U.S. tech stocks and gold declined, marking a potential second consecutive October loss for the cryptocurrency.",
     "author": "Presence Editorial",
