@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Cardano Advances Quantum Security and Stablecoin Standards in November Update",
+    "summary": "Cardano's latest proposals introduce quantum-resistant signatures, regulated stablecoin compliance frameworks, and governance metadata clarifications.",
+    "author": "Presence Editorial",
+    "date": "2026-11-02",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-02_cardano-advances-quantum-security-and-stablecoin-standards-in-nov-5c1f9881b2/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-02_cardano-advances-quantum-security-and-stablecoin-standards-in-nov-5c1f9881b2/illustration-a99c826e.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Pi Network Unveils Developer Tools Ahead of November Summit",
     "summary": "Pi Network released four updates including AI packaging and identity checks before its upcoming Ecosystem Summit.",
     "author": "Presence Editorial",
