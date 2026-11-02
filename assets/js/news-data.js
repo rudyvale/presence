@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Pi Network Unveils Developer Tools Ahead of November Summit",
+    "summary": "Pi Network released four updates including AI packaging and identity checks before its upcoming Ecosystem Summit.",
+    "author": "Presence Editorial",
+    "date": "2026-11-02",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-02_pi-network-unveils-developer-tools-ahead-of-november-summit-7d37e8f411/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-02_pi-network-unveils-developer-tools-ahead-of-november-summit-7d37e8f411/illustration-a5d32e02.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Bitcoin ETFs Net $440.8m Amid Binance Hack Fallout",
     "summary": "U.S. spot Bitcoin ETFs recorded $440.8 million in net inflows through Oct. 29, led by BlackRock's IBIT, despite market volatility following a major Binance hack.",
     "author": "Presence Editorial",
