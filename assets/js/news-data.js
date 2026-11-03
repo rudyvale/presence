@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "BlackRock Ethereum Fund Sees Major Outflows as Competitors Struggle",
+    "summary": "BlackRock's ETHA fund recorded massive monthly withdrawals of over 580K ETH, accounting for the vast majority of net outflows across tracked Ethereum ETFs.",
+    "author": "Presence Editorial",
+    "date": "2026-11-03",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-03_blackrock-ethereum-fund-sees-major-outflows-as-competitors-strugg-e22dfca7db/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-03_blackrock-ethereum-fund-sees-major-outflows-as-competitors-strugg-e22dfca7db/illustration-7cabe802.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Cardano Advances Quantum Security and Stablecoin Standards in November Update",
     "summary": "Cardano's latest proposals introduce quantum-resistant signatures, regulated stablecoin compliance frameworks, and governance metadata clarifications.",
     "author": "Presence Editorial",
