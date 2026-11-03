@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "XRP Ledger Patches Token Minting Flaw Ahead of Nov. 4 Deadline",
+    "summary": "The XRP Ledger plans a November 4 fix for a bug allowing unauthorized token minting via delegated PaymentBurn permissions, pending validator support.",
+    "author": "Presence Editorial",
+    "date": "2026-11-03",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-03_xrp-ledger-patches-token-minting-flaw-ahead-of-nov-4-deadline-e6d14928a2/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-03_xrp-ledger-patches-token-minting-flaw-ahead-of-nov-4-deadline-e6d14928a2/illustration-364a1b4a.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "BlackRock Ethereum Fund Sees Major Outflows as Competitors Struggle",
     "summary": "BlackRock's ETHA fund recorded massive monthly withdrawals of over 580K ETH, accounting for the vast majority of net outflows across tracked Ethereum ETFs.",
     "author": "Presence Editorial",
