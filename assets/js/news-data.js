@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Zcash Foundation Unveils Seven Security Patches for NU7 Upgrade",
+    "summary": "The Zcash Foundation released seven security fixes in Zebra 7.0.0 ahead of the NU7 mainnet upgrade scheduled for November 5.",
+    "author": "Presence Editorial",
+    "date": "2026-11-04",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-04_zcash-foundation-unveils-seven-security-patches-for-nu7-upgrade-64c019b0fb/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-04_zcash-foundation-unveils-seven-security-patches-for-nu7-upgrade-64c019b0fb/illustration-e26afdff.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "XRP Ledger Patches Token Minting Flaw Ahead of Nov. 4 Deadline",
     "summary": "The XRP Ledger plans a November 4 fix for a bug allowing unauthorized token minting via delegated PaymentBurn permissions, pending validator support.",
     "author": "Presence Editorial",

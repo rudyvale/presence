@@ -126,8 +126,8 @@
 
       <div class="news-filters" aria-label="Filter news by topic">
         <template data-presence-slot="NEWS-FILTERS:START"></template>
-        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">32</span></button>
-        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">32</span></button>
+        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">33</span></button>
+        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">33</span></button>
         <button class="news-filter" id="technology" type="button" data-news-filter="technology" aria-pressed="false">Technology <span data-news-count="technology">0</span></button>
         <button class="news-filter" id="companies" type="button" data-news-filter="companies" aria-pressed="false">Companies <span data-news-count="companies">0</span></button>
         <template data-presence-slot="NEWS-FILTERS:END"></template>
@@ -135,12 +135,29 @@
 
       <div class="news-search">
         <label for="news-search">Search headlines and authors</label>
-        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 32 news stories">
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 33 news stories">
         <span data-news-results aria-live="polite"></span>
       </div>
 
       <div class="news-grid" id="news-grid">
         <template data-presence-slot="NEWS-CARDS:START"></template>
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-11-04_zcash-foundation-unveils-seven-security-patches-for-nu7-upgrade-64c019b0fb/" aria-label="Read Zcash Foundation Unveils Seven Security Patches for NU7 Upgrade">
+            <img src="/assets/img/articles/2026-11-04_zcash-foundation-unveils-seven-security-patches-for-nu7-upgrade-64c019b0fb/illustration-e26afdff.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-11-04">November 4, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-11-04_zcash-foundation-unveils-seven-security-patches-for-nu7-upgrade-64c019b0fb/">Zcash Foundation Unveils Seven Security Patches for NU7 Upgrade</a></h2>
+          <p class="news-card__summary">The Zcash Foundation released seven security fixes in Zebra 7.0.0 ahead of the NU7 mainnet upgrade scheduled for November 5.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>4 min read</span>
+          </div>
+        </article>
+
         <article class="news-card news-card--crypto news-card--with-image">
           <a class="news-card__media" href="/articles/2026-11-03_blackrock-ethereum-fund-sees-major-outflows-as-competitors-strugg-e22dfca7db/" aria-label="Read BlackRock Ethereum Fund Sees Major Outflows as Competitors Struggle">
             <img src="/assets/img/articles/2026-11-03_blackrock-ethereum-fund-sees-major-outflows-as-competitors-strugg-e22dfca7db/illustration-7cabe802.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
@@ -727,7 +744,7 @@
 </footer>
 
 <script src="/assets/js/site.js?v=9aed9a7cf00b0681"></script>
-<script src="/assets/js/news-data.js?v=eb279359c7f6159c"></script>
+<script src="/assets/js/news-data.js?v=01ac9eb1c8673328"></script>
 <script src="/assets/js/news.js?v=78d46693dcdcf2e6"></script>
 </body>
 </html>

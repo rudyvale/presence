@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Zcash Foundation Unveils Seven Security Patches for NU7 Upgrade</title>
+      <link>https://presence.news/articles/2026-11-04_zcash-foundation-unveils-seven-security-patches-for-nu7-upgrade-64c019b0fb/</link>
+      <guid isPermaLink="false">presence:articles/2026-11-04_zcash-foundation-unveils-seven-security-patches-for-nu7-upgrade-64c019b0fb</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <description>The Zcash Foundation released seven security fixes in Zebra 7.0.0 ahead of the NU7 mainnet upgrade scheduled for November 5.</description>
+    </item>
     <item>
       <title>BlackRock Ethereum Fund Sees Major Outflows as Competitors Struggle</title>
       <link>https://presence.news/articles/2026-11-03_blackrock-ethereum-fund-sees-major-outflows-as-competitors-strugg-e22dfca7db/</link>
