@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "CFTC Clears First US Equity Perpetual Futures Amid Regulatory Debate",
+    "summary": "The CFTC has approved the first perpetual futures contracts for individual stocks on eligible US exchanges, marking a new chapter in regulated American equity derivatives.",
+    "author": "Presence Editorial",
+    "date": "2026-11-04",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-04_cftc-clears-first-us-equity-perpetual-futures-amid-regulatory-deb-4016420364/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-04_cftc-clears-first-us-equity-perpetual-futures-amid-regulatory-deb-4016420364/illustration-efdaa200.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Zcash Foundation Unveils Seven Security Patches for NU7 Upgrade",
     "summary": "The Zcash Foundation released seven security fixes in Zebra 7.0.0 ahead of the NU7 mainnet upgrade scheduled for November 5.",
     "author": "Presence Editorial",
