@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Coinbase Reassures Clients Amid Binance Hack Fallout",
+    "summary": "Coinbase states its systems remain unaffected by the $6.34B Binance hack, citing that over 99% of customer assets are secured in cold storage.",
+    "author": "Presence Editorial",
+    "date": "2026-11-05",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-05_coinbase-reassures-clients-amid-binance-hack-fallout-20019a7030/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-05_coinbase-reassures-clients-amid-binance-hack-fallout-20019a7030/illustration-e6816097.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "New Congress Faces Stalled CLARITY Act Amid Parallel Regulatory Moves",
     "summary": "Democrats' midterm victory leaves the stalled CLARITY Act facing a new Congress while federal regulators advance separate crypto rules.",
     "author": "Presence Editorial",
