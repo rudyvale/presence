@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "New Congress Faces Stalled CLARITY Act Amid Parallel Regulatory Moves",
+    "summary": "Democrats' midterm victory leaves the stalled CLARITY Act facing a new Congress while federal regulators advance separate crypto rules.",
+    "author": "Presence Editorial",
+    "date": "2026-11-05",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-05_new-congress-faces-stalled-clarity-act-amid-parallel-regulatory-m-f8d4ed2be3/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-05_new-congress-faces-stalled-clarity-act-amid-parallel-regulatory-m-f8d4ed2be3/illustration-022bb84b.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "CFTC Clears First US Equity Perpetual Futures Amid Regulatory Debate",
     "summary": "The CFTC has approved the first perpetual futures contracts for individual stocks on eligible US exchanges, marking a new chapter in regulated American equity derivatives.",
     "author": "Presence Editorial",
