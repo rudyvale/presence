@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Binance Initiates Lengthy Arbitrum Governance Vote to Recover Stolen Assets",
+    "summary": "Binance has requested a seven-week governance process on Arbitrum to release 8,426 ETH and 74.56 million ARB frozen following a hot-wallet exploit.",
+    "author": "Presence Editorial",
+    "date": "2026-11-06",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-06_binance-initiates-lengthy-arbitrum-governance-vote-to-recover-sto-62f2c2e449/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-06_binance-initiates-lengthy-arbitrum-governance-vote-to-recover-sto-62f2c2e449/illustration-6bfe489f.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Bitcoin Dips Below $80k as Robust US Jobs Data Complicates Fed Rate Cut Hopes",
     "summary": "Bitcoin fell below $80,000 after US jobless claims hit a 57-year low, raising doubts about further Federal Reserve interest rate cuts.",
     "author": "Presence Editorial",
