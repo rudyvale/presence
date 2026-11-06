@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin Dips Below $80k as Robust US Jobs Data Complicates Fed Rate Cut Hopes",
+    "summary": "Bitcoin fell below $80,000 after US jobless claims hit a 57-year low, raising doubts about further Federal Reserve interest rate cuts.",
+    "author": "Presence Editorial",
+    "date": "2026-11-06",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-06_bitcoin-dips-below-80k-as-robust-us-jobs-data-complicates-fed-rat-f30a2e82f9/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-06_bitcoin-dips-below-80k-as-robust-us-jobs-data-complicates-fed-rat-f30a2e82f9/illustration-012a19e3.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Coinbase Reassures Clients Amid Binance Hack Fallout",
     "summary": "Coinbase states its systems remain unaffected by the $6.34B Binance hack, citing that over 99% of customer assets are secured in cold storage.",
     "author": "Presence Editorial",
