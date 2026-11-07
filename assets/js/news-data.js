@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "NFT Market Slips as Courtyard Dominates Sales Despite Platform Shifts",
+    "summary": "Global NFT sales dropped 19.61% to $32.05 million over seven days, with Courtyard leading collections and Ethereum outperforming other chains.",
+    "author": "Presence Editorial",
+    "date": "2026-11-07",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-07_nft-market-slips-as-courtyard-dominates-sales-despite-platform-sh-9141e1beda/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-07_nft-market-slips-as-courtyard-dominates-sales-despite-platform-sh-9141e1beda/illustration-8c94402d.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Crypto ETFs Retreat $530M Amid Shift to Hedging Strategies",
     "summary": "U.S. crypto ETFs saw $530M outflows on Nov. 5, with AMINA Bank's Andreja Cobeljic citing a shift toward hedging and institutional rotation as potential recovery signals.",
     "author": "Presence Editorial",
