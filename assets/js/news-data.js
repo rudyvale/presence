@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Crypto ETFs Retreat $530M Amid Shift to Hedging Strategies",
+    "summary": "U.S. crypto ETFs saw $530M outflows on Nov. 5, with AMINA Bank's Andreja Cobeljic citing a shift toward hedging and institutional rotation as potential recovery signals.",
+    "author": "Presence Editorial",
+    "date": "2026-11-07",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-07_crypto-etfs-retreat-530m-amid-shift-to-hedging-strategies-61458e28af/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-07_crypto-etfs-retreat-530m-amid-shift-to-hedging-strategies-61458e28af/illustration-11110970.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Binance Initiates Lengthy Arbitrum Governance Vote to Recover Stolen Assets",
     "summary": "Binance has requested a seven-week governance process on Arbitrum to release 8,426 ETH and 74.56 million ARB frozen following a hot-wallet exploit.",
     "author": "Presence Editorial",
