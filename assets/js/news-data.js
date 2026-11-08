@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Kalshi Midterm Volume Surges Amid High Prediction Accuracy",
+    "summary": "Kalshi reported over $2.5 billion in midterm trading volume with a 98.2% winner-prediction accuracy rate as Democrats won most resolved races.",
+    "author": "Presence Editorial",
+    "date": "2026-11-08",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-08_kalshi-midterm-volume-surges-amid-high-prediction-accuracy-3470a90329/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-08_kalshi-midterm-volume-surges-amid-high-prediction-accuracy-3470a90329/illustration-c867cfc6.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Blockworks Staff Exodus Coincides with Strategic Pivot to AI Products",
     "summary": "At least seven employees left crypto data firm Blockworks in October and November as the company shifted focus toward AI product development.",
     "author": "Presence Editorial",
