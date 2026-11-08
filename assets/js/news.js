@@ -18,15 +18,13 @@
   };
   if (redirectLegacyCategory()) return;
 
-  const stories = Array.isArray(window.PRESENCE_NEWS)
-    ? window.PRESENCE_NEWS.filter((story) => (story.type === "NEWS") === newsPage)
-    : null;
+  const catalog = window.PRESENCE_NEWS;
   const grid = document.getElementById("news-grid");
   const empty = document.getElementById("news-empty");
   const filters = Array.from(document.querySelectorAll("[data-news-filter]"));
   const search = document.querySelector("[data-news-search]");
   const results = document.querySelector("[data-news-results]");
-  if (!listing || !stories || !grid || !empty || !(search instanceof HTMLInputElement)) return;
+  if (!listing || !Array.isArray(catalog) || !grid || !empty || !(search instanceof HTMLInputElement)) return;
 
   const categoryLabel = (category) => ({
     crypto: "Crypto",
@@ -80,7 +78,16 @@
     return match && Number.isSafeInteger(Number(match[1])) ? value : null;
   };
 
-  const listingDate = (story) => safePublicationDate(story.republishedDate) || story.date;
+  const listingDate = (story) => safePublicationDate(story.republishedDate) || safePublicationDate(story.date);
+
+  const stories = catalog.filter((story) => (
+    story &&
+    typeof story.type === "string" &&
+    (story.type === "NEWS") === newsPage &&
+    typeof story.title === "string" &&
+    typeof story.url === "string" &&
+    listingDate(story)
+  ));
 
   const makeCard = (story) => {
     const article = document.createElement("article");
@@ -145,7 +152,7 @@
     });
   };
 
-  const normalizeSearch = (value) => value.trim().toLocaleLowerCase();
+  const normalizeSearch = (value) => value.trim().toLocaleLowerCase("en");
 
   const render = (requestedCategory) => {
     const category = !newsPage && categories.has(articleCategory)
