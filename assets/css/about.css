@@ -145,6 +145,7 @@
   margin-top: 52px;
   padding-top: 48px;
   border-top: 1px solid var(--line);
+  border-image: var(--soft-rule) 1;
 }
 
 .about-story h2 {
