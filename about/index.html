@@ -10,7 +10,7 @@
 <link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
 <link rel="stylesheet" href="/assets/css/fonts.css?v=6b18cb5c4169e6e4">
 <link rel="stylesheet" href="/assets/css/site.css?v=7ba47b82701096ad">
-<link rel="stylesheet" href="/assets/css/about.css?v=2f1e522a4d096222">
+<link rel="stylesheet" href="/assets/css/about.css?v=768c710652e54895">
 <template data-presence-slot="SEO:START"></template>
 <link rel="canonical" href="https://presence.news/about/">
 <link rel="alternate" type="application/rss+xml" title="PRESENCE RSS" href="https://presence.news/feed.xml">
@@ -151,13 +151,28 @@
   <section class="about-trust" aria-labelledby="about-trust-title">
     <div class="wrap about-trust__inner">
       <h2 id="about-trust-title">Trusted by teams at</h2>
-      <ul class="about-trust__logos" aria-label="Teams">
-        <li><span class="about-trust__logo about-trust__logo--coinbase" role="img" aria-label="Coinbase"></span></li>
-        <li><span class="about-trust__logo about-trust__logo--farcaster" role="img" aria-label="Farcaster"></span></li>
-        <li><span class="about-trust__logo about-trust__logo--stable" role="img" aria-label="Stable"></span></li>
-        <li><span class="about-trust__logo about-trust__logo--base" role="img" aria-label="Base"></span></li>
-        <li><span class="about-trust__logo about-trust__logo--nodle" role="img" aria-label="Nodle"></span></li>
-      </ul>
+      <label class="about-trust__pause">
+        <input class="visually-hidden" type="checkbox" aria-label="Pause logo animation">
+        <span aria-hidden="true"></span>
+      </label>
+      <div class="about-trust__viewport">
+        <div class="about-trust__track">
+          <ul class="about-trust__logos" role="list" aria-label="Teams">
+            <li><span class="about-trust__logo about-trust__logo--coinbase" role="img" aria-label="Coinbase"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--farcaster" role="img" aria-label="Farcaster"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--stable" role="img" aria-label="Stable"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--base" role="img" aria-label="Base"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--nodle" role="img" aria-label="Nodle"></span></li>
+          </ul>
+          <ul class="about-trust__logos" aria-hidden="true">
+            <li><span class="about-trust__logo about-trust__logo--coinbase"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--farcaster"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--stable"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--base"></span></li>
+            <li><span class="about-trust__logo about-trust__logo--nodle"></span></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
