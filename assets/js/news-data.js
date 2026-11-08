@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Blockworks Staff Exodus Coincides with Strategic Pivot to AI Products",
+    "summary": "At least seven employees left crypto data firm Blockworks in October and November as the company shifted focus toward AI product development.",
+    "author": "Presence Editorial",
+    "date": "2026-11-08",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-08_blockworks-staff-exodus-coincides-with-strategic-pivot-to-ai-prod-72385361fc/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-08_blockworks-staff-exodus-coincides-with-strategic-pivot-to-ai-prod-72385361fc/illustration-d0188a0c.webp",
+    "imageAlt": "Original Presence illustration of software agents connected through a digital payment network.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "NFT Market Slips as Courtyard Dominates Sales Despite Platform Shifts",
     "summary": "Global NFT sales dropped 19.61% to $32.05 million over seven days, with Courtyard leading collections and Ethereum outperforming other chains.",
     "author": "Presence Editorial",
