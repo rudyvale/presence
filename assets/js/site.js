@@ -23,10 +23,13 @@
       if (open) {
         const firstLink = menu.querySelector("a");
         if (firstLink && typeof firstLink.focus === "function") {
+          const focusFirstLink = () => {
+            if (menu.classList.contains("is-open")) firstLink.focus({ preventScroll: true });
+          };
           if (typeof window.requestAnimationFrame === "function") {
-            window.requestAnimationFrame(() => firstLink.focus());
+            window.requestAnimationFrame(() => window.requestAnimationFrame(focusFirstLink));
           } else {
-            firstLink.focus();
+            focusFirstLink();
           }
         }
       }
@@ -122,9 +125,7 @@
     ".article__callout",
     ".article__matrix",
     ".author",
-    ".sidebar",
-    ".contact-intro",
-    ".contact-form"
+    ".sidebar"
   ].join(",");
 
   const motionRoot = document.documentElement;
