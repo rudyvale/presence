@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin Struggles Near $76K as ETF Outflows Mount",
+    "summary": "Bitcoin trades near $76,000 on Nov. 7 despite weak momentum and significant U.S. spot ETF withdrawals totaling over $1.28 billion this week.",
+    "author": "Presence Editorial",
+    "date": "2026-11-09",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-09_bitcoin-struggles-near-76k-as-etf-outflows-mount-037761e0e1/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-09_bitcoin-struggles-near-76k-as-etf-outflows-mount-037761e0e1/illustration-08ca67d9.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Kalshi Midterm Volume Surges Amid High Prediction Accuracy",
     "summary": "Kalshi reported over $2.5 billion in midterm trading volume with a 98.2% winner-prediction accuracy rate as Democrats won most resolved races.",
     "author": "Presence Editorial",
