@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Binance Dismisses ShinyHunters Data Breach Claims as Likely Scam",
+    "summary": "Binance rejects allegations of a 335 million record breach by ShinyHunters, citing technical inconsistencies and suggesting the data likely stems from infostealer malware.",
+    "author": "Presence Editorial",
+    "date": "2026-11-09",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-09_binance-dismisses-shinyhunters-data-breach-claims-as-likely-scam-4d8de9e3be/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-09_binance-dismisses-shinyhunters-data-breach-claims-as-likely-scam-4d8de9e3be/illustration-58e87c28.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Bitcoin Struggles Near $76K as ETF Outflows Mount",
     "summary": "Bitcoin trades near $76,000 on Nov. 7 despite weak momentum and significant U.S. spot ETF withdrawals totaling over $1.28 billion this week.",
     "author": "Presence Editorial",
