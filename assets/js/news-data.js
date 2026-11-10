@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Memecoin Laundering and Frozen Assets in the Binance Hack",
+    "summary": "North Korea-linked launderers used throwaway memecoins to move $430,000 from the $6.4 billion Binance hack while over $2.85 billion remains frozen.",
+    "author": "Presence Editorial",
+    "date": "2026-11-10",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-10_memecoin-laundering-and-frozen-assets-in-the-binance-hack-2e751374e9/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-10_memecoin-laundering-and-frozen-assets-in-the-binance-hack-2e751374e9/illustration-7e182c3b.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "TRON Hits 413 Million Accounts Amid Mixed DeFi Performance",
     "summary": "TRON surpassed 413 million total accounts on November 8, averaging 4.52 million daily active addresses and $24.86 billion in USDT transfers while DeFi TVL fell to $4.96 billion.",
     "author": "Presence Editorial",
