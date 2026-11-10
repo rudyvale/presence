@@ -126,8 +126,8 @@
 
       <div class="news-filters" aria-label="Filter news by topic">
         <template data-presence-slot="NEWS-FILTERS:START"></template>
-        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">44</span></button>
-        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">44</span></button>
+        <button class="news-filter" id="all" type="button" data-news-filter="all" aria-pressed="true">All <span data-news-count="all">45</span></button>
+        <button class="news-filter" id="crypto" type="button" data-news-filter="crypto" aria-pressed="false">Crypto <span data-news-count="crypto">45</span></button>
         <button class="news-filter" id="technology" type="button" data-news-filter="technology" aria-pressed="false">Technology <span data-news-count="technology">0</span></button>
         <button class="news-filter" id="companies" type="button" data-news-filter="companies" aria-pressed="false">Companies <span data-news-count="companies">0</span></button>
         <template data-presence-slot="NEWS-FILTERS:END"></template>
@@ -135,12 +135,29 @@
 
       <div class="news-search">
         <label for="news-search">Search headlines and authors</label>
-        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 44 news stories">
+        <input type="search" id="news-search" data-news-search autocomplete="off" placeholder="Search 45 news stories">
         <span data-news-results aria-live="polite"></span>
       </div>
 
       <div class="news-grid" id="news-grid">
         <template data-presence-slot="NEWS-CARDS:START"></template>
+        <article class="news-card news-card--crypto news-card--with-image">
+          <a class="news-card__media" href="/articles/2026-11-10_tron-hits-413-million-accounts-amid-mixed-defi-performance-58641e5f0d/" aria-label="Read TRON Hits 413 Million Accounts Amid Mixed DeFi Performance">
+            <img src="/assets/img/articles/2026-11-10_tron-hits-413-million-accounts-amid-mixed-defi-performance-58641e5f0d/illustration-c4ccd448.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
+          </a>
+          <div class="news-card__meta">
+            <span class="news-card__category">Crypto</span>
+            <span class="news-card__type">NEWS</span>
+            <time class="news-card__date" datetime="2026-11-10">November 10, 2026</time>
+          </div>
+          <h2><a href="/articles/2026-11-10_tron-hits-413-million-accounts-amid-mixed-defi-performance-58641e5f0d/">TRON Hits 413 Million Accounts Amid Mixed DeFi Performance</a></h2>
+          <p class="news-card__summary">TRON surpassed 413 million total accounts on November 8, averaging 4.52 million daily active addresses and $24.86 billion in USDT transfers while DeFi TVL fell to $4.96 billion.</p>
+          <div class="news-card__foot">
+            <span>Presence Editorial</span>
+            <span>4 min read</span>
+          </div>
+        </article>
+
         <article class="news-card news-card--crypto news-card--with-image">
           <a class="news-card__media" href="/articles/2026-11-09_binance-dismisses-shinyhunters-data-breach-claims-as-likely-scam-4d8de9e3be/" aria-label="Read Binance Dismisses ShinyHunters Data Breach Claims as Likely Scam">
             <img src="/assets/img/articles/2026-11-09_binance-dismisses-shinyhunters-data-breach-claims-as-likely-scam-4d8de9e3be/illustration-58e87c28.webp" alt="Original Presence illustration of connected digital asset networks." width="1280" height="720" decoding="async" loading="lazy">
@@ -931,7 +948,7 @@
 </footer>
 
 <script src="/assets/js/site.js?v=c946a4acb4a92268"></script>
-<script src="/assets/js/news-data.js?v=4243aa6e9404321c"></script>
+<script src="/assets/js/news-data.js?v=d400802c5d9ab307"></script>
 <script src="/assets/js/news.js?v=d7111ee55d47ddca"></script>
 </body>
 </html>

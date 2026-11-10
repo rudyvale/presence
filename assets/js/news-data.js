@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "TRON Hits 413 Million Accounts Amid Mixed DeFi Performance",
+    "summary": "TRON surpassed 413 million total accounts on November 8, averaging 4.52 million daily active addresses and $24.86 billion in USDT transfers while DeFi TVL fell to $4.96 billion.",
+    "author": "Presence Editorial",
+    "date": "2026-11-10",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-10_tron-hits-413-million-accounts-amid-mixed-defi-performance-58641e5f0d/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-10_tron-hits-413-million-accounts-amid-mixed-defi-performance-58641e5f0d/illustration-c4ccd448.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Binance Dismisses ShinyHunters Data Breach Claims as Likely Scam",
     "summary": "Binance rejects allegations of a 335 million record breach by ShinyHunters, citing technical inconsistencies and suggesting the data likely stems from infostealer malware.",
     "author": "Presence Editorial",
