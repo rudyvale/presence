@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Poland Advances Crypto Freeze Legislation in Lower House",
+    "summary": "Poland's lower house passed a bill freezing crypto assets for sanctioned entities by 240-202 votes, sending it to the Senate.",
+    "author": "Presence Editorial",
+    "date": "2026-11-11",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-11_poland-advances-crypto-freeze-legislation-in-lower-house-d37e5ed61e/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-11_poland-advances-crypto-freeze-legislation-in-lower-house-d37e5ed61e/illustration-683f3492.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Crypto Debit Cards Leave Brands Exposed to Upstream Failures",
     "summary": "Recent exploits and insolvencies reveal that crypto fintech brands often lack control over shared banking infrastructure, leaving customer funds vulnerable despite strong consumer-facing brands.",
     "author": "Presence Editorial",
