@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Crypto Debit Cards Leave Brands Exposed to Upstream Failures</title>
+      <link>https://presence.news/articles/2026-11-11_crypto-debit-cards-leave-brands-exposed-to-upstream-failures-a6be3eee04/</link>
+      <guid isPermaLink="false">presence:articles/2026-11-11_crypto-debit-cards-leave-brands-exposed-to-upstream-failures-a6be3eee04</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Recent exploits and insolvencies reveal that crypto fintech brands often lack control over shared banking infrastructure, leaving customer funds vulnerable despite strong consumer-facing brands.</description>
+    </item>
     <item>
       <title>Memecoin Laundering and Frozen Assets in the Binance Hack</title>
       <link>https://presence.news/articles/2026-11-10_memecoin-laundering-and-frozen-assets-in-the-binance-hack-2e751374e9/</link>

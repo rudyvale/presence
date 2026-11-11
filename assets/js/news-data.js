@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Crypto Debit Cards Leave Brands Exposed to Upstream Failures",
+    "summary": "Recent exploits and insolvencies reveal that crypto fintech brands often lack control over shared banking infrastructure, leaving customer funds vulnerable despite strong consumer-facing brands.",
+    "author": "Presence Editorial",
+    "date": "2026-11-11",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-11_crypto-debit-cards-leave-brands-exposed-to-upstream-failures-a6be3eee04/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-11_crypto-debit-cards-leave-brands-exposed-to-upstream-failures-a6be3eee04/illustration-91faae90.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Memecoin Laundering and Frozen Assets in the Binance Hack",
     "summary": "North Korea-linked launderers used throwaway memecoins to move $430,000 from the $6.4 billion Binance hack while over $2.85 billion remains frozen.",
     "author": "Presence Editorial",
