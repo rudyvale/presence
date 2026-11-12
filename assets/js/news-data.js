@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Israel Discount Bank Launches Crypto Trading Ahead of Rivals",
+    "summary": "Israel Discount Bank will let eligible adults trade Bitcoin and Ether via its app starting Nov. 26, waiving fees for six months while integrating tax handling.",
+    "author": "Presence Editorial",
+    "date": "2026-11-12",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-12_israel-discount-bank-launches-crypto-trading-ahead-of-rivals-ca4c410a8c/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-12_israel-discount-bank-launches-crypto-trading-ahead-of-rivals-ca4c410a8c/illustration-1f58973f.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Binance Executive Yi He Promises Legal Shield for Women Targeted by Sexual Rumors",
     "summary": "Binance co-CEO Yi He pledged legal protection for female employees facing fabricated sexual rumors, citing a broader industry pattern of gender-based attacks.",
     "author": "Presence Editorial",
