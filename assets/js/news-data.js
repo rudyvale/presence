@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Binance Executive Yi He Promises Legal Shield for Women Targeted by Sexual Rumors",
+    "summary": "Binance co-CEO Yi He pledged legal protection for female employees facing fabricated sexual rumors, citing a broader industry pattern of gender-based attacks.",
+    "author": "Presence Editorial",
+    "date": "2026-11-12",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-12_binance-executive-yi-he-promises-legal-shield-for-women-targeted-d7732bd5c5/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-12_binance-executive-yi-he-promises-legal-shield-for-women-targeted-d7732bd5c5/illustration-058cbe91.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Poland Advances Crypto Freeze Legislation in Lower House",
     "summary": "Poland's lower house passed a bill freezing crypto assets for sanctioned entities by 240-202 votes, sending it to the Senate.",
     "author": "Presence Editorial",
