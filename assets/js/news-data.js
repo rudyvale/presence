@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Securitize and Ethena Launch $100M Liquidity Bridge for BlackRock's BUIDL",
+    "summary": "Securitize and Ethena launched a liquidity facility allowing eligible BlackRock BUIDL holders to swap tokens for stablecoins around the clock with up to $100 million in total capacity.",
+    "author": "Presence Editorial",
+    "date": "2026-11-13",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-13_securitize-and-ethena-launch-100m-liquidity-bridge-for-blackrock-a2df0819c8/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-13_securitize-and-ethena-launch-100m-liquidity-bridge-for-blackrock-a2df0819c8/illustration-b1070227.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Israel Discount Bank Launches Crypto Trading Ahead of Rivals",
     "summary": "Israel Discount Bank will let eligible adults trade Bitcoin and Ether via its app starting Nov. 26, waiving fees for six months while integrating tax handling.",
     "author": "Presence Editorial",
