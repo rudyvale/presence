@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Jane Street Swaps Bitcoin ETFs as Holdings Surge",
+    "summary": "Jane Street boosted its Fidelity Bitcoin ETF stake to $509M while cutting BlackRock IBIT shares by nearly 19% in Q3 2026.",
+    "author": "Presence Editorial",
+    "date": "2026-11-13",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-13_jane-street-swaps-bitcoin-etfs-as-holdings-surge-9557fa6b6a/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-13_jane-street-swaps-bitcoin-etfs-as-holdings-surge-9557fa6b6a/illustration-4fae7098.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Securitize and Ethena Launch $100M Liquidity Bridge for BlackRock's BUIDL",
     "summary": "Securitize and Ethena launched a liquidity facility allowing eligible BlackRock BUIDL holders to swap tokens for stablecoins around the clock with up to $100 million in total capacity.",
     "author": "Presence Editorial",
