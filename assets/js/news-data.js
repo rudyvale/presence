@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Fed's Collins Warns Rate Hikes May Be Needed Despite Housing Strain",
+    "summary": "Federal Reserve President Susan Collins warns that higher interest rates may be necessary to control inflation, even as they make housing less affordable and weigh on crypto markets.",
+    "author": "Presence Editorial",
+    "date": "2026-11-14",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-14_fed-s-collins-warns-rate-hikes-may-be-needed-despite-housing-stra-2a31be4cce/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-14_fed-s-collins-warns-rate-hikes-may-be-needed-despite-housing-stra-2a31be4cce/illustration-8010fbd6.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Jane Street Swaps Bitcoin ETFs as Holdings Surge",
     "summary": "Jane Street boosted its Fidelity Bitcoin ETF stake to $509M while cutting BlackRock IBIT shares by nearly 19% in Q3 2026.",
     "author": "Presence Editorial",
