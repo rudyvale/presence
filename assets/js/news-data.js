@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Monero Miners Target Exposed SQL Servers via Weak Credentials",
+    "summary": "FortiGuard Labs reports attackers exploiting weak passwords on Microsoft SQL Servers to deploy Monero miners and Gh0st RAT malware.",
+    "author": "Presence Editorial",
+    "date": "2026-11-14",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-14_monero-miners-target-exposed-sql-servers-via-weak-credentials-5feb92dcd8/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-14_monero-miners-target-exposed-sql-servers-via-weak-credentials-5feb92dcd8/illustration-f851204f.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Fed's Collins Warns Rate Hikes May Be Needed Despite Housing Strain",
     "summary": "Federal Reserve President Susan Collins warns that higher interest rates may be necessary to control inflation, even as they make housing less affordable and weigh on crypto markets.",
     "author": "Presence Editorial",
