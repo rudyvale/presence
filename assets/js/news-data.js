@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Crypto ETFs Face $1.53 Billion Weekly Exodus as Bitcoin Drains Lead",
+    "summary": "US crypto ETFs tracking Bitcoin, Ethereum, Solana, Hyperliquid and Zcash recorded a combined $1.53 billion in net outflows during the trading week of Nov. 9–13.",
+    "author": "Presence Editorial",
+    "date": "2026-11-15",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-15_crypto-etfs-face-1-53-billion-weekly-exodus-as-bitcoin-drains-lea-196f4f49e8/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-15_crypto-etfs-face-1-53-billion-weekly-exodus-as-bitcoin-drains-lea-196f4f49e8/illustration-c0138404.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Monero Miners Target Exposed SQL Servers via Weak Credentials",
     "summary": "FortiGuard Labs reports attackers exploiting weak passwords on Microsoft SQL Servers to deploy Monero miners and Gh0st RAT malware.",
     "author": "Presence Editorial",
