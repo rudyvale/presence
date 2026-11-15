@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "House Oversight Committee Pushes for Ban on Official Prediction Market Trading",
+    "summary": "House Oversight Chair James Comer urges Congress to restrict or ban government officials from prediction markets following a review of 1,700 documents and recent insider trading cases.",
+    "author": "Presence Editorial",
+    "date": "2026-11-15",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-15_house-oversight-committee-pushes-for-ban-on-official-prediction-m-8f47cbb730/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-15_house-oversight-committee-pushes-for-ban-on-official-prediction-m-8f47cbb730/illustration-cc327258.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Crypto ETFs Face $1.53 Billion Weekly Exodus as Bitcoin Drains Lead",
     "summary": "US crypto ETFs tracking Bitcoin, Ethereum, Solana, Hyperliquid and Zcash recorded a combined $1.53 billion in net outflows during the trading week of Nov. 9–13.",
     "author": "Presence Editorial",
