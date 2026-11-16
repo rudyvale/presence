@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "California Voters Enact Constitutional Ban on New Wealth Taxes",
+    "summary": "California voters approved Proposition 42, a constitutional amendment prohibiting new state taxes on personal asset ownership including crypto, while rejecting a separate billionaire wealth tax.",
+    "author": "Presence Editorial",
+    "date": "2026-11-16",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-16_california-voters-enact-constitutional-ban-on-new-wealth-taxes-9cb1af2781/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-16_california-voters-enact-constitutional-ban-on-new-wealth-taxes-9cb1af2781/illustration-9ccc06dc.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Ethereum Draft Introduces Shared Payment Model for Batch Proofs",
     "summary": "An Ethereum draft by Marchhill proposes a system where sponsors pay for batch proofs while individual transactions retain separate payments and signatures.",
     "author": "Presence Editorial",
