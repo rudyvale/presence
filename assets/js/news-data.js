@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Ethereum Draft Introduces Shared Payment Model for Batch Proofs",
+    "summary": "An Ethereum draft by Marchhill proposes a system where sponsors pay for batch proofs while individual transactions retain separate payments and signatures.",
+    "author": "Presence Editorial",
+    "date": "2026-11-16",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-16_ethereum-draft-introduces-shared-payment-model-for-batch-proofs-a506ff16c1/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-16_ethereum-draft-introduces-shared-payment-model-for-batch-proofs-a506ff16c1/illustration-962188de.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "House Oversight Committee Pushes for Ban on Official Prediction Market Trading",
     "summary": "House Oversight Chair James Comer urges Congress to restrict or ban government officials from prediction markets following a review of 1,700 documents and recent insider trading cases.",
     "author": "Presence Editorial",
