@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Intesa Sanpaolo Shifts Crypto Strategy: Boosting XRP and Solana While Trimming Bitcoin",
+    "summary": "Italy's Intesa Sanpaolo increased its crypto ETF portfolio to $108.56 million in Q3 2026 by adding XRP and Solana while significantly reducing Bitcoin and Ethereum positions.",
+    "author": "Presence Editorial",
+    "date": "2026-11-17",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-17_intesa-sanpaolo-shifts-crypto-strategy-boosting-xrp-and-solana-wh-26fd855619/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-17_intesa-sanpaolo-shifts-crypto-strategy-boosting-xrp-and-solana-wh-26fd855619/illustration-3e53ecc5.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Solmate Unveils AI GPU Service on Solana Amid Corporate Restructuring",
     "summary": "Nasdaq-listed Solmate Infrastructure plans an asset-light AI GPU service in the UAE accepting US dollars and stablecoins, while rebranding from Brera Holdings.",
     "author": "Presence Editorial",
