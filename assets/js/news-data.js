@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Solmate Unveils AI GPU Service on Solana Amid Corporate Restructuring",
+    "summary": "Nasdaq-listed Solmate Infrastructure plans an asset-light AI GPU service in the UAE accepting US dollars and stablecoins, while rebranding from Brera Holdings.",
+    "author": "Presence Editorial",
+    "date": "2026-11-17",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-17_solmate-unveils-ai-gpu-service-on-solana-amid-corporate-restructu-6a80316ceb/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-17_solmate-unveils-ai-gpu-service-on-solana-amid-corporate-restructu-6a80316ceb/illustration-e6927a87.webp",
+    "imageAlt": "Original Presence illustration of software agents connected through a digital payment network.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "California Voters Enact Constitutional Ban on New Wealth Taxes",
     "summary": "California voters approved Proposition 42, a constitutional amendment prohibiting new state taxes on personal asset ownership including crypto, while rejecting a separate billionaire wealth tax.",
     "author": "Presence Editorial",
