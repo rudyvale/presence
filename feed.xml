@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Monero FCMP++ Upgrade Passes zkSecurity Audit with No Critical Flaws</title>
+      <link>https://presence.news/articles/2026-11-18_monero-fcmp-upgrade-passes-zksecurity-audit-with-no-critical-flaw-436b36f7f2/</link>
+      <guid isPermaLink="false">presence:articles/2026-11-18_monero-fcmp-upgrade-passes-zksecurity-audit-with-no-critical-flaw-436b36f7f2</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Monero's upcoming FCMP++ upgrade has successfully cleared a zkSecurity audit, finding no high or medium severity vulnerabilities in its Generalized Bulletproofs implementation.</description>
+    </item>
     <item>
       <title>Intesa Sanpaolo Shifts Crypto Strategy: Boosting XRP and Solana While Trimming Bitcoin</title>
       <link>https://presence.news/articles/2026-11-17_intesa-sanpaolo-shifts-crypto-strategy-boosting-xrp-and-solana-wh-26fd855619/</link>

@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Monero FCMP++ Upgrade Passes zkSecurity Audit with No Critical Flaws",
+    "summary": "Monero's upcoming FCMP++ upgrade has successfully cleared a zkSecurity audit, finding no high or medium severity vulnerabilities in its Generalized Bulletproofs implementation.",
+    "author": "Presence Editorial",
+    "date": "2026-11-18",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-18_monero-fcmp-upgrade-passes-zksecurity-audit-with-no-critical-flaw-436b36f7f2/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-18_monero-fcmp-upgrade-passes-zksecurity-audit-with-no-critical-flaw-436b36f7f2/illustration-37b56fb6.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Intesa Sanpaolo Shifts Crypto Strategy: Boosting XRP and Solana While Trimming Bitcoin",
     "summary": "Italy's Intesa Sanpaolo increased its crypto ETF portfolio to $108.56 million in Q3 2026 by adding XRP and Solana while significantly reducing Bitcoin and Ethereum positions.",
     "author": "Presence Editorial",
