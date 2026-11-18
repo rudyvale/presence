@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Coinbase Unveils ChatGPT Trading Plugin with Mandatory User Approval",
+    "summary": "Coinbase launched a ChatGPT plugin on Nov. 17 allowing US customers to trade stocks, crypto, and derivatives via conversation while requiring explicit approval for every order.",
+    "author": "Presence Editorial",
+    "date": "2026-11-18",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-11-18_coinbase-unveils-chatgpt-trading-plugin-with-mandatory-user-appro-a8f2fcd0b0/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-18_coinbase-unveils-chatgpt-trading-plugin-with-mandatory-user-appro-a8f2fcd0b0/illustration-ef022161.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Monero FCMP++ Upgrade Passes zkSecurity Audit with No Critical Flaws",
     "summary": "Monero's upcoming FCMP++ upgrade has successfully cleared a zkSecurity audit, finding no high or medium severity vulnerabilities in its Generalized Bulletproofs implementation.",
     "author": "Presence Editorial",
