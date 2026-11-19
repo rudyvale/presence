@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Russia Authorizes 30 Crypto Firms as EU Prepares Sanctions",
+    "summary": "Russia's central bank registered 30 crypto operators for retail trading while the EU prepares new sanctions targeting Russian banks and digital assets.",
+    "author": "Presence Editorial",
+    "date": "2026-11-19",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-19_russia-authorizes-30-crypto-firms-as-eu-prepares-sanctions-b82bcfbe19/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-19_russia-authorizes-30-crypto-firms-as-eu-prepares-sanctions-b82bcfbe19/illustration-4ce9e7bf.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Stablecoin Reserves Plummet $16 Billion Amid Bitcoin Slump",
     "summary": "Global stablecoin supply dropped approximately $16 billion in thirty days as falling crypto prices and higher interest rates drove traders to redeem tokens for cash.",
     "author": "Presence Editorial",
