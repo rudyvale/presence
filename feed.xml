@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Stablecoin Reserves Plummet $16 Billion Amid Bitcoin Slump</title>
+      <link>https://presence.news/articles/2026-11-19_stablecoin-reserves-plummet-16-billion-amid-bitcoin-slump-c290609a62/</link>
+      <guid isPermaLink="false">presence:articles/2026-11-19_stablecoin-reserves-plummet-16-billion-amid-bitcoin-slump-c290609a62</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Global stablecoin supply dropped approximately $16 billion in thirty days as falling crypto prices and higher interest rates drove traders to redeem tokens for cash.</description>
+    </item>
     <item>
       <title>Coinbase Unveils ChatGPT Trading Plugin with Mandatory User Approval</title>
       <link>https://presence.news/articles/2026-11-18_coinbase-unveils-chatgpt-trading-plugin-with-mandatory-user-appro-a8f2fcd0b0/</link>

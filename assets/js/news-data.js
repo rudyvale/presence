@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Stablecoin Reserves Plummet $16 Billion Amid Bitcoin Slump",
+    "summary": "Global stablecoin supply dropped approximately $16 billion in thirty days as falling crypto prices and higher interest rates drove traders to redeem tokens for cash.",
+    "author": "Presence Editorial",
+    "date": "2026-11-19",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-19_stablecoin-reserves-plummet-16-billion-amid-bitcoin-slump-c290609a62/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-19_stablecoin-reserves-plummet-16-billion-amid-bitcoin-slump-c290609a62/illustration-976d9cdf.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Coinbase Unveils ChatGPT Trading Plugin with Mandatory User Approval",
     "summary": "Coinbase launched a ChatGPT plugin on Nov. 17 allowing US customers to trade stocks, crypto, and derivatives via conversation while requiring explicit approval for every order.",
     "author": "Presence Editorial",
