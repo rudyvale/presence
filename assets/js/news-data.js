@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Deribit Restarts Trading Following Scheduled Patch and Market Disruption",
+    "summary": "Deribit resumed trading on Nov. 20 after a scheduled security patch caused an outage affecting crypto perpetuals, equity-linked contracts, and transfers.",
+    "author": "Presence Editorial",
+    "date": "2026-11-20",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-20_deribit-restarts-trading-following-scheduled-patch-and-market-dis-b4e4472b3a/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-20_deribit-restarts-trading-following-scheduled-patch-and-market-dis-b4e4472b3a/illustration-3fba3e32.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Solana Tokenized Equities Surge Past $1 Billion Mark Amid Institutional Expansion",
     "summary": "Tokenized equities on Solana reached $1.22 billion in circulating value by November 2026, nearly doubling October levels as firms like Ondo and Securitize expand offerings.",
     "author": "Presence Editorial",
