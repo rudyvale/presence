@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Solana Tokenized Equities Surge Past $1 Billion Mark Amid Institutional Expansion",
+    "summary": "Tokenized equities on Solana reached $1.22 billion in circulating value by November 2026, nearly doubling October levels as firms like Ondo and Securitize expand offerings.",
+    "author": "Presence Editorial",
+    "date": "2026-11-20",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-20_solana-tokenized-equities-surge-past-1-billion-mark-amid-institut-8fdee36847/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-20_solana-tokenized-equities-surge-past-1-billion-mark-amid-institut-8fdee36847/illustration-e74e6c42.webp",
+    "imageAlt": "Original Presence illustration of equity certificates connected to digital tokens.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Russia Authorizes 30 Crypto Firms as EU Prepares Sanctions",
     "summary": "Russia's central bank registered 30 crypto operators for retail trading while the EU prepares new sanctions targeting Russian banks and digital assets.",
     "author": "Presence Editorial",
