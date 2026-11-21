@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Solana Retreats Amid ETF Inflow Reversal",
+    "summary": "Solana dropped 6.1% to $68.68 on Nov. 20, erasing recent gains despite a brief surge in U.S. spot ETF inflows earlier that week.",
+    "author": "Presence Editorial",
+    "date": "2026-11-21",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-21_solana-retreats-amid-etf-inflow-reversal-8443798358/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-21_solana-retreats-amid-etf-inflow-reversal-8443798358/illustration-0bd4e25a.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Deribit Restarts Trading Following Scheduled Patch and Market Disruption",
     "summary": "Deribit resumed trading on Nov. 20 after a scheduled security patch caused an outage affecting crypto perpetuals, equity-linked contracts, and transfers.",
     "author": "Presence Editorial",
