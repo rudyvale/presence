@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Hong Kong Bill Penalizes Fake Crypto License Claims",
+    "summary": "Hong Kong's new crypto bill introduces prison terms and fines for falsely claiming license applications or unauthorized use of regulated titles.",
+    "author": "Presence Editorial",
+    "date": "2026-11-21",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-21_hong-kong-bill-penalizes-fake-crypto-license-claims-b4d20225c7/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-21_hong-kong-bill-penalizes-fake-crypto-license-claims-b4d20225c7/illustration-10c6e551.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Solana Retreats Amid ETF Inflow Reversal",
     "summary": "Solana dropped 6.1% to $68.68 on Nov. 20, erasing recent gains despite a brief surge in U.S. spot ETF inflows earlier that week.",
     "author": "Presence Editorial",
