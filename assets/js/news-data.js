@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "MoldyRoost Campaign Exploits iPhones to Steal Crypto Wallets Across 47 Nations",
+    "summary": "Security firm Confiant identified a malicious ad operation called MoldyRoost that exploited vulnerable iPhones in over 47 countries to steal cryptocurrency wallet recovery phrases and personal data without requiring user interaction.",
+    "author": "Presence Editorial",
+    "date": "2026-11-22",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-22_moldyroost-campaign-exploits-iphones-to-steal-crypto-wallets-acro-748ce36ee4/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-22_moldyroost-campaign-exploits-iphones-to-steal-crypto-wallets-acro-748ce36ee4/illustration-82b15530.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Ethereum Surges as NFT Market Hits $33M Weekly High",
     "summary": "NFT sales rose 3.88% to $33 million in seven days through Nov. 21, with Ethereum leading blockchains and a Bitcoin collectible fetching the week's highest price.",
     "author": "Presence Editorial",
