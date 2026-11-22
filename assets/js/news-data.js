@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Ethereum Surges as NFT Market Hits $33M Weekly High",
+    "summary": "NFT sales rose 3.88% to $33 million in seven days through Nov. 21, with Ethereum leading blockchains and a Bitcoin collectible fetching the week's highest price.",
+    "author": "Presence Editorial",
+    "date": "2026-11-22",
+    "readingTime": "5 min read",
+    "url": "/articles/2026-11-22_ethereum-surges-as-nft-market-hits-33m-weekly-high-c059ac5a33/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-22_ethereum-surges-as-nft-market-hits-33m-weekly-high-c059ac5a33/illustration-8cc1cff2.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Hong Kong Bill Penalizes Fake Crypto License Claims",
     "summary": "Hong Kong's new crypto bill introduces prison terms and fines for falsely claiming license applications or unauthorized use of regulated titles.",
     "author": "Presence Editorial",
