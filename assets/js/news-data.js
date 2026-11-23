@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "ECB Opens Appia Initiative for Tokenized Deposit and Securities Trials",
+    "summary": "The European Central Bank invites financial groups to test tokenized deposits and securities under its Appia initiative, with applications due Dec. 11.",
+    "author": "Presence Editorial",
+    "date": "2026-11-23",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-23_ecb-opens-appia-initiative-for-tokenized-deposit-and-securities-t-7b28fe0bbe/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-23_ecb-opens-appia-initiative-for-tokenized-deposit-and-securities-t-7b28fe0bbe/illustration-418fcc02.webp",
+    "imageAlt": "Original Presence illustration of equity certificates connected to digital tokens.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "MoldyRoost Campaign Exploits iPhones to Steal Crypto Wallets Across 47 Nations",
     "summary": "Security firm Confiant identified a malicious ad operation called MoldyRoost that exploited vulnerable iPhones in over 47 countries to steal cryptocurrency wallet recovery phrases and personal data without requiring user interaction.",
     "author": "Presence Editorial",
