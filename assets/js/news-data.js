@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Clapp Crypto Card Enables Direct Stablecoin Spending",
+    "summary": "Clapp Finance launches a Visa card allowing users to spend USDT and USDC balances directly at merchants without prior conversion.",
+    "author": "Presence Editorial",
+    "date": "2026-11-23",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-23_clapp-crypto-card-enables-direct-stablecoin-spending-b9a4be6545/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-23_clapp-crypto-card-enables-direct-stablecoin-spending-b9a4be6545/illustration-4be9bf6b.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "ECB Opens Appia Initiative for Tokenized Deposit and Securities Trials",
     "summary": "The European Central Bank invites financial groups to test tokenized deposits and securities under its Appia initiative, with applications due Dec. 11.",
     "author": "Presence Editorial",
