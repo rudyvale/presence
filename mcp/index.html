@@ -62,7 +62,7 @@
     <span class="eyebrow">Archive integration</span>
     <h1>Presence MCP</h1>
     <p>Search our reporting, essays and interviews from your AI assistant. Every result includes a link to the original story.</p>
-    <a class="btn btn--quiet" href="#setup">Connect locally</a>
+    <a class="btn btn--quiet" href="#setup">Connect to Presence</a>
   </header>
 
   <section aria-labelledby="tools">
@@ -84,15 +84,11 @@
   </section>
 
   <section aria-labelledby="setup">
-    <h2 id="setup">Connect locally</h2>
-    <p>Use Node.js 22 or later and a client that supports MCP over stdio. The connector reads the public archive without an account or an API key.</p>
-    <pre tabindex="0"><code>git clone --filter=blob:none --sparse https://github.com/rudyvale/presence.git
-git -C presence sparse-checkout set presence-mcp
-cd presence
-npm ci --prefix presence-mcp</code></pre>
-    <p>From the repository folder, run this command to add Presence to Codex.</p>
-    <pre tabindex="0"><code>codex mcp add presence -- node "$PWD/presence-mcp/stdio.mjs"</code></pre>
-    <p>In other stdio clients, use <code>node</code> as the command and the absolute path to <code>presence-mcp/stdio.mjs</code> as its argument.</p>
+    <h2 id="setup">Connect your MCP client</h2>
+    <p>Add a remote MCP server using Streamable HTTP. The public archive is available without an account or API key.</p>
+    <pre tabindex="0"><code>https://presence-mcp.private-companion-bot.workers.dev/mcp</code></pre>
+    <p>In Codex, add the server with this command.</p>
+    <pre tabindex="0"><code>codex mcp add presence --url https://presence-mcp.private-companion-bot.workers.dev/mcp</code></pre>
     <p>Try asking “What has Presence written about stablecoins? Link me to the original articles.”</p>
   </section>
 </main>

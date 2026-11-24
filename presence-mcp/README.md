@@ -2,6 +2,16 @@
 
 Search the public archive, list recent stories, and read articles with links to their original pages.
 
+Connect to the public server over Streamable HTTP without an API key.
+
+```sh
+codex mcp add presence --url https://presence-mcp.private-companion-bot.workers.dev/mcp
+```
+
+In other remote MCP clients, use `https://presence-mcp.private-companion-bot.workers.dev/mcp` as the server URL.
+
+## Local setup
+
 From the repository root with Node.js 22 or later, install the locked dependencies and register the local connector.
 
 ```sh
