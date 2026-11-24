@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "0G Foundation Faces Disclosure Scrutiny After Upbit Warning",
+    "summary": "The 0G Foundation pledges a review of its disclosure practices after South Korean exchange Upbit designated its token an investment caution asset and suspended deposits due to concerns over material information transparency.",
+    "author": "Presence Editorial",
+    "date": "2026-11-24",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-24_0g-foundation-faces-disclosure-scrutiny-after-upbit-warning-9c8dbaaa22/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-24_0g-foundation-faces-disclosure-scrutiny-after-upbit-warning-9c8dbaaa22/illustration-c72b466b.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Crypto Wallets Drained: Trezor and Exodus Victims Report $600K Theft",
     "summary": "Blockchain analysts report over $600,000 stolen from a Trezor Safe 7 and Exodus wallet on an iPhone, with funds traced to Bybit-associated addresses.",
     "author": "Presence Editorial",
