@@ -6,7 +6,14 @@
     <atom:link href="https://presence.news/feed.xml" rel="self" type="application/rss+xml" />
     <description>Technology, crypto, science, and the companies shaping what comes next.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Crypto Wallets Drained: Trezor and Exodus Victims Report $600K Theft</title>
+      <link>https://presence.news/articles/2026-11-24_crypto-wallets-drained-trezor-and-exodus-victims-report-600k-thef-7115e3dfad/</link>
+      <guid isPermaLink="false">presence:articles/2026-11-24_crypto-wallets-drained-trezor-and-exodus-victims-report-600k-thef-7115e3dfad</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Blockchain analysts report over $600,000 stolen from a Trezor Safe 7 and Exodus wallet on an iPhone, with funds traced to Bybit-associated addresses.</description>
+    </item>
     <item>
       <title>Clapp Crypto Card Enables Direct Stablecoin Spending</title>
       <link>https://presence.news/articles/2026-11-23_clapp-crypto-card-enables-direct-stablecoin-spending-b9a4be6545/</link>

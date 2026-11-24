@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Crypto Wallets Drained: Trezor and Exodus Victims Report $600K Theft",
+    "summary": "Blockchain analysts report over $600,000 stolen from a Trezor Safe 7 and Exodus wallet on an iPhone, with funds traced to Bybit-associated addresses.",
+    "author": "Presence Editorial",
+    "date": "2026-11-24",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-24_crypto-wallets-drained-trezor-and-exodus-victims-report-600k-thef-7115e3dfad/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-24_crypto-wallets-drained-trezor-and-exodus-victims-report-600k-thef-7115e3dfad/illustration-94b3767b.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Clapp Crypto Card Enables Direct Stablecoin Spending",
     "summary": "Clapp Finance launches a Visa card allowing users to spend USDT and USDC balances directly at merchants without prior conversion.",
     "author": "Presence Editorial",
