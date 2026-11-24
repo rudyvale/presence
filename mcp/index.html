@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self'; manifest-src 'none'; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Presence MCP — PRESENCE</title>
+<meta name="description" content="Search and read the public Presence archive from an MCP client.">
+<link rel="icon" href="/assets/img/presence-icon.png" type="image/png">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=6b18cb5c4169e6e4">
+<link rel="stylesheet" href="/assets/css/site.css?v=8b0f5911c5ae3bdd">
+<link rel="canonical" href="https://presence.news/mcp/">
+<link rel="alternate" type="application/rss+xml" title="PRESENCE RSS" href="https://presence.news/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PRESENCE">
+<meta property="og:title" content="Presence MCP — PRESENCE">
+<meta property="og:description" content="Search and read the public Presence archive from an MCP client.">
+<meta property="og:url" content="https://presence.news/mcp/">
+<meta property="og:image" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
+<meta property="og:image:secure_url" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="500">
+<meta property="og:image:alt" content="Presence — crypto, technology, and the people behind it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presence MCP — PRESENCE">
+<meta name="twitter:description" content="Search and read the public Presence archive from an MCP client.">
+<meta name="twitter:image" content="https://presence.news/assets/img/presence-banner-82e5cd328f.png">
+<meta name="twitter:image:alt" content="Presence — crypto, technology, and the people behind it.">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/" aria-label="Presence home">
+      <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+      <span class="brand__word">PRESENCE</span>
+    </a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/news/">News</a>
+      <a href="/crypto/">Crypto</a>
+      <a href="/technology/">Technology</a>
+      <a href="/companies/">Companies</a>
+      <a class="nav-search-link" href="/#search">Search</a>
+
+      <a href="/mcp/" aria-current="page">MCP</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap mcp-page">
+  <header class="mcp-page__intro">
+    <span class="eyebrow">Archive integration</span>
+    <h1>Presence MCP</h1>
+    <p>Search our reporting, essays and interviews from your AI assistant. Every result includes a link to the original story.</p>
+    <a class="btn btn--quiet" href="#setup">Connect locally</a>
+  </header>
+
+  <section aria-labelledby="tools">
+    <h2 id="tools">What you can do</h2>
+    <dl class="mcp-page__tools">
+      <div>
+        <dt><code>search_articles</code></dt>
+        <dd>Find stories by topic, title or author.</dd>
+      </div>
+      <div>
+        <dt><code>list_recent_articles</code></dt>
+        <dd>See the latest stories in crypto, technology and companies.</dd>
+      </div>
+      <div>
+        <dt><code>get_article</code></dt>
+        <dd>Read the full text of a public article by URL or ID.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section aria-labelledby="setup">
+    <h2 id="setup">Connect locally</h2>
+    <p>Use Node.js 22 or later and a client that supports MCP over stdio. The connector reads the public archive without an account or an API key.</p>
+    <pre tabindex="0"><code>git clone --filter=blob:none --sparse https://github.com/rudyvale/presence.git
+git -C presence sparse-checkout set presence-mcp
+cd presence
+npm ci --prefix presence-mcp</code></pre>
+    <p>From the repository folder, run this command to add Presence to Codex.</p>
+    <pre tabindex="0"><code>codex mcp add presence -- node "$PWD/presence-mcp/stdio.mjs"</code></pre>
+    <p>In other stdio clients, use <code>node</code> as the command and the absolute path to <code>presence-mcp/stdio.mjs</code> as its argument.</p>
+    <p>Try asking “What has Presence written about stablecoins? Link me to the original articles.”</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col footer__brand">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/presence-logo.webp" alt="" decoding="async">
+        <span class="brand__word">PRESENCE</span>
+      </a>
+      <p>Understand what is coming, and how it gets built.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/crypto/">Crypto</a></li>
+        <li><a href="/technology/">Technology</a></li>
+        <li><a href="/companies/">Companies</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>PRESENCE</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/mcp/" aria-current="page">MCP</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://t.me/presencemedia" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+        <li><a href="https://x.com/PresenceWeb3" target="_blank" rel="noopener noreferrer">X</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>&copy; <span data-year>2026</span> PRESENCE | All Rights Reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=c946a4acb4a92268"></script>
+</body>
+</html>

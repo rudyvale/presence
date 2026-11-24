@@ -12,3 +12,4 @@ exclude:
   - .git
   - .gitignore
   - __pycache__
+  - presence-mcp

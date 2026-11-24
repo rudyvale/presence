@@ -4,3 +4,5 @@ __pycache__/
 scripts/
 tests/
 docs/
+presence-mcp/node_modules/
+presence-mcp/.wrangler/

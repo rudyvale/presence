@@ -18,6 +18,7 @@ We focus on stories that need context and room for a full argument, with attenti
 
 - **Website:** [presence.news](https://presence.news/)
 - **About:** [Our publication](https://presence.news/about/)
+- **MCP:** [Connect to the public archive](https://presence.news/mcp/)
 - **Contact:** [Get in touch](https://presence.news/contact/)
 - **Telegram:** [@presencemedia](https://t.me/presencemedia)
 - **X:** [@PresenceWeb3](https://x.com/PresenceWeb3)

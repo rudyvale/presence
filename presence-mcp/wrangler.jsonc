@@ -1,0 +1,6 @@
+{
+  "name": "presence-mcp",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-24",
+  "compatibility_flags": ["nodejs_compat"]
+}
