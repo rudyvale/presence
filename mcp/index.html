@@ -65,6 +65,23 @@
     <a class="btn btn--quiet" href="#setup">Connect to Presence</a>
   </header>
 
+  <section aria-labelledby="setup">
+    <h2 id="setup">Connect your MCP client</h2>
+    <p>Add a remote MCP server using Streamable HTTP. The public archive is available without an account or API key.</p>
+    <pre tabindex="0"><code id="mcp-url">https://presence-mcp.private-companion-bot.workers.dev/mcp</code></pre>
+    <div data-mcp-copy="mcp-url" hidden>
+      <button class="btn btn--quiet" type="button">Copy server URL</button>
+      <span role="status"></span>
+    </div>
+    <p>In Codex, add the server with this command.</p>
+    <pre tabindex="0"><code id="mcp-command">codex mcp add presence --url https://presence-mcp.private-companion-bot.workers.dev/mcp</code></pre>
+    <div data-mcp-copy="mcp-command" hidden>
+      <button class="btn btn--quiet" type="button">Copy Codex command</button>
+      <span role="status"></span>
+    </div>
+    <p>Try asking “What has Presence written about stablecoins? Link me to the original articles.”</p>
+  </section>
+
   <section aria-labelledby="tools">
     <h2 id="tools">What you can do</h2>
     <dl class="mcp-page__tools">
@@ -81,15 +98,6 @@
         <dd>Read the full text of a public article by URL or ID.</dd>
       </div>
     </dl>
-  </section>
-
-  <section aria-labelledby="setup">
-    <h2 id="setup">Connect your MCP client</h2>
-    <p>Add a remote MCP server using Streamable HTTP. The public archive is available without an account or API key.</p>
-    <pre tabindex="0"><code>https://presence-mcp.private-companion-bot.workers.dev/mcp</code></pre>
-    <p>In Codex, add the server with this command.</p>
-    <pre tabindex="0"><code>codex mcp add presence --url https://presence-mcp.private-companion-bot.workers.dev/mcp</code></pre>
-    <p>Try asking “What has Presence written about stablecoins? Link me to the original articles.”</p>
   </section>
 </main>
 
@@ -129,5 +137,6 @@
 </footer>
 
 <script src="/assets/js/site.js?v=c946a4acb4a92268"></script>
+<script src="/assets/js/mcp.js?v=0ca9f90eedf47ba0"></script>
 </body>
 </html>

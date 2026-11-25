@@ -10,8 +10,22 @@ export default {
     if (origin !== null && origin !== url.origin) {
       return new Response("Forbidden origin", { status: 403 });
     }
+    if (request.method === "GET" &&
+        request.headers.get("Sec-Fetch-Mode") === "navigate" &&
+        request.headers.get("Accept")?.includes("text/html")) {
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: "https://presence.news/mcp/",
+          "Cache-Control": "no-store",
+        },
+      });
+    }
     if (request.method !== "POST") {
-      return new Response(null, { status: 405, headers: { Allow: "POST" } });
+      return new Response(null, {
+        status: 405,
+        headers: { Allow: "POST", "Cache-Control": "no-store" },
+      });
     }
 
     const server = createPresenceServer();
