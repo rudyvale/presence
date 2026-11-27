@@ -640,6 +640,9 @@
     <loc>https://presence.news/</loc>
   </url>
   <url>
+    <loc>https://presence.news/mcp/</loc>
+  </url>
+  <url>
     <loc>https://presence.news/news/</loc>
   </url>
   <url>
