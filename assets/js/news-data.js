@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Binance Recruits Capital Markets Experts for On-Chain IPO Expansion",
+    "summary": "Binance is hiring equity specialists to build tokenized financial products that could support future on-chain initial public offerings.",
+    "author": "Presence Editorial",
+    "date": "2026-11-27",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-27_binance-recruits-capital-markets-experts-for-on-chain-ipo-expansi-1790b6a3e1/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-27_binance-recruits-capital-markets-experts-for-on-chain-ipo-expansi-1790b6a3e1/illustration-06621805.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Binance Restarts Withdrawals Following $6.34 Billion Hack",
     "summary": "Binance has lifted its withdrawal suspension after a phased recovery, covering affected assets with company funds while some networks remain under maintenance.",
     "author": "Presence Editorial",
