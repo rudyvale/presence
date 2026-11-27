@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Binance Restarts Withdrawals Following $6.34 Billion Hack",
+    "summary": "Binance has lifted its withdrawal suspension after a phased recovery, covering affected assets with company funds while some networks remain under maintenance.",
+    "author": "Presence Editorial",
+    "date": "2026-11-27",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-27_binance-restarts-withdrawals-following-6-34-billion-hack-f8cd342589/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-27_binance-restarts-withdrawals-following-6-34-billion-hack-f8cd342589/illustration-7541dfc8.webp",
+    "imageAlt": "Original Presence illustration of connected digital asset networks.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "0G Foundation Faces Disclosure Scrutiny After Upbit Warning",
     "summary": "The 0G Foundation pledges a review of its disclosure practices after South Korean exchange Upbit designated its token an investment caution asset and suspended deposits due to concerns over material information transparency.",
     "author": "Presence Editorial",
