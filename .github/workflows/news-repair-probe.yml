@@ -1,0 +1,73 @@
+name: News repair probe
+
+on:
+  push:
+    branches: [codex/presence-news-repair]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PUBLISHING_KEY: ${{ secrets.PUBLISHING_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Open publishing services
+        run: |
+          python -m pip install --quiet cryptography==46.0.3
+          python .github/site_services.py restore
+          python .github/site_services.py run dependencies
+      - name: Compare published-site validation without publishing
+        shell: bash
+        run: |
+          set -eu
+          baseline=67989daf6b33fa91084cc1fb6f03e9cc398a93b2
+          current="$GITHUB_SHA"
+          log="$RUNNER_TEMP/news-probe.log"
+          chmod 700 "$RUNNER_TEMP"
+          probe() {
+            if python scripts/service_tasks.py "$2" >"$log" 2>&1; then
+              echo "$1 $2: pass"
+            else
+              echo "$1 $2: fail"
+              python - "$log" <<'PY'
+          import sys
+          from pathlib import Path
+          lines = Path(sys.argv[1]).read_text(errors="replace").splitlines()
+          outcome_lines = [line.casefold() for line in lines if not line.startswith("Traceback")]
+          for path in ["mcp/index.html", "presence-mcp/", "assets/js/mcp.js", "_config.yml",
+                       "assets/css/site.css", "index.html", "404.html"]:
+              if any(path in line for line in outcome_lines):
+                  print(f"Public path mentioned: {path}")
+          for tag in ["canonical", "robots", "metadata", "structured data", "json-ld", "seo", "csp",
+                      "internal link", "forbidden", "unexpected", "missing", "stylesheet", "javascript",
+                      "checksum", "hash", "footer", "inventory", "duplicate", "brand", "package",
+                      "total", "blocked", "dependency", "network", "invalid", "noindex"]:
+              if any(tag in line for line in outcome_lines):
+                  print(f"Diagnostic category: {tag}")
+          PY
+            fi
+            rm -f "$log"
+          }
+          umask 077
+          probe current validate
+          probe current test
+          git restore --source="$baseline" --staged --worktree -- presence-mcp _config.yml .gitignore
+          probe without-backend validate
+          git restore --source="$current" --staged --worktree -- presence-mcp _config.yml .gitignore
+          git restore --source="$baseline" --staged --worktree -- . ':!.github'
+          probe baseline validate
+          git restore --source="$current" --staged --worktree -- presence-mcp _config.yml .gitignore
+          probe baseline-with-backend validate
+          git restore --source="$baseline" --staged --worktree -- presence-mcp _config.yml .gitignore
+          git restore --source="$current" --staged --worktree -- mcp assets/js/mcp.js assets/css/site.css
+          probe baseline-with-guide validate
