@@ -2,6 +2,20 @@ window.PRESENCE_NEWS = [
   {
     "category": "crypto",
     "type": "NEWS",
+    "title": "Bitcoin Recovery Threatened by Stablecoin Liquidity Drop",
+    "summary": "Bitcoin's short-term price rise faces risks as the stablecoin market cap shrinks 12% in 30 days, reducing available capital to absorb selling pressure.",
+    "author": "Presence Editorial",
+    "date": "2026-11-28",
+    "readingTime": "4 min read",
+    "url": "/articles/2026-11-28_bitcoin-recovery-threatened-by-stablecoin-liquidity-drop-3fb2186b31/",
+    "promotable": true,
+    "image": "/assets/img/articles/2026-11-28_bitcoin-recovery-threatened-by-stablecoin-liquidity-drop-3fb2186b31/illustration-f49ff454.webp",
+    "imageAlt": "Original Presence illustration of Bitcoin, leverage and the inflation reading.",
+    "imageCredit": "Illustration: Presence"
+  },
+  {
+    "category": "crypto",
+    "type": "NEWS",
     "title": "Binance Recruits Capital Markets Experts for On-Chain IPO Expansion",
     "summary": "Binance is hiring equity specialists to build tokenized financial products that could support future on-chain initial public offerings.",
     "author": "Presence Editorial",
